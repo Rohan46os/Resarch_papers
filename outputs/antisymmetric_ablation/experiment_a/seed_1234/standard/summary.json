@@ -1,0 +1,13 @@
+{
+  "architecture": "standard",
+  "seed": 1234,
+  "trainable_parameters": 816000,
+  "total_stored_scalars": 816000,
+  "stored_buffers": 0,
+  "best_validation_loss": 1.8833007156848907,
+  "best_validation_perplexity": 6.5751718571044435,
+  "final_validation_loss": 1.8833007156848907,
+  "final_validation_perplexity": 6.5751718571044435,
+  "training_seconds": 158.6850122010219,
+  "tokens_per_second": 77436.42471056803
+}

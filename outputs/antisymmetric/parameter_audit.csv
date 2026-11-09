@@ -1,0 +1,5 @@
+model_type,description,total_parameters,attention_parameters,non_attention_parameters,w_q_parameters,w_k_parameters,w_v_parameters,w_o_parameters,b_parameters,parameter_matched_to_standard,delta_vs_shared_q,source_directory
+standard,Standard Attention (Model A),816000,262144,553856,65536,65536,65536,65536,0,True,65536,outputs/full
+shared_q,Original Shared-Q (Model B),750464,196608,553856,65536,0,65536,65536,0,False,0,outputs/full
+shared_q_query_heavy,Model C3 (Query-Heavy Shared-Q),816000,262144,553856,131072,0,65536,65536,0,True,65536,outputs/model_c3
+shared_q_antisymmetric,Antisymmetric Shared-Q,758400,204544,553856,65536,0,65536,65536,7936,False,7936,outputs\antisymmetric

@@ -1,0 +1,13 @@
+{
+  "architecture": "shared_q_antisymmetric_zero_init",
+  "seed": 1234,
+  "trainable_parameters": 758400,
+  "total_stored_scalars": 758400,
+  "stored_buffers": 0,
+  "best_validation_loss": 1.918233150243759,
+  "best_validation_perplexity": 6.808917500905398,
+  "final_validation_loss": 1.918233150243759,
+  "final_validation_perplexity": 6.808917500905398,
+  "training_seconds": 195.43236649996834,
+  "tokens_per_second": 62875.971979810165
+}

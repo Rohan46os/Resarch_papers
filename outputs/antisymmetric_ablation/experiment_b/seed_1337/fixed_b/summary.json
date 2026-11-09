@@ -1,0 +1,13 @@
+{
+  "architecture": "fixed_b",
+  "seed": 1337,
+  "trainable_parameters": 750464,
+  "total_stored_scalars": 758400,
+  "stored_buffers": 7936,
+  "best_validation_loss": 1.957665741443634,
+  "best_validation_perplexity": 7.0827747264452965,
+  "final_validation_loss": 1.957665741443634,
+  "final_validation_perplexity": 7.0827747264452965,
+  "training_seconds": 198.49160880112322,
+  "tokens_per_second": 61906.89910882754
+}

@@ -4,13 +4,18 @@ Config attributes: n_layers, d_model, n_heads, context_length, d_ff, dropout.
 For example: 4, 128, 4, 128, 512, 0.1. Vocabulary size is passed separately.
 """
 
-from typing import cast
+from typing import List, Optional, cast
 
 import torch
 from torch import nn
 from torch.nn import functional as F
 
-from attention import AllocatedSharedQAttention, CausalSelfAttention, ParameterMatchedSharedQAttention
+from attention import (
+    AllocatedSharedQAttention,
+    CausalSelfAttention,
+    ParameterMatchedSharedQAttention,
+    SharedQAntisymmetricAttention,
+)
 
 
 class DecoderBlock(nn.Module):
@@ -18,7 +23,17 @@ class DecoderBlock(nn.Module):
         super().__init__()
         self.attention_norm = nn.LayerNorm(config.d_model)
         self.attention = (
-            AllocatedSharedQAttention(config, attention_type)
+            SharedQAntisymmetricAttention(
+                config,
+                b_trainable=(attention_type != "shared_q_antisymmetric_fixed"),
+            )
+            if attention_type in (
+                "shared_q_antisymmetric",
+                "antisymmetric_shared_q",
+                "SharedQAntisymmetric",
+                "shared_q_antisymmetric_fixed",
+            )
+            else AllocatedSharedQAttention(config, attention_type)
             if attention_type in AllocatedSharedQAttention.HEAD_DIMS
             else ParameterMatchedSharedQAttention(config)
             if attention_type == "shared_q_matched"
@@ -41,7 +56,17 @@ class DecoderBlock(nn.Module):
 class DecoderLM(nn.Module):
     def __init__(self, config, vocab_size, attention_type):
         super().__init__()
-        if attention_type not in ("standard", "shared_q", "shared_q_matched", *AllocatedSharedQAttention.HEAD_DIMS):
+        valid_types = (
+            "standard",
+            "shared_q",
+            "shared_q_matched",
+            "shared_q_antisymmetric",
+            "antisymmetric_shared_q",
+            "SharedQAntisymmetric",
+            "shared_q_antisymmetric_fixed",
+            *AllocatedSharedQAttention.HEAD_DIMS,
+        )
+        if attention_type not in valid_types:
             raise ValueError(f"Unknown attention_type: {attention_type}")
         if vocab_size <= 0 or config.context_length <= 0 or config.n_layers <= 0:
             raise ValueError("vocab_size, context_length and n_layers must be positive")
@@ -67,6 +92,30 @@ class DecoderLM(nn.Module):
             nn.init.normal_(module.weight, mean=0.0, std=0.02)
             if isinstance(module, nn.Linear) and module.bias is not None:
                 nn.init.zeros_(module.bias)
+
+    def set_separate_qk(self, enable: bool = True):
+        """Toggle separation of Q and K pathways in shared-Q attention blocks."""
+        for block in self.blocks:
+            if hasattr(block.attention, "separate_qk"):
+                block.attention.separate_qk = enable
+
+    def clear_qk_cache(self):
+        """Release cached activations and projection outputs used during gradient surgery."""
+        for block in self.blocks:
+            if hasattr(block.attention, "last_x"):
+                block.attention.last_x = None
+                block.attention.last_q_query = None
+                block.attention.last_q_key = None
+
+    def set_b_enabled(self, enabled: bool = True, layer: Optional[int] = None):
+        """Toggle antisymmetric B component globally or for a specific layer."""
+        if layer is not None:
+            if 0 <= layer < len(self.blocks) and hasattr(self.blocks[layer].attention, "b_enabled"):
+                self.blocks[layer].attention.b_enabled = enabled
+        else:
+            for block in self.blocks:
+                if hasattr(block.attention, "b_enabled"):
+                    block.attention.b_enabled = enabled
 
     def _embed(self, input_ids):
         if input_ids.ndim != 2:
@@ -180,6 +229,49 @@ def build_matched_model(config, vocab_size, seed, attention_type="shared_q_match
     return matched
 
 
+def build_antisymmetric_model(
+    config,
+    vocab_size,
+    seed,
+    attention_type="shared_q_antisymmetric",
+    b_trainable: bool = True,
+    b0_triu: Optional[List[torch.Tensor]] = None,
+):
+    """Initialize Antisymmetric Shared-Q against the original seeded baseline.
+
+    All common parameters with standard/shared_q are copied identically.
+    If b0_triu is provided, sets each layer's B matrix to the provided tensor
+    with trainability set by b_trainable.
+    Otherwise, b_triu is initialized to zero (trainable).
+    """
+    with torch.random.fork_rng(devices=[]):
+        torch.set_rng_state(torch.Generator().manual_seed(seed).get_state())
+        baseline = DecoderLM(config, vocab_size, "standard")
+        actual_attn_type = (
+            "shared_q_antisymmetric_fixed"
+            if (not b_trainable or attention_type == "shared_q_antisymmetric_fixed")
+            else "shared_q_antisymmetric"
+        )
+        model = DecoderLM(config, vocab_size, actual_attn_type)
+        baseline_state = baseline.state_dict()
+        state = model.state_dict()
+        for name, tensor in state.items():
+            if name in baseline_state and tensor.shape == baseline_state[name].shape:
+                state[name] = baseline_state[name]
+        model.load_state_dict(state, strict=True)
+
+        if b0_triu is not None:
+            for l, block in enumerate(model.blocks):
+                if hasattr(block.attention, "set_b_triu"):
+                    block.attention.set_b_triu(b0_triu[l], trainable=b_trainable)
+        elif not b_trainable:
+            for block in model.blocks:
+                if hasattr(block.attention, "set_b_triu"):
+                    block.attention.set_b_triu(block.attention.b_triu, trainable=False)
+
+    return model
+
+
 def parameter_counts(model):
     """Count unique parameters; attention includes all Q/K/V and output projections."""
     return {
@@ -190,4 +282,19 @@ def parameter_counts(model):
             if isinstance(module, CausalSelfAttention)
             for parameter in module.parameters()
         ),
+    }
+
+
+def detailed_parameter_accounting(model) -> dict:
+    """Report trainable parameters, non-trainable parameters, stored buffers, and total stored scalars."""
+    trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    non_trainable = sum(p.numel() for p in model.parameters() if not p.requires_grad)
+    # Stored buffers excluding non-persistent indices buffers
+    buffers = sum(b.numel() for name, b in model.named_buffers() if "indices" not in name)
+    total_stored = trainable + non_trainable + buffers
+    return {
+        "trainable_parameters": trainable,
+        "non_trainable_parameters": non_trainable,
+        "stored_buffers": buffers,
+        "total_stored_scalars": total_stored,
     }

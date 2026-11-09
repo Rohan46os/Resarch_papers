@@ -1,0 +1,13 @@
+{
+  "architecture": "shared_q",
+  "seed": 2026,
+  "trainable_parameters": 750464,
+  "total_stored_scalars": 750464,
+  "stored_buffers": 0,
+  "best_validation_loss": 1.9389193832874299,
+  "best_validation_perplexity": 6.951235289556438,
+  "final_validation_loss": 1.9389193832874299,
+  "final_validation_perplexity": 6.951235289556438,
+  "training_seconds": 153.89648029819364,
+  "tokens_per_second": 79845.88066075629
+}

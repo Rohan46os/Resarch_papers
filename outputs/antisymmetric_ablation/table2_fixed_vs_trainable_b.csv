@@ -1,0 +1,3 @@
+configuration,b_initialization,b_trainable,trainable_parameters,total_stored_scalars,val_loss_mean,val_loss_std,val_ppl_mean,val_ppl_std
+Fixed B,Matched nonzero B0 (norm 1.0),No,750464,758400,1.9526636469364163,0.009263482938128818,7.047676544254626,0.06535052617988654
+Trainable B,Same nonzero B0 (norm 1.0),Yes,758400,758400,1.9078127431869507,0.006835871458241349,6.738460157510805,0.046065899714709944

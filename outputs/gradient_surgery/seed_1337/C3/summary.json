@@ -1,0 +1,81 @@
+{
+  "exp_id": "C3",
+  "architecture": "shared_q_query_heavy",
+  "strategy": "key_preserving",
+  "seed": 1337,
+  "steps": 3000,
+  "parameters": 816000,
+  "attention_parameters": 262144,
+  "training_seconds": 139.21314170054393,
+  "training_tokens": 12288000,
+  "training_tokens_per_second": 88267.528840289,
+  "peak_gpu_memory_bytes": 447185920,
+  "initial_validation_loss": 4.186033749580384,
+  "final_validation_loss": 1.940193235874176,
+  "best_validation_loss": 1.940193235874176,
+  "final_validation_perplexity": 6.960095780892865,
+  "best_validation_perplexity": 6.960095780892865,
+  "validation_seed": 918273,
+  "training_batch_sha256": "3f7cc650e99acb2fb2f05b7dde37cf5aa4fb88167e568242bfb50ce441467414",
+  "conflict_frequencies": {
+    "layer_0_conflict_frequency": 0.16666666666666666,
+    "layer_1_conflict_frequency": 0.6666666666666666,
+    "layer_2_conflict_frequency": 0.43333333333333335,
+    "layer_3_conflict_frequency": 0.23333333333333334
+  },
+  "config": {
+    "n_layers": 4,
+    "d_model": 128,
+    "n_heads": 4,
+    "context_length": 128,
+    "d_ff": 512,
+    "dropout": 0.1,
+    "batch_size": 32,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.1,
+    "max_steps": 3000,
+    "warmup_steps": 100,
+    "min_lr_ratio": 0.1,
+    "gradient_clip": 1.0,
+    "eval_interval": 100,
+    "eval_batches": 20,
+    "seed": 1337,
+    "seeds": [
+      1337,
+      2024,
+      42
+    ],
+    "adam_betas": [
+      0.9,
+      0.999
+    ],
+    "adam_eps": 1e-08,
+    "data_path": "data/tinyshakespeare.txt",
+    "dataset_url": "https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt",
+    "output_dir": "outputs/full",
+    "device": "auto",
+    "cpu_threads": 4,
+    "deterministic": true,
+    "benchmark_batches": 20,
+    "benchmark_warmup": 5,
+    "sample_tokens": 300,
+    "practical_loss_threshold": 0.02
+  },
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "vocab_size": 65,
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "torch_version": "2.6.0+cu124",
+  "cuda_version": "12.4",
+  "full_context_benchmarks": {
+    "inference_tokens_per_second": 575340.2916190515,
+    "inference_latency_ms": 7.11926499789115,
+    "inference_batch_size": 32,
+    "inference_context_length": 128
+  },
+  "autoregressive_benchmarks": {
+    "autoregressive_tokens_per_second": 180.1043092218286,
+    "autoregressive_latency_ms_per_token": 5.552337999688461,
+    "autoregressive_tokens_sampled": 100
+  }
+}
