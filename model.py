@@ -13,6 +13,7 @@ from torch.nn import functional as F
 from attention import (
     AllocatedSharedQAttention,
     CausalSelfAttention,
+    HeterogeneousSharedQAttention,
     ParameterMatchedSharedQAttention,
     SharedQAntisymmetricAttention,
 )
@@ -23,7 +24,9 @@ class DecoderBlock(nn.Module):
         super().__init__()
         self.attention_norm = nn.LayerNorm(config.d_model)
         self.attention = (
-            SharedQAntisymmetricAttention(
+            HeterogeneousSharedQAttention(config, attention_type)
+            if attention_type.startswith("hetero_")
+            else SharedQAntisymmetricAttention(
                 config,
                 b_trainable=(attention_type != "shared_q_antisymmetric_fixed"),
             )
@@ -56,6 +59,11 @@ class DecoderBlock(nn.Module):
 class DecoderLM(nn.Module):
     def __init__(self, config, vocab_size, attention_type):
         super().__init__()
+        hetero_types = [
+            f"hetero_{m}_{c}"
+            for m in ("sym", "anti")
+            for c in ("balanced", "wide", "very_wide", "aggressive", "extreme")
+        ]
         valid_types = (
             "standard",
             "shared_q",
@@ -64,6 +72,7 @@ class DecoderLM(nn.Module):
             "antisymmetric_shared_q",
             "SharedQAntisymmetric",
             "shared_q_antisymmetric_fixed",
+            *hetero_types,
             *AllocatedSharedQAttention.HEAD_DIMS,
         )
         if attention_type not in valid_types:
@@ -268,6 +277,50 @@ def build_antisymmetric_model(
             for block in model.blocks:
                 if hasattr(block.attention, "set_b_triu"):
                     block.attention.set_b_triu(block.attention.b_triu, trainable=False)
+
+    return model
+
+
+def build_heterogeneous_model(config, vocab_size, seed, config_key: str, is_antisymmetric: bool):
+    """Initialize a fixed-parameter heterogeneous-dimension model against the seeded baseline.
+
+    Copies common non-attention weights (embeddings, final_norm, FFNs) from the seeded baseline.
+    Initializes W_Q with a dedicated per-layer generator so symmetric and antisymmetric paired models
+    have 100% bitwise-identical initial W_Q projection weights.
+    Initializes B_h to zero in antisymmetric models.
+    """
+    with torch.random.fork_rng(devices=[]):
+        torch.set_rng_state(torch.Generator().manual_seed(seed).get_state())
+        baseline = DecoderLM(config, vocab_size, "standard")
+
+        attn_type = f"hetero_{'anti' if is_antisymmetric else 'sym'}_{config_key}"
+        model = DecoderLM(config, vocab_size, attn_type)
+
+        # Copy baseline weights where shape matches (non-attention layers)
+        baseline_state = baseline.state_dict()
+        model_state = model.state_dict()
+        for name, tensor in model_state.items():
+            if name in baseline_state and tensor.shape == baseline_state[name].shape:
+                model_state[name] = baseline_state[name]
+        model.load_state_dict(model_state, strict=True)
+
+        # Ensure deterministic, bitwise-matched initialization of W_Q across sym and anti
+        for l, block in enumerate(model.blocks):
+            attn = block.attention
+            # W_Q: dedicated layer generator matches between sym and anti
+            q_gen = torch.Generator().manual_seed(seed + 1000 + l)
+            nn.init.normal_(attn.q_proj.weight, mean=0.0, std=0.02, generator=q_gen)
+
+            # W_V and W_O: dedicated layer generators
+            v_gen = torch.Generator().manual_seed(seed + 2000 + l)
+            nn.init.normal_(attn.v_proj.weight, mean=0.0, std=0.02, generator=v_gen)
+            o_gen = torch.Generator().manual_seed(seed + 3000 + l)
+            nn.init.normal_(attn.out_proj.weight, mean=0.0, std=0.02, generator=o_gen)
+
+            # Ensure B is initialized to 0 in antisymmetric model
+            if attn.is_antisymmetric and attn.b_triu_list is not None:
+                for p in attn.b_triu_list:
+                    p.data.zero_()
 
     return model
 

@@ -307,6 +307,195 @@ class SharedQAntisymmetricAttention(CausalSelfAttention):
             }
 
 
+class HeterogeneousSharedQAttention(CausalSelfAttention):
+    """Fixed-parameter attention with heterogeneous per-head Q and V dimensions.
+
+    Supported dimension configurations:
+      - 'balanced': q=[32, 32, 33, 33], v_sym=[34, 34, 33, 34], v_anti=[32, 32, 31, 32]
+      - 'wide': q=[48, 48, 49, 49], v_sym=[26, 26, 26, 25], v_anti=[22, 21, 21, 21]
+      - 'very_wide': q=[64, 64, 65, 65], v_sym=[18, 18, 18, 17], v_anti=[10, 10, 10, 9]
+      - 'aggressive': q=[68, 72, 72, 76], v_sym=[14, 14, 14, 14], v_anti=[4, 4, 4, 4]
+      - 'extreme': q=[71, 76, 77, 78], v_sym=[13, 12, 12, 12], v_anti=[2, 1, 1, 1]
+
+    Both symmetric and antisymmetric versions have exactly 51,200 attention parameters per layer.
+    """
+
+    CONFIGS = {
+        "balanced": {
+            "q": [32, 32, 33, 33],
+            "v_sym": [34, 34, 33, 34],
+            "v_anti": [32, 32, 31, 32],
+        },
+        "wide": {
+            "q": [48, 48, 49, 49],
+            "v_sym": [26, 26, 26, 25],
+            "v_anti": [22, 21, 21, 21],
+        },
+        "very_wide": {
+            "q": [64, 64, 65, 65],
+            "v_sym": [18, 18, 18, 17],
+            "v_anti": [10, 10, 10, 9],
+        },
+        "aggressive": {
+            "q": [68, 72, 72, 76],
+            "v_sym": [14, 14, 14, 14],
+            "v_anti": [4, 4, 4, 4],
+        },
+        "extreme": {
+            "q": [71, 76, 77, 78],
+            "v_sym": [13, 12, 12, 12],
+            "v_anti": [2, 1, 1, 1],
+        },
+    }
+
+    def __init__(self, config, attention_type: str):
+        nn.Module.__init__(self)
+        self.d_model = config.d_model
+        self.attention_type = attention_type
+
+        tokens = attention_type.split("_")
+        if len(tokens) >= 3 and tokens[0] == "hetero":
+            mode_str = tokens[1]
+            cfg_name = "_".join(tokens[2:])
+            self.is_antisymmetric = (mode_str == "anti")
+        else:
+            raise ValueError(f"Unknown heterogeneous attention type: {attention_type}")
+
+        if cfg_name not in self.CONFIGS:
+            raise ValueError(f"Unknown heterogeneous configuration: {cfg_name}")
+
+        cfg_dims = self.CONFIGS[cfg_name]
+        self.config_name = cfg_name
+        self.q_dims = list(cfg_dims["q"])
+        self.v_dims = list(cfg_dims["v_anti"] if self.is_antisymmetric else cfg_dims["v_sym"])
+        self.n_heads = len(self.q_dims)
+        self.lambda_param = float(getattr(config, "antisymmetric_lambda", 1.0))
+        self.b_enabled = True
+
+        self.total_q_dim = sum(self.q_dims)
+        self.total_v_dim = sum(self.v_dims)
+
+        self.q_proj = nn.Linear(self.d_model, self.total_q_dim, bias=False)
+        self.v_proj = nn.Linear(self.d_model, self.total_v_dim, bias=False)
+        self.out_proj = nn.Linear(self.total_v_dim, self.d_model, bias=False)
+        self.attention_dropout = nn.Dropout(config.dropout)
+
+        if self.is_antisymmetric:
+            self.b_triu_list = nn.ParameterList([
+                nn.Parameter(torch.zeros(d * (d - 1) // 2)) for d in self.q_dims
+            ])
+            for h, d in enumerate(self.q_dims):
+                self.register_buffer(f"triu_indices_{h}", torch.triu_indices(d, d, offset=1), persistent=False)
+        else:
+            self.b_triu_list = None
+
+    def get_Bh(self, h: int, device: torch.device, dtype: torch.dtype) -> torch.Tensor:
+        """Reconstruct the skew-symmetric matrix B_h for head h."""
+        d_qh = self.q_dims[h]
+        if not self.is_antisymmetric or not getattr(self, "b_enabled", True):
+            return torch.zeros(d_qh, d_qh, device=device, dtype=dtype)
+        triu_idx = getattr(self, f"triu_indices_{h}")
+        b_triu = self.b_triu_list[h]
+        Bh = torch.zeros(d_qh, d_qh, device=device, dtype=dtype)
+        Bh[triu_idx[0], triu_idx[1]] = b_triu
+        Bh[triu_idx[1], triu_idx[0]] = -b_triu
+        return Bh
+
+    def _project_and_score(self, x):
+        B, T, C = x.shape
+        q_all = self.q_proj(x)
+        v_all = self.v_proj(x)
+
+        q_heads = torch.split(q_all, self.q_dims, dim=-1)
+        v_heads = torch.split(v_all, self.v_dims, dim=-1)
+
+        future = torch.ones(T, T, dtype=torch.bool, device=x.device).triu(diagonal=1)
+        head_outputs = []
+        head_probs = []
+
+        for h in range(self.n_heads):
+            qh = q_heads[h]  # (B, T, d_qh)
+            vh = v_heads[h]  # (B, T, d_vh)
+            d_qh = self.q_dims[h]
+
+            sym = qh @ qh.transpose(-2, -1)  # (B, T, T)
+
+            if self.is_antisymmetric and getattr(self, "b_enabled", True):
+                Bh = self.get_Bh(h, qh.device, qh.dtype)
+                anti = (qh @ Bh) @ qh.transpose(-2, -1)
+                raw = (sym + self.lambda_param * anti) / math.sqrt(d_qh)
+            else:
+                raw = sym / math.sqrt(d_qh)
+
+            masked = raw.masked_fill(future, float("-inf"))
+            probs = F.softmax(masked, dim=-1)
+            head_probs.append(probs)
+            probs_dropped = self.attention_dropout(probs)
+            head_outputs.append(probs_dropped @ vh)
+
+        out_all = torch.cat(head_outputs, dim=-1)
+        return self.out_proj(out_all), head_probs
+
+    def forward(self, x):
+        out, _ = self._project_and_score(x)
+        return out
+
+    def attention_maps(self, x):
+        """Return dictionary containing per-head attention maps."""
+        with torch.no_grad():
+            _, probs = self._project_and_score(x)
+            return {"probabilities": probs}
+
+    def compute_asymmetry_metrics(self, x):
+        """Compute Frobenius norms of sym, anti, B, and score asymmetry on batch x."""
+        with torch.no_grad():
+            B_batch, T, C = x.shape
+            q_all = self.q_proj(x)
+            q_heads = torch.split(q_all, self.q_dims, dim=-1)
+
+            norm_syms, norm_antis, b_norms, asyms = [], [], [], []
+            for h in range(self.n_heads):
+                qh = q_heads[h]
+                d_qh = self.q_dims[h]
+                sym = qh @ qh.transpose(-2, -1)
+                norm_sym_h = torch.linalg.norm(sym, dim=(-2, -1)).mean().item()
+                norm_syms.append(norm_sym_h)
+
+                if self.is_antisymmetric and getattr(self, "b_enabled", True):
+                    Bh = self.get_Bh(h, qh.device, qh.dtype)
+                    anti = (qh @ Bh) @ qh.transpose(-2, -1)
+                    raw = (sym + self.lambda_param * anti) / math.sqrt(d_qh)
+                    norm_anti_h = torch.linalg.norm(anti, dim=(-2, -1)).mean().item()
+                    norm_b_h = torch.linalg.norm(Bh).item()
+                else:
+                    raw = sym / math.sqrt(d_qh)
+                    norm_anti_h = 0.0
+                    norm_b_h = 0.0
+
+                norm_antis.append(norm_anti_h)
+                b_norms.append(norm_b_h)
+
+                diff = raw - raw.transpose(-2, -1)
+                plus = raw + raw.transpose(-2, -1)
+                asym_h = (torch.linalg.norm(diff, dim=(-2, -1)) / (torch.linalg.norm(plus, dim=(-2, -1)) + 1e-8)).mean().item()
+                asyms.append(asym_h)
+
+            mean_sym = float(sum(norm_syms) / len(norm_syms))
+            mean_anti = float(sum(norm_antis) / len(norm_antis))
+            mean_b = float(sum(b_norms) / len(b_norms))
+            mean_asym = float(sum(asyms) / len(asyms))
+            ratio = float(mean_anti / (mean_sym + 1e-8))
+
+            return {
+                "norm_symmetric": mean_sym,
+                "norm_antisymmetric": mean_anti,
+                "ratio_anti_to_sym": ratio,
+                "head_b_norms": b_norms,
+                "mean_b_norm": mean_b,
+                "score_asymmetry": mean_asym,
+            }
+
+
 def generate_antisymmetric_b0(
     n_layers: int,
     n_heads: int,
