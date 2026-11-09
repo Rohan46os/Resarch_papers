@@ -2,5 +2,7 @@ __pycache__/
 *.pyc
 .venv/
 data/
-outputs/
+outputs/*
+!outputs/gradient_analysis/
+!outputs/gradient_analysis/**
 *.log

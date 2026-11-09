@@ -27,6 +27,25 @@ python visualize.py --run-dir outputs/full --additional-run-dir outputs/model_c 
 
 C runs default to `outputs/model_c_smoke` and `outputs/model_c`. Training refuses to overwrite completed runs; to repeat, supply a fresh `--output-dir`. `--reference-run-dir` can relocate the read-only historical references. Unchanged-shape common weights are copied from the original seeded baseline initialization; the wider attention projections retain independent normal initialization. Data, training loop, optimizer, schedule, and fixed validation seed **918273** are reused unchanged. The default `python train.py` still selects the original A/B experiment.
 
+## Gradient Interference Analysis
+
+A rigorous empirical and analytical investigation into whether sharing Query and Key projections introduces destructive gradient interference.
+
+- Evaluates Model A (Standard), Model B (Shared-Q, $d_k=32$), and Model C3 (Query-Heavy Shared-Q, $d_k=64$).
+- Derives Query-role ($g_{\text{query}} = GQ / \sqrt{d_k}$) and Key-role ($g_{\text{key}} = G^T Q / \sqrt{d_k}$) gradient contributions manually and validates against PyTorch autograd in `float64` to machine precision ($< 10^{-12}$).
+- Tracks cosine similarity $\cos(\theta)$, cancellation ratio $1 - \|g_{\text{total}}\| / (\|g_q\| + \|g_k\|)$, and gradient norm ratios across training trajectories and fixed evaluation batches.
+- Identifies **Layer 1 as a severe localized gradient bottleneck** ($63\% - 80\%$ negative conflict frequency) and mathematically explains Key-role gradient dominance from causal mask accumulation.
+
+Read [RESULTS_GRADIENT_ANALYSIS.md](RESULTS_GRADIENT_ANALYSIS.md) for full derivations, tables, and discussions. Visualizations are saved under `outputs/gradient_analysis/plots/`.
+
+```sh
+# Run gradient verification tests
+python -m unittest test_gradient_analysis.py
+
+# Run gradient analysis across checkpoints, trajectories, or generate plots
+python gradient_analysis.py --mode all
+```
+
 ## Installation
 
 Run commands from the project directory containing `train.py`. Use a Python version supported by your chosen PyTorch release; a virtual environment is recommended.
