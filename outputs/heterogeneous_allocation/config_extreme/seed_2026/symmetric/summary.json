@@ -1,0 +1,32 @@
+{
+  "config_key": "extreme",
+  "architecture_type": "symmetric",
+  "architecture": "hetero_sym_extreme",
+  "seed": 2026,
+  "trainable_parameters": 758656,
+  "attention_parameters": 204800,
+  "total_parameters": 758656,
+  "q_dims": [
+    71,
+    76,
+    77,
+    78
+  ],
+  "v_dims": [
+    13,
+    12,
+    12,
+    12
+  ],
+  "sum_q": 302,
+  "sum_v": 49,
+  "best_validation_loss": 1.98739914894104,
+  "best_validation_perplexity": 7.296531869834497,
+  "final_validation_loss": 1.98739914894104,
+  "final_validation_perplexity": 7.296531869834497,
+  "training_seconds": 96.8867859992315,
+  "tokens_per_second": 126828.44077516894,
+  "autoregressive_tokens_per_second": 128.86546043649395,
+  "autoregressive_latency_ms_per_token": 7.760031249745225,
+  "autoregressive_tokens_sampled": 64
+}

@@ -1,0 +1,32 @@
+{
+  "config_key": "wide",
+  "architecture_type": "symmetric",
+  "architecture": "hetero_sym_wide",
+  "seed": 1337,
+  "trainable_parameters": 758656,
+  "attention_parameters": 204800,
+  "total_parameters": 758656,
+  "q_dims": [
+    48,
+    48,
+    49,
+    49
+  ],
+  "v_dims": [
+    26,
+    26,
+    26,
+    25
+  ],
+  "sum_q": 194,
+  "sum_v": 103,
+  "best_validation_loss": 1.9522834599018097,
+  "best_validation_perplexity": 7.044755645250768,
+  "final_validation_loss": 1.9522834599018097,
+  "final_validation_perplexity": 7.044755645250768,
+  "training_seconds": 130.381563599105,
+  "tokens_per_second": 94246.45372242147,
+  "autoregressive_tokens_per_second": 142.23037676704408,
+  "autoregressive_latency_ms_per_token": 7.03084687484079,
+  "autoregressive_tokens_sampled": 64
+}

@@ -1,0 +1,35 @@
+{
+  "config_key": "wide",
+  "architecture_type": "antisymmetric",
+  "architecture": "hetero_anti_wide",
+  "seed": 1337,
+  "trainable_parameters": 758656,
+  "attention_parameters": 204800,
+  "total_parameters": 758656,
+  "q_dims": [
+    48,
+    48,
+    49,
+    49
+  ],
+  "v_dims": [
+    22,
+    21,
+    21,
+    21
+  ],
+  "sum_q": 194,
+  "sum_v": 85,
+  "best_validation_loss": 1.9121267735958098,
+  "best_validation_perplexity": 6.767466372981673,
+  "final_validation_loss": 1.9121267735958098,
+  "final_validation_perplexity": 6.767466372981673,
+  "training_seconds": 177.45389450032962,
+  "tokens_per_second": 69246.15565412218,
+  "autoregressive_tokens_per_second": 69.51105920737173,
+  "autoregressive_latency_ms_per_token": 14.38620000044466,
+  "autoregressive_tokens_sampled": 64,
+  "final_mean_b_norm": 2.874908149242401,
+  "final_score_asymmetry": 1.282495729625225,
+  "final_ratio_anti_to_sym": 1.306736697433735
+}

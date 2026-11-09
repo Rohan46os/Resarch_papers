@@ -357,6 +357,28 @@ outputs/
 - `paired_seeds.csv`: per-seed measurements and paired deltas. `summary.csv`: model and paired-delta statistics. `report.md`: generated comparison and caveats.
 - Heatmaps prefer `evaluation/attention.pt` when present, otherwise the training artifact. Evaluating a best checkpoint can therefore change the plotted attention source without changing final-training summaries; keep that provenance in mind.
 
+## Fixed-Parameter Attention Allocation Between Query and Value Dimensions
+
+A rigorous empirical investigation into how to allocate a strictly fixed attention parameter budget ($P_{\text{attention,layer}} = 51,200$, $P_{\text{model}} = 758,656$ exact across all 10 configurations) between Query ($Q$), Value ($V$), and learned Antisymmetry ($B$).
+
+- Evaluates 5 allocation levels across 4 heads: Balanced ($\sum q=130, \sum v=135/127$), Wide ($\sum q=194, \sum v=103/85$), Very Wide ($\sum q=258, \sum v=71/39$), Aggressive ($\sum q=288, \sum v=56/16$), and Extreme ($\sum q=302, \sum v=49/5$ where $d_v \in \{2, 1, 1, 1\}$).
+- Compares Symmetric Shared-Q against Antisymmetric Shared-Q ($QQ^T + QBQ^T$) across 5 random seeds (`1337`, `2024`, `42`, `1234`, `2026`) for 50 full runs.
+- **Key Findings:**
+  1. Larger $Q$ is not universally better; reallocating parameters from $V$ to $Q$ degrades Antisymmetric Shared-Q beyond Wide.
+  2. For Symmetric Shared-Q, reallocating parameters to $Q$ yields a $-0.020$ nats improvement up to Config 2 (Wide, loss $1.9567$).
+  3. Compressing $V$ below 39 creates an acute representation bottleneck. In Config 5 (Extreme Antisymmetric), scalar value heads ($d_v=1$) collapse rank to $\le 5$, causing catastrophic performance regression ($2.0731$ vs $1.9750$, $p < 0.0001$).
+
+Read [RESULTS_ATTENTION_ALLOCATION.md](RESULTS_ATTENTION_ALLOCATION.md) for full derivations, tables, and discussions. Visualizations and tables are saved under `outputs/heterogeneous_allocation/figures/`.
+
+```sh
+# Run unit tests
+python -m unittest test_heterogeneous_allocation.py
+
+# Run analysis and generate publication figures
+python analyze_heterogeneous_allocation.py --dir outputs/heterogeneous_allocation
+python visualize_heterogeneous_allocation.py --dir outputs/heterogeneous_allocation
+```
+
 ## Troubleshooting and safety
 
 - **CUDA unavailable:** check the active interpreter and `torch.cuda.is_available()`, driver compatibility, and whether the installed torch wheel includes CUDA. Install the appropriate build from pytorch.org or run `--device cpu`. A local CUDA toolkit alone does not turn a CPU-only wheel into a CUDA build.

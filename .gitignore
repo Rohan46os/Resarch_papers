@@ -11,5 +11,7 @@ outputs/*
 !outputs/antisymmetric/**
 !outputs/antisymmetric_ablation/
 !outputs/antisymmetric_ablation/**
+!outputs/heterogeneous_allocation/
+!outputs/heterogeneous_allocation/**
 *.pt
 *.log

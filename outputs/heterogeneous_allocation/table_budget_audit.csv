@@ -1,0 +1,11 @@
+config_key,config_name,architecture,q_dims,sum_q,v_dims,sum_v,w_q_params_layer,w_v_params_layer,w_o_params_layer,b_params_layer,attention_params_layer,total_attention_params,non_attention_params,total_model_params,budget_exact_match
+balanced,"Config 1: Balanced (q=[32,32,33,33])",symmetric,"[32, 32, 33, 33]",130,"[34, 34, 33, 34]",135,16640,17280,17280,0,51200,204800,553856,758656,True
+balanced,"Config 1: Balanced (q=[32,32,33,33])",antisymmetric,"[32, 32, 33, 33]",130,"[32, 32, 31, 32]",127,16640,16256,16256,2048,51200,204800,553856,758656,True
+wide,"Config 2: Wide (q=[48,48,49,49])",symmetric,"[48, 48, 49, 49]",194,"[26, 26, 26, 25]",103,24832,13184,13184,0,51200,204800,553856,758656,True
+wide,"Config 2: Wide (q=[48,48,49,49])",antisymmetric,"[48, 48, 49, 49]",194,"[22, 21, 21, 21]",85,24832,10880,10880,4608,51200,204800,553856,758656,True
+very_wide,"Config 3: Very Wide (q=[64,64,65,65])",symmetric,"[64, 64, 65, 65]",258,"[18, 18, 18, 17]",71,33024,9088,9088,0,51200,204800,553856,758656,True
+very_wide,"Config 3: Very Wide (q=[64,64,65,65])",antisymmetric,"[64, 64, 65, 65]",258,"[10, 10, 10, 9]",39,33024,4992,4992,8192,51200,204800,553856,758656,True
+aggressive,"Config 4: Aggressive (q=[68,72,72,76])",symmetric,"[68, 72, 72, 76]",288,"[14, 14, 14, 14]",56,36864,7168,7168,0,51200,204800,553856,758656,True
+aggressive,"Config 4: Aggressive (q=[68,72,72,76])",antisymmetric,"[68, 72, 72, 76]",288,"[4, 4, 4, 4]",16,36864,2048,2048,10240,51200,204800,553856,758656,True
+extreme,"Config 5: Extreme (q=[71,76,77,78])",symmetric,"[71, 76, 77, 78]",302,"[13, 12, 12, 12]",49,38656,6272,6272,0,51200,204800,553856,758656,True
+extreme,"Config 5: Extreme (q=[71,76,77,78])",antisymmetric,"[71, 76, 77, 78]",302,"[2, 1, 1, 1]",5,38656,640,640,11264,51200,204800,553856,758656,True

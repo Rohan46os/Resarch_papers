@@ -1,0 +1,32 @@
+{
+  "config_key": "aggressive",
+  "architecture_type": "symmetric",
+  "architecture": "hetero_sym_aggressive",
+  "seed": 2024,
+  "trainable_parameters": 758656,
+  "attention_parameters": 204800,
+  "total_parameters": 758656,
+  "q_dims": [
+    68,
+    72,
+    72,
+    76
+  ],
+  "v_dims": [
+    14,
+    14,
+    14,
+    14
+  ],
+  "sum_q": 288,
+  "sum_v": 56,
+  "best_validation_loss": 1.9791828751564027,
+  "best_validation_perplexity": 7.236827177238021,
+  "final_validation_loss": 1.9791828751564027,
+  "final_validation_perplexity": 7.236827177238021,
+  "training_seconds": 96.3534923006082,
+  "tokens_per_second": 127530.4060766507,
+  "autoregressive_tokens_per_second": 117.72771529130307,
+  "autoregressive_latency_ms_per_token": 8.494176562635403,
+  "autoregressive_tokens_sampled": 64
+}

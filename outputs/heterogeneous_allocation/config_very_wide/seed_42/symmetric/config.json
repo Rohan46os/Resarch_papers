@@ -1,0 +1,55 @@
+{
+  "n_layers": 4,
+  "d_model": 128,
+  "n_heads": 4,
+  "context_length": 128,
+  "d_ff": 512,
+  "dropout": 0.1,
+  "batch_size": 32,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.1,
+  "max_steps": 3000,
+  "warmup_steps": 100,
+  "min_lr_ratio": 0.1,
+  "gradient_clip": 1.0,
+  "eval_interval": 100,
+  "eval_batches": 20,
+  "seed": 42,
+  "seeds": [
+    1337,
+    2024,
+    42
+  ],
+  "adam_betas": [
+    0.9,
+    0.999
+  ],
+  "adam_eps": 1e-08,
+  "data_path": "data/tinyshakespeare.txt",
+  "dataset_url": "https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt",
+  "output_dir": "outputs/full",
+  "device": "auto",
+  "cpu_threads": 4,
+  "deterministic": true,
+  "benchmark_batches": 20,
+  "benchmark_warmup": 5,
+  "sample_tokens": 300,
+  "practical_loss_threshold": 0.02,
+  "config_key": "very_wide",
+  "architecture_type": "symmetric",
+  "is_antisymmetric": false,
+  "q_dims": [
+    64,
+    64,
+    65,
+    65
+  ],
+  "v_dims": [
+    18,
+    18,
+    18,
+    17
+  ],
+  "attention_parameters_per_layer": 51200,
+  "total_parameters": 758656
+}

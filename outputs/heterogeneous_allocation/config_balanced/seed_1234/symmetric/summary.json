@@ -1,0 +1,32 @@
+{
+  "config_key": "balanced",
+  "architecture_type": "symmetric",
+  "architecture": "hetero_sym_balanced",
+  "seed": 1234,
+  "trainable_parameters": 758656,
+  "attention_parameters": 204800,
+  "total_parameters": 758656,
+  "q_dims": [
+    32,
+    32,
+    33,
+    33
+  ],
+  "v_dims": [
+    34,
+    34,
+    33,
+    34
+  ],
+  "sum_q": 130,
+  "sum_v": 135,
+  "best_validation_loss": 1.9841560423374176,
+  "best_validation_perplexity": 7.272906769210703,
+  "final_validation_loss": 1.9841560423374176,
+  "final_validation_perplexity": 7.272906769210703,
+  "training_seconds": 100.37292710022302,
+  "tokens_per_second": 122423.44977874713,
+  "autoregressive_tokens_per_second": 121.01100917044593,
+  "autoregressive_latency_ms_per_token": 8.263710937171709,
+  "autoregressive_tokens_sampled": 64
+}
