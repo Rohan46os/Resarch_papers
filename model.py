@@ -4,7 +4,8 @@ Config attributes: n_layers, d_model, n_heads, context_length, d_ff, dropout.
 For example: 4, 128, 4, 128, 512, 0.1. Vocabulary size is passed separately.
 """
 
-from typing import List, Optional, cast
+from typing import List, Optional, Sequence, cast
+import math
 
 import torch
 from torch import nn
@@ -17,6 +18,7 @@ from attention import (
     ParameterMatchedSharedQAttention,
     QR_EXPERIMENT_CONFIGS,
     QR_VALID_ATTENTION_TYPES,
+    QRSharedQAntisymmetricAttention,
     SharedQAntisymmetricAttention,
     build_qr_attention,
     is_qr_attention_type,
@@ -56,9 +58,17 @@ class DecoderBlock(nn.Module):
         )
         self.residual_dropout = nn.Dropout(config.dropout)
 
-    def forward(self, x):
+    def forward(self, x, qr_lambda: Optional[float] = None):
         # Residual stream x: (B, T, D); both sublayers use pre-normalization.
-        x = x + self.residual_dropout(self.attention(self.attention_norm(x)))
+        if qr_lambda is not None:
+            if not isinstance(self.attention, QRSharedQAntisymmetricAttention):
+                raise ValueError(
+                    f"qr_lambda override is only supported for QRSharedQAntisymmetricAttention, got {type(self.attention).__name__}"
+                )
+            attn_out = self.attention(self.attention_norm(x), lambda_val=qr_lambda)
+        else:
+            attn_out = self.attention(self.attention_norm(x))
+        x = x + self.residual_dropout(attn_out)
         return x + self.residual_dropout(self.ffn(self.ffn_norm(x)))
 
 
@@ -133,6 +143,18 @@ class DecoderLM(nn.Module):
                 if hasattr(block.attention, "b_enabled"):
                     block.attention.b_enabled = enabled
 
+    def set_qr_lambda(self, qr_lambda: float) -> None:
+        """Set the fixed, non-learnable lambda scaling factor across all QR layers."""
+        val = float(qr_lambda)
+        if not math.isfinite(val):
+            raise ValueError(f"qr_lambda must be finite, got {qr_lambda}")
+        for block in self.blocks:
+            if not isinstance(block.attention, QRSharedQAntisymmetricAttention):
+                raise ValueError(
+                    f"set_qr_lambda is only supported for QRSharedQAntisymmetricAttention, got {type(block.attention).__name__}"
+                )
+            block.attention.lambda_param = val
+
     def _embed(self, input_ids):
         if input_ids.ndim != 2:
             raise ValueError("input_ids must have shape (batch, sequence)")
@@ -145,10 +167,10 @@ class DecoderLM(nn.Module):
             self.token_embedding(input_ids) + self.position_embedding(positions)
         )
 
-    def forward(self, input_ids, targets=None):
+    def forward(self, input_ids, targets=None, qr_lambda: Optional[float] = None):
         x = self._embed(input_ids)
         for block in self.blocks:
-            x = block(x)
+            x = block(x) if qr_lambda is None else block(x, qr_lambda=qr_lambda)
         logits = self.lm_head(self.final_norm(x))  # (B, T, vocab_size)
         loss = None
         if targets is not None:
@@ -160,14 +182,20 @@ class DecoderLM(nn.Module):
             )
         return logits, loss
 
-    def attention_maps(self, input_ids, layer=0):
+    def attention_maps(self, input_ids, layer=0, qr_lambda: Optional[float] = None):
         """Return (B, H, T, T) maps; use eval() for deterministic inspection."""
         if not 0 <= layer < len(self.blocks):
             raise ValueError("layer index is out of range")
         x = self._embed(input_ids)
         for block in self.blocks[:layer]:
-            x = block(x)
+            x = block(x) if qr_lambda is None else block(x, qr_lambda=qr_lambda)
         block = cast(DecoderBlock, self.blocks[layer])
+        if qr_lambda is not None:
+            if not isinstance(block.attention, QRSharedQAntisymmetricAttention):
+                raise ValueError(
+                    f"qr_lambda override is only supported for QRSharedQAntisymmetricAttention, got {type(block.attention).__name__}"
+                )
+            return block.attention.attention_maps(block.attention_norm(x), lambda_val=qr_lambda)
         return block.attention.attention_maps(block.attention_norm(x))
 
     @torch.no_grad()
@@ -368,6 +396,35 @@ def build_qr_models(config, vocab_size, seed, q_config_key: str):
         "shared_q": sym_model,
         "qr_antisymmetric": qr_model,
     }
+
+
+def build_qr_q112_lambda_models(
+    config,
+    vocab_size: int,
+    seed: int,
+    lambdas: Sequence[float] = (0.5, 0.75, 1.0, 1.25, 1.5, 2.0),
+):
+    """Build Q112 QR Antisymmetric Shared-Q models for a suite of fixed lambdas.
+
+    All models sharing `seed` start with 100% bitwise-identical initial weights
+    copied from the seeded Q112 QR reference initialization, differing only in their
+    fixed `lambda_param`. Caller RNG state is preserved.
+    """
+    base_models = build_qr_models(config, vocab_size, seed, "q112")
+    ref_qr = base_models["qr_antisymmetric"]
+    ref_state = {name: tensor.detach().clone() for name, tensor in ref_qr.state_dict().items()}
+    del base_models, ref_qr
+
+    models_by_lambda = {}
+    with torch.random.fork_rng(devices=[]):
+        torch.set_rng_state(torch.Generator().manual_seed(seed).get_state())
+        for lam in lambdas:
+            lam_f = float(lam)
+            model = DecoderLM(config, vocab_size, "qr_antisymmetric_q112")
+            model.load_state_dict({k: v.clone() for k, v in ref_state.items()}, strict=True)
+            model.set_qr_lambda(lam_f)
+            models_by_lambda[lam_f] = model
+    return models_by_lambda
 
 
 def verify_qr_parameter_budgets(config, vocab_size: int = 65):

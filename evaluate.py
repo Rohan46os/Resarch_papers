@@ -27,7 +27,7 @@ def _sync(device):
 
 
 @torch.inference_mode()
-def evaluate_loss(model, batches, device):
+def evaluate_loss(model, batches, device, qr_lambda=None):
     """Return token-weighted mean next-token loss; restore the model's mode."""
     device = _device(device)
     was_training = model.training
@@ -37,7 +37,10 @@ def evaluate_loss(model, batches, device):
         for x, y in batches:
             if y.numel() == 0:
                 continue
-            _, loss = model(x.to(device), y.to(device))
+            if qr_lambda is None:
+                _, loss = model(x.to(device), y.to(device))
+            else:
+                _, loss = model(x.to(device), y.to(device), qr_lambda=qr_lambda)
             value = float(loss.item())
             if not math.isfinite(value):
                 raise ValueError("Nonfinite evaluation loss")
@@ -213,6 +216,8 @@ def main(argv=None):
         raise ValueError("Dataset vocabulary differs from the checkpoint")
     model = DecoderLM(config, len(dataset.vocab), payload["model_type"]).to(device)
     model.load_state_dict(payload["model"], strict=True)
+    if "qr_lambda" in payload and payload["qr_lambda"] is not None:
+        model.set_qr_lambda(float(payload["qr_lambda"]))
     seed = payload["seed"]
     loss = evaluate_loss(model, dataset.evaluation_batches("validation", 918273), device)
     results = {
@@ -224,6 +229,8 @@ def main(argv=None):
         "benchmark_kind": "full-context forward; no KV cache, sampling, or loss",
         **benchmark_inference(model, config, device),
     }
+    if "qr_lambda" in payload and payload["qr_lambda"] is not None:
+        results["qr_lambda"] = float(payload["qr_lambda"])
     output_dir = args.checkpoint.parent / "evaluation"
     export_artifacts(model, dataset, config, device, output_dir, seed)
     # Never rewrite training history or invent training/peak-memory measurements.

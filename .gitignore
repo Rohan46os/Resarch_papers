@@ -15,5 +15,9 @@ outputs/*
 !outputs/heterogeneous_allocation/**
 !outputs/qr_antisymmetric/
 !outputs/qr_antisymmetric/**
+!outputs/qr_lambda_ablation/
+!outputs/qr_lambda_ablation/**
+!outputs/qr_lambda_training_q112/
+!outputs/qr_lambda_training_q112/**
 *.pt
 *.log

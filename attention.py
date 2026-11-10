@@ -675,14 +675,18 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
         v = self.v_proj(x).reshape(batch, length, self.n_heads, self.v_head_dim).transpose(1, 2)
         return q, r, v
 
-    def _scores(self, q, r=None, return_components=False):
+    def _resolve_lambda(self, lambda_val: Optional[float] = None) -> float:
+        return self.lambda_param if lambda_val is None else float(lambda_val)
+
+    def _scores(self, q, r=None, return_components=False, lambda_val: Optional[float] = None):
         if r is None:
             raise ValueError("r tensor is required for QRSharedQAntisymmetricAttention._scores")
         if q.shape != r.shape:
             raise ValueError(f"Q and R must have identical shapes, got {q.shape} vs {r.shape}")
+        effective_lambda = self._resolve_lambda(lambda_val)
         sym_scores = q @ q.transpose(-2, -1)
         anti_scores = (q @ r.transpose(-2, -1)) - (r @ q.transpose(-2, -1))
-        raw_scores = (sym_scores + self.lambda_param * anti_scores) / math.sqrt(self.q_head_dim)
+        raw_scores = (sym_scores + effective_lambda * anti_scores) / math.sqrt(self.q_head_dim)
 
         length = q.size(-2)
         future = torch.ones(
@@ -701,29 +705,30 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
             result["anti_scores"] = anti_scores
         return result
 
-    def attention_maps(self, x, return_components=False):
+    def attention_maps(self, x, return_components=False, lambda_val: Optional[float] = None):
         """Return scaled scores and probabilities before attention dropout."""
         q, r, _ = self._project_qrv(x)
-        return self._scores(q, r, return_components=return_components)
+        return self._scores(q, r, return_components=return_components, lambda_val=lambda_val)
 
-    def forward(self, x):
+    def forward(self, x, lambda_val: Optional[float] = None):
         batch, length, _ = x.shape
         q, r, v = self._project_qrv(x)
-        probabilities = self._scores(q, r)["probabilities"]
+        probabilities = self._scores(q, r, lambda_val=lambda_val)["probabilities"]
         attended = self.attention_dropout(probabilities) @ v
         attended = attended.transpose(1, 2).contiguous().reshape(
             batch, length, self.n_heads * self.v_head_dim
         )
         return self.out_proj(attended)
 
-    def compute_qr_diagnostics(self, x):
+    def compute_qr_diagnostics(self, x, lambda_val: Optional[float] = None):
         """Compute score component standard deviations and magnitude ratios on batch x."""
         with torch.no_grad():
+            effective_lambda = self._resolve_lambda(lambda_val)
             q, r, _ = self._project_qrv(x)
-            components = self._scores(q, r, return_components=True)
+            components = self._scores(q, r, return_components=True, lambda_val=effective_lambda)
             scale = math.sqrt(self.q_head_dim)
             sym_scaled = components["sym_scores"] / scale
-            anti_scaled = (self.lambda_param * components["anti_scores"]) / scale
+            anti_scaled = (effective_lambda * components["anti_scores"]) / scale
             combined = components["raw_scores"]
 
             sym_score_std = float(sym_scaled.std(unbiased=False).item())
@@ -824,7 +829,7 @@ def build_qr_attention(config, attention_type: str) -> CausalSelfAttention:
                     config,
                     q_head_dim=dims["q_head_dim"],
                     v_head_dim=dims["qr_v_head_dim"],
-                    lambda_param=1.0,
+                    lambda_param=float(getattr(config, "qr_lambda", 1.0)),
                     attention_type=attention_type,
                 )
 

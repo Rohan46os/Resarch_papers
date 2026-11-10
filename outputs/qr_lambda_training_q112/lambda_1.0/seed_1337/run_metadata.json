@@ -1,0 +1,11 @@
+{
+  "experiment": "qr_lambda_training_q112",
+  "q_config": "q112",
+  "seed": 1337,
+  "qr_lambda": 1.0,
+  "lambda_learnable": false,
+  "init_state_sha256": "cb70c0386062ab0bfd874d66fbc6cd53cefe9480de55f3c54e46cee4f13c9f37",
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "validation_seed": 918273,
+  "run_dir": "outputs/qr_lambda_training_q112/lambda_1.0/seed_1337"
+}
