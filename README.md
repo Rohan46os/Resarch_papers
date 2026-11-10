@@ -379,6 +379,29 @@ python analyze_heterogeneous_allocation.py --dir outputs/heterogeneous_allocatio
 python visualize_heterogeneous_allocation.py --dir outputs/heterogeneous_allocation
 ```
 
+## QR-Based Antisymmetric Shared-Q Attention
+
+A strictly parameter-matched (`51,200` attention parameters/layer, `758,656` total parameters across all `12` variants) evaluation of **QR-Based Antisymmetric Shared-Q Attention**:
+$$Q = XW_Q,\quad R = XW_R,\quad V = XW_V,\qquad S = \frac{QQ^T + \lambda(QR^T - RQ^T)}{\sqrt{d_q}}\quad (\lambda = 1.0 \text{ fixed})$$
+
+- Evaluates `4` aggregate $Q$ widths (`Q80`, `Q96`, `Q112`, `Q128`; $d_q \in \{20, 24, 28, 32\}$) × `3` architectures (`standard`, `shared_q`, `qr_antisymmetric`) × `5` seeds (`1337`, `2024`, `42`, `1234`, `2026`) = **`60` full 3,000-step runs** on CUDA with identical paired training streams.
+- **Key Findings:**
+  1. **Outperforms Symmetric Shared-Q universally (`20/20` wins):** eliminates the symmetry deficit by `-0.0842` to `-0.1122` nats (`p_holm ≤ 0.0019`, $d_z \in [-7.55, -3.23]$) across all four Q/V tradeoffs.
+  2. **Beats or matches Standard Attention across all Q widths (`20/20` paired seed wins):** achieves lower validation loss in all 20 pairs (`-0.0091` to `-0.0158` nats), reaching Holm-corrected significance ($\alpha = 0.05$) at **Q80** (`p_holm = 0.0101`) and **Q128** (`p_holm = 0.0396`), while **Q96** and **Q112** (`p_holm = 0.0657`) show consistent directional gains without clearing Holm $\alpha = 0.05$. Best overall mean validation loss is at **Q112** (`1.8808 ± 0.0084`, PPL `6.56`).
+  3. **Active antisymmetric contribution & compute cost:** $\|S_{\text{anti}}\|_F / \|S_{\text{sym}}\|_F$ grows from `0.83–0.92` at step 0 to `1.95–1.99×` by step 3,000, with `~15%` lower steady-state training throughput (`102.1k` vs `120.1k tok/s`) and `+24–34 MB` peak allocated GPU memory.
+
+Read [RESULTS_QR_ANTISYMMETRIC.md](RESULTS_QR_ANTISYMMETRIC.md) for full mathematical verification, Holm-adjusted paired tests, internal score diagnostics, and figures under `outputs/qr_antisymmetric/figures/`.
+
+```sh
+# Run QR unit tests
+python -m unittest test_qr_antisymmetric.py -v
+
+# Run full 60-run suite, statistical analysis, and 300 DPI plots
+python train_qr_antisymmetric.py --device cuda
+python analyze_qr_antisymmetric.py --dir outputs/qr_antisymmetric
+python visualize_qr_antisymmetric.py --dir outputs/qr_antisymmetric
+```
+
 ## Troubleshooting and safety
 
 - **CUDA unavailable:** check the active interpreter and `torch.cuda.is_available()`, driver compatibility, and whether the installed torch wheel includes CUDA. Install the appropriate build from pytorch.org or run `--device cpu`. A local CUDA toolkit alone does not turn a CPU-only wheel into a CUDA build.

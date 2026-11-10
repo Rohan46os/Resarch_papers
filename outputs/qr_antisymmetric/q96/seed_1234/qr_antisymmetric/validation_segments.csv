@@ -1,0 +1,7124 @@
+batch,example,tokens,loss,input_text,target_text
+0,0,128,2.3551106452941895,"uses three or four as good,
+Within rich Pisa walls, as any one
+Old Signior Gremio has in Padua;
+Besides two thousand ducats by t","ses three or four as good,
+Within rich Pisa walls, as any one
+Old Signior Gremio has in Padua;
+Besides two thousand ducats by th"
+0,1,128,1.9583745002746582,"kernels.
+O, let me see thee walk: thou dost not halt.
+
+KATHARINA:
+Go, fool, and whom thou keep'st command.
+
+PETRUCHIO:
+Did ever ","ernels.
+O, let me see thee walk: thou dost not halt.
+
+KATHARINA:
+Go, fool, and whom thou keep'st command.
+
+PETRUCHIO:
+Did ever D"
+0,2,128,1.9164623022079468,".
+
+BIONDELLO:
+Tut, fear not me.
+
+TRANIO:
+But hast thou done thy errand to Baptista?
+
+BIONDELLO:
+I told him that your father was ","
+
+BIONDELLO:
+Tut, fear not me.
+
+TRANIO:
+But hast thou done thy errand to Baptista?
+
+BIONDELLO:
+I told him that your father was a"
+0,3,128,1.9788923263549805,"t is he of his tongue!
+
+ALONSO:
+I prithee, spare.
+
+GONZALO:
+Well, I have done: but yet,--
+
+SEBASTIAN:
+He will be talking.
+
+ANTON"," is he of his tongue!
+
+ALONSO:
+I prithee, spare.
+
+GONZALO:
+Well, I have done: but yet,--
+
+SEBASTIAN:
+He will be talking.
+
+ANTONI"
+0,4,128,1.9202839136123657,"rt not mad:
+This is a man, old, wrinkled, faded, wither'd,
+And not a maiden, as thou say'st he is.
+
+KATHARINA:
+Pardon, old fathe","t not mad:
+This is a man, old, wrinkled, faded, wither'd,
+And not a maiden, as thou say'st he is.
+
+KATHARINA:
+Pardon, old father"
+0,5,128,1.692617654800415,"f she be curst, it is for policy,
+For she's not froward, but modest as the dove;
+She is not hot, but temperate as the morn;
+For "," she be curst, it is for policy,
+For she's not froward, but modest as the dove;
+She is not hot, but temperate as the morn;
+For p"
+0,6,128,1.8766483068466187,"PROSPERO:
+Before the time be out? no more!
+
+ARIEL:
+I prithee,
+Remember I have done thee worthy service;
+Told thee no lies, made ","ROSPERO:
+Before the time be out? no more!
+
+ARIEL:
+I prithee,
+Remember I have done thee worthy service;
+Told thee no lies, made t"
+0,7,128,2.4388256072998047,"guised thus to get your love;
+'Hic steterat,' and that Lucentio that comes
+a-wooing, 'Priami,' is my man Tranio, 'regia,'
+bearin","uised thus to get your love;
+'Hic steterat,' and that Lucentio that comes
+a-wooing, 'Priami,' is my man Tranio, 'regia,'
+bearing"
+0,8,128,1.817583680152893,", how he left her
+with the horse upon her, how he beat me because
+her horse stumbled, how she waded through the dirt
+to pluck hi"," how he left her
+with the horse upon her, how he beat me because
+her horse stumbled, how she waded through the dirt
+to pluck him"
+0,9,128,2.1007232666015625,"hy does the world report that Kate doth limp?
+O slanderous world! Kate like the hazel-twig
+Is straight and slender and as brown ","y does the world report that Kate doth limp?
+O slanderous world! Kate like the hazel-twig
+Is straight and slender and as brown i"
+0,10,128,1.8711355924606323," moon.
+
+KATHARINA:
+I know it is the moon.
+
+PETRUCHIO:
+Nay, then you lie: it is the blessed sun.
+
+KATHARINA:
+Then, God be bless'd","moon.
+
+KATHARINA:
+I know it is the moon.
+
+PETRUCHIO:
+Nay, then you lie: it is the blessed sun.
+
+KATHARINA:
+Then, God be bless'd,"
+0,11,128,2.076903820037842,"therly regard,
+To wish me wed to one half lunatic;
+A mad-cup ruffian and a swearing Jack,
+That thinks with oaths to face the mat","herly regard,
+To wish me wed to one half lunatic;
+A mad-cup ruffian and a swearing Jack,
+That thinks with oaths to face the matt"
+0,12,128,1.884680986404419,"s, stuffs and necessaries,
+Which since have steaded much; so, of his gentleness,
+Knowing I loved my books, he furnish'd me
+From ",", stuffs and necessaries,
+Which since have steaded much; so, of his gentleness,
+Knowing I loved my books, he furnish'd me
+From m"
+0,13,128,1.9318397045135498,"mself with his good arms in lusty stroke
+To the shore, that o'er his wave-worn basis bow'd,
+As stooping to relieve him: I not do","self with his good arms in lusty stroke
+To the shore, that o'er his wave-worn basis bow'd,
+As stooping to relieve him: I not dou"
+0,14,128,1.7699460983276367,"all have the mustard,
+Or else you get no beef of Grumio.
+
+KATHARINA:
+Then both, or one, or any thing thou wilt.
+
+GRUMIO:
+Why the","ll have the mustard,
+Or else you get no beef of Grumio.
+
+KATHARINA:
+Then both, or one, or any thing thou wilt.
+
+GRUMIO:
+Why then"
+0,15,128,1.9158554077148438,"dom.
+
+MIRANDA:
+Would I might
+But ever see that man!
+
+PROSPERO:
+Now I arise:
+Sit still, and hear the last of our sea-sorrow.
+Here","om.
+
+MIRANDA:
+Would I might
+But ever see that man!
+
+PROSPERO:
+Now I arise:
+Sit still, and hear the last of our sea-sorrow.
+Here "
+0,16,128,1.9418197870254517,"othing.
+
+VINCENTIO:
+
+BIONDELLO:
+Hope I may choose, sir.
+
+VINCENTIO:
+Come hither, you rogue. What, have you forgot me?
+
+BIONDELLO","thing.
+
+VINCENTIO:
+
+BIONDELLO:
+Hope I may choose, sir.
+
+VINCENTIO:
+Come hither, you rogue. What, have you forgot me?
+
+BIONDELLO:"
+0,17,128,1.9454799890518188,"have ta'en you napping, gentle love,
+And have forsworn you with Hortensio.
+
+BIANCA:
+Tranio, you jest: but have you both forsworn","ave ta'en you napping, gentle love,
+And have forsworn you with Hortensio.
+
+BIANCA:
+Tranio, you jest: but have you both forsworn "
+0,18,128,1.8337228298187256,"ount'st it shame. lay it on me;
+And therefore frolic: we will hence forthwith,
+To feast and sport us at thy father's house.
+Go, ","unt'st it shame. lay it on me;
+And therefore frolic: we will hence forthwith,
+To feast and sport us at thy father's house.
+Go, c"
+0,19,128,1.766782522201538,"wither'd hide!
+Yet I have faced it with a card of ten.
+'Tis in my head to do my master good:
+I see no reason but supposed Lucent","ither'd hide!
+Yet I have faced it with a card of ten.
+'Tis in my head to do my master good:
+I see no reason but supposed Lucenti"
+0,20,128,1.646004319190979,"ZALO:
+My lord Sebastian,
+The truth you speak doth lack some gentleness
+And time to speak it in: you rub the sore,
+When you shoul","ALO:
+My lord Sebastian,
+The truth you speak doth lack some gentleness
+And time to speak it in: you rub the sore,
+When you should"
+0,21,128,2.0645322799682617,"e heed, Signior Baptista, lest you be
+cony-catched in this business: I dare swear this
+is the right Vincentio.
+
+Pedant:
+Swear, i"," heed, Signior Baptista, lest you be
+cony-catched in this business: I dare swear this
+is the right Vincentio.
+
+Pedant:
+Swear, if"
+0,22,128,2.0183563232421875,"a farewell for
+ever and a day.
+
+LUCENTIO:
+Hearest thou, Biondello?
+
+BIONDELLO:
+I cannot tarry: I knew a wench married in an
+afte"," farewell for
+ever and a day.
+
+LUCENTIO:
+Hearest thou, Biondello?
+
+BIONDELLO:
+I cannot tarry: I knew a wench married in an
+after"
+0,23,128,1.745685338973999,"s it you if I wear pearl and gold? I
+thank my good father, I am able to maintain it.
+
+VINCENTIO:
+Thy father! O villain! he is a "," it you if I wear pearl and gold? I
+thank my good father, I am able to maintain it.
+
+VINCENTIO:
+Thy father! O villain! he is a s"
+0,24,128,2.1703362464904785,"off to
+sea again; lay her off.
+
+Mariners:
+All lost! to prayers, to prayers! all lost!
+
+Boatswain:
+What, must our mouths be cold?","ff to
+sea again; lay her off.
+
+Mariners:
+All lost! to prayers, to prayers! all lost!
+
+Boatswain:
+What, must our mouths be cold?
+"
+0,25,128,2.133913040161133," in secret studies. Thy false uncle--
+Dost thou attend me?
+
+MIRANDA:
+Sir, most heedfully.
+
+PROSPERO:
+Being once perfected how to","in secret studies. Thy false uncle--
+Dost thou attend me?
+
+MIRANDA:
+Sir, most heedfully.
+
+PROSPERO:
+Being once perfected how to "
+0,26,128,1.8067076206207275," goodly person: he hath lost his fellows
+And strays about to find 'em.
+
+MIRANDA:
+I might call him
+A thing divine, for nothing na","goodly person: he hath lost his fellows
+And strays about to find 'em.
+
+MIRANDA:
+I might call him
+A thing divine, for nothing nat"
+0,27,128,1.7720613479614258,"ort which I so oft have heard.
+And, for an entrance to my entertainment,
+I do present you with a man of mine,
+Cunning in music a","rt which I so oft have heard.
+And, for an entrance to my entertainment,
+I do present you with a man of mine,
+Cunning in music an"
+0,28,128,1.9720346927642822," her sister's room.
+
+TRANIO:
+Shall sweet Bianca practise how to bride it?
+
+BAPTISTA:
+She shall, Lucentio. Come, gentlemen, let's","her sister's room.
+
+TRANIO:
+Shall sweet Bianca practise how to bride it?
+
+BAPTISTA:
+She shall, Lucentio. Come, gentlemen, let's "
+0,29,128,1.8222252130508423," come to me.
+
+BIONDELLO:
+I go.
+
+BAPTISTA:
+Son, I'll be your half, Bianca comes.
+
+LUCENTIO:
+I'll have no halves; I'll bear it all","come to me.
+
+BIONDELLO:
+I go.
+
+BAPTISTA:
+Son, I'll be your half, Bianca comes.
+
+LUCENTIO:
+I'll have no halves; I'll bear it all "
+0,30,128,2.040398597717285,". Holla, ho! Curtis.
+
+CURTIS:
+Who is that calls so coldly?
+
+GRUMIO:
+A piece of ice: if thou doubt it, thou mayst slide
+from my s"," Holla, ho! Curtis.
+
+CURTIS:
+Who is that calls so coldly?
+
+GRUMIO:
+A piece of ice: if thou doubt it, thou mayst slide
+from my sh"
+0,31,128,2.0144264698028564,"ua.
+Do you hear, sir? To leave frivolous circumstances,
+I pray you, tell Signior Lucentio that his father is
+come from Pisa, and","a.
+Do you hear, sir? To leave frivolous circumstances,
+I pray you, tell Signior Lucentio that his father is
+come from Pisa, and "
+1,0,128,2.043174982070923," tale, Petruchio, I pray,
+Let us, that are poor petitioners, speak too:
+Baccare! you are marvellous forward.
+
+PETRUCHIO:
+O, pard","tale, Petruchio, I pray,
+Let us, that are poor petitioners, speak too:
+Baccare! you are marvellous forward.
+
+PETRUCHIO:
+O, pardo"
+1,1,128,1.9566524028778076,"ents, linens, stuffs and necessaries,
+Which since have steaded much; so, of his gentleness,
+Knowing I loved my books, he furnish","nts, linens, stuffs and necessaries,
+Which since have steaded much; so, of his gentleness,
+Knowing I loved my books, he furnish'"
+1,2,128,1.9988553524017334,"id us but loving wrong.
+
+MIRANDA:
+Alack, what trouble
+Was I then to you!
+
+PROSPERO:
+O, a cherubim
+Thou wast that did preserve me","d us but loving wrong.
+
+MIRANDA:
+Alack, what trouble
+Was I then to you!
+
+PROSPERO:
+O, a cherubim
+Thou wast that did preserve me."
+1,3,128,1.6237316131591797,"o come.
+Swinge me them soundly forth unto their husbands:
+Away, I say, and bring them hither straight.
+
+LUCENTIO:
+Here is a wond"," come.
+Swinge me them soundly forth unto their husbands:
+Away, I say, and bring them hither straight.
+
+LUCENTIO:
+Here is a wonde"
+1,4,128,1.8008631467819214,"We are less afraid to be drowned than thou art.
+
+GONZALO:
+I'll warrant him for drowning; though the ship were
+no stronger than a","e are less afraid to be drowned than thou art.
+
+GONZALO:
+I'll warrant him for drowning; though the ship were
+no stronger than a "
+1,5,128,1.8049938678741455,"Even such a woman oweth to her husband;
+And when she is froward, peevish, sullen, sour,
+And not obedient to his honest will,
+Wha","ven such a woman oweth to her husband;
+And when she is froward, peevish, sullen, sour,
+And not obedient to his honest will,
+What"
+1,6,128,2.0820953845977783,"ty mother! witless else her son.
+
+PETRUCHIO:
+Am I not wise?
+
+KATHARINA:
+Yes; keep you warm.
+
+PETRUCHIO:
+Marry, so I mean, sweet ","y mother! witless else her son.
+
+PETRUCHIO:
+Am I not wise?
+
+KATHARINA:
+Yes; keep you warm.
+
+PETRUCHIO:
+Marry, so I mean, sweet K"
+1,7,128,1.5982989072799683,"e, sir, you mistake, sir. Pray, what do
+you think is his name?
+
+VINCENTIO:
+His name! as if I knew not his name: I have brought
+h",", sir, you mistake, sir. Pray, what do
+you think is his name?
+
+VINCENTIO:
+His name! as if I knew not his name: I have brought
+hi"
+1,8,128,1.6245028972625732,"hy master's use!
+
+PETRUCHIO:
+Why, sir, what's your conceit in that?
+
+GRUMIO:
+O, sir, the conceit is deeper than you think for:
+T","y master's use!
+
+PETRUCHIO:
+Why, sir, what's your conceit in that?
+
+GRUMIO:
+O, sir, the conceit is deeper than you think for:
+Ta"
+1,9,128,1.8909647464752197,"ing eyes on every stale,
+Seize thee that list: if once I find thee ranging,
+Hortensio will be quit with thee by changing.
+
+BAPTI","ng eyes on every stale,
+Seize thee that list: if once I find thee ranging,
+Hortensio will be quit with thee by changing.
+
+BAPTIS"
+1,10,128,2.0228145122528076," him.
+
+GONZALO:
+Now would I give a thousand furlongs of sea for an
+acre of barren ground, long heath, brown furze, any
+thing. Th","him.
+
+GONZALO:
+Now would I give a thousand furlongs of sea for an
+acre of barren ground, long heath, brown furze, any
+thing. The"
+1,11,128,2.5249621868133545,"ow! a pox o' that! How came that widow in?
+widow Dido!
+
+SEBASTIAN:
+What if he had said 'widower AEneas' too? Good Lord,
+how you ","w! a pox o' that! How came that widow in?
+widow Dido!
+
+SEBASTIAN:
+What if he had said 'widower AEneas' too? Good Lord,
+how you t"
+1,12,128,2.1595535278320312,"TONIO:
+Very foul.
+
+GONZALO:
+Had I plantation of this isle, my lord,--
+
+ANTONIO:
+He'ld sow't with nettle-seed.
+
+SEBASTIAN:
+Or doc","ONIO:
+Very foul.
+
+GONZALO:
+Had I plantation of this isle, my lord,--
+
+ANTONIO:
+He'ld sow't with nettle-seed.
+
+SEBASTIAN:
+Or dock"
+1,13,128,1.8183908462524414,"t cross'd!
+
+HORTENSIO:
+Say as he says, or we shall never go.
+
+KATHARINA:
+Forward, I pray, since we have come so far,
+And be it m"," cross'd!
+
+HORTENSIO:
+Say as he says, or we shall never go.
+
+KATHARINA:
+Forward, I pray, since we have come so far,
+And be it mo"
+1,14,128,1.8995555639266968," friends, though bride and
+bridegroom wants
+For to supply the places at the table,
+You know there wants no junkets at the feast.","friends, though bride and
+bridegroom wants
+For to supply the places at the table,
+You know there wants no junkets at the feast.
+"
+1,15,128,1.9892512559890747,"re by dinner-time.
+
+KATHARINA:
+I dare assure you, sir, 'tis almost two;
+And 'twill be supper-time ere you come there.
+
+PETRUCHIO","e by dinner-time.
+
+KATHARINA:
+I dare assure you, sir, 'tis almost two;
+And 'twill be supper-time ere you come there.
+
+PETRUCHIO:"
+1,16,128,1.8904410600662231,"be subject
+To no sight but thine and mine, invisible
+To every eyeball else. Go take this shape
+And hither come in't: go, hence w","e subject
+To no sight but thine and mine, invisible
+To every eyeball else. Go take this shape
+And hither come in't: go, hence wi"
+1,17,128,2.1773953437805176,".
+
+PETRUCHIO:
+Why, this was moulded on a porringer;
+A velvet dish: fie, fie! 'tis lewd and filthy:
+Why, 'tis a cockle or a walnu","
+
+PETRUCHIO:
+Why, this was moulded on a porringer;
+A velvet dish: fie, fie! 'tis lewd and filthy:
+Why, 'tis a cockle or a walnut"
+1,18,128,1.9770516157150269,"hests, she did confine thee,
+By help of her more potent ministers
+And in her most unmitigable rage,
+Into a cloven pine; within w","ests, she did confine thee,
+By help of her more potent ministers
+And in her most unmitigable rage,
+Into a cloven pine; within wh"
+1,19,128,1.8873399496078491," o' the island. Sitting on a bank,
+Weeping again the king my father's wreck,
+This music crept by me upon the waters,
+Allaying bo","o' the island. Sitting on a bank,
+Weeping again the king my father's wreck,
+This music crept by me upon the waters,
+Allaying bot"
+1,20,128,2.0450756549835205,"entlemen, let's go.
+
+GRUMIO:
+Fie, fie on all tired jades, on all mad masters, and
+all foul ways! Was ever man so beaten? was eve","ntlemen, let's go.
+
+GRUMIO:
+Fie, fie on all tired jades, on all mad masters, and
+all foul ways! Was ever man so beaten? was ever"
+1,21,128,1.7863245010375977,"my brother's suit;
+Which was, that he, in lieu o' the premises
+Of homage and I know not how much tribute,
+Should presently extir","y brother's suit;
+Which was, that he, in lieu o' the premises
+Of homage and I know not how much tribute,
+Should presently extirp"
+1,22,128,2.0196986198425293,"
+Come away, servant, come. I am ready now.
+Approach, my Ariel, come.
+
+ARIEL:
+All hail, great master! grave sir, hail! I come
+To ","Come away, servant, come. I am ready now.
+Approach, my Ariel, come.
+
+ARIEL:
+All hail, great master! grave sir, hail! I come
+To a"
+1,23,128,1.7308933734893799,"creature in the vessel
+Which thou heard'st cry, which thou saw'st sink. Sit down;
+For thou must now know farther.
+
+MIRANDA:
+You ","reature in the vessel
+Which thou heard'st cry, which thou saw'st sink. Sit down;
+For thou must now know farther.
+
+MIRANDA:
+You h"
+1,24,128,1.8009555339813232,"e to the pail,
+Sixscore fat oxen standing in my stalls,
+And all things answerable to this portion.
+Myself am struck in years, I "," to the pail,
+Sixscore fat oxen standing in my stalls,
+And all things answerable to this portion.
+Myself am struck in years, I m"
+1,25,128,1.917041301727295,"e.
+What, have I pinch'd you, Signior Gremio?
+
+GREMIO:
+Two thousand ducats by the year of land!
+My land amounts not to so much in",".
+What, have I pinch'd you, Signior Gremio?
+
+GREMIO:
+Two thousand ducats by the year of land!
+My land amounts not to so much in "
+1,26,128,1.890452265739441,": and so I take my leave,
+In resolution as I swore before.
+
+TRANIO:
+Mistress Bianca, bless you with such grace
+As 'longeth to a "," and so I take my leave,
+In resolution as I swore before.
+
+TRANIO:
+Mistress Bianca, bless you with such grace
+As 'longeth to a l"
+1,27,128,2.044219970703125,"nnot blame thee now to weep;
+For such an injury would vex a very saint,
+Much more a shrew of thy impatient humour.
+
+BIONDELLO:
+M","not blame thee now to weep;
+For such an injury would vex a very saint,
+Much more a shrew of thy impatient humour.
+
+BIONDELLO:
+Ma"
+1,28,128,1.667990803718567," standing in my stalls,
+And all things answerable to this portion.
+Myself am struck in years, I must confess;
+And if I die to-mo","standing in my stalls,
+And all things answerable to this portion.
+Myself am struck in years, I must confess;
+And if I die to-mor"
+1,29,128,1.8872535228729248,"APTISTA:
+What, is the man lunatic?
+
+TRANIO:
+Sir, you seem a sober ancient gentleman by your
+habit, but your words show you a mad","PTISTA:
+What, is the man lunatic?
+
+TRANIO:
+Sir, you seem a sober ancient gentleman by your
+habit, but your words show you a madm"
+1,30,128,1.9878530502319336,"dow.
+
+KATHARINA:
+'He that is giddy thinks the world turns round:'
+I pray you, tell me what you meant by that.
+
+Widow:
+Your husba","ow.
+
+KATHARINA:
+'He that is giddy thinks the world turns round:'
+I pray you, tell me what you meant by that.
+
+Widow:
+Your husban"
+1,31,128,2.089949131011963,"ot that my fellow-school-master
+Doth watch Bianca's steps so narrowly,
+'Twere good, methinks, to steal our marriage;
+Which once ","t that my fellow-school-master
+Doth watch Bianca's steps so narrowly,
+'Twere good, methinks, to steal our marriage;
+Which once p"
+2,0,128,1.741889476776123," so pale?
+
+HORTENSIO:
+For fear, I promise you, if I look pale.
+
+BAPTISTA:
+What, will my daughter prove a good musician?
+
+HORTENS","so pale?
+
+HORTENSIO:
+For fear, I promise you, if I look pale.
+
+BAPTISTA:
+What, will my daughter prove a good musician?
+
+HORTENSI"
+2,1,128,1.8941766023635864,"ating whilst thou livest!
+I tell thee, I, that thou hast marr'd her gown.
+
+Tailor:
+Your worship is deceived; the gown is made
+Ju","ting whilst thou livest!
+I tell thee, I, that thou hast marr'd her gown.
+
+Tailor:
+Your worship is deceived; the gown is made
+Jus"
+2,2,128,1.7447326183319092,"edding cheer;
+But so it is, my haste doth call me hence,
+And therefore here I mean to take my leave.
+
+BAPTISTA:
+Is't possible yo","dding cheer;
+But so it is, my haste doth call me hence,
+And therefore here I mean to take my leave.
+
+BAPTISTA:
+Is't possible you"
+2,3,128,2.013619899749756,"NCA:
+Why, I am past my gamut long ago.
+
+HORTENSIO:
+Yet read the gamut of Hortensio.
+
+BIANCA:
+
+Servant:
+Mistress, your father pra","CA:
+Why, I am past my gamut long ago.
+
+HORTENSIO:
+Yet read the gamut of Hortensio.
+
+BIANCA:
+
+Servant:
+Mistress, your father pray"
+2,4,128,1.7176012992858887,";
+And 'twill be supper-time ere you come there.
+
+PETRUCHIO:
+It shall be seven ere I go to horse:
+Look, what I speak, or do, or t","
+And 'twill be supper-time ere you come there.
+
+PETRUCHIO:
+It shall be seven ere I go to horse:
+Look, what I speak, or do, or th"
+2,5,128,1.6926970481872559,"liments:
+Our purses shall be proud, our garments poor;
+For 'tis the mind that makes the body rich;
+And as the sun breaks through","iments:
+Our purses shall be proud, our garments poor;
+For 'tis the mind that makes the body rich;
+And as the sun breaks through "
+2,6,128,1.7907259464263916,"
+As thou report'st thyself, wast then her servant;
+And, for thou wast a spirit too delicate
+To act her earthy and abhorr'd comma","As thou report'st thyself, wast then her servant;
+And, for thou wast a spirit too delicate
+To act her earthy and abhorr'd comman"
+2,7,128,1.672312617301941,"O:
+And I am one that love Bianca more
+Than words can witness, or your thoughts can guess.
+
+GREMIO:
+Youngling, thou canst not lov",":
+And I am one that love Bianca more
+Than words can witness, or your thoughts can guess.
+
+GREMIO:
+Youngling, thou canst not love"
+2,8,128,1.730201005935669,"ell.
+Send for your daughter by your servant here:
+My boy shall fetch the scrivener presently.
+The worst is this, that, at so sle","ll.
+Send for your daughter by your servant here:
+My boy shall fetch the scrivener presently.
+The worst is this, that, at so slen"
+2,9,128,1.9861822128295898,"est shrew.
+Give me thy hand, Kate: I will unto Venice,
+To buy apparel 'gainst the wedding-day.
+Provide the feast, father, and bi","st shrew.
+Give me thy hand, Kate: I will unto Venice,
+To buy apparel 'gainst the wedding-day.
+Provide the feast, father, and bid"
+2,10,128,1.9905929565429688,"o live.
+
+SEBASTIAN:
+Of that there's none, or little.
+
+GONZALO:
+How lush and lusty the grass looks! how green!
+
+ANTONIO:
+The grou"," live.
+
+SEBASTIAN:
+Of that there's none, or little.
+
+GONZALO:
+How lush and lusty the grass looks! how green!
+
+ANTONIO:
+The groun"
+2,11,128,1.9071602821350098," I come
+To answer thy best pleasure; be't to fly,
+To swim, to dive into the fire, to ride
+On the curl'd clouds, to thy strong bi","I come
+To answer thy best pleasure; be't to fly,
+To swim, to dive into the fire, to ride
+On the curl'd clouds, to thy strong bid"
+2,12,128,2.1252286434173584,"ere as foolish too:
+The wisdom of your duty, fair Bianca,
+Hath cost me an hundred crowns since supper-time.
+
+BIANCA:
+The more fo","re as foolish too:
+The wisdom of your duty, fair Bianca,
+Hath cost me an hundred crowns since supper-time.
+
+BIANCA:
+The more foo"
+2,13,128,1.950773000717163," great master! grave sir, hail! I come
+To answer thy best pleasure; be't to fly,
+To swim, to dive into the fire, to ride
+On the ","great master! grave sir, hail! I come
+To answer thy best pleasure; be't to fly,
+To swim, to dive into the fire, to ride
+On the c"
+2,14,128,1.9039289951324463,"ver knew how to entreat,
+Nor never needed that I should entreat,
+Am starved for meat, giddy for lack of sleep,
+With oath kept wa","er knew how to entreat,
+Nor never needed that I should entreat,
+Am starved for meat, giddy for lack of sleep,
+With oath kept wak"
+2,15,128,1.7094918489456177,"le, not to hear a tale.
+
+GRUMIO:
+And therefore 'tis called a sensible tale: and this
+cuff was but to knock at your ear, and bese","e, not to hear a tale.
+
+GRUMIO:
+And therefore 'tis called a sensible tale: and this
+cuff was but to knock at your ear, and besee"
+2,16,128,2.0879602432250977,"oo:
+The wisdom of your duty, fair Bianca,
+Hath cost me an hundred crowns since supper-time.
+
+BIANCA:
+The more fool you, for layi","o:
+The wisdom of your duty, fair Bianca,
+Hath cost me an hundred crowns since supper-time.
+
+BIANCA:
+The more fool you, for layin"
+2,17,128,2.1469473838806152,"n'd that's offer'd,
+Comes to the entertainer--
+
+SEBASTIAN:
+A dollar.
+
+GONZALO:
+Dolour comes to him, indeed: you
+have spoken true","'d that's offer'd,
+Comes to the entertainer--
+
+SEBASTIAN:
+A dollar.
+
+GONZALO:
+Dolour comes to him, indeed: you
+have spoken truer"
+2,18,128,1.908493995666504," master?
+
+GRUMIO:
+E'en at hand, alighted by this; and therefore be
+not--Cock's passion, silence! I hear my master.
+
+PETRUCHIO:
+W","master?
+
+GRUMIO:
+E'en at hand, alighted by this; and therefore be
+not--Cock's passion, silence! I hear my master.
+
+PETRUCHIO:
+Wh"
+2,19,128,2.17018723487854,"the vicar meant to cozen him.
+But after many ceremonies done,
+He calls for wine: 'A health!' quoth he, as if
+He had been aboard,","he vicar meant to cozen him.
+But after many ceremonies done,
+He calls for wine: 'A health!' quoth he, as if
+He had been aboard, "
+2,20,128,1.8118507862091064,"me cheer is toward.
+
+GREMIO:
+They're busy within; you were best knock louder.
+
+Pedant:
+What's he that knocks as he would beat do","e cheer is toward.
+
+GREMIO:
+They're busy within; you were best knock louder.
+
+Pedant:
+What's he that knocks as he would beat dow"
+2,21,128,1.868154764175415,"ow, were not I a little pot and soon
+hot, my very lips might freeze to my teeth, my
+tongue to the roof of my mouth, my heart in ","w, were not I a little pot and soon
+hot, my very lips might freeze to my teeth, my
+tongue to the roof of my mouth, my heart in m"
+2,22,128,1.8372740745544434,"nes with aches, make thee roar
+That beasts shall tremble at thy din.
+
+CALIBAN:
+No, pray thee.
+I must obey: his art is of such po","es with aches, make thee roar
+That beasts shall tremble at thy din.
+
+CALIBAN:
+No, pray thee.
+I must obey: his art is of such pow"
+2,23,128,1.8167495727539062,"
+When they are bound to serve, love and obey.
+Why are our bodies soft and weak and smooth,
+Unapt to toil and trouble in the worl","When they are bound to serve, love and obey.
+Why are our bodies soft and weak and smooth,
+Unapt to toil and trouble in the world"
+2,24,128,2.1561179161071777,"ALO:
+Had I plantation of this isle, my lord,--
+
+ANTONIO:
+He'ld sow't with nettle-seed.
+
+SEBASTIAN:
+Or docks, or mallows.
+
+GONZAL","LO:
+Had I plantation of this isle, my lord,--
+
+ANTONIO:
+He'ld sow't with nettle-seed.
+
+SEBASTIAN:
+Or docks, or mallows.
+
+GONZALO"
+2,25,128,2.041748046875,": if once I find thee ranging,
+Hortensio will be quit with thee by changing.
+
+BAPTISTA:
+
+KATHARINA:
+No shame but mine: I must, f"," if once I find thee ranging,
+Hortensio will be quit with thee by changing.
+
+BAPTISTA:
+
+KATHARINA:
+No shame but mine: I must, fo"
+2,26,128,1.8027312755584717,"ret;
+I will be master of what is mine own:
+She is my goods, my chattels; she is my house,
+My household stuff, my field, my barn,","et;
+I will be master of what is mine own:
+She is my goods, my chattels; she is my house,
+My household stuff, my field, my barn,
+"
+2,27,128,1.9629539251327515,"wery wealthy, and of worthy birth;
+Beside, so qualified as may beseem
+The spouse of any noble gentleman.
+Let me embrace with old","ery wealthy, and of worthy birth;
+Beside, so qualified as may beseem
+The spouse of any noble gentleman.
+Let me embrace with old "
+2,28,128,2.0645713806152344,"music was ordain'd!
+Was it not to refresh the mind of man
+After his studies or his usual pain?
+Then give me leave to read philos","usic was ordain'd!
+Was it not to refresh the mind of man
+After his studies or his usual pain?
+Then give me leave to read philoso"
+2,29,128,1.8175451755523682,"ll they kiss their
+hands. Are they all ready?
+
+CURTIS:
+They are.
+
+GRUMIO:
+Call them forth.
+
+CURTIS:
+Do you hear, ho? you must me","l they kiss their
+hands. Are they all ready?
+
+CURTIS:
+They are.
+
+GRUMIO:
+Call them forth.
+
+CURTIS:
+Do you hear, ho? you must mee"
+2,30,128,1.9068048000335693,"f beef and mustard?
+
+KATHARINA:
+A dish that I do love to feed upon.
+
+GRUMIO:
+Ay, but the mustard is too hot a little.
+
+KATHARINA"," beef and mustard?
+
+KATHARINA:
+A dish that I do love to feed upon.
+
+GRUMIO:
+Ay, but the mustard is too hot a little.
+
+KATHARINA:"
+2,31,128,2.0693371295928955,"it is deeper than you think for:
+Take up my mistress' gown to his master's use!
+O, fie, fie, fie!
+
+PETRUCHIO:
+
+HORTENSIO:
+Tailor","t is deeper than you think for:
+Take up my mistress' gown to his master's use!
+O, fie, fie, fie!
+
+PETRUCHIO:
+
+HORTENSIO:
+Tailor,"
+3,0,128,1.8115167617797852,"tread the ooze
+Of the salt deep,
+To run upon the sharp wind of the north,
+To do me business in the veins o' the earth
+When it is","read the ooze
+Of the salt deep,
+To run upon the sharp wind of the north,
+To do me business in the veins o' the earth
+When it is "
+3,1,128,1.8258371353149414,"om me, the lord on't.
+
+FERDINAND:
+No, as I am a man.
+
+MIRANDA:
+There's nothing ill can dwell in such a temple:
+If the ill spirit","m me, the lord on't.
+
+FERDINAND:
+No, as I am a man.
+
+MIRANDA:
+There's nothing ill can dwell in such a temple:
+If the ill spirit "
+3,2,128,1.7504743337631226," we shall never go.
+
+KATHARINA:
+Forward, I pray, since we have come so far,
+And be it moon, or sun, or what you please:
+An if yo","we shall never go.
+
+KATHARINA:
+Forward, I pray, since we have come so far,
+And be it moon, or sun, or what you please:
+An if you"
+3,3,128,2.0195627212524414,"our
+Is the king's ship; in the deep nook, where once
+Thou call'dst me up at midnight to fetch dew
+From the still-vex'd Bermoothe","ur
+Is the king's ship; in the deep nook, where once
+Thou call'dst me up at midnight to fetch dew
+From the still-vex'd Bermoothes"
+3,4,128,1.7983862161636353,"ward.
+
+GREMIO:
+They're busy within; you were best knock louder.
+
+Pedant:
+What's he that knocks as he would beat down the gate?
+
+","ard.
+
+GREMIO:
+They're busy within; you were best knock louder.
+
+Pedant:
+What's he that knocks as he would beat down the gate?
+
+V"
+3,5,128,1.8172246217727661,"the moon.
+
+PETRUCHIO:
+Nay, then you lie: it is the blessed sun.
+
+KATHARINA:
+Then, God be bless'd, it is the blessed sun:
+But sun","he moon.
+
+PETRUCHIO:
+Nay, then you lie: it is the blessed sun.
+
+KATHARINA:
+Then, God be bless'd, it is the blessed sun:
+But sun "
+3,6,128,1.825294852256775,"eady straight;
+And, if you will, tell what hath happened,
+Lucentio's father is arrived in Padua,
+And how she's like to be Lucent","ady straight;
+And, if you will, tell what hath happened,
+Lucentio's father is arrived in Padua,
+And how she's like to be Lucenti"
+3,7,128,1.6595289707183838,"atter good.
+This, by the way, I let you understand;
+my father is here look'd for every day,
+To pass assurance of a dower in marr","tter good.
+This, by the way, I let you understand;
+my father is here look'd for every day,
+To pass assurance of a dower in marri"
+3,8,128,1.8165760040283203,"First Servant:
+Ay.
+
+PETRUCHIO:
+Who brought it?
+
+PETER:
+I.
+
+PETRUCHIO:
+'Tis burnt; and so is all the meat.
+What dogs are these! W","irst Servant:
+Ay.
+
+PETRUCHIO:
+Who brought it?
+
+PETER:
+I.
+
+PETRUCHIO:
+'Tis burnt; and so is all the meat.
+What dogs are these! Wh"
+3,9,128,1.853910207748413,"his might be a brother.
+
+MIRANDA:
+I should sin
+To think but nobly of my grandmother:
+Good wombs have borne bad sons.
+
+PROSPERO:
+","is might be a brother.
+
+MIRANDA:
+I should sin
+To think but nobly of my grandmother:
+Good wombs have borne bad sons.
+
+PROSPERO:
+N"
+3,10,128,1.9116463661193848,"wer might else exact, like one
+Who having into truth, by telling of it,
+Made such a sinner of his memory,
+To credit his own lie,","er might else exact, like one
+Who having into truth, by telling of it,
+Made such a sinner of his memory,
+To credit his own lie, "
+3,11,128,1.9666149616241455," cock, so Kate will be my hen.
+
+KATHARINA:
+No cock of mine; you crow too like a craven.
+
+PETRUCHIO:
+Nay, come, Kate, come; you m","cock, so Kate will be my hen.
+
+KATHARINA:
+No cock of mine; you crow too like a craven.
+
+PETRUCHIO:
+Nay, come, Kate, come; you mu"
+3,12,128,1.801815390586853,"w we are undone and brought to nothing.
+
+VINCENTIO:
+
+BIONDELLO:
+Hope I may choose, sir.
+
+VINCENTIO:
+Come hither, you rogue. What"," we are undone and brought to nothing.
+
+VINCENTIO:
+
+BIONDELLO:
+Hope I may choose, sir.
+
+VINCENTIO:
+Come hither, you rogue. What,"
+3,13,128,1.984572172164917,"MIO:
+Why, 'Jack, boy! ho! boy!' and as much news as
+will thaw.
+
+CURTIS:
+Come, you are so full of cony-catching!
+
+GRUMIO:
+Why, th","IO:
+Why, 'Jack, boy! ho! boy!' and as much news as
+will thaw.
+
+CURTIS:
+Come, you are so full of cony-catching!
+
+GRUMIO:
+Why, the"
+3,14,128,1.909450650215149,"'He that is giddy thinks the world turns round:'
+I pray you, tell me what you meant by that.
+
+Widow:
+Your husband, being trouble","He that is giddy thinks the world turns round:'
+I pray you, tell me what you meant by that.
+
+Widow:
+Your husband, being troubled"
+3,15,128,1.9776978492736816,"ea, thou nit, thou winter-cricket thou!
+Braved in mine own house with a skein of thread?
+Away, thou rag, thou quantity, thou rem","a, thou nit, thou winter-cricket thou!
+Braved in mine own house with a skein of thread?
+Away, thou rag, thou quantity, thou remn"
+3,16,128,1.897819995880127,"arriage
+of your daughter, who is now queen.
+
+ANTONIO:
+And the rarest that e'er came there.
+
+SEBASTIAN:
+Bate, I beseech you, wido","rriage
+of your daughter, who is now queen.
+
+ANTONIO:
+And the rarest that e'er came there.
+
+SEBASTIAN:
+Bate, I beseech you, widow"
+3,17,128,1.8063890933990479,"ring when women are froward.
+
+PETRUCHIO:
+Come, Kate, we'll to bed.
+We three are married, but you two are sped.
+'Twas I won the w","ing when women are froward.
+
+PETRUCHIO:
+Come, Kate, we'll to bed.
+We three are married, but you two are sped.
+'Twas I won the wa"
+3,18,128,1.6974170207977295,"I did:
+O, how I long to have some chat with her!
+
+BAPTISTA:
+Well, go with me and be not so discomfited:
+Proceed in practise with"," did:
+O, how I long to have some chat with her!
+
+BAPTISTA:
+Well, go with me and be not so discomfited:
+Proceed in practise with "
+3,19,128,1.9806382656097412,"CHIO:
+Now, for my life, Hortensio fears his widow.
+
+Widow:
+Then never trust me, if I be afeard.
+
+PETRUCHIO:
+You are very sensibl","HIO:
+Now, for my life, Hortensio fears his widow.
+
+Widow:
+Then never trust me, if I be afeard.
+
+PETRUCHIO:
+You are very sensible"
+3,20,128,2.0599331855773926,"dding-day.
+
+KATHARINA:
+I'll see thee hang'd on Sunday first.
+
+GREMIO:
+Hark, Petruchio; she says she'll see thee
+hang'd first.
+
+T","ding-day.
+
+KATHARINA:
+I'll see thee hang'd on Sunday first.
+
+GREMIO:
+Hark, Petruchio; she says she'll see thee
+hang'd first.
+
+TR"
+3,21,128,1.7916340827941895,"as
+will thaw.
+
+CURTIS:
+Come, you are so full of cony-catching!
+
+GRUMIO:
+Why, therefore fire; for I have caught extreme cold.
+Whe","s
+will thaw.
+
+CURTIS:
+Come, you are so full of cony-catching!
+
+GRUMIO:
+Why, therefore fire; for I have caught extreme cold.
+Wher"
+3,22,128,1.611169457435608,"s is true that I say: an I had thee
+in place where, thou shouldst know it.
+
+GRUMIO:
+I am for thee straight: take thou the
+bill, "," is true that I say: an I had thee
+in place where, thou shouldst know it.
+
+GRUMIO:
+I am for thee straight: take thou the
+bill, g"
+3,23,128,1.892366647720337,"d thy uncle, call'd Antonio--
+I pray thee, mark me--that a brother should
+Be so perfidious!--he whom next thyself
+Of all the wor"," thy uncle, call'd Antonio--
+I pray thee, mark me--that a brother should
+Be so perfidious!--he whom next thyself
+Of all the worl"
+3,24,128,1.548193097114563,"r of a deceitful son.
+
+LUCENTIO:
+And what of him?
+
+BIONDELLO:
+His daughter is to be brought by you to the supper.
+
+LUCENTIO:
+And"," of a deceitful son.
+
+LUCENTIO:
+And what of him?
+
+BIONDELLO:
+His daughter is to be brought by you to the supper.
+
+LUCENTIO:
+And "
+3,25,128,1.9215607643127441,"was not come from sheathing:
+There were none fine but Adam, Ralph, and Gregory;
+The rest were ragged, old, and beggarly;
+Yet, as","as not come from sheathing:
+There were none fine but Adam, Ralph, and Gregory;
+The rest were ragged, old, and beggarly;
+Yet, as "
+3,26,128,1.8940582275390625,"t with thy remembrance.
+
+MIRANDA:
+'Tis far off
+And rather like a dream than an assurance
+That my remembrance warrants. Had I not"," with thy remembrance.
+
+MIRANDA:
+'Tis far off
+And rather like a dream than an assurance
+That my remembrance warrants. Had I not
+"
+3,27,128,2.1630678176879883," nature should produce
+Without sweat or endeavour: treason, felony,
+Sword, pike, knife, gun, or need of any engine,
+Would I not ","nature should produce
+Without sweat or endeavour: treason, felony,
+Sword, pike, knife, gun, or need of any engine,
+Would I not h"
+3,28,128,1.926793098449707," more fool you, for laying on my duty.
+
+PETRUCHIO:
+Katharina, I charge thee, tell these headstrong women
+What duty they do owe t","more fool you, for laying on my duty.
+
+PETRUCHIO:
+Katharina, I charge thee, tell these headstrong women
+What duty they do owe th"
+3,29,128,2.0357532501220703,"n,
+I am thus resolved: on Sunday next you know
+My daughter Katharina is to be married:
+Now, on the Sunday following, shall Bianc",",
+I am thus resolved: on Sunday next you know
+My daughter Katharina is to be married:
+Now, on the Sunday following, shall Bianca"
+3,30,128,1.8835318088531494,"ippers? Shall I have some water?
+Come, Kate, and wash, and welcome heartily.
+You whoreson villain! will you let it fall?
+
+KATHAR","ppers? Shall I have some water?
+Come, Kate, and wash, and welcome heartily.
+You whoreson villain! will you let it fall?
+
+KATHARI"
+3,31,128,1.7885332107543945,"e chat with her!
+
+BAPTISTA:
+Well, go with me and be not so discomfited:
+Proceed in practise with my younger daughter;
+She's apt "," chat with her!
+
+BAPTISTA:
+Well, go with me and be not so discomfited:
+Proceed in practise with my younger daughter;
+She's apt t"
+4,0,128,1.8824589252471924,"aved many men; brave not
+me; I will neither be faced nor braved. I say unto
+thee, I bid thy master cut out the gown; but I did
+n","ved many men; brave not
+me; I will neither be faced nor braved. I say unto
+thee, I bid thy master cut out the gown; but I did
+no"
+4,1,128,1.7546828985214233,"rah Grumio, go to your mistress;
+Say, I command her to come to me.
+
+HORTENSIO:
+I know her answer.
+
+PETRUCHIO:
+What?
+
+HORTENSIO:
+","ah Grumio, go to your mistress;
+Say, I command her to come to me.
+
+HORTENSIO:
+I know her answer.
+
+PETRUCHIO:
+What?
+
+HORTENSIO:
+S"
+4,2,128,1.9451991319656372,"ness for thee:
+Come, thou tortoise! when?
+Fine apparition! My quaint Ariel,
+Hark in thine ear.
+
+ARIEL:
+My lord it shall be done.","ess for thee:
+Come, thou tortoise! when?
+Fine apparition! My quaint Ariel,
+Hark in thine ear.
+
+ARIEL:
+My lord it shall be done.
+"
+4,3,128,1.9502413272857666,"l and all his quality.
+
+PROSPERO:
+Hast thou, spirit,
+Perform'd to point the tempest that I bade thee?
+
+ARIEL:
+To every article.
+"," and all his quality.
+
+PROSPERO:
+Hast thou, spirit,
+Perform'd to point the tempest that I bade thee?
+
+ARIEL:
+To every article.
+I"
+4,4,128,2.1089694499969482,"ain rudesby full of spleen;
+Who woo'd in haste and means to wed at leisure.
+I told you, I, he was a frantic fool,
+Hiding his bit","in rudesby full of spleen;
+Who woo'd in haste and means to wed at leisure.
+I told you, I, he was a frantic fool,
+Hiding his bitt"
+4,5,128,1.977729320526123,"r grumblings: thou didst promise
+To bate me a full year.
+
+PROSPERO:
+Dost thou forget
+From what a torment I did free thee?
+
+ARIEL"," grumblings: thou didst promise
+To bate me a full year.
+
+PROSPERO:
+Dost thou forget
+From what a torment I did free thee?
+
+ARIEL:"
+4,6,128,2.0883820056915283,"ll not go to prison.
+
+BAPTISTA:
+Talk not, Signior Gremio: I say he shall go to prison.
+
+GREMIO:
+Take heed, Signior Baptista, les","l not go to prison.
+
+BAPTISTA:
+Talk not, Signior Gremio: I say he shall go to prison.
+
+GREMIO:
+Take heed, Signior Baptista, lest"
+4,7,128,1.8239078521728516,"ircumstances I'll instruct you:
+Go with me to clothe you as becomes you.
+
+GRUMIO:
+No, no, forsooth; I dare not for my life.
+
+KAT","rcumstances I'll instruct you:
+Go with me to clothe you as becomes you.
+
+GRUMIO:
+No, no, forsooth; I dare not for my life.
+
+KATH"
+4,8,128,1.826223373413086,"Baptista, my business asketh haste,
+And every day I cannot come to woo.
+You knew my father well, and in him me,
+Left solely heir","aptista, my business asketh haste,
+And every day I cannot come to woo.
+You knew my father well, and in him me,
+Left solely heir "
+4,9,128,1.825847864151001,"
+To closeness and the bettering of my mind
+With that which, but by being so retired,
+O'er-prized all popular rate, in my false b","To closeness and the bettering of my mind
+With that which, but by being so retired,
+O'er-prized all popular rate, in my false br"
+4,10,128,1.7694571018218994,"NSIO:
+The base is right; 'tis the base knave that jars.
+How fiery and forward our pedant is!
+Now, for my life, the knave doth co","SIO:
+The base is right; 'tis the base knave that jars.
+How fiery and forward our pedant is!
+Now, for my life, the knave doth cou"
+4,11,128,1.9428904056549072," away from me,
+'Tis ten to one it maim'd you two outright.
+
+BAPTISTA:
+Now, in good sadness, son Petruchio,
+I think thou hast the","away from me,
+'Tis ten to one it maim'd you two outright.
+
+BAPTISTA:
+Now, in good sadness, son Petruchio,
+I think thou hast the "
+4,12,128,1.833014965057373,"inches? why, thy horn is a foot; and
+so long am I at the least. But wilt thou make a
+fire, or shall I complain on thee to our mi","nches? why, thy horn is a foot; and
+so long am I at the least. But wilt thou make a
+fire, or shall I complain on thee to our mis"
+4,13,128,1.8441680669784546,"hy mildness praised in every town,
+Thy virtues spoke of, and thy beauty sounded,
+Yet not so deeply as to thee belongs,
+Myself am","y mildness praised in every town,
+Thy virtues spoke of, and thy beauty sounded,
+Yet not so deeply as to thee belongs,
+Myself am "
+4,14,128,1.691713809967041,"ear since,
+Thy father was the Duke of Milan and
+A prince of power.
+
+MIRANDA:
+Sir, are not you my father?
+
+PROSPERO:
+Thy mother w","ar since,
+Thy father was the Duke of Milan and
+A prince of power.
+
+MIRANDA:
+Sir, are not you my father?
+
+PROSPERO:
+Thy mother wa"
+4,15,128,1.7866300344467163,"e: do thy duty, and have thy duty; for
+my master and mistress are almost frozen to death.
+
+CURTIS:
+There's fire ready; and there",": do thy duty, and have thy duty; for
+my master and mistress are almost frozen to death.
+
+CURTIS:
+There's fire ready; and theref"
+4,16,128,1.9233061075210571,"hank my good father, I am able to maintain it.
+
+VINCENTIO:
+Thy father! O villain! he is a sailmaker in Bergamo.
+
+BAPTISTA:
+You m","ank my good father, I am able to maintain it.
+
+VINCENTIO:
+Thy father! O villain! he is a sailmaker in Bergamo.
+
+BAPTISTA:
+You mi"
+4,17,128,2.031074047088623,"peopled else
+This isle with Calibans.
+
+PROSPERO:
+Abhorred slave,
+Which any print of goodness wilt not take,
+Being capable of all","eopled else
+This isle with Calibans.
+
+PROSPERO:
+Abhorred slave,
+Which any print of goodness wilt not take,
+Being capable of all "
+4,18,128,1.6886740922927856,"sent business
+Which now's upon's; without the which this story
+Were most impertinent.
+
+MIRANDA:
+Wherefore did they not
+That hour","ent business
+Which now's upon's; without the which this story
+Were most impertinent.
+
+MIRANDA:
+Wherefore did they not
+That hour "
+4,19,128,1.90566086769104,"of beef and mustard?
+
+KATHARINA:
+A dish that I do love to feed upon.
+
+GRUMIO:
+Ay, but the mustard is too hot a little.
+
+KATHARIN","f beef and mustard?
+
+KATHARINA:
+A dish that I do love to feed upon.
+
+GRUMIO:
+Ay, but the mustard is too hot a little.
+
+KATHARINA"
+4,20,128,1.8269867897033691,"better-fashion'd gown,
+More quaint, more pleasing, nor more commendable:
+Belike you mean to make a puppet of me.
+
+PETRUCHIO:
+Why","etter-fashion'd gown,
+More quaint, more pleasing, nor more commendable:
+Belike you mean to make a puppet of me.
+
+PETRUCHIO:
+Why,"
+4,21,128,1.851977825164795,".
+Nor is your firm resolve unknown to me,
+In the preferment of the eldest sister.
+This liberty is all that I request,
+That, upon","
+Nor is your firm resolve unknown to me,
+In the preferment of the eldest sister.
+This liberty is all that I request,
+That, upon "
+4,22,128,1.9760701656341553,"O:
+That our garments, being, as they were, drenched in
+the sea, hold notwithstanding their freshness and
+glosses, being rather n",":
+That our garments, being, as they were, drenched in
+the sea, hold notwithstanding their freshness and
+glosses, being rather ne"
+4,23,128,1.9221773147583008," carries a brave form. But 'tis a spirit.
+
+PROSPERO:
+No, wench; it eats and sleeps and hath such senses
+As we have, such. This g","carries a brave form. But 'tis a spirit.
+
+PROSPERO:
+No, wench; it eats and sleeps and hath such senses
+As we have, such. This ga"
+4,24,128,2.0805249214172363,"ut nature should bring forth,
+Of its own kind, all foison, all abundance,
+To feed my innocent people.
+
+SEBASTIAN:
+No marrying 'm","t nature should bring forth,
+Of its own kind, all foison, all abundance,
+To feed my innocent people.
+
+SEBASTIAN:
+No marrying 'mo"
+4,25,128,1.7405918836593628,"r, and was suitor first.
+
+TRANIO:
+And I am one that love Bianca more
+Than words can witness, or your thoughts can guess.
+
+GREMIO",", and was suitor first.
+
+TRANIO:
+And I am one that love Bianca more
+Than words can witness, or your thoughts can guess.
+
+GREMIO:"
+4,26,128,1.9135890007019043," and shook; for why, he stamp'd and swore,
+As if the vicar meant to cozen him.
+But after many ceremonies done,
+He calls for wine","and shook; for why, he stamp'd and swore,
+As if the vicar meant to cozen him.
+But after many ceremonies done,
+He calls for wine:"
+4,27,128,2.2254951000213623,"fall?
+
+KATHARINA:
+Patience, I pray you; 'twas a fault unwilling.
+
+PETRUCHIO:
+A whoreson beetle-headed, flap-ear'd knave!
+Come, K","all?
+
+KATHARINA:
+Patience, I pray you; 'twas a fault unwilling.
+
+PETRUCHIO:
+A whoreson beetle-headed, flap-ear'd knave!
+Come, Ka"
+4,28,128,2.2641007900238037,"ll?
+
+KATHARINA:
+Patience, I pray you; 'twas a fault unwilling.
+
+PETRUCHIO:
+A whoreson beetle-headed, flap-ear'd knave!
+Come, Kat","l?
+
+KATHARINA:
+Patience, I pray you; 'twas a fault unwilling.
+
+PETRUCHIO:
+A whoreson beetle-headed, flap-ear'd knave!
+Come, Kate"
+4,29,128,1.9281121492385864," the sore,
+When you should bring the plaster.
+
+SEBASTIAN:
+Very well.
+
+ANTONIO:
+And most chirurgeonly.
+
+GONZALO:
+It is foul weath","the sore,
+When you should bring the plaster.
+
+SEBASTIAN:
+Very well.
+
+ANTONIO:
+And most chirurgeonly.
+
+GONZALO:
+It is foul weathe"
+4,30,128,1.8661162853240967,"in which rift
+Imprison'd thou didst painfully remain
+A dozen years; within which space she died
+And left thee there; where thou ","n which rift
+Imprison'd thou didst painfully remain
+A dozen years; within which space she died
+And left thee there; where thou d"
+4,31,128,1.854780912399292,"ich now shall die in oblivion and thou return
+unexperienced to thy grave.
+
+CURTIS:
+By this reckoning he is more shrew than she.
+","ch now shall die in oblivion and thou return
+unexperienced to thy grave.
+
+CURTIS:
+By this reckoning he is more shrew than she.
+
+"
+5,0,128,1.836580514907837,"ry! Now, tell me, I pray,
+You that durst swear at your mistress Bianca
+Loved none in the world so well as Lucentio.
+
+TRANIO:
+O d","y! Now, tell me, I pray,
+You that durst swear at your mistress Bianca
+Loved none in the world so well as Lucentio.
+
+TRANIO:
+O de"
+5,1,128,1.833278775215149,"ber'd,
+I did not bid you mar it to the time.
+Go, hop me over every kennel home,
+For you shall hop without my custom, sir:
+I'll n","er'd,
+I did not bid you mar it to the time.
+Go, hop me over every kennel home,
+For you shall hop without my custom, sir:
+I'll no"
+5,2,128,1.784062385559082," company is coming here.
+Good morrow, gentle mistress: where away?
+Tell me, sweet Kate, and tell me truly too,
+Hast thou beheld ","company is coming here.
+Good morrow, gentle mistress: where away?
+Tell me, sweet Kate, and tell me truly too,
+Hast thou beheld a"
+5,3,128,1.8916065692901611,"straws,
+Our strength as weak, our weakness past compare,
+That seeming to be most which we indeed least are.
+Then vail your stoma","traws,
+Our strength as weak, our weakness past compare,
+That seeming to be most which we indeed least are.
+Then vail your stomac"
+5,4,128,1.8351867198944092,"do me business in the veins o' the earth
+When it is baked with frost.
+
+ARIEL:
+I do not, sir.
+
+PROSPERO:
+Thou liest, malignant th","o me business in the veins o' the earth
+When it is baked with frost.
+
+ARIEL:
+I do not, sir.
+
+PROSPERO:
+Thou liest, malignant thi"
+5,5,128,1.6374702453613281,"d withal make known
+Which way thou travellest: if along with us,
+We shall be joyful of thy company.
+
+VINCENTIO:
+Fair sir, and yo"," withal make known
+Which way thou travellest: if along with us,
+We shall be joyful of thy company.
+
+VINCENTIO:
+Fair sir, and you"
+5,6,128,1.6624760627746582," the rascal cook?
+How durst you, villains, bring it from the dresser,
+And serve it thus to me that love it not?
+Theretake it to ","the rascal cook?
+How durst you, villains, bring it from the dresser,
+And serve it thus to me that love it not?
+Theretake it to y"
+5,7,128,2.0846810340881348," am ready now.
+Approach, my Ariel, come.
+
+ARIEL:
+All hail, great master! grave sir, hail! I come
+To answer thy best pleasure; be","am ready now.
+Approach, my Ariel, come.
+
+ARIEL:
+All hail, great master! grave sir, hail! I come
+To answer thy best pleasure; be'"
+5,8,128,1.935287356376648,"RINA:
+Faith, as cold as can be.
+
+PETRUCHIO:
+Pluck up thy spirits; look cheerfully upon me.
+Here love; thou see'st how diligent I","INA:
+Faith, as cold as can be.
+
+PETRUCHIO:
+Pluck up thy spirits; look cheerfully upon me.
+Here love; thou see'st how diligent I "
+5,9,128,2.2304892539978027,"t that Kate doth limp?
+O slanderous world! Kate like the hazel-twig
+Is straight and slender and as brown in hue
+As hazel nuts an"," that Kate doth limp?
+O slanderous world! Kate like the hazel-twig
+Is straight and slender and as brown in hue
+As hazel nuts and"
+5,10,128,1.917625069618225," I pinch'd you, Signior Gremio?
+
+GREMIO:
+Two thousand ducats by the year of land!
+My land amounts not to so much in all:
+That sh","I pinch'd you, Signior Gremio?
+
+GREMIO:
+Two thousand ducats by the year of land!
+My land amounts not to so much in all:
+That she"
+5,11,128,1.675567388534546,"
+Water with berries in't, and teach me how
+To name the bigger light, and how the less,
+That burn by day and night: and then I lo","Water with berries in't, and teach me how
+To name the bigger light, and how the less,
+That burn by day and night: and then I lov"
+5,12,128,2.136728048324585,"forgets the
+beginning.
+
+GONZALO:
+All things in common nature should produce
+Without sweat or endeavour: treason, felony,
+Sword, ","orgets the
+beginning.
+
+GONZALO:
+All things in common nature should produce
+Without sweat or endeavour: treason, felony,
+Sword, p"
+5,13,128,1.8455054759979248,"ANIEL:
+How now, old lad?
+
+GRUMIO:
+Welcome, you;--how now, you;-- what, you;--fellow,
+you;--and thus much for greeting. Now, my s","NIEL:
+How now, old lad?
+
+GRUMIO:
+Welcome, you;--how now, you;-- what, you;--fellow,
+you;--and thus much for greeting. Now, my sp"
+5,14,128,1.7750376462936401," the good
+husband at home, my son and my servant spend all at
+the university.
+
+TRANIO:
+How now! what's the matter?
+
+BAPTISTA:
+Wh","the good
+husband at home, my son and my servant spend all at
+the university.
+
+TRANIO:
+How now! what's the matter?
+
+BAPTISTA:
+Wha"
+5,15,128,2.063596248626709,"; and my profit on't
+Is, I know how to curse. The red plague rid you
+For learning me your language!
+
+PROSPERO:
+Hag-seed, hence!
+"," and my profit on't
+Is, I know how to curse. The red plague rid you
+For learning me your language!
+
+PROSPERO:
+Hag-seed, hence!
+F"
+5,16,128,2.288389205932617,"knaves? What, no man at door
+To hold my stirrup nor to take my horse!
+Where is Nathaniel, Gregory, Philip?
+
+ALL SERVING-MEN:
+Her","naves? What, no man at door
+To hold my stirrup nor to take my horse!
+Where is Nathaniel, Gregory, Philip?
+
+ALL SERVING-MEN:
+Here"
+5,17,128,1.9803218841552734,"rld to see,
+How tame, when men and women are alone,
+A meacock wretch can make the curstest shrew.
+Give me thy hand, Kate: I will","ld to see,
+How tame, when men and women are alone,
+A meacock wretch can make the curstest shrew.
+Give me thy hand, Kate: I will "
+5,18,128,1.7749119997024536,"O:
+I do well believe your highness; and
+did it to minister occasion to these gentlemen,
+who are of such sensible and nimble lung",":
+I do well believe your highness; and
+did it to minister occasion to these gentlemen,
+who are of such sensible and nimble lungs"
+5,19,128,1.8108701705932617,"his strife:
+'Tis deeds must win the prize; and he of both
+That can assure my daughter greatest dower
+Shall have my Bianca's love","is strife:
+'Tis deeds must win the prize; and he of both
+That can assure my daughter greatest dower
+Shall have my Bianca's love."
+5,20,128,1.8598604202270508,"perdition as an hair
+Betid to any creature in the vessel
+Which thou heard'st cry, which thou saw'st sink. Sit down;
+For thou mus","erdition as an hair
+Betid to any creature in the vessel
+Which thou heard'st cry, which thou saw'st sink. Sit down;
+For thou must"
+5,21,128,1.8467315435409546,"r Gremio:
+And so, I take my leave, and thank you both.
+
+GREMIO:
+Adieu, good neighbour.
+Now I fear thee not:
+Sirrah young gameste"," Gremio:
+And so, I take my leave, and thank you both.
+
+GREMIO:
+Adieu, good neighbour.
+Now I fear thee not:
+Sirrah young gamester"
+5,22,128,1.8488775491714478,", tell me, I pray,
+You that durst swear at your mistress Bianca
+Loved none in the world so well as Lucentio.
+
+TRANIO:
+O despitef"," tell me, I pray,
+You that durst swear at your mistress Bianca
+Loved none in the world so well as Lucentio.
+
+TRANIO:
+O despitefu"
+5,23,128,2.4921889305114746,"and that Lucentio that comes
+a-wooing, 'Priami,' is my man Tranio, 'regia,'
+bearing my port, 'celsa senis,' that we might
+beguil","nd that Lucentio that comes
+a-wooing, 'Priami,' is my man Tranio, 'regia,'
+bearing my port, 'celsa senis,' that we might
+beguile"
+5,24,128,2.0859642028808594,"eather: a monster, a
+very monster in apparel, and not like a Christian
+footboy or a gentleman's lackey.
+
+TRANIO:
+'Tis some odd h","ather: a monster, a
+very monster in apparel, and not like a Christian
+footboy or a gentleman's lackey.
+
+TRANIO:
+'Tis some odd hu"
+5,25,128,2.06373929977417,"rantic fool,
+Hiding his bitter jests in blunt behavior:
+And, to be noted for a merry man,
+He'll woo a thousand, 'point the day o","antic fool,
+Hiding his bitter jests in blunt behavior:
+And, to be noted for a merry man,
+He'll woo a thousand, 'point the day of"
+5,26,128,1.8488876819610596," the island. Sitting on a bank,
+Weeping again the king my father's wreck,
+This music crept by me upon the waters,
+Allaying both ","the island. Sitting on a bank,
+Weeping again the king my father's wreck,
+This music crept by me upon the waters,
+Allaying both t"
+5,27,128,2.041121482849121,"sir, his lackey, for all the world caparisoned
+like the horse; with a linen stock on one leg and a
+kersey boot-hose on the other","ir, his lackey, for all the world caparisoned
+like the horse; with a linen stock on one leg and a
+kersey boot-hose on the other,"
+5,28,128,1.7478548288345337,"hat might?--No more:--
+And yet me thinks I see it in thy face,
+What thou shouldst be: the occasion speaks thee, and
+My strong im","at might?--No more:--
+And yet me thinks I see it in thy face,
+What thou shouldst be: the occasion speaks thee, and
+My strong ima"
+5,29,128,1.8426856994628906,"all'st thou this?
+
+HORTENSIO:
+
+Tailor:
+You bid me make it orderly and well,
+According to the fashion and the time.
+
+PETRUCHIO:
+M","ll'st thou this?
+
+HORTENSIO:
+
+Tailor:
+You bid me make it orderly and well,
+According to the fashion and the time.
+
+PETRUCHIO:
+Ma"
+5,30,128,1.9219717979431152,"ARIEL:
+Ay, sir.
+
+PROSPERO:
+This blue-eyed hag was hither brought with child
+And here was left by the sailors. Thou, my slave,
+As","RIEL:
+Ay, sir.
+
+PROSPERO:
+This blue-eyed hag was hither brought with child
+And here was left by the sailors. Thou, my slave,
+As "
+5,31,128,1.8350666761398315,"
+
+BAPTISTA:
+Now, in good sadness, son Petruchio,
+I think thou hast the veriest shrew of all.
+
+PETRUCHIO:
+Well, I say no: and the","
+BAPTISTA:
+Now, in good sadness, son Petruchio,
+I think thou hast the veriest shrew of all.
+
+PETRUCHIO:
+Well, I say no: and ther"
+6,0,128,1.732472538948059," of the north,
+To do me business in the veins o' the earth
+When it is baked with frost.
+
+ARIEL:
+I do not, sir.
+
+PROSPERO:
+Thou l","of the north,
+To do me business in the veins o' the earth
+When it is baked with frost.
+
+ARIEL:
+I do not, sir.
+
+PROSPERO:
+Thou li"
+6,1,128,2.214812755584717,"priest
+Should ask, if Katharina should be his wife,
+'Ay, by gogs-wouns,' quoth he; and swore so loud,
+That, all-amazed, the prie","riest
+Should ask, if Katharina should be his wife,
+'Ay, by gogs-wouns,' quoth he; and swore so loud,
+That, all-amazed, the pries"
+6,2,128,1.7782385349273682,"y and willing
+With one consent to have her so bestow'd;
+For curious I cannot be with you,
+Signior Baptista, of whom I hear so we"," and willing
+With one consent to have her so bestow'd;
+For curious I cannot be with you,
+Signior Baptista, of whom I hear so wel"
+6,3,128,1.7535452842712402,"centio;
+That have by marriage made thy daughter mine,
+While counterfeit supposes bleared thine eyne.
+
+GREMIO:
+Here's packing, wi","entio;
+That have by marriage made thy daughter mine,
+While counterfeit supposes bleared thine eyne.
+
+GREMIO:
+Here's packing, wit"
+6,4,128,2.2828080654144287,"orget'st. This damn'd witch Sycorax,
+For mischiefs manifold and sorceries terrible
+To enter human hearing, from Argier,
+Thou kno","rget'st. This damn'd witch Sycorax,
+For mischiefs manifold and sorceries terrible
+To enter human hearing, from Argier,
+Thou know"
+6,5,128,2.3103718757629395,"e.
+Sea-nymphs hourly ring his knell
+Hark! now I hear them,--Ding-dong, bell.
+
+FERDINAND:
+The ditty does remember my drown'd fath",".
+Sea-nymphs hourly ring his knell
+Hark! now I hear them,--Ding-dong, bell.
+
+FERDINAND:
+The ditty does remember my drown'd fathe"
+6,6,128,1.8711843490600586," death.
+I prithee go and get me some repast;
+I care not what, so it be wholesome food.
+
+GRUMIO:
+What say you to a neat's foot?
+
+","death.
+I prithee go and get me some repast;
+I care not what, so it be wholesome food.
+
+GRUMIO:
+What say you to a neat's foot?
+
+K"
+6,7,128,2.2263455390930176,"t, no man at door
+To hold my stirrup nor to take my horse!
+Where is Nathaniel, Gregory, Philip?
+
+ALL SERVING-MEN:
+Here, here, si",", no man at door
+To hold my stirrup nor to take my horse!
+Where is Nathaniel, Gregory, Philip?
+
+ALL SERVING-MEN:
+Here, here, sir"
+6,8,128,1.961160659790039,"e only son, and heir to the lands of me, Signior Vincentio.
+
+VINCENTIO:
+Lucentio! O, he hath murdered his master! Lay hold
+on hi"," only son, and heir to the lands of me, Signior Vincentio.
+
+VINCENTIO:
+Lucentio! O, he hath murdered his master! Lay hold
+on him"
+6,9,128,1.85818350315094,"tay.
+
+PETRUCHIO:
+Grumio, my horse.
+
+GRUMIO:
+Ay, sir, they be ready: the oats have eaten the horses.
+
+KATHARINA:
+Nay, then,
+Do wh","ay.
+
+PETRUCHIO:
+Grumio, my horse.
+
+GRUMIO:
+Ay, sir, they be ready: the oats have eaten the horses.
+
+KATHARINA:
+Nay, then,
+Do wha"
+6,10,128,2.1807303428649902,"h;
+And yet as heavy as my weight should be.
+
+PETRUCHIO:
+Should be! should--buzz!
+
+KATHARINA:
+Well ta'en, and like a buzzard.
+
+PE",";
+And yet as heavy as my weight should be.
+
+PETRUCHIO:
+Should be! should--buzz!
+
+KATHARINA:
+Well ta'en, and like a buzzard.
+
+PET"
+6,11,128,1.7889620065689087,",
+In troops I have dispersed them 'bout the isle.
+The king's son have I landed by himself;
+Whom I left cooling of the air with s","
+In troops I have dispersed them 'bout the isle.
+The king's son have I landed by himself;
+Whom I left cooling of the air with si"
+6,12,128,1.957947015762329,"e will we mount, and thither walk on foot
+Let's see; I think 'tis now some seven o'clock,
+And well we may come there by dinner-t"," will we mount, and thither walk on foot
+Let's see; I think 'tis now some seven o'clock,
+And well we may come there by dinner-ti"
+6,13,128,2.170217275619507,"ready, the house
+trimmed, rushes strewed, cobwebs swept; the
+serving-men in their new fustian, their white
+stockings, and every ","eady, the house
+trimmed, rushes strewed, cobwebs swept; the
+serving-men in their new fustian, their white
+stockings, and every o"
+6,14,128,1.7236871719360352,"d's mine, by Sycorax my mother,
+Which thou takest from me. When thou camest first,
+Thou strokedst me and madest much of me, woul","'s mine, by Sycorax my mother,
+Which thou takest from me. When thou camest first,
+Thou strokedst me and madest much of me, would"
+6,15,128,1.9693334102630615,"ed, 'Hell is empty
+And all the devils are here.'
+
+PROSPERO:
+Why that's my spirit!
+But was not this nigh shore?
+
+ARIEL:
+Close by,","d, 'Hell is empty
+And all the devils are here.'
+
+PROSPERO:
+Why that's my spirit!
+But was not this nigh shore?
+
+ARIEL:
+Close by, "
+6,16,128,1.8289878368377686,"ews as
+will thaw.
+
+CURTIS:
+Come, you are so full of cony-catching!
+
+GRUMIO:
+Why, therefore fire; for I have caught extreme cold.","ws as
+will thaw.
+
+CURTIS:
+Come, you are so full of cony-catching!
+
+GRUMIO:
+Why, therefore fire; for I have caught extreme cold.
+"
+6,17,128,2.0131263732910156," cabin: silence! trouble us not.
+
+GONZALO:
+Good, yet remember whom thou hast aboard.
+
+Boatswain:
+None that I more love than myse","cabin: silence! trouble us not.
+
+GONZALO:
+Good, yet remember whom thou hast aboard.
+
+Boatswain:
+None that I more love than mysel"
+6,18,128,2.685086727142334,"
+ANTONIO:
+Widow! a pox o' that! How came that widow in?
+widow Dido!
+
+SEBASTIAN:
+What if he had said 'widower AEneas' too? Good L","ANTONIO:
+Widow! a pox o' that! How came that widow in?
+widow Dido!
+
+SEBASTIAN:
+What if he had said 'widower AEneas' too? Good Lo"
+6,19,128,1.7855565547943115,"rina shall be fine.
+
+BAPTISTA:
+I know not what to say: but give me your hands;
+God send you joy, Petruchio! 'tis a match.
+
+GREMI","ina shall be fine.
+
+BAPTISTA:
+I know not what to say: but give me your hands;
+God send you joy, Petruchio! 'tis a match.
+
+GREMIO"
+6,20,128,1.9696290493011475," for him; he's a traitor. Come;
+I'll manacle thy neck and feet together:
+Sea-water shalt thou drink; thy food shall be
+The fresh","for him; he's a traitor. Come;
+I'll manacle thy neck and feet together:
+Sea-water shalt thou drink; thy food shall be
+The fresh-"
+6,21,128,1.879293441772461,"eek and Latin books:
+If you accept them, then their worth is great.
+
+BAPTISTA:
+Lucentio is your name; of whence, I pray?
+
+TRANIO","ek and Latin books:
+If you accept them, then their worth is great.
+
+BAPTISTA:
+Lucentio is your name; of whence, I pray?
+
+TRANIO:"
+6,22,128,1.7889666557312012,"ou wast that did preserve me. Thou didst smile.
+Infused with a fortitude from heaven,
+When I have deck'd the sea with drops full","u wast that did preserve me. Thou didst smile.
+Infused with a fortitude from heaven,
+When I have deck'd the sea with drops full "
+6,23,128,1.9693610668182373,"refore, my lord,--
+
+ANTONIO:
+Fie, what a spendthrift is he of his tongue!
+
+ALONSO:
+I prithee, spare.
+
+GONZALO:
+Well, I have done","efore, my lord,--
+
+ANTONIO:
+Fie, what a spendthrift is he of his tongue!
+
+ALONSO:
+I prithee, spare.
+
+GONZALO:
+Well, I have done:"
+6,24,128,1.7824254035949707,"ngry: what hast thou to do?
+Father, be quiet; he shall stay my leisure.
+
+GREMIO:
+Ay, marry, sir, now it begins to work.
+
+KATARIN","gry: what hast thou to do?
+Father, be quiet; he shall stay my leisure.
+
+GREMIO:
+Ay, marry, sir, now it begins to work.
+
+KATARINA"
+6,25,128,1.8837339878082275,"hunted for yourself:
+'Tis thought your deer does hold you at a bay.
+
+BAPTISTA:
+O ho, Petruchio! Tranio hits you now.
+
+LUCENTIO:
+","unted for yourself:
+'Tis thought your deer does hold you at a bay.
+
+BAPTISTA:
+O ho, Petruchio! Tranio hits you now.
+
+LUCENTIO:
+I"
+6,26,128,1.9378470182418823,"have been more kindly beholding to you than
+any, freely give unto you this young scholar,
+that hath been long studying at Rheims","ave been more kindly beholding to you than
+any, freely give unto you this young scholar,
+that hath been long studying at Rheims;"
+6,27,128,1.959578037261963,"' presume not, 'celsa senis,'
+despair not.
+
+HORTENSIO:
+Madam, 'tis now in tune.
+
+LUCENTIO:
+All but the base.
+
+HORTENSIO:
+The bas"," presume not, 'celsa senis,'
+despair not.
+
+HORTENSIO:
+Madam, 'tis now in tune.
+
+LUCENTIO:
+All but the base.
+
+HORTENSIO:
+The base"
+6,28,128,1.7616193294525146," your thoughts can guess.
+
+GREMIO:
+Youngling, thou canst not love so dear as I.
+
+TRANIO:
+Graybeard, thy love doth freeze.
+
+GREMI","your thoughts can guess.
+
+GREMIO:
+Youngling, thou canst not love so dear as I.
+
+TRANIO:
+Graybeard, thy love doth freeze.
+
+GREMIO"
+6,29,128,1.903888463973999,"is is the gentleman I told you of:
+I pray you stand good father to me now,
+Give me Bianca for my patrimony.
+
+Pedant:
+Soft son!
+S","s is the gentleman I told you of:
+I pray you stand good father to me now,
+Give me Bianca for my patrimony.
+
+Pedant:
+Soft son!
+Si"
+6,30,128,1.9301869869232178,"e all Kates, and therefore, Kate,
+Take this of me, Kate of my consolation;
+Hearing thy mildness praised in every town,
+Thy virtu"," all Kates, and therefore, Kate,
+Take this of me, Kate of my consolation;
+Hearing thy mildness praised in every town,
+Thy virtue"
+6,31,128,1.591542363166809,"hath that awaken'd you?
+
+BIANCA:
+Ay, but not frighted me; therefore I'll sleep again.
+
+PETRUCHIO:
+Nay, that you shall not: since","ath that awaken'd you?
+
+BIANCA:
+Ay, but not frighted me; therefore I'll sleep again.
+
+PETRUCHIO:
+Nay, that you shall not: since "
+7,0,128,2.1049582958221436,"idence divine.
+Some food we had and some fresh water that
+A noble Neapolitan, Gonzalo,
+Out of his charity, being then appointed
+","dence divine.
+Some food we had and some fresh water that
+A noble Neapolitan, Gonzalo,
+Out of his charity, being then appointed
+M"
+7,1,128,1.82549250125885,"rd on't.
+
+FERDINAND:
+No, as I am a man.
+
+MIRANDA:
+There's nothing ill can dwell in such a temple:
+If the ill spirit have so fair","d on't.
+
+FERDINAND:
+No, as I am a man.
+
+MIRANDA:
+There's nothing ill can dwell in such a temple:
+If the ill spirit have so fair "
+7,2,128,2.0592753887176514,"e they, Ariel, safe?
+
+ARIEL:
+Not a hair perish'd;
+On their sustaining garments not a blemish,
+But fresher than before: and, as t"," they, Ariel, safe?
+
+ARIEL:
+Not a hair perish'd;
+On their sustaining garments not a blemish,
+But fresher than before: and, as th"
+7,3,128,1.7275652885437012," But thy vile race,
+Though thou didst learn, had that in't which
+good natures
+Could not abide to be with; therefore wast thou
+De","But thy vile race,
+Though thou didst learn, had that in't which
+good natures
+Could not abide to be with; therefore wast thou
+Des"
+7,4,128,1.897568941116333,"of him, Tranio?
+
+TRANIO:
+If he be credulous and trust my tale,
+I'll make him glad to seem Vincentio,
+And give assurance to Bapti","f him, Tranio?
+
+TRANIO:
+If he be credulous and trust my tale,
+I'll make him glad to seem Vincentio,
+And give assurance to Baptis"
+7,5,128,1.6280851364135742,"our fortunes
+That you are like to Sir Vincentio.
+His name and credit shall you undertake,
+And in my house you shall be friendly ","ur fortunes
+That you are like to Sir Vincentio.
+His name and credit shall you undertake,
+And in my house you shall be friendly l"
+7,6,128,1.8807663917541504,"s who should say, if I should sleep or eat,
+'Twere deadly sickness or else present death.
+I prithee go and get me some repast;
+I"," who should say, if I should sleep or eat,
+'Twere deadly sickness or else present death.
+I prithee go and get me some repast;
+I "
+7,7,128,1.8217772245407104," welcomed you withal?
+
+HORTENSIO:
+But, wrangling pedant, this is
+The patroness of heavenly harmony:
+Then give me leave to have p","welcomed you withal?
+
+HORTENSIO:
+But, wrangling pedant, this is
+The patroness of heavenly harmony:
+Then give me leave to have pr"
+7,8,128,2.0572664737701416,"thee:
+Come, thou tortoise! when?
+Fine apparition! My quaint Ariel,
+Hark in thine ear.
+
+ARIEL:
+My lord it shall be done.
+
+PROSPER","hee:
+Come, thou tortoise! when?
+Fine apparition! My quaint Ariel,
+Hark in thine ear.
+
+ARIEL:
+My lord it shall be done.
+
+PROSPERO"
+7,9,128,1.8852449655532837,"ot
+Four or five women once that tended me?
+
+PROSPERO:
+Thou hadst, and more, Miranda. But how is it
+That this lives in thy mind? ","t
+Four or five women once that tended me?
+
+PROSPERO:
+Thou hadst, and more, Miranda. But how is it
+That this lives in thy mind? W"
+7,10,128,2.0775306224823," thee; thou shalt be pinch'd
+As thick as honeycomb, each pinch more stinging
+Than bees that made 'em.
+
+CALIBAN:
+I must eat my di","thee; thou shalt be pinch'd
+As thick as honeycomb, each pinch more stinging
+Than bees that made 'em.
+
+CALIBAN:
+I must eat my din"
+7,11,128,1.7846758365631104,"long I have not seen.
+
+PETRUCHIO:
+What is his name?
+
+VINCENTIO:
+Lucentio, gentle sir.
+
+PETRUCHIO:
+Happily we met; the happier fo","ong I have not seen.
+
+PETRUCHIO:
+What is his name?
+
+VINCENTIO:
+Lucentio, gentle sir.
+
+PETRUCHIO:
+Happily we met; the happier for"
+7,12,128,2.222646474838257,"ondello?
+
+BIONDELLO:
+I cannot tarry: I knew a wench married in an
+afternoon as she went to the garden for parsley to
+stuff a rab","ndello?
+
+BIONDELLO:
+I cannot tarry: I knew a wench married in an
+afternoon as she went to the garden for parsley to
+stuff a rabb"
+7,13,128,1.903442621231079,"ld that word were true.
+
+PETRUCHIO:
+Now, for my life, Hortensio fears his widow.
+
+Widow:
+Then never trust me, if I be afeard.
+
+P","d that word were true.
+
+PETRUCHIO:
+Now, for my life, Hortensio fears his widow.
+
+Widow:
+Then never trust me, if I be afeard.
+
+PE"
+7,14,128,1.8124737739562988,"o sound
+That the earth owes. I hear it now above me.
+
+PROSPERO:
+The fringed curtains of thine eye advance
+And say what thou sees"," sound
+That the earth owes. I hear it now above me.
+
+PROSPERO:
+The fringed curtains of thine eye advance
+And say what thou seest"
+7,15,128,1.9974942207336426,"s name is Lucentio and he is
+mine only son, and heir to the lands of me, Signior Vincentio.
+
+VINCENTIO:
+Lucentio! O, he hath mur"," name is Lucentio and he is
+mine only son, and heir to the lands of me, Signior Vincentio.
+
+VINCENTIO:
+Lucentio! O, he hath murd"
+7,16,128,1.830613374710083,"sh wench!
+To the most of men this is a Caliban
+And they to him are angels.
+
+MIRANDA:
+My affections
+Are then most humble; I have ","h wench!
+To the most of men this is a Caliban
+And they to him are angels.
+
+MIRANDA:
+My affections
+Are then most humble; I have n"
+7,17,128,2.02789568901062,"ther new-dyed than stained with
+salt water.
+
+ANTONIO:
+If but one of his pockets could speak, would it not
+say he lies?
+
+SEBASTIA","her new-dyed than stained with
+salt water.
+
+ANTONIO:
+If but one of his pockets could speak, would it not
+say he lies?
+
+SEBASTIAN"
+7,18,128,1.7450170516967773,"me, come, you're mocking: we will have no telling.
+
+PETRUCHIO:
+Come on, I say; and first begin with her.
+
+Widow:
+She shall not.
+","e, come, you're mocking: we will have no telling.
+
+PETRUCHIO:
+Come on, I say; and first begin with her.
+
+Widow:
+She shall not.
+
+"
+7,19,128,2.140747547149658,"roach, my Ariel, come.
+
+ARIEL:
+All hail, great master! grave sir, hail! I come
+To answer thy best pleasure; be't to fly,
+To swim","oach, my Ariel, come.
+
+ARIEL:
+All hail, great master! grave sir, hail! I come
+To answer thy best pleasure; be't to fly,
+To swim,"
+7,20,128,2.0898473262786865,"iences,
+Whereof I know she is not ignorant:
+Accept of him, or else you do me wrong:
+His name is Licio, born in Mantua.
+
+BAPTISTA","ences,
+Whereof I know she is not ignorant:
+Accept of him, or else you do me wrong:
+His name is Licio, born in Mantua.
+
+BAPTISTA:"
+7,21,128,2.064201831817627,"
+Read it.
+
+GRUMIO:
+The note lies in's throat, if he say I said so.
+
+Tailor:
+
+GRUMIO:
+Master, if ever I said loose-bodied gown, s","Read it.
+
+GRUMIO:
+The note lies in's throat, if he say I said so.
+
+Tailor:
+
+GRUMIO:
+Master, if ever I said loose-bodied gown, se"
+7,22,128,1.6603140830993652,"go to: but
+I will in, to be revenged for this villany.
+
+BAPTISTA:
+And I, to sound the depth of this knavery.
+
+LUCENTIO:
+Look not","o to: but
+I will in, to be revenged for this villany.
+
+BAPTISTA:
+And I, to sound the depth of this knavery.
+
+LUCENTIO:
+Look not "
+7,23,128,1.906566858291626,"s to thee belongs,
+Myself am moved to woo thee for my wife.
+
+KATHARINA:
+Moved! in good time: let him that moved you hither
+Remov"," to thee belongs,
+Myself am moved to woo thee for my wife.
+
+KATHARINA:
+Moved! in good time: let him that moved you hither
+Remove"
+7,24,128,2.03641939163208,"TIAN:
+Very well.
+
+ANTONIO:
+And most chirurgeonly.
+
+GONZALO:
+It is foul weather in us all, good sir,
+When you are cloudy.
+
+SEBAST","IAN:
+Very well.
+
+ANTONIO:
+And most chirurgeonly.
+
+GONZALO:
+It is foul weather in us all, good sir,
+When you are cloudy.
+
+SEBASTI"
+7,25,128,2.0021586418151855,"nwealth I would by contraries
+Execute all things; for no kind of traffic
+Would I admit; no name of magistrate;
+Letters should no","wealth I would by contraries
+Execute all things; for no kind of traffic
+Would I admit; no name of magistrate;
+Letters should not"
+7,26,128,1.9818334579467773,"nd, sound, sound, sound!
+Why, when, I say? Nay, good sweet Kate, be merry.
+Off with my boots, you rogues! you villains, when?
+It","d, sound, sound, sound!
+Why, when, I say? Nay, good sweet Kate, be merry.
+Off with my boots, you rogues! you villains, when?
+It "
+7,27,128,2.2477855682373047,"d I do?
+
+SEBASTIAN:
+'Scape being drunk for want of wine.
+
+GONZALO:
+I' the commonwealth I would by contraries
+Execute all things;"," I do?
+
+SEBASTIAN:
+'Scape being drunk for want of wine.
+
+GONZALO:
+I' the commonwealth I would by contraries
+Execute all things; "
+7,28,128,2.165081024169922,"ference, soft and affable.
+Why does the world report that Kate doth limp?
+O slanderous world! Kate like the hazel-twig
+Is straig","erence, soft and affable.
+Why does the world report that Kate doth limp?
+O slanderous world! Kate like the hazel-twig
+Is straigh"
+7,29,128,2.2604641914367676,"ASTIAN:
+Done. The wager?
+
+ANTONIO:
+A laughter.
+
+SEBASTIAN:
+A match!
+
+ADRIAN:
+Though this island seem to be desert,--
+
+SEBASTIAN:","STIAN:
+Done. The wager?
+
+ANTONIO:
+A laughter.
+
+SEBASTIAN:
+A match!
+
+ADRIAN:
+Though this island seem to be desert,--
+
+SEBASTIAN:
+"
+7,30,128,2.2828080654144287,"orget'st. This damn'd witch Sycorax,
+For mischiefs manifold and sorceries terrible
+To enter human hearing, from Argier,
+Thou kno","rget'st. This damn'd witch Sycorax,
+For mischiefs manifold and sorceries terrible
+To enter human hearing, from Argier,
+Thou know"
+7,31,128,1.6845388412475586,"s your conceit in that?
+
+GRUMIO:
+O, sir, the conceit is deeper than you think for:
+Take up my mistress' gown to his master's use"," your conceit in that?
+
+GRUMIO:
+O, sir, the conceit is deeper than you think for:
+Take up my mistress' gown to his master's use!"
+8,0,128,1.8751683235168457," oath,
+I will be married to a wealthy widow,
+Ere three days pass, which hath as long loved me
+As I have loved this proud disdain","oath,
+I will be married to a wealthy widow,
+Ere three days pass, which hath as long loved me
+As I have loved this proud disdainf"
+8,1,128,1.769477128982544,"rit when she comes.
+Say that she rail; why then I'll tell her plain
+She sings as sweetly as a nightingale:
+Say that she frown, I","it when she comes.
+Say that she rail; why then I'll tell her plain
+She sings as sweetly as a nightingale:
+Say that she frown, I'"
+8,2,128,1.7862098217010498," him?
+
+BIONDELLO:
+His daughter is to be brought by you to the supper.
+
+LUCENTIO:
+And then?
+
+BIONDELLO:
+The old priest of Saint L","him?
+
+BIONDELLO:
+His daughter is to be brought by you to the supper.
+
+LUCENTIO:
+And then?
+
+BIONDELLO:
+The old priest of Saint Lu"
+8,3,128,1.8755552768707275," falcon now is sharp and passing empty;
+And till she stoop she must not be full-gorged,
+For then she never looks upon her lure.
+","falcon now is sharp and passing empty;
+And till she stoop she must not be full-gorged,
+For then she never looks upon her lure.
+A"
+8,4,128,1.8320472240447998,"fter dinner.
+
+PETRUCHIO:
+It may not be.
+
+GREMIO:
+Let me entreat you.
+
+PETRUCHIO:
+It cannot be.
+
+KATHARINA:
+Let me entreat you.
+
+","ter dinner.
+
+PETRUCHIO:
+It may not be.
+
+GREMIO:
+Let me entreat you.
+
+PETRUCHIO:
+It cannot be.
+
+KATHARINA:
+Let me entreat you.
+
+P"
+8,5,128,1.981017827987671,"ord, be not angry.
+
+GONZALO:
+No, I warrant you; I will not adventure
+my discretion so weakly. Will you laugh
+me asleep, for I am","rd, be not angry.
+
+GONZALO:
+No, I warrant you; I will not adventure
+my discretion so weakly. Will you laugh
+me asleep, for I am "
+8,6,128,1.6976730823516846,"t come:
+Make it no wonder; if you knew my business,
+You would entreat me rather go than stay.
+And, honest company, I thank you a"," come:
+Make it no wonder; if you knew my business,
+You would entreat me rather go than stay.
+And, honest company, I thank you al"
+8,7,128,1.8760184049606323,"ever:
+Let specialties be therefore drawn between us,
+That covenants may be kept on either hand.
+
+BAPTISTA:
+Ay, when the special ","ver:
+Let specialties be therefore drawn between us,
+That covenants may be kept on either hand.
+
+BAPTISTA:
+Ay, when the special t"
+8,8,128,1.7654261589050293,"uence:
+If she do bid me pack, I'll give her thanks,
+As though she bid me stay by her a week:
+If she deny to wed, I'll crave the ","ence:
+If she do bid me pack, I'll give her thanks,
+As though she bid me stay by her a week:
+If she deny to wed, I'll crave the d"
+8,9,128,1.9364473819732666,"ather, Vincentio?
+
+BIONDELLO:
+What, my old worshipful old master? yes, marry, sir:
+see where he looks out of the window.
+
+VINCEN","ther, Vincentio?
+
+BIONDELLO:
+What, my old worshipful old master? yes, marry, sir:
+see where he looks out of the window.
+
+VINCENT"
+8,10,128,1.8433005809783936,"usband, be not so disquiet:
+The meat was well, if you were so contented.
+
+PETRUCHIO:
+I tell thee, Kate, 'twas burnt and dried aw","sband, be not so disquiet:
+The meat was well, if you were so contented.
+
+PETRUCHIO:
+I tell thee, Kate, 'twas burnt and dried awa"
+8,11,128,1.6788294315338135,"like a father.
+
+LUCENTIO:
+And what of him, Tranio?
+
+TRANIO:
+If he be credulous and trust my tale,
+I'll make him glad to seem Vin","ike a father.
+
+LUCENTIO:
+And what of him, Tranio?
+
+TRANIO:
+If he be credulous and trust my tale,
+I'll make him glad to seem Vinc"
+8,12,128,1.9109561443328857,":
+Hast thou, spirit,
+Perform'd to point the tempest that I bade thee?
+
+ARIEL:
+To every article.
+I boarded the king's ship; now o","
+Hast thou, spirit,
+Perform'd to point the tempest that I bade thee?
+
+ARIEL:
+To every article.
+I boarded the king's ship; now on"
+8,13,128,1.954486608505249,"d Petruchio's wife,
+If it would please him come and marry her!'
+
+TRANIO:
+Patience, good Katharina, and Baptista too.
+Upon my lif"," Petruchio's wife,
+If it would please him come and marry her!'
+
+TRANIO:
+Patience, good Katharina, and Baptista too.
+Upon my life"
+8,14,128,1.500224232673645,"her must I, and here I leave you, sir.
+
+VINCENTIO:
+You shall not choose but drink before you go:
+I think I shall command your we","er must I, and here I leave you, sir.
+
+VINCENTIO:
+You shall not choose but drink before you go:
+I think I shall command your wel"
+8,15,128,2.046222686767578," the fire and cracks
+Of sulphurous roaring the most mighty Neptune
+Seem to besiege and make his bold waves tremble,
+Yea, his dre","the fire and cracks
+Of sulphurous roaring the most mighty Neptune
+Seem to besiege and make his bold waves tremble,
+Yea, his drea"
+8,16,128,1.806899905204773,"LO:
+Nay, by Saint Jamy,
+I hold you a penny,
+A horse and a man
+Is more than one,
+And yet not many.
+
+PETRUCHIO:
+Come, where be the","O:
+Nay, by Saint Jamy,
+I hold you a penny,
+A horse and a man
+Is more than one,
+And yet not many.
+
+PETRUCHIO:
+Come, where be thes"
+8,17,128,2.1817283630371094,"an old
+jerkin, a pair of old breeches thrice turned, a pair
+of boots that have been candle-cases, one buckled,
+another laced, an","n old
+jerkin, a pair of old breeches thrice turned, a pair
+of boots that have been candle-cases, one buckled,
+another laced, an "
+8,18,128,1.6485353708267212," you
+cannot, give thanks you have lived so long, and make
+yourself ready in your cabin for the mischance of
+the hour, if it so h","you
+cannot, give thanks you have lived so long, and make
+yourself ready in your cabin for the mischance of
+the hour, if it so ha"
+8,19,128,1.800676941871643,"re I go to horse:
+Look, what I speak, or do, or think to do,
+You are still crossing it. Sirs, let't alone:
+I will not go to-day;","e I go to horse:
+Look, what I speak, or do, or think to do,
+You are still crossing it. Sirs, let't alone:
+I will not go to-day; "
+8,20,128,1.8651443719863892,"
+An if you please to call it a rush-candle,
+Henceforth I vow it shall be so for me.
+
+PETRUCHIO:
+I say it is the moon.
+
+KATHARINA","An if you please to call it a rush-candle,
+Henceforth I vow it shall be so for me.
+
+PETRUCHIO:
+I say it is the moon.
+
+KATHARINA:"
+8,21,128,2.0188989639282227,"TONIO:
+Where is the master, boatswain?
+
+Boatswain:
+Do you not hear him? You mar our labour: keep your
+cabins: you do assist the ","ONIO:
+Where is the master, boatswain?
+
+Boatswain:
+Do you not hear him? You mar our labour: keep your
+cabins: you do assist the s"
+8,22,128,2.034789800643921,"ill-vex'd Bermoothes, there she's hid:
+The mariners all under hatches stow'd;
+Who, with a charm join'd to their suffer'd labour,","ll-vex'd Bermoothes, there she's hid:
+The mariners all under hatches stow'd;
+Who, with a charm join'd to their suffer'd labour,
+"
+8,23,128,1.9013471603393555,"deserved more than a prison.
+
+CALIBAN:
+You taught me language; and my profit on't
+Is, I know how to curse. The red plague rid yo","eserved more than a prison.
+
+CALIBAN:
+You taught me language; and my profit on't
+Is, I know how to curse. The red plague rid you"
+8,24,128,1.8566992282867432,",
+I'll make him glad to seem Vincentio,
+And give assurance to Baptista Minola,
+As if he were the right Vincentio
+Take in your lo","
+I'll make him glad to seem Vincentio,
+And give assurance to Baptista Minola,
+As if he were the right Vincentio
+Take in your lov"
+8,25,128,1.821313500404358,"low'd it,
+Or it hath drawn me rather. But 'tis gone.
+No, it begins again.
+Full fathom five thy father lies;
+Of his bones are cor","ow'd it,
+Or it hath drawn me rather. But 'tis gone.
+No, it begins again.
+Full fathom five thy father lies;
+Of his bones are cora"
+8,26,128,1.7925751209259033,"to make a fire, and they are coming after to
+warm them. Now, were not I a little pot and soon
+hot, my very lips might freeze to ","o make a fire, and they are coming after to
+warm them. Now, were not I a little pot and soon
+hot, my very lips might freeze to m"
+8,27,128,1.9170045852661133,"n's crupper of velure,
+which hath two letters for her name fairly set down
+in studs, and here and there pieced with packthread.
+","'s crupper of velure,
+which hath two letters for her name fairly set down
+in studs, and here and there pieced with packthread.
+
+"
+8,28,128,1.8280400037765503," land.
+
+ALONSO:
+No, no, he's gone.
+
+SEBASTIAN:
+Sir, you may thank yourself for this great loss,
+That would not bless our Europe ","land.
+
+ALONSO:
+No, no, he's gone.
+
+SEBASTIAN:
+Sir, you may thank yourself for this great loss,
+That would not bless our Europe w"
+8,29,128,1.7119014263153076,"e
+looking out at the window.
+
+VINCENTIO:
+Art thou his father?
+
+Pedant:
+Ay, sir; so his mother says, if I may believe her.
+
+PETRU","
+looking out at the window.
+
+VINCENTIO:
+Art thou his father?
+
+Pedant:
+Ay, sir; so his mother says, if I may believe her.
+
+PETRUC"
+8,30,128,1.7238678932189941,"ain; and that I'll prove upon thee,
+though thy little finger be armed in a thimble.
+
+Tailor:
+This is true that I say: an I had t","in; and that I'll prove upon thee,
+though thy little finger be armed in a thimble.
+
+Tailor:
+This is true that I say: an I had th"
+8,31,128,1.9043421745300293,"an array.
+if thou account'st it shame. lay it on me;
+And therefore frolic: we will hence forthwith,
+To feast and sport us at thy","n array.
+if thou account'st it shame. lay it on me;
+And therefore frolic: we will hence forthwith,
+To feast and sport us at thy "
+9,0,128,1.7042533159255981,":
+Well have you heard, but something hard of hearing:
+They call me Katharina that do talk of me.
+
+PETRUCHIO:
+You lie, in faith; ","
+Well have you heard, but something hard of hearing:
+They call me Katharina that do talk of me.
+
+PETRUCHIO:
+You lie, in faith; f"
+9,1,128,2.0809736251831055," sew me in
+the skirts of it, and beat me to death with a bottom
+of brown thread: I said a gown.
+
+PETRUCHIO:
+Proceed.
+
+Tailor:
+
+G","sew me in
+the skirts of it, and beat me to death with a bottom
+of brown thread: I said a gown.
+
+PETRUCHIO:
+Proceed.
+
+Tailor:
+
+GR"
+9,2,128,1.8319602012634277," feed it with such over-roasted flesh.
+Be patient; to-morrow 't shall be mended,
+And, for this night, we'll fast for company:
+Co","feed it with such over-roasted flesh.
+Be patient; to-morrow 't shall be mended,
+And, for this night, we'll fast for company:
+Com"
+9,3,128,1.8776545524597168,"u are marvellous forward.
+
+PETRUCHIO:
+O, pardon me, Signior Gremio; I would fain be doing.
+
+GREMIO:
+I doubt it not, sir; but you"," are marvellous forward.
+
+PETRUCHIO:
+O, pardon me, Signior Gremio; I would fain be doing.
+
+GREMIO:
+I doubt it not, sir; but you "
+9,4,128,1.9759712219238281," my cunning.
+
+LUCENTIO:
+Fiddler, forbear; you grow too forward, sir:
+Have you so soon forgot the entertainment
+Her sister Kathar","my cunning.
+
+LUCENTIO:
+Fiddler, forbear; you grow too forward, sir:
+Have you so soon forgot the entertainment
+Her sister Kathari"
+9,5,128,1.801927089691162,"So:
+Lie there, my art. Wipe thou thine eyes; have comfort.
+The direful spectacle of the wreck, which touch'd
+The very virtue of ","o:
+Lie there, my art. Wipe thou thine eyes; have comfort.
+The direful spectacle of the wreck, which touch'd
+The very virtue of c"
+9,6,128,2.3435802459716797,"r Adrian, for a good
+wager, first begins to crow?
+
+SEBASTIAN:
+The old cock.
+
+ANTONIO:
+The cockerel.
+
+SEBASTIAN:
+Done. The wager?"," Adrian, for a good
+wager, first begins to crow?
+
+SEBASTIAN:
+The old cock.
+
+ANTONIO:
+The cockerel.
+
+SEBASTIAN:
+Done. The wager?
+"
+9,7,128,1.9753494262695312,"undred pound or two, to
+make merry withal?
+
+Pedant:
+Keep your hundred pounds to yourself: he shall
+need none, so long as I live.","ndred pound or two, to
+make merry withal?
+
+Pedant:
+Keep your hundred pounds to yourself: he shall
+need none, so long as I live.
+"
+9,8,128,2.0928080081939697,"w as e'er my mother brush'd
+With raven's feather from unwholesome fen
+Drop on you both! a south-west blow on ye
+And blister you "," as e'er my mother brush'd
+With raven's feather from unwholesome fen
+Drop on you both! a south-west blow on ye
+And blister you a"
+9,9,128,1.7722415924072266,"KATHARINA:
+Too light for such a swain as you to catch;
+And yet as heavy as my weight should be.
+
+PETRUCHIO:
+Should be! should--b","ATHARINA:
+Too light for such a swain as you to catch;
+And yet as heavy as my weight should be.
+
+PETRUCHIO:
+Should be! should--bu"
+9,10,128,2.1036343574523926,"'d roots and husks
+Wherein the acorn cradled. Follow.
+
+FERDINAND:
+No;
+I will resist such entertainment till
+Mine enemy has more ","d roots and husks
+Wherein the acorn cradled. Follow.
+
+FERDINAND:
+No;
+I will resist such entertainment till
+Mine enemy has more p"
+9,11,128,1.714246153831482,"es have
+More widows in them of this business' making
+Than we bring men to comfort them:
+The fault's your own.
+
+ALONSO:
+So is the","s have
+More widows in them of this business' making
+Than we bring men to comfort them:
+The fault's your own.
+
+ALONSO:
+So is the "
+9,12,128,2.065157413482666,"ou Dian, and let her be Kate;
+And then let Kate be chaste and Dian sportful!
+
+KATHARINA:
+Where did you study all this goodly spe","u Dian, and let her be Kate;
+And then let Kate be chaste and Dian sportful!
+
+KATHARINA:
+Where did you study all this goodly spee"
+9,13,128,1.7023289203643799,"n thus; therefore ha' done with words:
+To me she's married, not unto my clothes:
+Could I repair what she will wear in me,
+As I c"," thus; therefore ha' done with words:
+To me she's married, not unto my clothes:
+Could I repair what she will wear in me,
+As I ca"
+9,14,128,1.7636253833770752,"week or two:
+But then up farther, and as for as Rome;
+And so to Tripoli, if God lend me life.
+
+TRANIO:
+What countryman, I pray?
+","eek or two:
+But then up farther, and as for as Rome;
+And so to Tripoli, if God lend me life.
+
+TRANIO:
+What countryman, I pray?
+
+"
+9,15,128,2.0629642009735107,"in:
+I pray now, keep below.
+
+ANTONIO:
+Where is the master, boatswain?
+
+Boatswain:
+Do you not hear him? You mar our labour: keep ","n:
+I pray now, keep below.
+
+ANTONIO:
+Where is the master, boatswain?
+
+Boatswain:
+Do you not hear him? You mar our labour: keep y"
+9,16,128,1.721787691116333,"daughter is to be brought by you to the supper.
+
+LUCENTIO:
+And then?
+
+BIONDELLO:
+The old priest of Saint Luke's church is at you","aughter is to be brought by you to the supper.
+
+LUCENTIO:
+And then?
+
+BIONDELLO:
+The old priest of Saint Luke's church is at your"
+9,17,128,1.7815577983856201,"
+Should well agree with our external parts?
+Come, come, you froward and unable worms!
+My mind hath been as big as one of yours,
+","Should well agree with our external parts?
+Come, come, you froward and unable worms!
+My mind hath been as big as one of yours,
+M"
+9,18,128,2.1023874282836914,"quing stuff is here?
+What's this? a sleeve? 'tis like a demi-cannon:
+What, up and down, carved like an apple-tart?
+Here's snip a","uing stuff is here?
+What's this? a sleeve? 'tis like a demi-cannon:
+What, up and down, carved like an apple-tart?
+Here's snip an"
+9,19,128,2.1282904148101807,"onounce, is, O you wonder!
+If you be maid or no?
+
+MIRANDA:
+No wonder, sir;
+But certainly a maid.
+
+FERDINAND:
+My language! heaven","nounce, is, O you wonder!
+If you be maid or no?
+
+MIRANDA:
+No wonder, sir;
+But certainly a maid.
+
+FERDINAND:
+My language! heavens"
+9,20,128,1.6310243606567383,"t for my daughter Katharina, this I know,
+She is not for your turn, the more my grief.
+
+PETRUCHIO:
+I see you do not mean to part"," for my daughter Katharina, this I know,
+She is not for your turn, the more my grief.
+
+PETRUCHIO:
+I see you do not mean to part "
+9,21,128,1.9851233959197998,"rward, Kate, at thy command.
+Obey the bride, you that attend on her;
+Go to the feast, revel and domineer,
+Carouse full measure t","ward, Kate, at thy command.
+Obey the bride, you that attend on her;
+Go to the feast, revel and domineer,
+Carouse full measure to"
+9,22,128,1.9124255180358887,"
+MIRANDA:
+Alack, for pity!
+I, not remembering how I cried out then,
+Will cry it o'er again: it is a hint
+That wrings mine eyes t","MIRANDA:
+Alack, for pity!
+I, not remembering how I cried out then,
+Will cry it o'er again: it is a hint
+That wrings mine eyes to"
+9,23,128,2.096919536590576,"nt, did beget of him
+A falsehood in its contrary as great
+As my trust was; which had indeed no limit,
+A confidence sans bound. H","t, did beget of him
+A falsehood in its contrary as great
+As my trust was; which had indeed no limit,
+A confidence sans bound. He"
+9,24,128,2.289353132247925,"ould be.
+
+PETRUCHIO:
+Should be! should--buzz!
+
+KATHARINA:
+Well ta'en, and like a buzzard.
+
+PETRUCHIO:
+O slow-wing'd turtle! shal","uld be.
+
+PETRUCHIO:
+Should be! should--buzz!
+
+KATHARINA:
+Well ta'en, and like a buzzard.
+
+PETRUCHIO:
+O slow-wing'd turtle! shall"
+9,25,128,1.618514895439148,"uch one drop of it.
+Thy husband is thy lord, thy life, thy keeper,
+Thy head, thy sovereign; one that cares for thee,
+And for thy","ch one drop of it.
+Thy husband is thy lord, thy life, thy keeper,
+Thy head, thy sovereign; one that cares for thee,
+And for thy "
+9,26,128,1.630500316619873,"is the moon that shines so bright.
+
+KATHARINA:
+I know it is the sun that shines so bright.
+
+PETRUCHIO:
+Now, by my mother's son, ","s the moon that shines so bright.
+
+KATHARINA:
+I know it is the sun that shines so bright.
+
+PETRUCHIO:
+Now, by my mother's son, a"
+9,27,128,1.6544077396392822,"
+PROSPERO:
+Hear a little further
+And then I'll bring thee to the present business
+Which now's upon's; without the which this sto","PROSPERO:
+Hear a little further
+And then I'll bring thee to the present business
+Which now's upon's; without the which this stor"
+9,28,128,1.9336578845977783,"Venice,
+To buy apparel 'gainst the wedding-day.
+Provide the feast, father, and bid the guests;
+I will be sure my Katharina shall","enice,
+To buy apparel 'gainst the wedding-day.
+Provide the feast, father, and bid the guests;
+I will be sure my Katharina shall "
+9,29,128,2.027599334716797,"estate,
+An eye-sore to our solemn festival!
+
+TRANIO:
+And tells us, what occasion of import
+Hath all so long detain'd you from yo","state,
+An eye-sore to our solemn festival!
+
+TRANIO:
+And tells us, what occasion of import
+Hath all so long detain'd you from you"
+9,30,128,2.0528340339660645,"d to my state grew stranger, being transported
+And rapt in secret studies. Thy false uncle--
+Dost thou attend me?
+
+MIRANDA:
+Sir,"," to my state grew stranger, being transported
+And rapt in secret studies. Thy false uncle--
+Dost thou attend me?
+
+MIRANDA:
+Sir, "
+9,31,128,2.0491180419921875,"h she loves me: O, the kindest Kate!
+She hung about my neck; and kiss on kiss
+She vied so fast, protesting oath on oath,
+That in"," she loves me: O, the kindest Kate!
+She hung about my neck; and kiss on kiss
+She vied so fast, protesting oath on oath,
+That in "
+10,0,128,1.5926258563995361,"f
+Of all the world I loved and to him put
+The manage of my state; as at that time
+Through all the signories it was the first
+And","
+Of all the world I loved and to him put
+The manage of my state; as at that time
+Through all the signories it was the first
+And "
+10,1,128,1.8179141283035278,"h old cramps,
+Fill all thy bones with aches, make thee roar
+That beasts shall tremble at thy din.
+
+CALIBAN:
+No, pray thee.
+I mus"," old cramps,
+Fill all thy bones with aches, make thee roar
+That beasts shall tremble at thy din.
+
+CALIBAN:
+No, pray thee.
+I must"
+10,2,128,1.8366987705230713,"k on seemeth green:
+Now I perceive thou art a reverend father;
+Pardon, I pray thee, for my mad mistaking.
+
+PETRUCHIO:
+Do, good o"," on seemeth green:
+Now I perceive thou art a reverend father;
+Pardon, I pray thee, for my mad mistaking.
+
+PETRUCHIO:
+Do, good ol"
+10,3,128,1.926703691482544,"or such a swain as you to catch;
+And yet as heavy as my weight should be.
+
+PETRUCHIO:
+Should be! should--buzz!
+
+KATHARINA:
+Well ","r such a swain as you to catch;
+And yet as heavy as my weight should be.
+
+PETRUCHIO:
+Should be! should--buzz!
+
+KATHARINA:
+Well t"
+10,4,128,1.7183303833007812,"let it stand.
+
+PETRUCHIO:
+The poorest service is repaid with thanks;
+And so shall mine, before you touch the meat.
+
+KATHARINA:
+I","et it stand.
+
+PETRUCHIO:
+The poorest service is repaid with thanks;
+And so shall mine, before you touch the meat.
+
+KATHARINA:
+I "
+10,5,128,1.9261839389801025,"e were none fine but Adam, Ralph, and Gregory;
+The rest were ragged, old, and beggarly;
+Yet, as they are, here are they come to "," were none fine but Adam, Ralph, and Gregory;
+The rest were ragged, old, and beggarly;
+Yet, as they are, here are they come to m"
+10,6,128,1.909741759300232,"rong humour.
+He that knows better how to tame a shrew,
+Now let him speak: 'tis charity to show.
+
+TRANIO:
+Is't possible, friend L","ong humour.
+He that knows better how to tame a shrew,
+Now let him speak: 'tis charity to show.
+
+TRANIO:
+Is't possible, friend Li"
+10,7,128,1.8542990684509277,"GRUMIO:
+Where is he?
+
+CURTIS:
+In her chamber, making a sermon of continency to her;
+And rails, and swears, and rates, that she, ","RUMIO:
+Where is he?
+
+CURTIS:
+In her chamber, making a sermon of continency to her;
+And rails, and swears, and rates, that she, p"
+10,8,128,2.0053582191467285,"colour Peter's hat,
+And Walter's dagger was not come from sheathing:
+There were none fine but Adam, Ralph, and Gregory;
+The rest","olour Peter's hat,
+And Walter's dagger was not come from sheathing:
+There were none fine but Adam, Ralph, and Gregory;
+The rest "
+10,9,128,1.4464845657348633,":
+If you like me, she shall have me and mine.
+
+TRANIO:
+Why, then the maid is mine from all the world,
+By your firm promise: Grem","
+If you like me, she shall have me and mine.
+
+TRANIO:
+Why, then the maid is mine from all the world,
+By your firm promise: Gremi"
+10,10,128,2.0194125175476074,"way in Padua. Grumio,
+Draw forth thy weapon, we are beset with thieves;
+Rescue thy mistress, if thou be a man.
+Fear not, sweet w","ay in Padua. Grumio,
+Draw forth thy weapon, we are beset with thieves;
+Rescue thy mistress, if thou be a man.
+Fear not, sweet we"
+10,11,128,1.6731655597686768," not crossed me,
+thou shouldst have heard how her horse fell and she
+under her horse; thou shouldst have heard in how
+miry a pla","not crossed me,
+thou shouldst have heard how her horse fell and she
+under her horse; thou shouldst have heard in how
+miry a plac"
+10,12,128,1.9479302167892456," begun,
+Have at you for a bitter jest or two!
+
+BIANCA:
+Am I your bird? I mean to shift my bush;
+And then pursue me as you draw y","begun,
+Have at you for a bitter jest or two!
+
+BIANCA:
+Am I your bird? I mean to shift my bush;
+And then pursue me as you draw yo"
+10,13,128,1.848143219947815,"to you, if you this assurance;
+If not, Signior Gremio:
+And so, I take my leave, and thank you both.
+
+GREMIO:
+Adieu, good neighbo","o you, if you this assurance;
+If not, Signior Gremio:
+And so, I take my leave, and thank you both.
+
+GREMIO:
+Adieu, good neighbou"
+10,14,128,1.9259274005889893,"oling am nothing
+to you: so you may continue and laugh at
+nothing still.
+
+ANTONIO:
+What a blow was there given!
+
+SEBASTIAN:
+An i","ling am nothing
+to you: so you may continue and laugh at
+nothing still.
+
+ANTONIO:
+What a blow was there given!
+
+SEBASTIAN:
+An it"
+10,15,128,1.6909093856811523,"!
+But be thou arm'd for some unhappy words.
+
+PETRUCHIO:
+Ay, to the proof; as mountains are for winds,
+That shake not, though the","
+But be thou arm'd for some unhappy words.
+
+PETRUCHIO:
+Ay, to the proof; as mountains are for winds,
+That shake not, though they"
+10,16,128,1.7203967571258545,"ssible you will away to-night?
+
+PETRUCHIO:
+I must away to-day, before night come:
+Make it no wonder; if you knew my business,
+Yo","sible you will away to-night?
+
+PETRUCHIO:
+I must away to-day, before night come:
+Make it no wonder; if you knew my business,
+You"
+10,17,128,1.8176708221435547,"needed that I should entreat,
+Am starved for meat, giddy for lack of sleep,
+With oath kept waking and with brawling fed:
+And tha","eeded that I should entreat,
+Am starved for meat, giddy for lack of sleep,
+With oath kept waking and with brawling fed:
+And that"
+10,18,128,1.947516679763794,"roward wives
+As prisoners to her womanly persuasion.
+Katharina, that cap of yours becomes you not:
+Off with that bauble, throw i","oward wives
+As prisoners to her womanly persuasion.
+Katharina, that cap of yours becomes you not:
+Off with that bauble, throw it"
+10,19,128,1.492180347442627,"ficient dower,
+The match is made, and all is done:
+Your son shall have my daughter with consent.
+
+TRANIO:
+I thank you, sir. Wher","icient dower,
+The match is made, and all is done:
+Your son shall have my daughter with consent.
+
+TRANIO:
+I thank you, sir. Where"
+10,20,128,1.8910043239593506,"tista too.
+Upon my life, Petruchio means but well,
+Whatever fortune stays him from his word:
+Though he be blunt, I know him pass","ista too.
+Upon my life, Petruchio means but well,
+Whatever fortune stays him from his word:
+Though he be blunt, I know him passi"
+10,21,128,1.8137409687042236,"art in my
+belly, ere I should come by a fire to thaw me: but
+I, with blowing the fire, shall warm myself; for,
+considering the w","rt in my
+belly, ere I should come by a fire to thaw me: but
+I, with blowing the fire, shall warm myself; for,
+considering the we"
+10,22,128,1.825027585029602,"eeze to my teeth, my
+tongue to the roof of my mouth, my heart in my
+belly, ere I should come by a fire to thaw me: but
+I, with b","eze to my teeth, my
+tongue to the roof of my mouth, my heart in my
+belly, ere I should come by a fire to thaw me: but
+I, with bl"
+10,23,128,1.6831148862838745,"ountenance surely like a father.
+
+LUCENTIO:
+And what of him, Tranio?
+
+TRANIO:
+If he be credulous and trust my tale,
+I'll make hi","untenance surely like a father.
+
+LUCENTIO:
+And what of him, Tranio?
+
+TRANIO:
+If he be credulous and trust my tale,
+I'll make him"
+10,24,128,2.1313459873199463,"een at Pisa?
+
+Pedant:
+Ay, sir, in Pisa have I often been,
+Pisa renowned for grave citizens.
+
+TRANIO:
+Among them know you one Vin","en at Pisa?
+
+Pedant:
+Ay, sir, in Pisa have I often been,
+Pisa renowned for grave citizens.
+
+TRANIO:
+Among them know you one Vinc"
+10,25,128,1.7450028657913208,"ve him no order; I gave him the stuff.
+
+Tailor:
+But how did you desire it should be made?
+
+GRUMIO:
+Marry, sir, with needle and t","e him no order; I gave him the stuff.
+
+Tailor:
+But how did you desire it should be made?
+
+GRUMIO:
+Marry, sir, with needle and th"
+10,26,128,1.7963193655014038,"all.
+
+PETRUCHIO:
+Well, I say no: and therefore for assurance
+Let's each one send unto his wife;
+And he whose wife is most obedie","ll.
+
+PETRUCHIO:
+Well, I say no: and therefore for assurance
+Let's each one send unto his wife;
+And he whose wife is most obedien"
+10,27,128,1.958890676498413,"ree:
+And time it is, when raging war is done,
+To smile at scapes and perils overblown.
+My fair Bianca, bid my father welcome,
+Wh","ee:
+And time it is, when raging war is done,
+To smile at scapes and perils overblown.
+My fair Bianca, bid my father welcome,
+Whi"
+10,28,128,2.1390128135681152," part he play'd
+And him he play'd it for, he needs will be
+Absolute Milan. Me, poor man, my library
+Was dukedom large enough: of","part he play'd
+And him he play'd it for, he needs will be
+Absolute Milan. Me, poor man, my library
+Was dukedom large enough: of "
+10,29,128,1.904233455657959," O, I
+am undone! I am undone! while I play the good
+husband at home, my son and my servant spend all at
+the university.
+
+TRANIO:","O, I
+am undone! I am undone! while I play the good
+husband at home, my son and my servant spend all at
+the university.
+
+TRANIO:
+"
+10,30,128,1.6266236305236816,"I read that I profess, the Art to Love.
+
+BIANCA:
+And may you prove, sir, master of your art!
+
+LUCENTIO:
+While you, sweet dear, p"," read that I profess, the Art to Love.
+
+BIANCA:
+And may you prove, sir, master of your art!
+
+LUCENTIO:
+While you, sweet dear, pr"
+10,31,128,1.96002197265625,"trust was; which had indeed no limit,
+A confidence sans bound. He being thus lorded,
+Not only with what my revenue yielded,
+But ","rust was; which had indeed no limit,
+A confidence sans bound. He being thus lorded,
+Not only with what my revenue yielded,
+But w"
+11,0,128,2.0686326026916504,"am, but stopp'd
+And left me to a bootless inquisition,
+Concluding 'Stay: not yet.'
+
+PROSPERO:
+The hour's now come;
+The very minu","m, but stopp'd
+And left me to a bootless inquisition,
+Concluding 'Stay: not yet.'
+
+PROSPERO:
+The hour's now come;
+The very minut"
+11,1,128,1.7812373638153076,"CENTIO:
+Is Signior Lucentio within, sir?
+
+Pedant:
+He's within, sir, but not to be spoken withal.
+
+VINCENTIO:
+What if a man bring","ENTIO:
+Is Signior Lucentio within, sir?
+
+Pedant:
+He's within, sir, but not to be spoken withal.
+
+VINCENTIO:
+What if a man bring "
+11,2,128,1.6644090414047241," asketh haste,
+And every day I cannot come to woo.
+You knew my father well, and in him me,
+Left solely heir to all his lands and","asketh haste,
+And every day I cannot come to woo.
+You knew my father well, and in him me,
+Left solely heir to all his lands and "
+11,3,128,1.7226321697235107,"ufficeth I am come to keep my word,
+Though in some part enforced to digress;
+Which, at more leisure, I will so excuse
+As you sha","fficeth I am come to keep my word,
+Though in some part enforced to digress;
+Which, at more leisure, I will so excuse
+As you shal"
+11,4,128,1.8967397212982178,"great comfort from this fellow: methinks he
+hath no drowning mark upon him; his complexion is
+perfect gallows. Stand fast, good ","reat comfort from this fellow: methinks he
+hath no drowning mark upon him; his complexion is
+perfect gallows. Stand fast, good F"
+11,5,128,1.967565655708313,"dly go about her:
+It shall go hard if Cambio go without her.
+
+PETRUCHIO:
+Come on, i' God's name; once more toward our father's.
+","ly go about her:
+It shall go hard if Cambio go without her.
+
+PETRUCHIO:
+Come on, i' God's name; once more toward our father's.
+G"
+11,6,128,1.6029561758041382,"
+
+PETRUCHIO:
+Why, sir, what's your conceit in that?
+
+GRUMIO:
+O, sir, the conceit is deeper than you think for:
+Take up my mistre","
+PETRUCHIO:
+Why, sir, what's your conceit in that?
+
+GRUMIO:
+O, sir, the conceit is deeper than you think for:
+Take up my mistres"
+11,7,128,1.7706892490386963,"y
+Of officer and office, set all hearts i' the state
+To what tune pleased his ear; that now he was
+The ivy which had hid my prin","
+Of officer and office, set all hearts i' the state
+To what tune pleased his ear; that now he was
+The ivy which had hid my princ"
+11,8,128,1.853469729423523,"d attire:
+We will persuade him, be it possible,
+To put on better ere he go to church.
+
+BAPTISTA:
+I'll after him, and see the eve"," attire:
+We will persuade him, be it possible,
+To put on better ere he go to church.
+
+BAPTISTA:
+I'll after him, and see the even"
+11,9,128,2.1751251220703125,"ridegroom's place:
+And let Bianca take her sister's room.
+
+TRANIO:
+Shall sweet Bianca practise how to bride it?
+
+BAPTISTA:
+She s","idegroom's place:
+And let Bianca take her sister's room.
+
+TRANIO:
+Shall sweet Bianca practise how to bride it?
+
+BAPTISTA:
+She sh"
+11,10,128,2.051699638366699,"y me! How likes Hortensio that?
+
+HORTENSIO:
+My widow says, thus she conceives her tale.
+
+PETRUCHIO:
+Very well mended. Kiss him f"," me! How likes Hortensio that?
+
+HORTENSIO:
+My widow says, thus she conceives her tale.
+
+PETRUCHIO:
+Very well mended. Kiss him fo"
+11,11,128,1.912675380706787,"azement: tell your piteous heart
+There's no harm done.
+
+MIRANDA:
+O, woe the day!
+
+PROSPERO:
+No harm.
+I have done nothing but in ","zement: tell your piteous heart
+There's no harm done.
+
+MIRANDA:
+O, woe the day!
+
+PROSPERO:
+No harm.
+I have done nothing but in c"
+11,12,128,1.9605858325958252,"s, shut up my thoughts: I find
+They are inclined to do so.
+
+SEBASTIAN:
+Please you, sir,
+Do not omit the heavy offer of it:
+It se",", shut up my thoughts: I find
+They are inclined to do so.
+
+SEBASTIAN:
+Please you, sir,
+Do not omit the heavy offer of it:
+It sel"
+11,13,128,1.7197513580322266,"anca more
+Than words can witness, or your thoughts can guess.
+
+GREMIO:
+Youngling, thou canst not love so dear as I.
+
+TRANIO:
+Gra","nca more
+Than words can witness, or your thoughts can guess.
+
+GREMIO:
+Youngling, thou canst not love so dear as I.
+
+TRANIO:
+Gray"
+11,14,128,1.937885046005249," all likelihood, some cheer is toward.
+
+GREMIO:
+They're busy within; you were best knock louder.
+
+Pedant:
+What's he that knocks ","all likelihood, some cheer is toward.
+
+GREMIO:
+They're busy within; you were best knock louder.
+
+Pedant:
+What's he that knocks a"
+11,15,128,1.765265941619873,"m sure, sweet Kate, this kindness merits thanks.
+What, not a word? Nay, then thou lovest it not;
+And all my pains is sorted to n"," sure, sweet Kate, this kindness merits thanks.
+What, not a word? Nay, then thou lovest it not;
+And all my pains is sorted to no"
+11,16,128,2.007211208343506,"r thou wast a spirit too delicate
+To act her earthy and abhorr'd commands,
+Refusing her grand hests, she did confine thee,
+By he"," thou wast a spirit too delicate
+To act her earthy and abhorr'd commands,
+Refusing her grand hests, she did confine thee,
+By hel"
+11,17,128,1.9014782905578613," spoke of, and thy beauty sounded,
+Yet not so deeply as to thee belongs,
+Myself am moved to woo thee for my wife.
+
+KATHARINA:
+Mo","spoke of, and thy beauty sounded,
+Yet not so deeply as to thee belongs,
+Myself am moved to woo thee for my wife.
+
+KATHARINA:
+Mov"
+11,18,128,1.6712663173675537,"e you.
+
+BIONDELLO:
+
+TRANIO:
+To save your life in this extremity,
+This favour will I do you for his sake;
+And think it not the wo"," you.
+
+BIONDELLO:
+
+TRANIO:
+To save your life in this extremity,
+This favour will I do you for his sake;
+And think it not the wor"
+11,19,128,1.77971613407135,"usiness' making
+Than we bring men to comfort them:
+The fault's your own.
+
+ALONSO:
+So is the dear'st o' the loss.
+
+GONZALO:
+My lo","siness' making
+Than we bring men to comfort them:
+The fault's your own.
+
+ALONSO:
+So is the dear'st o' the loss.
+
+GONZALO:
+My lor"
+11,20,128,1.846746802330017,"ce to my entertainment,
+I do present you with a man of mine,
+Cunning in music and the mathematics,
+To instruct her fully in thos","e to my entertainment,
+I do present you with a man of mine,
+Cunning in music and the mathematics,
+To instruct her fully in those"
+11,21,128,1.7653582096099854,"us,
+That covenants may be kept on either hand.
+
+BAPTISTA:
+Ay, when the special thing is well obtain'd,
+That is, her love; for th","s,
+That covenants may be kept on either hand.
+
+BAPTISTA:
+Ay, when the special thing is well obtain'd,
+That is, her love; for tha"
+11,22,128,1.7908906936645508,"any you overtake?
+
+HORTENSIO:
+I do assure thee, father, so it is.
+
+PETRUCHIO:
+Come, go along, and see the truth hereof;
+For our ","ny you overtake?
+
+HORTENSIO:
+I do assure thee, father, so it is.
+
+PETRUCHIO:
+Come, go along, and see the truth hereof;
+For our f"
+11,23,128,1.7174348831176758,"r house, to make mine eye the witness
+Of that report which I so oft have heard.
+And, for an entrance to my entertainment,
+I do p"," house, to make mine eye the witness
+Of that report which I so oft have heard.
+And, for an entrance to my entertainment,
+I do pr"
+11,24,128,2.1572391986846924," narrow-prying father, Minola,
+The quaint musician, amorous Licio;
+All for my master's sake, Lucentio.
+Signior Gremio, came you ","narrow-prying father, Minola,
+The quaint musician, amorous Licio;
+All for my master's sake, Lucentio.
+Signior Gremio, came you f"
+11,25,128,1.654714822769165,"e assurance,
+She is your own; else, you must pardon me,
+if you should die before him, where's her dower?
+
+TRANIO:
+That's but a c"," assurance,
+She is your own; else, you must pardon me,
+if you should die before him, where's her dower?
+
+TRANIO:
+That's but a ca"
+11,26,128,1.8846811056137085,"
+And have forsworn you with Hortensio.
+
+BIANCA:
+Tranio, you jest: but have you both forsworn me?
+
+TRANIO:
+Mistress, we have.
+
+LU","And have forsworn you with Hortensio.
+
+BIANCA:
+Tranio, you jest: but have you both forsworn me?
+
+TRANIO:
+Mistress, we have.
+
+LUC"
+11,27,128,2.1361281871795654," o'er so.
+
+SEBASTIAN:
+Look he's winding up the watch of his wit;
+by and by it will strike.
+
+GONZALO:
+Sir,--
+
+SEBASTIAN:
+One: tel","o'er so.
+
+SEBASTIAN:
+Look he's winding up the watch of his wit;
+by and by it will strike.
+
+GONZALO:
+Sir,--
+
+SEBASTIAN:
+One: tell"
+11,28,128,1.3709088563919067,"ffer'd all, I have no more;
+And she can have no more than all I have:
+If you like me, she shall have me and mine.
+
+TRANIO:
+Why, ","fer'd all, I have no more;
+And she can have no more than all I have:
+If you like me, she shall have me and mine.
+
+TRANIO:
+Why, t"
+11,29,128,1.9633535146713257,"e eyes
+Would, with themselves, shut up my thoughts: I find
+They are inclined to do so.
+
+SEBASTIAN:
+Please you, sir,
+Do not omit "," eyes
+Would, with themselves, shut up my thoughts: I find
+They are inclined to do so.
+
+SEBASTIAN:
+Please you, sir,
+Do not omit t"
+11,30,128,1.527922511100769," minstrels play.
+
+PETRUCHIO:
+Gentlemen and friends, I thank you for your pains:
+I know you think to dine with me to-day,
+And hav","minstrels play.
+
+PETRUCHIO:
+Gentlemen and friends, I thank you for your pains:
+I know you think to dine with me to-day,
+And have"
+11,31,128,1.8092830181121826,"be cut out and
+sewed up again; and that I'll prove upon thee,
+though thy little finger be armed in a thimble.
+
+Tailor:
+This is t","e cut out and
+sewed up again; and that I'll prove upon thee,
+though thy little finger be armed in a thimble.
+
+Tailor:
+This is tr"
+12,0,128,1.801065444946289," rough and woo not like a babe.
+
+BAPTISTA:
+Well mayst thou woo, and happy be thy speed!
+But be thou arm'd for some unhappy words","rough and woo not like a babe.
+
+BAPTISTA:
+Well mayst thou woo, and happy be thy speed!
+But be thou arm'd for some unhappy words."
+12,1,128,1.6971967220306396,"prince of power.
+
+MIRANDA:
+Sir, are not you my father?
+
+PROSPERO:
+Thy mother was a piece of virtue, and
+She said thou wast my da","rince of power.
+
+MIRANDA:
+Sir, are not you my father?
+
+PROSPERO:
+Thy mother was a piece of virtue, and
+She said thou wast my dau"
+12,2,128,1.9368913173675537," to me,
+Might I but through my prison once a day
+Behold this maid: all corners else o' the earth
+Let liberty make use of; space ","to me,
+Might I but through my prison once a day
+Behold this maid: all corners else o' the earth
+Let liberty make use of; space e"
+12,3,128,1.9724689722061157,"ce of Venice gold in needlework,
+Pewter and brass and all things that belong
+To house or housekeeping: then, at my farm
+I have a","e of Venice gold in needlework,
+Pewter and brass and all things that belong
+To house or housekeeping: then, at my farm
+I have a "
+12,4,128,1.8334672451019287,"gst the rest that woo
+And free access and favour as the rest:
+And, toward the education of your daughters,
+I here bestow a simpl","st the rest that woo
+And free access and favour as the rest:
+And, toward the education of your daughters,
+I here bestow a simple"
+12,5,128,2.0864157676696777,"ss, which hath as long loved me
+As I have loved this proud disdainful haggard.
+And so farewell, Signior Lucentio.
+Kindness in wo","s, which hath as long loved me
+As I have loved this proud disdainful haggard.
+And so farewell, Signior Lucentio.
+Kindness in wom"
+12,6,128,1.9696639776229858,"ddenly?
+
+BAPTISTA:
+Faith, gentlemen, now I play a merchant's part,
+And venture madly on a desperate mart.
+
+TRANIO:
+'Twas a commo","denly?
+
+BAPTISTA:
+Faith, gentlemen, now I play a merchant's part,
+And venture madly on a desperate mart.
+
+TRANIO:
+'Twas a commod"
+12,7,128,1.9819313287734985,"nd bridegroom coming home?
+
+GREMIO:
+A bridegroom say you? 'tis a groom indeed,
+A grumbling groom, and that the girl shall find.
+","d bridegroom coming home?
+
+GREMIO:
+A bridegroom say you? 'tis a groom indeed,
+A grumbling groom, and that the girl shall find.
+
+"
+12,8,128,1.7154899835586548,"the horses.
+
+KATHARINA:
+Nay, then,
+Do what thou canst, I will not go to-day;
+No, nor to-morrow, not till I please myself.
+The do","he horses.
+
+KATHARINA:
+Nay, then,
+Do what thou canst, I will not go to-day;
+No, nor to-morrow, not till I please myself.
+The doo"
+12,9,128,2.11491060256958,"ble.
+Why does the world report that Kate doth limp?
+O slanderous world! Kate like the hazel-twig
+Is straight and slender and as ","le.
+Why does the world report that Kate doth limp?
+O slanderous world! Kate like the hazel-twig
+Is straight and slender and as b"
+12,10,128,2.2743310928344727,"ed wench.
+
+Boatswain:
+Lay her a-hold, a-hold! set her two courses off to
+sea again; lay her off.
+
+Mariners:
+All lost! to prayers","d wench.
+
+Boatswain:
+Lay her a-hold, a-hold! set her two courses off to
+sea again; lay her off.
+
+Mariners:
+All lost! to prayers,"
+12,11,128,2.3555257320404053,"villain! A silken doublet! a velvet
+hose! a scarlet cloak! and a copatain hat! O, I
+am undone! I am undone! while I play the goo","illain! A silken doublet! a velvet
+hose! a scarlet cloak! and a copatain hat! O, I
+am undone! I am undone! while I play the good"
+12,12,128,1.9323902130126953,"people bore me, nor set
+A mark so bloody on the business, but
+With colours fairer painted their foul ends.
+In few, they hurried ","eople bore me, nor set
+A mark so bloody on the business, but
+With colours fairer painted their foul ends.
+In few, they hurried u"
+12,13,128,2.0104711055755615,"hen groan'd; which raised in me
+An undergoing stomach, to bear up
+Against what should ensue.
+
+MIRANDA:
+How came we ashore?
+
+PROS","en groan'd; which raised in me
+An undergoing stomach, to bear up
+Against what should ensue.
+
+MIRANDA:
+How came we ashore?
+
+PROSP"
+12,14,128,1.7523441314697266,"sio, I have often heard
+Of your entire affection to Bianca;
+And since mine eyes are witness of her lightness,
+I will with you, i","io, I have often heard
+Of your entire affection to Bianca;
+And since mine eyes are witness of her lightness,
+I will with you, if"
+12,15,128,1.8114187717437744," her chamber, making a sermon of continency to her;
+And rails, and swears, and rates, that she, poor soul,
+Knows not which way t","her chamber, making a sermon of continency to her;
+And rails, and swears, and rates, that she, poor soul,
+Knows not which way to"
+12,16,128,1.9490845203399658,"to ask him sops as he was drinking.
+This done, he took the bride about the neck
+And kiss'd her lips with such a clamorous smack
+","o ask him sops as he was drinking.
+This done, he took the bride about the neck
+And kiss'd her lips with such a clamorous smack
+T"
+12,17,128,2.06382417678833," am thus resolved: on Sunday next you know
+My daughter Katharina is to be married:
+Now, on the Sunday following, shall Bianca
+Be","am thus resolved: on Sunday next you know
+My daughter Katharina is to be married:
+Now, on the Sunday following, shall Bianca
+Be "
+12,18,128,1.9094101190567017,"at roar'd to us, to sigh
+To the winds whose pity, sighing back again,
+Did us but loving wrong.
+
+MIRANDA:
+Alack, what trouble
+Was","t roar'd to us, to sigh
+To the winds whose pity, sighing back again,
+Did us but loving wrong.
+
+MIRANDA:
+Alack, what trouble
+Was "
+12,19,128,1.7043395042419434," be made?
+
+GRUMIO:
+Marry, sir, with needle and thread.
+
+Tailor:
+But did you not request to have it cut?
+
+GRUMIO:
+Thou hast faced","be made?
+
+GRUMIO:
+Marry, sir, with needle and thread.
+
+Tailor:
+But did you not request to have it cut?
+
+GRUMIO:
+Thou hast faced "
+12,20,128,1.9746912717819214,"ascals, go, and fetch my supper in.
+Where is the life that late I led--
+Where are those--Sit down, Kate, and welcome.--
+Sound, s","scals, go, and fetch my supper in.
+Where is the life that late I led--
+Where are those--Sit down, Kate, and welcome.--
+Sound, so"
+12,21,128,1.9077262878417969,"re!
+
+ARIEL:
+I prithee,
+Remember I have done thee worthy service;
+Told thee no lies, made thee no mistakings, served
+Without or g","e!
+
+ARIEL:
+I prithee,
+Remember I have done thee worthy service;
+Told thee no lies, made thee no mistakings, served
+Without or gr"
+12,22,128,1.941349983215332,"My name is call'd Vincentio; my dwelling Pisa;
+And bound I am to Padua; there to visit
+A son of mine, which long I have not seen","y name is call'd Vincentio; my dwelling Pisa;
+And bound I am to Padua; there to visit
+A son of mine, which long I have not seen."
+12,23,128,1.8976938724517822,"h a sinner of his memory,
+To credit his own lie, he did believe
+He was indeed the duke; out o' the substitution
+And executing th"," a sinner of his memory,
+To credit his own lie, he did believe
+He was indeed the duke; out o' the substitution
+And executing the"
+12,24,128,2.043759822845459,"is eyes:
+Nothing of him that doth fade
+But doth suffer a sea-change
+Into something rich and strange.
+Sea-nymphs hourly ring his ","s eyes:
+Nothing of him that doth fade
+But doth suffer a sea-change
+Into something rich and strange.
+Sea-nymphs hourly ring his k"
+12,25,128,1.5638148784637451,"l the subjects that you have,
+Which first was mine own king: and here you sty me
+In this hard rock, whiles you do keep from me
+T"," the subjects that you have,
+Which first was mine own king: and here you sty me
+In this hard rock, whiles you do keep from me
+Th"
+12,26,128,1.9562656879425049,"
+Preposterous ass, that never read so far
+To know the cause why music was ordain'd!
+Was it not to refresh the mind of man
+After ","Preposterous ass, that never read so far
+To know the cause why music was ordain'd!
+Was it not to refresh the mind of man
+After h"
+12,27,128,1.916205883026123,"hrough the dirt
+to pluck him off me, how he swore, how she prayed,
+that never prayed before, how I cried, how the
+horses ran awa","rough the dirt
+to pluck him off me, how he swore, how she prayed,
+that never prayed before, how I cried, how the
+horses ran away"
+12,28,128,1.9410386085510254," that I am not Lucentio.
+
+GREMIO:
+Yes, I know thee to be Signior Lucentio.
+
+BAPTISTA:
+Away with the dotard! to the gaol with him","that I am not Lucentio.
+
+GREMIO:
+Yes, I know thee to be Signior Lucentio.
+
+BAPTISTA:
+Away with the dotard! to the gaol with him!"
+12,29,128,2.1436963081359863,"patrimony.
+
+Pedant:
+Soft son!
+Sir, by your leave: having come to Padua
+To gather in some debts, my son Lucentio
+Made me acquaint","atrimony.
+
+Pedant:
+Soft son!
+Sir, by your leave: having come to Padua
+To gather in some debts, my son Lucentio
+Made me acquainte"
+12,30,128,1.9502394199371338,"holar in the schools;
+I'll not be tied to hours nor 'pointed times,
+But learn my lessons as I please myself.
+And, to cut off all","olar in the schools;
+I'll not be tied to hours nor 'pointed times,
+But learn my lessons as I please myself.
+And, to cut off all "
+12,31,128,1.7985005378723145,"and Naples have
+More widows in them of this business' making
+Than we bring men to comfort them:
+The fault's your own.
+
+ALONSO:
+S","nd Naples have
+More widows in them of this business' making
+Than we bring men to comfort them:
+The fault's your own.
+
+ALONSO:
+So"
+13,0,128,1.7993687391281128,"s are coral made;
+Those are pearls that were his eyes:
+Nothing of him that doth fade
+But doth suffer a sea-change
+Into something"," are coral made;
+Those are pearls that were his eyes:
+Nothing of him that doth fade
+But doth suffer a sea-change
+Into something "
+13,1,128,1.8140199184417725,"
+
+CURTIS:
+Who knows not that?
+
+GRUMIO:
+Thou, it seems, that calls for company to
+countenance her.
+
+CURTIS:
+I call them forth to ","
+CURTIS:
+Who knows not that?
+
+GRUMIO:
+Thou, it seems, that calls for company to
+countenance her.
+
+CURTIS:
+I call them forth to c"
+13,2,128,2.084106922149658,"NDELLO:
+Why, Petruchio is coming in a new hat and an old
+jerkin, a pair of old breeches thrice turned, a pair
+of boots that have","DELLO:
+Why, Petruchio is coming in a new hat and an old
+jerkin, a pair of old breeches thrice turned, a pair
+of boots that have "
+13,3,128,1.7438589334487915,"we shall never go.
+
+KATHARINA:
+Forward, I pray, since we have come so far,
+And be it moon, or sun, or what you please:
+An if you","e shall never go.
+
+KATHARINA:
+Forward, I pray, since we have come so far,
+And be it moon, or sun, or what you please:
+An if you "
+13,4,128,2.1452841758728027," rest,
+And watch your safety.
+
+ALONSO:
+Thank you. Wondrous heavy.
+
+SEBASTIAN:
+What a strange drowsiness possesses them!
+
+ANTONIO","rest,
+And watch your safety.
+
+ALONSO:
+Thank you. Wondrous heavy.
+
+SEBASTIAN:
+What a strange drowsiness possesses them!
+
+ANTONIO:"
+13,5,128,1.5160751342773438,"w,
+She is not for your turn, the more my grief.
+
+PETRUCHIO:
+I see you do not mean to part with her,
+Or else you like not of my c",",
+She is not for your turn, the more my grief.
+
+PETRUCHIO:
+I see you do not mean to part with her,
+Or else you like not of my co"
+13,6,128,2.0449647903442383,"allows.
+
+GONZALO:
+And were the king on't, what would I do?
+
+SEBASTIAN:
+'Scape being drunk for want of wine.
+
+GONZALO:
+I' the com","llows.
+
+GONZALO:
+And were the king on't, what would I do?
+
+SEBASTIAN:
+'Scape being drunk for want of wine.
+
+GONZALO:
+I' the comm"
+13,7,128,1.819995403289795,"s,
+How to deny them, who to advance and who
+To trash for over-topping, new created
+The creatures that were mine, I say, or chang",",
+How to deny them, who to advance and who
+To trash for over-topping, new created
+The creatures that were mine, I say, or change"
+13,8,128,2.07094669342041,"ls overblown.
+My fair Bianca, bid my father welcome,
+While I with self-same kindness welcome thine.
+Brother Petruchio, sister Ka","s overblown.
+My fair Bianca, bid my father welcome,
+While I with self-same kindness welcome thine.
+Brother Petruchio, sister Kat"
+13,9,128,1.7114105224609375,"master.
+
+PETRUCHIO:
+A good swift simile, but something currish.
+
+TRANIO:
+'Tis well, sir, that you hunted for yourself:
+'Tis thou","aster.
+
+PETRUCHIO:
+A good swift simile, but something currish.
+
+TRANIO:
+'Tis well, sir, that you hunted for yourself:
+'Tis thoug"
+13,10,128,1.9913524389266968,"as three years old, and his
+name is Tranio.
+
+Pedant:
+Away, away, mad ass! his name is Lucentio and he is
+mine only son, and heir","s three years old, and his
+name is Tranio.
+
+Pedant:
+Away, away, mad ass! his name is Lucentio and he is
+mine only son, and heir "
+13,11,128,2.1595282554626465,"UCENTIO:
+Mistrust it not: for, sure, AEacides
+Was Ajax, call'd so from his grandfather.
+
+BIANCA:
+I must believe my master; else,","CENTIO:
+Mistrust it not: for, sure, AEacides
+Was Ajax, call'd so from his grandfather.
+
+BIANCA:
+I must believe my master; else, "
+13,12,128,1.9001508951187134,"y.
+
+PROSPERO:
+Before the time be out? no more!
+
+ARIEL:
+I prithee,
+Remember I have done thee worthy service;
+Told thee no lies, m",".
+
+PROSPERO:
+Before the time be out? no more!
+
+ARIEL:
+I prithee,
+Remember I have done thee worthy service;
+Told thee no lies, ma"
+13,13,128,1.8346166610717773,"k the bride about the neck
+And kiss'd her lips with such a clamorous smack
+That at the parting all the church did echo:
+And I se"," the bride about the neck
+And kiss'd her lips with such a clamorous smack
+That at the parting all the church did echo:
+And I see"
+13,14,128,1.9383466243743896,";
+You heedless joltheads and unmanner'd slaves!
+What, do you grumble? I'll be with you straight.
+
+KATHARINA:
+I pray you, husband","
+You heedless joltheads and unmanner'd slaves!
+What, do you grumble? I'll be with you straight.
+
+KATHARINA:
+I pray you, husband,"
+13,15,128,1.986940860748291,"y neck. A fire good Curtis.
+
+CURTIS:
+Is my master and his wife coming, Grumio?
+
+GRUMIO:
+O, ay, Curtis, ay: and therefore fire, f"," neck. A fire good Curtis.
+
+CURTIS:
+Is my master and his wife coming, Grumio?
+
+GRUMIO:
+O, ay, Curtis, ay: and therefore fire, fi"
+13,16,128,2.15476131439209," being drunk for want of wine.
+
+GONZALO:
+I' the commonwealth I would by contraries
+Execute all things; for no kind of traffic
+Wo","being drunk for want of wine.
+
+GONZALO:
+I' the commonwealth I would by contraries
+Execute all things; for no kind of traffic
+Wou"
+13,17,128,1.789313554763794,"ilst thou liest warm at home, secure and safe;
+And craves no other tribute at thy hands
+But love, fair looks and true obedience;","lst thou liest warm at home, secure and safe;
+And craves no other tribute at thy hands
+But love, fair looks and true obedience;
+"
+13,18,128,1.8428397178649902,"will of thy arrival be full joyous.
+
+VINCENTIO:
+But is it true? or else is it your pleasure,
+Like pleasant travellers, to break ","ill of thy arrival be full joyous.
+
+VINCENTIO:
+But is it true? or else is it your pleasure,
+Like pleasant travellers, to break a"
+13,19,128,1.8593106269836426,"hee ope thine ear;
+Obey and be attentive. Canst thou remember
+A time before we came unto this cell?
+I do not think thou canst, f","ee ope thine ear;
+Obey and be attentive. Canst thou remember
+A time before we came unto this cell?
+I do not think thou canst, fo"
+13,20,128,1.7764739990234375,"re her?
+
+GREMIO:
+First, as you know, my house within the city
+Is richly furnished with plate and gold;
+Basins and ewers to lave ","e her?
+
+GREMIO:
+First, as you know, my house within the city
+Is richly furnished with plate and gold;
+Basins and ewers to lave h"
+13,21,128,1.789562463760376,"wenty times so much upon my wife.
+
+LUCENTIO:
+A hundred then.
+
+HORTENSIO:
+Content.
+
+PETRUCHIO:
+A match! 'tis done.
+
+HORTENSIO:
+Wh","enty times so much upon my wife.
+
+LUCENTIO:
+A hundred then.
+
+HORTENSIO:
+Content.
+
+PETRUCHIO:
+A match! 'tis done.
+
+HORTENSIO:
+Who"
+13,22,128,1.7756035327911377,"ervice is repaid with thanks;
+And so shall mine, before you touch the meat.
+
+KATHARINA:
+I thank you, sir.
+
+HORTENSIO:
+Signior Pe","rvice is repaid with thanks;
+And so shall mine, before you touch the meat.
+
+KATHARINA:
+I thank you, sir.
+
+HORTENSIO:
+Signior Pet"
+13,23,128,1.807563066482544,"rth,
+To do me business in the veins o' the earth
+When it is baked with frost.
+
+ARIEL:
+I do not, sir.
+
+PROSPERO:
+Thou liest, mali","th,
+To do me business in the veins o' the earth
+When it is baked with frost.
+
+ARIEL:
+I do not, sir.
+
+PROSPERO:
+Thou liest, malig"
+13,24,128,1.8038526773452759,"ed at the last
+Unto the wished haven of my bliss.
+What Tranio did, myself enforced him to;
+Then pardon him, sweet father, for my","d at the last
+Unto the wished haven of my bliss.
+What Tranio did, myself enforced him to;
+Then pardon him, sweet father, for my "
+13,25,128,2.315753221511841,"
+And the rarest that e'er came there.
+
+SEBASTIAN:
+Bate, I beseech you, widow Dido.
+
+ANTONIO:
+O, widow Dido! ay, widow Dido.
+
+GON","And the rarest that e'er came there.
+
+SEBASTIAN:
+Bate, I beseech you, widow Dido.
+
+ANTONIO:
+O, widow Dido! ay, widow Dido.
+
+GONZ"
+13,26,128,2.115903377532959,"
+CURTIS:
+Away, you three-inch fool! I am no beast.
+
+GRUMIO:
+Am I but three inches? why, thy horn is a foot; and
+so long am I at ","CURTIS:
+Away, you three-inch fool! I am no beast.
+
+GRUMIO:
+Am I but three inches? why, thy horn is a foot; and
+so long am I at t"
+13,27,128,1.8627498149871826,"ome part enforced to digress;
+Which, at more leisure, I will so excuse
+As you shall well be satisfied withal.
+But where is Kate?","me part enforced to digress;
+Which, at more leisure, I will so excuse
+As you shall well be satisfied withal.
+But where is Kate? "
+13,28,128,1.8630895614624023,"
+See where she comes and brings your froward wives
+As prisoners to her womanly persuasion.
+Katharina, that cap of yours becomes ","See where she comes and brings your froward wives
+As prisoners to her womanly persuasion.
+Katharina, that cap of yours becomes y"
+13,29,128,2.1461668014526367,"'s use!
+O, fie, fie, fie!
+
+PETRUCHIO:
+
+HORTENSIO:
+Tailor, I'll pay thee for thy gown tomorrow:
+Take no unkindness of his hasty w","s use!
+O, fie, fie, fie!
+
+PETRUCHIO:
+
+HORTENSIO:
+Tailor, I'll pay thee for thy gown tomorrow:
+Take no unkindness of his hasty wo"
+13,30,128,2.0458109378814697,"
+KATHARINA:
+A join'd-stool.
+
+PETRUCHIO:
+Thou hast hit it: come, sit on me.
+
+KATHARINA:
+Asses are made to bear, and so are you.
+
+","KATHARINA:
+A join'd-stool.
+
+PETRUCHIO:
+Thou hast hit it: come, sit on me.
+
+KATHARINA:
+Asses are made to bear, and so are you.
+
+P"
+13,31,128,1.8257689476013184,";
+A mad-cup ruffian and a swearing Jack,
+That thinks with oaths to face the matter out.
+
+PETRUCHIO:
+Father, 'tis thus: yourself ","
+A mad-cup ruffian and a swearing Jack,
+That thinks with oaths to face the matter out.
+
+PETRUCHIO:
+Father, 'tis thus: yourself a"
+14,0,128,1.9771111011505127,"NIO:
+And, sowing the kernels of it in the sea, bring
+forth more islands.
+
+GONZALO:
+Ay.
+
+ANTONIO:
+Why, in good time.
+
+GONZALO:
+Si","IO:
+And, sowing the kernels of it in the sea, bring
+forth more islands.
+
+GONZALO:
+Ay.
+
+ANTONIO:
+Why, in good time.
+
+GONZALO:
+Sir"
+14,1,128,1.7367911338806152,"
+Fair sir, and you my merry mistress,
+That with your strange encounter much amazed me,
+My name is call'd Vincentio; my dwelling ","Fair sir, and you my merry mistress,
+That with your strange encounter much amazed me,
+My name is call'd Vincentio; my dwelling P"
+14,2,128,1.8600131273269653,"L:
+Ay, sir.
+
+PROSPERO:
+This blue-eyed hag was hither brought with child
+And here was left by the sailors. Thou, my slave,
+As tho",":
+Ay, sir.
+
+PROSPERO:
+This blue-eyed hag was hither brought with child
+And here was left by the sailors. Thou, my slave,
+As thou"
+14,3,128,1.942976713180542,"k upon him; his complexion is
+perfect gallows. Stand fast, good Fate, to his
+hanging: make the rope of his destiny our cable,
+fo"," upon him; his complexion is
+perfect gallows. Stand fast, good Fate, to his
+hanging: make the rope of his destiny our cable,
+for"
+14,4,128,2.125103712081909,"HIO:
+A whoreson beetle-headed, flap-ear'd knave!
+Come, Kate, sit down; I know you have a stomach.
+Will you give thanks, sweet Ka","IO:
+A whoreson beetle-headed, flap-ear'd knave!
+Come, Kate, sit down; I know you have a stomach.
+Will you give thanks, sweet Kat"
+14,5,128,2.0163137912750244,"tackle, sail, nor mast; the very rats
+Instinctively had quit it: there they hoist us,
+To cry to the sea that roar'd to us, to si","ackle, sail, nor mast; the very rats
+Instinctively had quit it: there they hoist us,
+To cry to the sea that roar'd to us, to sig"
+14,6,128,1.9786818027496338,";
+I'll bring mine action on the proudest he
+That stops my way in Padua. Grumio,
+Draw forth thy weapon, we are beset with thieves","
+I'll bring mine action on the proudest he
+That stops my way in Padua. Grumio,
+Draw forth thy weapon, we are beset with thieves;"
+14,7,128,1.9229817390441895,"ormable as other household Kates.
+Here comes your father: never make denial;
+I must and will have Katharina to my wife.
+
+BAPTIST","rmable as other household Kates.
+Here comes your father: never make denial;
+I must and will have Katharina to my wife.
+
+BAPTISTA"
+14,8,128,1.9824962615966797,"Of Pisa, sir; son to Vincentio.
+
+BAPTISTA:
+A mighty man of Pisa; by report
+I know him well: you are very welcome, sir,
+Take you ","f Pisa, sir; son to Vincentio.
+
+BAPTISTA:
+A mighty man of Pisa; by report
+I know him well: you are very welcome, sir,
+Take you t"
+14,9,128,1.9430537223815918,"INA:
+Ay, if the fool could find it where it lies,
+
+PETRUCHIO:
+Who knows not where a wasp does
+wear his sting? In his tail.
+
+KATH","NA:
+Ay, if the fool could find it where it lies,
+
+PETRUCHIO:
+Who knows not where a wasp does
+wear his sting? In his tail.
+
+KATHA"
+14,10,128,2.2404403686523438,"find when he comes home. But what talk I of this?
+Call forth Nathaniel, Joseph, Nicholas, Philip,
+Walter, Sugarsop and the rest:","ind when he comes home. But what talk I of this?
+Call forth Nathaniel, Joseph, Nicholas, Philip,
+Walter, Sugarsop and the rest: "
+14,11,128,2.1495535373687744,"? a sleeve? 'tis like a demi-cannon:
+What, up and down, carved like an apple-tart?
+Here's snip and nip and cut and slish and sla"," a sleeve? 'tis like a demi-cannon:
+What, up and down, carved like an apple-tart?
+Here's snip and nip and cut and slish and slas"
+14,12,128,1.9614040851593018,"scal--would thou mightst lie drowning
+The washing of ten tides!
+
+GONZALO:
+He'll be hang'd yet,
+Though every drop of water swear ","cal--would thou mightst lie drowning
+The washing of ten tides!
+
+GONZALO:
+He'll be hang'd yet,
+Though every drop of water swear a"
+14,13,128,1.825298547744751,"rceive thou art a reverend father;
+Pardon, I pray thee, for my mad mistaking.
+
+PETRUCHIO:
+Do, good old grandsire; and withal mak","ceive thou art a reverend father;
+Pardon, I pray thee, for my mad mistaking.
+
+PETRUCHIO:
+Do, good old grandsire; and withal make"
+14,14,128,1.6870086193084717,"HIO:
+Now, by the world, it is a lusty wench;
+I love her ten times more than e'er I did:
+O, how I long to have some chat with her","IO:
+Now, by the world, it is a lusty wench;
+I love her ten times more than e'er I did:
+O, how I long to have some chat with her!"
+14,15,128,1.8999990224838257,"n this city under my countenance.
+
+BIONDELLO:
+I have seen them in the church together: God send
+'em good shipping! But who is he"," this city under my countenance.
+
+BIONDELLO:
+I have seen them in the church together: God send
+'em good shipping! But who is her"
+14,16,128,2.1294913291931152,"EBASTIAN:
+With an eye of green in't.
+
+ANTONIO:
+He misses not much.
+
+SEBASTIAN:
+No; he doth but mistake the truth totally.
+
+GONZA","BASTIAN:
+With an eye of green in't.
+
+ANTONIO:
+He misses not much.
+
+SEBASTIAN:
+No; he doth but mistake the truth totally.
+
+GONZAL"
+14,17,128,1.8264286518096924,"es Katharina!
+
+KATHARINA:
+What is your will, sir, that you send for me?
+
+PETRUCHIO:
+Where is your sister, and Hortensio's wife?
+","s Katharina!
+
+KATHARINA:
+What is your will, sir, that you send for me?
+
+PETRUCHIO:
+Where is your sister, and Hortensio's wife?
+
+"
+14,18,128,1.9641169309616089,"way: I know thou canst not choose.
+Come away, servant, come. I am ready now.
+Approach, my Ariel, come.
+
+ARIEL:
+All hail, great m","ay: I know thou canst not choose.
+Come away, servant, come. I am ready now.
+Approach, my Ariel, come.
+
+ARIEL:
+All hail, great ma"
+14,19,128,2.0180208683013916,"ore.
+
+TRANIO:
+Mistress Bianca, bless you with such grace
+As 'longeth to a lover's blessed case!
+Nay, I have ta'en you napping, g","re.
+
+TRANIO:
+Mistress Bianca, bless you with such grace
+As 'longeth to a lover's blessed case!
+Nay, I have ta'en you napping, ge"
+14,20,128,1.384468674659729,"ly their affections:
+And therefore, if you say no more than this,
+That like a father you will deal with him
+And pass my daughter","y their affections:
+And therefore, if you say no more than this,
+That like a father you will deal with him
+And pass my daughter "
+14,21,128,2.038198947906494,"you this young scholar,
+that hath been long studying at Rheims; as cunning
+in Greek, Latin, and other languages, as the other
+in","ou this young scholar,
+that hath been long studying at Rheims; as cunning
+in Greek, Latin, and other languages, as the other
+in "
+14,22,128,1.6729474067687988,"n he doth send for her,
+Shall win the wager which we will propose.
+
+HORTENSIO:
+Content. What is the wager?
+
+LUCENTIO:
+Twenty cro"," he doth send for her,
+Shall win the wager which we will propose.
+
+HORTENSIO:
+Content. What is the wager?
+
+LUCENTIO:
+Twenty crow"
+14,23,128,1.8029797077178955,"y.
+Holla, within!
+Sirrah, lead these gentlemen
+To my daughters; and tell them both,
+These are their tutors: bid them use them we",".
+Holla, within!
+Sirrah, lead these gentlemen
+To my daughters; and tell them both,
+These are their tutors: bid them use them wel"
+14,24,128,1.957869052886963,"my countenance.
+
+BIONDELLO:
+I have seen them in the church together: God send
+'em good shipping! But who is here? mine old
+maste","y countenance.
+
+BIONDELLO:
+I have seen them in the church together: God send
+'em good shipping! But who is here? mine old
+master"
+14,25,128,2.0762078762054443,"ear him? You mar our labour: keep your
+cabins: you do assist the storm.
+
+GONZALO:
+Nay, good, be patient.
+
+Boatswain:
+When the se","ar him? You mar our labour: keep your
+cabins: you do assist the storm.
+
+GONZALO:
+Nay, good, be patient.
+
+Boatswain:
+When the sea"
+14,26,128,2.280539035797119,"weight should be.
+
+PETRUCHIO:
+Should be! should--buzz!
+
+KATHARINA:
+Well ta'en, and like a buzzard.
+
+PETRUCHIO:
+O slow-wing'd tur","eight should be.
+
+PETRUCHIO:
+Should be! should--buzz!
+
+KATHARINA:
+Well ta'en, and like a buzzard.
+
+PETRUCHIO:
+O slow-wing'd turt"
+14,27,128,1.9684972763061523," shrew.
+Give me thy hand, Kate: I will unto Venice,
+To buy apparel 'gainst the wedding-day.
+Provide the feast, father, and bid t","shrew.
+Give me thy hand, Kate: I will unto Venice,
+To buy apparel 'gainst the wedding-day.
+Provide the feast, father, and bid th"
+14,28,128,2.1474721431732178," forty
+fancies' pricked in't for a feather: a monster, a
+very monster in apparel, and not like a Christian
+footboy or a gentlema","forty
+fancies' pricked in't for a feather: a monster, a
+very monster in apparel, and not like a Christian
+footboy or a gentleman"
+14,29,128,1.7709412574768066,"aging fires meet together
+They do consume the thing that feeds their fury:
+Though little fire grows great with little wind,
+Yet ","ging fires meet together
+They do consume the thing that feeds their fury:
+Though little fire grows great with little wind,
+Yet e"
+14,30,128,2.0262508392333984,"O:
+Where is the master, boatswain?
+
+Boatswain:
+Do you not hear him? You mar our labour: keep your
+cabins: you do assist the stor",":
+Where is the master, boatswain?
+
+Boatswain:
+Do you not hear him? You mar our labour: keep your
+cabins: you do assist the storm"
+14,31,128,2.1087095737457275," too choleric a meat.
+How say you to a fat tripe finely broil'd?
+
+KATHARINA:
+I like it well: good Grumio, fetch it me.
+
+GRUMIO:
+","too choleric a meat.
+How say you to a fat tripe finely broil'd?
+
+KATHARINA:
+I like it well: good Grumio, fetch it me.
+
+GRUMIO:
+I"
+15,0,128,1.917447566986084,"ooth to say,
+In countenance somewhat doth resemble you.
+
+BIONDELLO:
+
+TRANIO:
+To save your life in this extremity,
+This favour wi","oth to say,
+In countenance somewhat doth resemble you.
+
+BIONDELLO:
+
+TRANIO:
+To save your life in this extremity,
+This favour wil"
+15,1,128,1.8987274169921875,"dam, Ralph, and Gregory;
+The rest were ragged, old, and beggarly;
+Yet, as they are, here are they come to meet you.
+
+PETRUCHIO:
+","am, Ralph, and Gregory;
+The rest were ragged, old, and beggarly;
+Yet, as they are, here are they come to meet you.
+
+PETRUCHIO:
+G"
+15,2,128,1.909156084060669,"our destroy us?
+
+PROSPERO:
+Well demanded, wench:
+My tale provokes that question. Dear, they durst not,
+So dear the love my peopl","ur destroy us?
+
+PROSPERO:
+Well demanded, wench:
+My tale provokes that question. Dear, they durst not,
+So dear the love my people"
+15,3,128,2.0290141105651855," you laugh
+me asleep, for I am very heavy?
+
+ANTONIO:
+Go sleep, and hear us.
+
+ALONSO:
+What, all so soon asleep! I wish mine eyes
+","you laugh
+me asleep, for I am very heavy?
+
+ANTONIO:
+Go sleep, and hear us.
+
+ALONSO:
+What, all so soon asleep! I wish mine eyes
+W"
+15,4,128,1.9899847507476807,"us harp; he hath
+raised the wall and houses too.
+
+ANTONIO:
+What impossible matter will he make easy next?
+
+SEBASTIAN:
+I think he","s harp; he hath
+raised the wall and houses too.
+
+ANTONIO:
+What impossible matter will he make easy next?
+
+SEBASTIAN:
+I think he "
+15,5,128,1.7018440961837769,"will content you, go to: but
+I will in, to be revenged for this villany.
+
+BAPTISTA:
+And I, to sound the depth of this knavery.
+
+","ill content you, go to: but
+I will in, to be revenged for this villany.
+
+BAPTISTA:
+And I, to sound the depth of this knavery.
+
+L"
+15,6,128,1.559564471244812,"Kate and better for myself.
+But what a fool am I to chat with you,
+When I should bid good morrow to my bride,
+And seal the title","ate and better for myself.
+But what a fool am I to chat with you,
+When I should bid good morrow to my bride,
+And seal the title "
+15,7,128,1.9080052375793457,"ape not so.
+
+KATHARINA:
+I chafe you, if I tarry: let me go.
+
+PETRUCHIO:
+No, not a whit: I find you passing gentle.
+'Twas told me","pe not so.
+
+KATHARINA:
+I chafe you, if I tarry: let me go.
+
+PETRUCHIO:
+No, not a whit: I find you passing gentle.
+'Twas told me "
+15,8,128,1.830570101737976,"the lip, as angry wenches will,
+Nor hast thou pleasure to be cross in talk,
+But thou with mildness entertain'st thy wooers,
+With","he lip, as angry wenches will,
+Nor hast thou pleasure to be cross in talk,
+But thou with mildness entertain'st thy wooers,
+With "
+15,9,128,1.9258816242218018,"ess, if thou be a man.
+Fear not, sweet wench, they shall not touch
+thee, Kate:
+I'll buckler thee against a million.
+
+BAPTISTA:
+N","ss, if thou be a man.
+Fear not, sweet wench, they shall not touch
+thee, Kate:
+I'll buckler thee against a million.
+
+BAPTISTA:
+Na"
+15,10,128,1.8645408153533936,"r, you rogue. What, have you forgot me?
+
+BIONDELLO:
+Forgot you! no, sir: I could not forget you, for I
+never saw you before in a",", you rogue. What, have you forgot me?
+
+BIONDELLO:
+Forgot you! no, sir: I could not forget you, for I
+never saw you before in al"
+15,11,128,2.103829860687256,"ng you.
+
+PETRUCHIO:
+To her, Kate!
+
+HORTENSIO:
+To her, widow!
+
+PETRUCHIO:
+A hundred marks, my Kate does put her down.
+
+HORTENSIO:","g you.
+
+PETRUCHIO:
+To her, Kate!
+
+HORTENSIO:
+To her, widow!
+
+PETRUCHIO:
+A hundred marks, my Kate does put her down.
+
+HORTENSIO:
+"
+15,12,128,1.8574042320251465,"lves.
+
+PETRUCHIO:
+Signior Baptista, my business asketh haste,
+And every day I cannot come to woo.
+You knew my father well, and i","ves.
+
+PETRUCHIO:
+Signior Baptista, my business asketh haste,
+And every day I cannot come to woo.
+You knew my father well, and in"
+15,13,128,1.803152322769165,"bride to you, if you this assurance;
+If not, Signior Gremio:
+And so, I take my leave, and thank you both.
+
+GREMIO:
+Adieu, good n","ride to you, if you this assurance;
+If not, Signior Gremio:
+And so, I take my leave, and thank you both.
+
+GREMIO:
+Adieu, good ne"
+15,14,128,1.8905669450759888,"room,
+That take it on you at the first so roundly.
+
+PETRUCHIO:
+O Kate, content thee; prithee, be not angry.
+
+KATHARINA:
+I will b","oom,
+That take it on you at the first so roundly.
+
+PETRUCHIO:
+O Kate, content thee; prithee, be not angry.
+
+KATHARINA:
+I will be"
+15,15,128,1.792353630065918," my countenance in the town;
+And happily I have arrived at the last
+Unto the wished haven of my bliss.
+What Tranio did, myself e","my countenance in the town;
+And happily I have arrived at the last
+Unto the wished haven of my bliss.
+What Tranio did, myself en"
+15,16,128,1.9065364599227905,"me water?
+Come, Kate, and wash, and welcome heartily.
+You whoreson villain! will you let it fall?
+
+KATHARINA:
+Patience, I pray y","e water?
+Come, Kate, and wash, and welcome heartily.
+You whoreson villain! will you let it fall?
+
+KATHARINA:
+Patience, I pray yo"
+15,17,128,2.020923376083374,"BAPTISTA:
+I have a daughter, sir, called Katharina.
+
+GREMIO:
+You are too blunt: go to it orderly.
+
+PETRUCHIO:
+You wrong me, Sign","APTISTA:
+I have a daughter, sir, called Katharina.
+
+GREMIO:
+You are too blunt: go to it orderly.
+
+PETRUCHIO:
+You wrong me, Signi"
+15,18,128,2.0630290508270264,"RTENSIO:
+To her, widow!
+
+PETRUCHIO:
+A hundred marks, my Kate does put her down.
+
+HORTENSIO:
+That's my office.
+
+PETRUCHIO:
+Spoke ","TENSIO:
+To her, widow!
+
+PETRUCHIO:
+A hundred marks, my Kate does put her down.
+
+HORTENSIO:
+That's my office.
+
+PETRUCHIO:
+Spoke l"
+15,19,128,2.0404791831970215,"opular rate, in my false brother
+Awaked an evil nature; and my trust,
+Like a good parent, did beget of him
+A falsehood in its co","pular rate, in my false brother
+Awaked an evil nature; and my trust,
+Like a good parent, did beget of him
+A falsehood in its con"
+15,20,128,1.964040994644165,"Mantua.
+
+TRANIO:
+Of Mantua, sir? marry, God forbid!
+And come to Padua, careless of your life?
+
+Pedant:
+My life, sir! how, I pray","antua.
+
+TRANIO:
+Of Mantua, sir? marry, God forbid!
+And come to Padua, careless of your life?
+
+Pedant:
+My life, sir! how, I pray?"
+15,21,128,2.043976068496704,"comes.
+
+BIONDELLO:
+Why, sir, he comes not.
+
+BAPTISTA:
+Didst thou not say he comes?
+
+BIONDELLO:
+Who? that Petruchio came?
+
+BAPTIS","omes.
+
+BIONDELLO:
+Why, sir, he comes not.
+
+BAPTISTA:
+Didst thou not say he comes?
+
+BIONDELLO:
+Who? that Petruchio came?
+
+BAPTIST"
+15,22,128,1.886228084564209," hence,
+And bid my cousin Ferdinand come hither:
+One, Kate, that you must kiss, and be acquainted with.
+Where are my slippers? S","hence,
+And bid my cousin Ferdinand come hither:
+One, Kate, that you must kiss, and be acquainted with.
+Where are my slippers? Sh"
+15,23,128,1.779236078262329,"to her love concerneth us to add
+Her father's liking: which to bring to pass,
+As I before unparted to your worship,
+I am to get ","o her love concerneth us to add
+Her father's liking: which to bring to pass,
+As I before unparted to your worship,
+I am to get a"
+15,24,128,2.024559497833252,"RTENSIO:
+Signior Petruchio, fie! you are to blame.
+Come, mistress Kate, I'll bear you company.
+
+PETRUCHIO:
+
+Haberdasher:
+Here is","TENSIO:
+Signior Petruchio, fie! you are to blame.
+Come, mistress Kate, I'll bear you company.
+
+PETRUCHIO:
+
+Haberdasher:
+Here is "
+15,25,128,1.8528385162353516,"TIO:
+Mistress, what's your opinion of your sister?
+
+BIANCA:
+That, being mad herself, she's madly mated.
+
+GREMIO:
+I warrant him, ","IO:
+Mistress, what's your opinion of your sister?
+
+BIANCA:
+That, being mad herself, she's madly mated.
+
+GREMIO:
+I warrant him, P"
+15,26,128,2.0007400512695312,"s e'er I came from school.
+
+TRANIO:
+And is the bride and bridegroom coming home?
+
+GREMIO:
+A bridegroom say you? 'tis a groom ind"," e'er I came from school.
+
+TRANIO:
+And is the bride and bridegroom coming home?
+
+GREMIO:
+A bridegroom say you? 'tis a groom inde"
+15,27,128,2.0449142456054688,"So dry he was for sway--wi' the King of Naples
+To give him annual tribute, do him homage,
+Subject his coronet to his crown and b","o dry he was for sway--wi' the King of Naples
+To give him annual tribute, do him homage,
+Subject his coronet to his crown and be"
+15,28,128,1.895680546760559,"s him: he does make our fire,
+Fetch in our wood and serves in offices
+That profit us. What, ho! slave! Caliban!
+Thou earth, thou"," him: he does make our fire,
+Fetch in our wood and serves in offices
+That profit us. What, ho! slave! Caliban!
+Thou earth, thou!"
+15,29,128,1.9910507202148438,"fe that late I led--
+Where are those--Sit down, Kate, and welcome.--
+Sound, sound, sound, sound!
+Why, when, I say? Nay, good swe","e that late I led--
+Where are those--Sit down, Kate, and welcome.--
+Sound, sound, sound, sound!
+Why, when, I say? Nay, good swee"
+15,30,128,1.9702435731887817,"back again,
+Did us but loving wrong.
+
+MIRANDA:
+Alack, what trouble
+Was I then to you!
+
+PROSPERO:
+O, a cherubim
+Thou wast that di","ack again,
+Did us but loving wrong.
+
+MIRANDA:
+Alack, what trouble
+Was I then to you!
+
+PROSPERO:
+O, a cherubim
+Thou wast that did"
+15,31,128,1.9188543558120728,"at a foolish duty call you this?
+
+LUCENTIO:
+I would your duty were as foolish too:
+The wisdom of your duty, fair Bianca,
+Hath co","t a foolish duty call you this?
+
+LUCENTIO:
+I would your duty were as foolish too:
+The wisdom of your duty, fair Bianca,
+Hath cos"
+16,0,128,2.2702083587646484," or oil;
+No occupation; all men idle, all;
+And women too, but innocent and pure;
+No sovereignty;--
+
+SEBASTIAN:
+Yet he would be k","or oil;
+No occupation; all men idle, all;
+And women too, but innocent and pure;
+No sovereignty;--
+
+SEBASTIAN:
+Yet he would be ki"
+16,1,128,2.097792387008667,"bidding task
+Ariel and all his quality.
+
+PROSPERO:
+Hast thou, spirit,
+Perform'd to point the tempest that I bade thee?
+
+ARIEL:
+T","idding task
+Ariel and all his quality.
+
+PROSPERO:
+Hast thou, spirit,
+Perform'd to point the tempest that I bade thee?
+
+ARIEL:
+To"
+16,2,128,1.7911537885665894," no order; I gave him the stuff.
+
+Tailor:
+But how did you desire it should be made?
+
+GRUMIO:
+Marry, sir, with needle and thread.","no order; I gave him the stuff.
+
+Tailor:
+But how did you desire it should be made?
+
+GRUMIO:
+Marry, sir, with needle and thread.
+"
+16,3,128,1.6766281127929688,"i' the right, sir: 'tis for my mistress.
+
+PETRUCHIO:
+Go, take it up unto thy master's use.
+
+GRUMIO:
+Villain, not for thy life: t","' the right, sir: 'tis for my mistress.
+
+PETRUCHIO:
+Go, take it up unto thy master's use.
+
+GRUMIO:
+Villain, not for thy life: ta"
+16,4,128,1.6608538627624512,"e ears against
+The stomach of my sense. Would I had never
+Married my daughter there! for, coming thence,
+My son is lost and, in "," ears against
+The stomach of my sense. Would I had never
+Married my daughter there! for, coming thence,
+My son is lost and, in m"
+16,5,128,2.065483570098877,"am call'd Hortensio.
+
+TRANIO:
+Signior Hortensio, I have often heard
+Of your entire affection to Bianca;
+And since mine eyes are ","m call'd Hortensio.
+
+TRANIO:
+Signior Hortensio, I have often heard
+Of your entire affection to Bianca;
+And since mine eyes are w"
+16,6,128,2.017035961151123,"when raging war is done,
+To smile at scapes and perils overblown.
+My fair Bianca, bid my father welcome,
+While I with self-same ","hen raging war is done,
+To smile at scapes and perils overblown.
+My fair Bianca, bid my father welcome,
+While I with self-same k"
+16,7,128,1.9859130382537842,"rs! all lost!
+
+Boatswain:
+What, must our mouths be cold?
+
+GONZALO:
+The king and prince at prayers! let's assist them,
+For our ca","s! all lost!
+
+Boatswain:
+What, must our mouths be cold?
+
+GONZALO:
+The king and prince at prayers! let's assist them,
+For our cas"
+16,8,128,1.7657010555267334,"sented
+That you shall be my wife; your dowry 'greed on;
+And, Will you, nill you, I will marry you.
+Now, Kate, I am a husband for","ented
+That you shall be my wife; your dowry 'greed on;
+And, Will you, nill you, I will marry you.
+Now, Kate, I am a husband for "
+16,9,128,1.810964822769165,"hion'd gown,
+More quaint, more pleasing, nor more commendable:
+Belike you mean to make a puppet of me.
+
+PETRUCHIO:
+Why, true; he","ion'd gown,
+More quaint, more pleasing, nor more commendable:
+Belike you mean to make a puppet of me.
+
+PETRUCHIO:
+Why, true; he "
+16,10,128,1.733173131942749," you not request to have it cut?
+
+GRUMIO:
+Thou hast faced many things.
+
+Tailor:
+I have.
+
+GRUMIO:
+Face not me: thou hast braved m","you not request to have it cut?
+
+GRUMIO:
+Thou hast faced many things.
+
+Tailor:
+I have.
+
+GRUMIO:
+Face not me: thou hast braved ma"
+16,11,128,1.821712851524353,"tire affection to Bianca;
+And since mine eyes are witness of her lightness,
+I will with you, if you be so contented,
+Forswear Bi","ire affection to Bianca;
+And since mine eyes are witness of her lightness,
+I will with you, if you be so contented,
+Forswear Bia"
+16,12,128,1.7942523956298828,"north,
+To do me business in the veins o' the earth
+When it is baked with frost.
+
+ARIEL:
+I do not, sir.
+
+PROSPERO:
+Thou liest, ma","orth,
+To do me business in the veins o' the earth
+When it is baked with frost.
+
+ARIEL:
+I do not, sir.
+
+PROSPERO:
+Thou liest, mal"
+16,13,128,1.7872692346572876,"h, or one, or any thing thou wilt.
+
+GRUMIO:
+Why then, the mustard without the beef.
+
+KATHARINA:
+Go, get thee gone, thou false de",", or one, or any thing thou wilt.
+
+GRUMIO:
+Why then, the mustard without the beef.
+
+KATHARINA:
+Go, get thee gone, thou false del"
+16,14,128,2.0404934883117676,"hou didst prevent me; I had peopled else
+This isle with Calibans.
+
+PROSPERO:
+Abhorred slave,
+Which any print of goodness wilt no","ou didst prevent me; I had peopled else
+This isle with Calibans.
+
+PROSPERO:
+Abhorred slave,
+Which any print of goodness wilt not"
+16,15,128,2.036665439605713," seek to violate
+The honour of my child.
+
+CALIBAN:
+O ho, O ho! would't had been done!
+Thou didst prevent me; I had peopled else
+","seek to violate
+The honour of my child.
+
+CALIBAN:
+O ho, O ho! would't had been done!
+Thou didst prevent me; I had peopled else
+T"
+16,16,128,1.7986509799957275,"rich;
+And as the sun breaks through the darkest clouds,
+So honour peereth in the meanest habit.
+What is the jay more precious th","ich;
+And as the sun breaks through the darkest clouds,
+So honour peereth in the meanest habit.
+What is the jay more precious tha"
+16,17,128,1.7258481979370117,"how speed you with my daughter?
+
+PETRUCHIO:
+How but well, sir? how but well?
+It were impossible I should speed amiss.
+
+BAPTISTA:","ow speed you with my daughter?
+
+PETRUCHIO:
+How but well, sir? how but well?
+It were impossible I should speed amiss.
+
+BAPTISTA:
+"
+16,18,128,2.2112104892730713,"is crown and bend
+The dukedom yet unbow'd--alas, poor Milan!--
+To most ignoble stooping.
+
+MIRANDA:
+O the heavens!
+
+PROSPERO:
+Mar","s crown and bend
+The dukedom yet unbow'd--alas, poor Milan!--
+To most ignoble stooping.
+
+MIRANDA:
+O the heavens!
+
+PROSPERO:
+Mark"
+16,19,128,1.9183363914489746," pearl and gold? I
+thank my good father, I am able to maintain it.
+
+VINCENTIO:
+Thy father! O villain! he is a sailmaker in Berga","pearl and gold? I
+thank my good father, I am able to maintain it.
+
+VINCENTIO:
+Thy father! O villain! he is a sailmaker in Bergam"
+16,20,128,1.7872776985168457,"hter:
+Now is the day we long have looked for:
+I am your neighbour, and was suitor first.
+
+TRANIO:
+And I am one that love Bianca ","ter:
+Now is the day we long have looked for:
+I am your neighbour, and was suitor first.
+
+TRANIO:
+And I am one that love Bianca m"
+16,21,128,1.7370949983596802,"TRANIO:
+And you, sir! you are welcome.
+Travel you far on, or are you at the farthest?
+
+Pedant:
+Sir, at the farthest for a week o","RANIO:
+And you, sir! you are welcome.
+Travel you far on, or are you at the farthest?
+
+Pedant:
+Sir, at the farthest for a week or"
+16,22,128,1.8255654573440552,"th thy weapon, we are beset with thieves;
+Rescue thy mistress, if thou be a man.
+Fear not, sweet wench, they shall not touch
+the","h thy weapon, we are beset with thieves;
+Rescue thy mistress, if thou be a man.
+Fear not, sweet wench, they shall not touch
+thee"
+16,23,128,1.7706884145736694,"LONSO:
+So is the dear'st o' the loss.
+
+GONZALO:
+My lord Sebastian,
+The truth you speak doth lack some gentleness
+And time to spe","ONSO:
+So is the dear'st o' the loss.
+
+GONZALO:
+My lord Sebastian,
+The truth you speak doth lack some gentleness
+And time to spea"
+16,24,128,1.8210203647613525,"ieces. O, the cry did knock
+Against my very heart. Poor souls, they perish'd.
+Had I been any god of power, I would
+Have sunk the","eces. O, the cry did knock
+Against my very heart. Poor souls, they perish'd.
+Had I been any god of power, I would
+Have sunk the "
+16,25,128,2.0116958618164062,"e.
+They fell together all, as by consent;
+They dropp'd, as by a thunder-stroke. What might,
+Worthy Sebastian? O, what might?--No",".
+They fell together all, as by consent;
+They dropp'd, as by a thunder-stroke. What might,
+Worthy Sebastian? O, what might?--No "
+16,26,128,1.905489206314087,"deeply as to thee belongs,
+Myself am moved to woo thee for my wife.
+
+KATHARINA:
+Moved! in good time: let him that moved you hith","eeply as to thee belongs,
+Myself am moved to woo thee for my wife.
+
+KATHARINA:
+Moved! in good time: let him that moved you hithe"
+16,27,128,1.8155845403671265,",
+This music crept by me upon the waters,
+Allaying both their fury and my passion
+With its sweet air: thence I have follow'd it,","
+This music crept by me upon the waters,
+Allaying both their fury and my passion
+With its sweet air: thence I have follow'd it,
+"
+16,28,128,1.9322198629379272,"or the liberal arts
+Without a parallel; those being all my study,
+The government I cast upon my brother
+And to my state grew str","r the liberal arts
+Without a parallel; those being all my study,
+The government I cast upon my brother
+And to my state grew stra"
+16,29,128,1.7422429323196411,"t calls for company to
+countenance her.
+
+CURTIS:
+I call them forth to credit her.
+
+GRUMIO:
+Why, she comes to borrow nothing of t"," calls for company to
+countenance her.
+
+CURTIS:
+I call them forth to credit her.
+
+GRUMIO:
+Why, she comes to borrow nothing of th"
+16,30,128,2.1177616119384766,"s,
+And in no sense is meet or amiable.
+A woman moved is like a fountain troubled,
+Muddy, ill-seeming, thick, bereft of beauty;
+A",",
+And in no sense is meet or amiable.
+A woman moved is like a fountain troubled,
+Muddy, ill-seeming, thick, bereft of beauty;
+An"
+16,31,128,2.063913106918335,"w?
+
+GRUMIO:
+Out of their saddles into the dirt; and thereby
+hangs a tale.
+
+CURTIS:
+Let's ha't, good Grumio.
+
+GRUMIO:
+Lend thine ","?
+
+GRUMIO:
+Out of their saddles into the dirt; and thereby
+hangs a tale.
+
+CURTIS:
+Let's ha't, good Grumio.
+
+GRUMIO:
+Lend thine e"
+17,0,128,1.8309251070022583,"arry! Now, tell me, I pray,
+You that durst swear at your mistress Bianca
+Loved none in the world so well as Lucentio.
+
+TRANIO:
+O","rry! Now, tell me, I pray,
+You that durst swear at your mistress Bianca
+Loved none in the world so well as Lucentio.
+
+TRANIO:
+O "
+17,1,128,2.0337436199188232,"re was she born? speak; tell me.
+
+ARIEL:
+Sir, in Argier.
+
+PROSPERO:
+O, was she so? I must
+Once in a month recount what thou hast","e was she born? speak; tell me.
+
+ARIEL:
+Sir, in Argier.
+
+PROSPERO:
+O, was she so? I must
+Once in a month recount what thou hast "
+17,2,128,2.141373872756958,"king on't, what would I do?
+
+SEBASTIAN:
+'Scape being drunk for want of wine.
+
+GONZALO:
+I' the commonwealth I would by contraries","ing on't, what would I do?
+
+SEBASTIAN:
+'Scape being drunk for want of wine.
+
+GONZALO:
+I' the commonwealth I would by contraries
+"
+17,3,128,1.933276653289795,"n, and heir to the lands of me, Signior Vincentio.
+
+VINCENTIO:
+Lucentio! O, he hath murdered his master! Lay hold
+on him, I char",", and heir to the lands of me, Signior Vincentio.
+
+VINCENTIO:
+Lucentio! O, he hath murdered his master! Lay hold
+on him, I charg"
+17,4,128,1.7000480890274048," come and know her keeper's call,
+That is, to watch her, as we watch these kites
+That bate and beat and will not be obedient.
+Sh","come and know her keeper's call,
+That is, to watch her, as we watch these kites
+That bate and beat and will not be obedient.
+She"
+17,5,128,1.8443392515182495,"f yours becomes you not:
+Off with that bauble, throw it under-foot.
+
+Widow:
+Lord, let me never have a cause to sigh,
+Till I be b"," yours becomes you not:
+Off with that bauble, throw it under-foot.
+
+Widow:
+Lord, let me never have a cause to sigh,
+Till I be br"
+17,6,128,2.146191358566284,"ss' gown to his master's use!
+O, fie, fie, fie!
+
+PETRUCHIO:
+
+HORTENSIO:
+Tailor, I'll pay thee for thy gown tomorrow:
+Take no unk","s' gown to his master's use!
+O, fie, fie, fie!
+
+PETRUCHIO:
+
+HORTENSIO:
+Tailor, I'll pay thee for thy gown tomorrow:
+Take no unki"
+17,7,128,2.1026206016540527,"d sight-outrunning were not; the fire and cracks
+Of sulphurous roaring the most mighty Neptune
+Seem to besiege and make his bold"," sight-outrunning were not; the fire and cracks
+Of sulphurous roaring the most mighty Neptune
+Seem to besiege and make his bold "
+17,8,128,1.729215383529663,"atever fortune stays him from his word:
+Though he be blunt, I know him passing wise;
+Though he be merry, yet withal he's honest.","tever fortune stays him from his word:
+Though he be blunt, I know him passing wise;
+Though he be merry, yet withal he's honest.
+"
+17,9,128,1.8721535205841064,"s the morn;
+For patience she will prove a second Grissel,
+And Roman Lucrece for her chastity:
+And to conclude, we have 'greed so"," the morn;
+For patience she will prove a second Grissel,
+And Roman Lucrece for her chastity:
+And to conclude, we have 'greed so "
+17,10,128,1.900808572769165,"t devilish spirit,
+'Frets, call you these?' quoth she; 'I'll fume
+with them:'
+And, with that word, she struck me on the head,
+An"," devilish spirit,
+'Frets, call you these?' quoth she; 'I'll fume
+with them:'
+And, with that word, she struck me on the head,
+And"
+17,11,128,2.0718700885772705,"thou tortoise! when?
+Fine apparition! My quaint Ariel,
+Hark in thine ear.
+
+ARIEL:
+My lord it shall be done.
+
+PROSPERO:
+Thou pois","hou tortoise! when?
+Fine apparition! My quaint Ariel,
+Hark in thine ear.
+
+ARIEL:
+My lord it shall be done.
+
+PROSPERO:
+Thou poiso"
+17,12,128,1.9538116455078125,"o, fool, and whom thou keep'st command.
+
+PETRUCHIO:
+Did ever Dian so become a grove
+As Kate this chamber with her princely gait?",", fool, and whom thou keep'st command.
+
+PETRUCHIO:
+Did ever Dian so become a grove
+As Kate this chamber with her princely gait?
+"
+17,13,128,1.7886406183242798,"nd through the instrument my pate made way;
+And there I stood amazed for a while,
+As on a pillory, looking through the lute;
+Whi","d through the instrument my pate made way;
+And there I stood amazed for a while,
+As on a pillory, looking through the lute;
+Whil"
+17,14,128,1.910613775253296,"s greyhound,
+Which runs himself and catches for his master.
+
+PETRUCHIO:
+A good swift simile, but something currish.
+
+TRANIO:
+'Ti"," greyhound,
+Which runs himself and catches for his master.
+
+PETRUCHIO:
+A good swift simile, but something currish.
+
+TRANIO:
+'Tis"
+17,15,128,2.5408363342285156,"should--buzz!
+
+KATHARINA:
+Well ta'en, and like a buzzard.
+
+PETRUCHIO:
+O slow-wing'd turtle! shall a buzzard take thee?
+
+KATHARIN","hould--buzz!
+
+KATHARINA:
+Well ta'en, and like a buzzard.
+
+PETRUCHIO:
+O slow-wing'd turtle! shall a buzzard take thee?
+
+KATHARINA"
+17,16,128,1.873998999595642,"he
+horses ran away, how her bridle was burst, how I
+lost my crupper, with many things of worthy memory,
+which now shall die in o","e
+horses ran away, how her bridle was burst, how I
+lost my crupper, with many things of worthy memory,
+which now shall die in ob"
+17,17,128,1.7620360851287842,"strife, here sit we down:
+Take you your instrument, play you the whiles;
+His lecture will be done ere you have tuned.
+
+HORTENSIO","trife, here sit we down:
+Take you your instrument, play you the whiles;
+His lecture will be done ere you have tuned.
+
+HORTENSIO:"
+17,18,128,1.9193490743637085,"ho is so far from Italy removed
+I ne'er again shall see her. O thou mine heir
+Of Naples and of Milan, what strange fish
+Hath mad","o is so far from Italy removed
+I ne'er again shall see her. O thou mine heir
+Of Naples and of Milan, what strange fish
+Hath made"
+17,19,128,1.971640706062317,"adua affords this kindness, son Petruchio.
+
+PETRUCHIO:
+Padua affords nothing but what is kind.
+
+HORTENSIO:
+For both our sakes, I","dua affords this kindness, son Petruchio.
+
+PETRUCHIO:
+Padua affords nothing but what is kind.
+
+HORTENSIO:
+For both our sakes, I "
+17,20,128,1.754441499710083,".
+
+KATHARINA:
+Go, get thee gone, thou false deluding slave,
+That feed'st me with the very name of meat:
+Sorrow on thee and all t","
+
+KATHARINA:
+Go, get thee gone, thou false deluding slave,
+That feed'st me with the very name of meat:
+Sorrow on thee and all th"
+17,21,128,1.8170652389526367,"here is the foolish knave I sent before?
+
+GRUMIO:
+Here, sir; as foolish as I was before.
+
+PETRUCHIO:
+You peasant swain! you whor","ere is the foolish knave I sent before?
+
+GRUMIO:
+Here, sir; as foolish as I was before.
+
+PETRUCHIO:
+You peasant swain! you whore"
+17,22,128,1.5737394094467163," and he, for your good sake.
+But for my daughter Katharina, this I know,
+She is not for your turn, the more my grief.
+
+PETRUCHIO","and he, for your good sake.
+But for my daughter Katharina, this I know,
+She is not for your turn, the more my grief.
+
+PETRUCHIO:"
+17,23,128,1.8273513317108154,"sway,
+When they are bound to serve, love and obey.
+Why are our bodies soft and weak and smooth,
+Unapt to toil and trouble in the","way,
+When they are bound to serve, love and obey.
+Why are our bodies soft and weak and smooth,
+Unapt to toil and trouble in the "
+17,24,128,1.9074130058288574,"eak but as I find.
+Whence are you, sir? what may I call your name?
+
+PETRUCHIO:
+Petruchio is my name; Antonio's son,
+A man well k","ak but as I find.
+Whence are you, sir? what may I call your name?
+
+PETRUCHIO:
+Petruchio is my name; Antonio's son,
+A man well kn"
+17,25,128,1.6683330535888672,"For I have bills for money by exchange
+From Florence and must here deliver them.
+
+TRANIO:
+Well, sir, to do you courtesy,
+This wi","or I have bills for money by exchange
+From Florence and must here deliver them.
+
+TRANIO:
+Well, sir, to do you courtesy,
+This wil"
+17,26,128,1.977729320526123," small packet of Greek and Latin books:
+If you accept them, then their worth is great.
+
+BAPTISTA:
+Lucentio is your name; of when","small packet of Greek and Latin books:
+If you accept them, then their worth is great.
+
+BAPTISTA:
+Lucentio is your name; of whenc"
+17,27,128,1.8106482028961182,"r thee what thou hast promised,
+Which is not yet perform'd me.
+
+PROSPERO:
+How now? moody?
+What is't thou canst demand?
+
+ARIEL:
+M"," thee what thou hast promised,
+Which is not yet perform'd me.
+
+PROSPERO:
+How now? moody?
+What is't thou canst demand?
+
+ARIEL:
+My"
+17,28,128,1.857980728149414,"y fiend.
+
+TRANIO:
+Why, she's a devil, a devil, the devil's dam.
+
+GREMIO:
+Tut, she's a lamb, a dove, a fool to him!
+I'll tell you"," fiend.
+
+TRANIO:
+Why, she's a devil, a devil, the devil's dam.
+
+GREMIO:
+Tut, she's a lamb, a dove, a fool to him!
+I'll tell you,"
+17,29,128,1.88653564453125,"e disarm thee with this stick
+And make thy weapon drop.
+
+MIRANDA:
+Beseech you, father.
+
+PROSPERO:
+Hence! hang not on my garments"," disarm thee with this stick
+And make thy weapon drop.
+
+MIRANDA:
+Beseech you, father.
+
+PROSPERO:
+Hence! hang not on my garments."
+17,30,128,1.9639687538146973,"e:
+And time it is, when raging war is done,
+To smile at scapes and perils overblown.
+My fair Bianca, bid my father welcome,
+Whil",":
+And time it is, when raging war is done,
+To smile at scapes and perils overblown.
+My fair Bianca, bid my father welcome,
+While"
+17,31,128,1.833942174911499,"ry grateful, I am
+sure of it. To express the like kindness, myself,
+that have been more kindly beholding to you than
+any, freely","y grateful, I am
+sure of it. To express the like kindness, myself,
+that have been more kindly beholding to you than
+any, freely "
+18,0,128,1.8338690996170044,"ere is no soul--
+No, not so much perdition as an hair
+Betid to any creature in the vessel
+Which thou heard'st cry, which thou sa","re is no soul--
+No, not so much perdition as an hair
+Betid to any creature in the vessel
+Which thou heard'st cry, which thou saw"
+18,1,128,1.8576360940933228,"ed many things.
+
+Tailor:
+I have.
+
+GRUMIO:
+Face not me: thou hast braved many men; brave not
+me; I will neither be faced nor brav","d many things.
+
+Tailor:
+I have.
+
+GRUMIO:
+Face not me: thou hast braved many men; brave not
+me; I will neither be faced nor brave"
+18,2,128,1.9546287059783936," old?
+
+BAPTISTA:
+Well, gentlemen,
+I am thus resolved: on Sunday next you know
+My daughter Katharina is to be married:
+Now, on th","old?
+
+BAPTISTA:
+Well, gentlemen,
+I am thus resolved: on Sunday next you know
+My daughter Katharina is to be married:
+Now, on the"
+18,3,128,2.0884246826171875,"l me Katharina that do talk of me.
+
+PETRUCHIO:
+You lie, in faith; for you are call'd plain Kate,
+And bonny Kate and sometimes Ka"," me Katharina that do talk of me.
+
+PETRUCHIO:
+You lie, in faith; for you are call'd plain Kate,
+And bonny Kate and sometimes Kat"
+18,4,128,1.9481130838394165,"
+And so it shall be so for Katharina.
+
+HORTENSIO:
+Petruchio, go thy ways; the field is won.
+
+PETRUCHIO:
+Well, forward, forward! ","And so it shall be so for Katharina.
+
+HORTENSIO:
+Petruchio, go thy ways; the field is won.
+
+PETRUCHIO:
+Well, forward, forward! t"
+18,5,128,2.0052883625030518,"sing good: I prithee let me have it.
+
+GRUMIO:
+I fear it is too choleric a meat.
+How say you to a fat tripe finely broil'd?
+
+KATH","ing good: I prithee let me have it.
+
+GRUMIO:
+I fear it is too choleric a meat.
+How say you to a fat tripe finely broil'd?
+
+KATHA"
+18,6,128,1.9052152633666992,"SPERO:
+O, a cherubim
+Thou wast that did preserve me. Thou didst smile.
+Infused with a fortitude from heaven,
+When I have deck'd ","PERO:
+O, a cherubim
+Thou wast that did preserve me. Thou didst smile.
+Infused with a fortitude from heaven,
+When I have deck'd t"
+18,7,128,1.7949440479278564,"ther.
+
+Pedant:
+I warrant you.
+But, sir, here comes your boy;
+'Twere good he were school'd.
+
+TRANIO:
+Fear you not him. Sirrah Bio","her.
+
+Pedant:
+I warrant you.
+But, sir, here comes your boy;
+'Twere good he were school'd.
+
+TRANIO:
+Fear you not him. Sirrah Bion"
+18,8,128,2.151874303817749,"hinks me now incapable; confederates--
+So dry he was for sway--wi' the King of Naples
+To give him annual tribute, do him homage,","inks me now incapable; confederates--
+So dry he was for sway--wi' the King of Naples
+To give him annual tribute, do him homage,
+"
+18,9,128,1.7974175214767456," to sleep; 'tis a good dulness,
+And give it way: I know thou canst not choose.
+Come away, servant, come. I am ready now.
+Approac","to sleep; 'tis a good dulness,
+And give it way: I know thou canst not choose.
+Come away, servant, come. I am ready now.
+Approach"
+18,10,128,1.6995452642440796,"not come!
+Is that an answer?
+
+GREMIO:
+Ay, and a kind one too:
+Pray God, sir, your wife send you not a worse.
+
+PETRUCHIO:
+I hope ","ot come!
+Is that an answer?
+
+GREMIO:
+Ay, and a kind one too:
+Pray God, sir, your wife send you not a worse.
+
+PETRUCHIO:
+I hope b"
+18,11,128,2.0508933067321777,"ved is like a fountain troubled,
+Muddy, ill-seeming, thick, bereft of beauty;
+And while it is so, none so dry or thirsty
+Will de","ed is like a fountain troubled,
+Muddy, ill-seeming, thick, bereft of beauty;
+And while it is so, none so dry or thirsty
+Will dei"
+18,12,128,2.1127219200134277,"iondello?
+
+BIONDELLO:
+Master, a mercatante, or a pedant,
+I know not what; but format in apparel,
+In gait and countenance surely ","ondello?
+
+BIONDELLO:
+Master, a mercatante, or a pedant,
+I know not what; but format in apparel,
+In gait and countenance surely l"
+18,13,128,1.837030053138733,"orn you with Hortensio.
+
+BIANCA:
+Tranio, you jest: but have you both forsworn me?
+
+TRANIO:
+Mistress, we have.
+
+LUCENTIO:
+Then we","rn you with Hortensio.
+
+BIANCA:
+Tranio, you jest: but have you both forsworn me?
+
+TRANIO:
+Mistress, we have.
+
+LUCENTIO:
+Then we "
+18,14,128,1.644995093345642,"nd;
+And that you will some good instruction give
+How I may bear me here: my prime request,
+Which I do last pronounce, is, O you ","d;
+And that you will some good instruction give
+How I may bear me here: my prime request,
+Which I do last pronounce, is, O you w"
+18,15,128,2.0173726081848145,"y persuasion.
+Katharina, that cap of yours becomes you not:
+Off with that bauble, throw it under-foot.
+
+Widow:
+Lord, let me neve"," persuasion.
+Katharina, that cap of yours becomes you not:
+Off with that bauble, throw it under-foot.
+
+Widow:
+Lord, let me never"
+18,16,128,2.2382102012634277,"ou, Biondello?
+
+BIONDELLO:
+I cannot tarry: I knew a wench married in an
+afternoon as she went to the garden for parsley to
+stuff","u, Biondello?
+
+BIONDELLO:
+I cannot tarry: I knew a wench married in an
+afternoon as she went to the garden for parsley to
+stuff "
+18,17,128,1.78610098361969,"
+BAPTISTA:
+What, will my daughter prove a good musician?
+
+HORTENSIO:
+I think she'll sooner prove a soldier
+Iron may hold with he","BAPTISTA:
+What, will my daughter prove a good musician?
+
+HORTENSIO:
+I think she'll sooner prove a soldier
+Iron may hold with her"
+18,18,128,2.389312744140625,"xpect they are busied about a
+counterfeit assurance: take you assurance of her,
+'cum privilegio ad imprimendum solum:' to the
+ch","pect they are busied about a
+counterfeit assurance: take you assurance of her,
+'cum privilegio ad imprimendum solum:' to the
+chu"
+18,19,128,1.7684235572814941,"so weary? I am sent
+before to make a fire, and they are coming after to
+warm them. Now, were not I a little pot and soon
+hot, my","o weary? I am sent
+before to make a fire, and they are coming after to
+warm them. Now, were not I a little pot and soon
+hot, my "
+18,20,128,2.1104793548583984,"n him.
+But after many ceremonies done,
+He calls for wine: 'A health!' quoth he, as if
+He had been aboard, carousing to his mates"," him.
+But after many ceremonies done,
+He calls for wine: 'A health!' quoth he, as if
+He had been aboard, carousing to his mates
+"
+18,21,128,2.1597299575805664,"ZALO:
+Had I plantation of this isle, my lord,--
+
+ANTONIO:
+He'ld sow't with nettle-seed.
+
+SEBASTIAN:
+Or docks, or mallows.
+
+GONZA","ALO:
+Had I plantation of this isle, my lord,--
+
+ANTONIO:
+He'ld sow't with nettle-seed.
+
+SEBASTIAN:
+Or docks, or mallows.
+
+GONZAL"
+18,22,128,2.124102830886841," I plantation of this isle, my lord,--
+
+ANTONIO:
+He'ld sow't with nettle-seed.
+
+SEBASTIAN:
+Or docks, or mallows.
+
+GONZALO:
+And w","I plantation of this isle, my lord,--
+
+ANTONIO:
+He'ld sow't with nettle-seed.
+
+SEBASTIAN:
+Or docks, or mallows.
+
+GONZALO:
+And we"
+18,23,128,1.6226434707641602,"a; thy father will not frown.
+
+GREMIO:
+My cake is dough; but I'll in among the rest,
+Out of hope of all, but my share of the fea","; thy father will not frown.
+
+GREMIO:
+My cake is dough; but I'll in among the rest,
+Out of hope of all, but my share of the feas"
+18,24,128,1.8383851051330566,"y
+To painful labour both by sea and land,
+To watch the night in storms, the day in cold,
+Whilst thou liest warm at home, secure ","
+To painful labour both by sea and land,
+To watch the night in storms, the day in cold,
+Whilst thou liest warm at home, secure a"
+18,25,128,1.8092830181121826,"be cut out and
+sewed up again; and that I'll prove upon thee,
+though thy little finger be armed in a thimble.
+
+Tailor:
+This is t","e cut out and
+sewed up again; and that I'll prove upon thee,
+though thy little finger be armed in a thimble.
+
+Tailor:
+This is tr"
+18,26,128,1.847607135772705,"unto my father's door,
+Upon entreaty have a present aims;
+If not, elsewhere they meet with charity:
+But I, who never knew how to","nto my father's door,
+Upon entreaty have a present aims;
+If not, elsewhere they meet with charity:
+But I, who never knew how to "
+18,27,128,1.7401518821716309,"foot; and
+so long am I at the least. But wilt thou make a
+fire, or shall I complain on thee to our mistress,
+whose hand, she bei","oot; and
+so long am I at the least. But wilt thou make a
+fire, or shall I complain on thee to our mistress,
+whose hand, she bein"
+18,28,128,1.7950626611709595," married.
+But here she comes; and now, Petruchio, speak.
+Good morrow, Kate; for that's your name, I hear.
+
+KATHARINA:
+Well have ","married.
+But here she comes; and now, Petruchio, speak.
+Good morrow, Kate; for that's your name, I hear.
+
+KATHARINA:
+Well have y"
+18,29,128,1.8467838764190674,"here we were lodgers at the Pegasus.
+
+TRANIO:
+'Tis well; and hold your own, in any case,
+With such austerity as 'longeth to a fa","ere we were lodgers at the Pegasus.
+
+TRANIO:
+'Tis well; and hold your own, in any case,
+With such austerity as 'longeth to a fat"
+18,30,128,1.8658790588378906,"PERO:
+
+MIRANDA:
+Be of comfort;
+My father's of a better nature, sir,
+Than he appears by speech: this is unwonted
+Which now came f","ERO:
+
+MIRANDA:
+Be of comfort;
+My father's of a better nature, sir,
+Than he appears by speech: this is unwonted
+Which now came fr"
+18,31,128,1.944745659828186,"and Caliban: foolish wench!
+To the most of men this is a Caliban
+And they to him are angels.
+
+MIRANDA:
+My affections
+Are then mo","nd Caliban: foolish wench!
+To the most of men this is a Caliban
+And they to him are angels.
+
+MIRANDA:
+My affections
+Are then mos"
+19,0,128,1.875457525253296,"t was well, if you were so contented.
+
+PETRUCHIO:
+I tell thee, Kate, 'twas burnt and dried away;
+And I expressly am forbid to to"," was well, if you were so contented.
+
+PETRUCHIO:
+I tell thee, Kate, 'twas burnt and dried away;
+And I expressly am forbid to tou"
+19,1,128,1.7644524574279785,"
+My father's loss, the weakness which I feel,
+The wreck of all my friends, nor this man's threats,
+To whom I am subdued, are but","My father's loss, the weakness which I feel,
+The wreck of all my friends, nor this man's threats,
+To whom I am subdued, are but "
+19,2,128,1.925574779510498," my son Lucentio?
+
+TRANIO:
+Call forth an officer.
+Carry this mad knave to the gaol. Father Baptista,
+I charge you see that he be","my son Lucentio?
+
+TRANIO:
+Call forth an officer.
+Carry this mad knave to the gaol. Father Baptista,
+I charge you see that he be "
+19,3,128,2.091747283935547,"od sweet Kate, be merry.
+Off with my boots, you rogues! you villains, when?
+It was the friar of orders grey,
+As he forth walked ","d sweet Kate, be merry.
+Off with my boots, you rogues! you villains, when?
+It was the friar of orders grey,
+As he forth walked o"
+19,4,128,1.8021304607391357,"e to her love.
+O, you are novices! 'tis a world to see,
+How tame, when men and women are alone,
+A meacock wretch can make the cu"," to her love.
+O, you are novices! 'tis a world to see,
+How tame, when men and women are alone,
+A meacock wretch can make the cur"
+19,5,128,1.725167155265808,"fathers commonly
+Do get their children; but in this case of wooing,
+A child shall get a sire, if I fail not of my cunning.
+
+LUCE","athers commonly
+Do get their children; but in this case of wooing,
+A child shall get a sire, if I fail not of my cunning.
+
+LUCEN"
+19,6,128,1.778125286102295,"er:
+One, Kate, that you must kiss, and be acquainted with.
+Where are my slippers? Shall I have some water?
+Come, Kate, and wash,","r:
+One, Kate, that you must kiss, and be acquainted with.
+Where are my slippers? Shall I have some water?
+Come, Kate, and wash, "
+19,7,128,1.6165817975997925,"ade me acquainted with a weighty cause
+Of love between your daughter and himself:
+And, for the good report I hear of you
+And for","de me acquainted with a weighty cause
+Of love between your daughter and himself:
+And, for the good report I hear of you
+And for "
+19,8,128,1.9133880138397217,"e at thy hands
+But love, fair looks and true obedience;
+Too little payment for so great a debt.
+Such duty as the subject owes th"," at thy hands
+But love, fair looks and true obedience;
+Too little payment for so great a debt.
+Such duty as the subject owes the"
+19,9,128,1.9480013847351074,"ave at you for a bitter jest or two!
+
+BIANCA:
+Am I your bird? I mean to shift my bush;
+And then pursue me as you draw your bow.
+","ve at you for a bitter jest or two!
+
+BIANCA:
+Am I your bird? I mean to shift my bush;
+And then pursue me as you draw your bow.
+Y"
+19,10,128,1.8445885181427002,"r is arrived in Padua,
+And how she's like to be Lucentio's wife.
+
+BIONDELLO:
+I pray the gods she may with all my heart!
+
+TRANIO:"," is arrived in Padua,
+And how she's like to be Lucentio's wife.
+
+BIONDELLO:
+I pray the gods she may with all my heart!
+
+TRANIO:
+"
+19,11,128,1.9667260646820068,"ou best know'st
+What torment I did find thee in; thy groans
+Did make wolves howl and penetrate the breasts
+Of ever angry bears: ","u best know'st
+What torment I did find thee in; thy groans
+Did make wolves howl and penetrate the breasts
+Of ever angry bears: i"
+19,12,128,1.884874939918518," a baby's cap:
+Away with it! come, let me have a bigger.
+
+KATHARINA:
+I'll have no bigger: this doth fit the time,
+And gentlewome","a baby's cap:
+Away with it! come, let me have a bigger.
+
+KATHARINA:
+I'll have no bigger: this doth fit the time,
+And gentlewomen"
+19,13,128,1.921583890914917,"ell her she mistook her frets,
+And bow'd her hand to teach her fingering;
+When, with a most impatient devilish spirit,
+'Frets, c","ll her she mistook her frets,
+And bow'd her hand to teach her fingering;
+When, with a most impatient devilish spirit,
+'Frets, ca"
+19,14,128,2.547358512878418,"ucentio, 'hic est,' son unto Vincentio of Pisa,
+'Sigeia tellus,' disguised thus to get your love;
+'Hic steterat,' and that Lucen","centio, 'hic est,' son unto Vincentio of Pisa,
+'Sigeia tellus,' disguised thus to get your love;
+'Hic steterat,' and that Lucent"
+19,15,128,1.7067790031433105," some sailor's wife,
+The masters of some merchant and the merchant
+Have just our theme of woe; but for the miracle,
+I mean our p","some sailor's wife,
+The masters of some merchant and the merchant
+Have just our theme of woe; but for the miracle,
+I mean our pr"
+19,16,128,1.6469767093658447,"intend
+That all is done in reverend care of her;
+And in conclusion she shall watch all night:
+And if she chance to nod I'll rail","ntend
+That all is done in reverend care of her;
+And in conclusion she shall watch all night:
+And if she chance to nod I'll rail "
+19,17,128,1.7667371034622192,"let him that moved you hither
+Remove you hence: I knew you at the first
+You were a moveable.
+
+PETRUCHIO:
+Why, what's a moveable?","et him that moved you hither
+Remove you hence: I knew you at the first
+You were a moveable.
+
+PETRUCHIO:
+Why, what's a moveable?
+"
+19,18,128,1.9927852153778076,"oil'd?
+
+KATHARINA:
+I like it well: good Grumio, fetch it me.
+
+GRUMIO:
+I cannot tell; I fear 'tis choleric.
+What say you to a pie","il'd?
+
+KATHARINA:
+I like it well: good Grumio, fetch it me.
+
+GRUMIO:
+I cannot tell; I fear 'tis choleric.
+What say you to a piec"
+19,19,128,1.9596714973449707," that do talk of me.
+
+PETRUCHIO:
+You lie, in faith; for you are call'd plain Kate,
+And bonny Kate and sometimes Kate the curst;
+","that do talk of me.
+
+PETRUCHIO:
+You lie, in faith; for you are call'd plain Kate,
+And bonny Kate and sometimes Kate the curst;
+B"
+19,20,128,1.8647669553756714,"r love.
+O, you are novices! 'tis a world to see,
+How tame, when men and women are alone,
+A meacock wretch can make the curstest "," love.
+O, you are novices! 'tis a world to see,
+How tame, when men and women are alone,
+A meacock wretch can make the curstest s"
+19,21,128,1.9323902130126953,"people bore me, nor set
+A mark so bloody on the business, but
+With colours fairer painted their foul ends.
+In few, they hurried ","eople bore me, nor set
+A mark so bloody on the business, but
+With colours fairer painted their foul ends.
+In few, they hurried u"
+19,22,128,1.9266624450683594,"death.
+
+CURTIS:
+There's fire ready; and therefore, good Grumio, the news.
+
+GRUMIO:
+Why, 'Jack, boy! ho! boy!' and as much news a","eath.
+
+CURTIS:
+There's fire ready; and therefore, good Grumio, the news.
+
+GRUMIO:
+Why, 'Jack, boy! ho! boy!' and as much news as"
+19,23,128,1.7616989612579346,"ens.
+
+TRANIO:
+Among them know you one Vincentio?
+
+Pedant:
+I know him not, but I have heard of him;
+A merchant of incomparable we","ns.
+
+TRANIO:
+Among them know you one Vincentio?
+
+Pedant:
+I know him not, but I have heard of him;
+A merchant of incomparable wea"
+19,24,128,1.8662729263305664,"To cast thy wandering eyes on every stale,
+Seize thee that list: if once I find thee ranging,
+Hortensio will be quit with thee b","o cast thy wandering eyes on every stale,
+Seize thee that list: if once I find thee ranging,
+Hortensio will be quit with thee by"
+19,25,128,2.022274971008301," Tunis.
+
+SEBASTIAN:
+'Twas a sweet marriage, and we prosper well in our return.
+
+ADRIAN:
+Tunis was never graced before with such ","Tunis.
+
+SEBASTIAN:
+'Twas a sweet marriage, and we prosper well in our return.
+
+ADRIAN:
+Tunis was never graced before with such a"
+19,26,128,2.000117778778076,"DELLO:
+O! we are spoiled and--yonder he is: deny him,
+forswear him, or else we are all undone.
+
+LUCENTIO:
+
+VINCENTIO:
+Lives my s","ELLO:
+O! we are spoiled and--yonder he is: deny him,
+forswear him, or else we are all undone.
+
+LUCENTIO:
+
+VINCENTIO:
+Lives my sw"
+19,27,128,1.9444304704666138,"cio;
+All for my master's sake, Lucentio.
+Signior Gremio, came you from the church?
+
+GREMIO:
+As willingly as e'er I came from sch","io;
+All for my master's sake, Lucentio.
+Signior Gremio, came you from the church?
+
+GREMIO:
+As willingly as e'er I came from scho"
+19,28,128,2.069791793823242,"fternoon as she went to the garden for parsley to
+stuff a rabbit; and so may you, sir: and so, adieu,
+sir. My master hath appoin","ternoon as she went to the garden for parsley to
+stuff a rabbit; and so may you, sir: and so, adieu,
+sir. My master hath appoint"
+19,29,128,2.044851303100586,"to besiege and make his bold waves tremble,
+Yea, his dread trident shake.
+
+PROSPERO:
+My brave spirit!
+Who was so firm, so consta","o besiege and make his bold waves tremble,
+Yea, his dread trident shake.
+
+PROSPERO:
+My brave spirit!
+Who was so firm, so constan"
+19,30,128,1.7043721675872803,"wife is most obedient
+To come at first when he doth send for her,
+Shall win the wager which we will propose.
+
+HORTENSIO:
+Content","ife is most obedient
+To come at first when he doth send for her,
+Shall win the wager which we will propose.
+
+HORTENSIO:
+Content."
+19,31,128,1.6515291929244995,"in place where, thou shouldst know it.
+
+GRUMIO:
+I am for thee straight: take thou the
+bill, give me thy mete-yard, and spare not","n place where, thou shouldst know it.
+
+GRUMIO:
+I am for thee straight: take thou the
+bill, give me thy mete-yard, and spare not "

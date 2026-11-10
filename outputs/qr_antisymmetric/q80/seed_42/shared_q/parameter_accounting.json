@@ -1,0 +1,17 @@
+{
+  "q_config": "q80",
+  "architecture": "shared_q",
+  "model_type": "shared_q_q80",
+  "q_head_dim": 20,
+  "r_head_dim": 0,
+  "k_head_dim": 0,
+  "v_head_dim": 40,
+  "attention_parameters_per_layer": 51200,
+  "attention_parameters_total": 204800,
+  "non_attention_parameters": 553856,
+  "total_parameters": 758656,
+  "trainable_parameters": 758656,
+  "non_trainable_parameters": 0,
+  "stored_buffers": 0,
+  "total_stored_scalars": 758656
+}

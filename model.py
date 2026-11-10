@@ -15,7 +15,11 @@ from attention import (
     CausalSelfAttention,
     HeterogeneousSharedQAttention,
     ParameterMatchedSharedQAttention,
+    QR_EXPERIMENT_CONFIGS,
+    QR_VALID_ATTENTION_TYPES,
     SharedQAntisymmetricAttention,
+    build_qr_attention,
+    is_qr_attention_type,
 )
 
 
@@ -24,7 +28,9 @@ class DecoderBlock(nn.Module):
         super().__init__()
         self.attention_norm = nn.LayerNorm(config.d_model)
         self.attention = (
-            HeterogeneousSharedQAttention(config, attention_type)
+            build_qr_attention(config, attention_type)
+            if is_qr_attention_type(attention_type)
+            else HeterogeneousSharedQAttention(config, attention_type)
             if attention_type.startswith("hetero_")
             else SharedQAntisymmetricAttention(
                 config,
@@ -72,6 +78,7 @@ class DecoderLM(nn.Module):
             "antisymmetric_shared_q",
             "SharedQAntisymmetric",
             "shared_q_antisymmetric_fixed",
+            *QR_VALID_ATTENTION_TYPES,
             *hetero_types,
             *AllocatedSharedQAttention.HEAD_DIMS,
         )
@@ -323,6 +330,98 @@ def build_heterogeneous_model(config, vocab_size, seed, config_key: str, is_anti
                     p.data.zero_()
 
     return model
+
+
+def build_qr_models(config, vocab_size, seed, q_config_key: str):
+    """Build parameter-matched Standard, Symmetric Shared-Q, and QR Antisymmetric
+    Shared-Q models for a given Q configuration ('q80', 'q96', 'q112', 'q128') and seed.
+
+    All common non-attention weights and W_Q match bitwise across all three
+    architectures; W_V and W_O match between Standard and QR Antisymmetric (which
+    share identical dimensions); W_K (Standard) and W_R (QR Antisymmetric) are
+    independently initialized with N(0, 0.02). Caller RNG state is preserved.
+    """
+    if q_config_key not in QR_EXPERIMENT_CONFIGS:
+        raise ValueError(f"Unknown q_config_key: {q_config_key}")
+    with torch.random.fork_rng(devices=[]):
+        torch.set_rng_state(torch.Generator().manual_seed(seed).get_state())
+        std_model = DecoderLM(config, vocab_size, f"standard_{q_config_key}")
+        sym_model = DecoderLM(config, vocab_size, f"shared_q_{q_config_key}")
+        qr_model = DecoderLM(config, vocab_size, f"qr_antisymmetric_{q_config_key}")
+
+        ref_state = std_model.state_dict()
+
+        sym_state = sym_model.state_dict()
+        for name, tensor in sym_state.items():
+            if name in ref_state and tensor.shape == ref_state[name].shape:
+                sym_state[name] = ref_state[name]
+        sym_model.load_state_dict(sym_state, strict=True)
+
+        qr_state = qr_model.state_dict()
+        for name, tensor in qr_state.items():
+            if name in ref_state and tensor.shape == ref_state[name].shape:
+                qr_state[name] = ref_state[name]
+        qr_model.load_state_dict(qr_state, strict=True)
+
+    return {
+        "standard": std_model,
+        "shared_q": sym_model,
+        "qr_antisymmetric": qr_model,
+    }
+
+
+def verify_qr_parameter_budgets(config, vocab_size: int = 65):
+    """Programmatically verify exact parameter counts for all 12 QR-experiment models."""
+    rows = []
+    for cfg_key, dims in QR_EXPERIMENT_CONFIGS.items():
+        dq = dims["q_head_dim"]
+        dv_qr = dims["qr_v_head_dim"]
+        dv_sym = dims["sym_v_head_dim"]
+        models = build_qr_models(config, vocab_size, seed=1337, q_config_key=cfg_key)
+        for arch_key, model in models.items():
+            counts = parameter_counts(model)
+            accounting = detailed_parameter_accounting(model)
+            layer_attn = sum(p.numel() for p in model.blocks[0].attention.parameters())
+            non_attn = counts["total"] - counts["attention"]
+            attn0 = model.blocks[0].attention
+            w_q = attn0.q_proj.weight.numel()
+            w_k = attn0.k_proj.weight.numel() if hasattr(attn0, "k_proj") else 0
+            w_r = attn0.r_proj.weight.numel() if hasattr(attn0, "r_proj") else 0
+            w_v = attn0.v_proj.weight.numel()
+            w_o = attn0.out_proj.weight.numel()
+
+            if arch_key in ("standard", "qr_antisymmetric"):
+                expected_layer = config.d_model * (config.n_heads * dq) * 2 + config.d_model * (config.n_heads * dv_qr) * 2
+            else:
+                expected_layer = config.d_model * (config.n_heads * dq) + config.d_model * (config.n_heads * dv_sym) * 2
+
+            if layer_attn != expected_layer or layer_attn != 51200:
+                raise ValueError(f"{cfg_key}/{arch_key}: layer attention {layer_attn} != {expected_layer} / 51200")
+            if counts["total"] != 758656 or non_attn != 553856:
+                raise ValueError(f"{cfg_key}/{arch_key}: total {counts['total']} / non_attn {non_attn} mismatch")
+
+            rows.append({
+                "q_config": cfg_key,
+                "architecture": arch_key,
+                "model_type": model.attention_type,
+                "q_head_dim": dq,
+                "r_head_dim": dq if arch_key == "qr_antisymmetric" else 0,
+                "k_head_dim": dq if arch_key == "standard" else 0,
+                "v_head_dim": dv_sym if arch_key == "shared_q" else dv_qr,
+                "aggregate_q_dim": dims["aggregate_q_dim"],
+                "w_q_params_layer": w_q,
+                "w_k_params_layer": w_k,
+                "w_r_params_layer": w_r,
+                "w_v_params_layer": w_v,
+                "w_o_params_layer": w_o,
+                "attention_params_layer": layer_attn,
+                "attention_params_total": counts["attention"],
+                "non_attention_params": non_attn,
+                "total_params": counts["total"],
+                "trainable_params": accounting["trainable_parameters"],
+                "stored_buffers": accounting["stored_buffers"],
+            })
+    return rows
 
 
 def parameter_counts(model):

@@ -13,5 +13,7 @@ outputs/*
 !outputs/antisymmetric_ablation/**
 !outputs/heterogeneous_allocation/
 !outputs/heterogeneous_allocation/**
+!outputs/qr_antisymmetric/
+!outputs/qr_antisymmetric/**
 *.pt
 *.log
