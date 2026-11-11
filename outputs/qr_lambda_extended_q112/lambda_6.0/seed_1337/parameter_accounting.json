@@ -1,0 +1,21 @@
+{
+  "q_config": "q112",
+  "aggregate_q_dim": 112,
+  "n_layers": 4,
+  "d_model": 128,
+  "n_heads": 4,
+  "q_head_dim": 28,
+  "r_head_dim": 28,
+  "v_head_dim": 22,
+  "lambda_param": 6.0,
+  "bias_free_attention": true,
+  "lambda_learnable": false,
+  "attention_parameters_per_layer": 51200,
+  "attention_parameters_total": 204800,
+  "non_attention_parameters": 553856,
+  "total_parameters": 758656,
+  "trainable_parameters": 758656,
+  "non_trainable_parameters": 0,
+  "stored_buffers": 0,
+  "total_stored_scalars": 758656
+}

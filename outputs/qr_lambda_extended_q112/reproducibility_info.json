@@ -1,0 +1,338 @@
+{
+  "experiment": "qr_lambda_extended_q112",
+  "command": "train_qr_lambda_extended_q112.py --skip-tests",
+  "cwd": "C:\\Users\\Rohan\\Documents\\Rsearch",
+  "dataset_path": "data/tinyshakespeare.txt",
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "vocab_size": 65,
+  "validation_seed": 918273,
+  "config_defaults": {
+    "n_layers": 4,
+    "d_model": 128,
+    "n_heads": 4,
+    "context_length": 128,
+    "d_ff": 512,
+    "dropout": 0.1,
+    "batch_size": 32,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.1,
+    "max_steps": 10000,
+    "warmup_steps": 100,
+    "min_lr_ratio": 0.1,
+    "gradient_clip": 1.0,
+    "eval_interval": 250,
+    "eval_batches": 20,
+    "seed": 1337,
+    "seeds": [
+      1337,
+      2024,
+      42
+    ],
+    "adam_betas": [
+      0.9,
+      0.999
+    ],
+    "adam_eps": 1e-08,
+    "data_path": "data/tinyshakespeare.txt",
+    "dataset_url": "https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt",
+    "output_dir": "outputs\\qr_lambda_extended_q112",
+    "device": "auto",
+    "cpu_threads": 4,
+    "deterministic": true,
+    "benchmark_batches": 20,
+    "benchmark_warmup": 5,
+    "sample_tokens": 300,
+    "practical_loss_threshold": 0.02
+  },
+  "lambdas": [
+    1.0,
+    1.5,
+    2.0,
+    2.5,
+    3.0,
+    4.0,
+    6.0
+  ],
+  "seeds": [
+    1337,
+    2024,
+    42
+  ],
+  "max_steps": 10000,
+  "eval_interval": 250,
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "torch_version": "2.6.0+cu124",
+  "cuda_version": "12.4",
+  "python_version": "3.13.14",
+  "fairness_audit": {
+    "experiment": "qr_lambda_extended_q112",
+    "q_config": "q112",
+    "lambdas": [
+      1.0,
+      1.5,
+      2.0,
+      2.5,
+      3.0,
+      4.0,
+      6.0
+    ],
+    "seeds": [
+      1337,
+      2024,
+      42
+    ],
+    "max_steps": 10000,
+    "eval_interval": 250,
+    "seed_init_hashes": {
+      "1337": "cb70c0386062ab0bfd874d66fbc6cd53cefe9480de55f3c54e46cee4f13c9f37",
+      "2024": "bf4a238bd2ec3b0c1cd24c65a71d5f5b7274d18be844573421a01334b946ea36",
+      "42": "4ec2586f4b4f2bfa6f4f7b3b4b067bdd117e2ef58fc6fcfc5368b41255530cb6"
+    },
+    "seed_reference_batch_hashes": {
+      "1337": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+      "2024": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+      "42": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5"
+    },
+    "seed_completed_batch_hashes": {
+      "1337": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+      "2024": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+      "42": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5"
+    },
+    "run_batch_stream_verifications": [
+      {
+        "seed": 1337,
+        "lambda": 1.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 1337,
+        "lambda": 1.5,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 1337,
+        "lambda": 2.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 1337,
+        "lambda": 2.5,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 1337,
+        "lambda": 3.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 1337,
+        "lambda": 4.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 1337,
+        "lambda": 6.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 2024,
+        "lambda": 1.5,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 2024,
+        "lambda": 2.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 2024,
+        "lambda": 2.5,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 2024,
+        "lambda": 3.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 2024,
+        "lambda": 4.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 2024,
+        "lambda": 6.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 2024,
+        "lambda": 1.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 42,
+        "lambda": 2.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 42,
+        "lambda": 2.5,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 42,
+        "lambda": 3.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 42,
+        "lambda": 4.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 42,
+        "lambda": 6.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 42,
+        "lambda": 1.0,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+        "matches_seed_prefix_stream": true
+      },
+      {
+        "seed": 42,
+        "lambda": 1.5,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+        "matches_seed_prefix_stream": true
+      }
+    ],
+    "independent_seed_initializations": true,
+    "all_batch_streams_verified": true
+  },
+  "parameter_budget_audit": {
+    "q_config": "q112",
+    "aggregate_q_dim": 112,
+    "n_layers": 4,
+    "d_model": 128,
+    "n_heads": 4,
+    "q_head_dim": 28,
+    "r_head_dim": 28,
+    "v_head_dim": 22,
+    "lambda_param": 1.0,
+    "bias_free_attention": true,
+    "lambda_learnable": false,
+    "attention_parameters_per_layer": 51200,
+    "attention_parameters_total": 204800,
+    "non_attention_parameters": 553856,
+    "total_parameters": 758656,
+    "trainable_parameters": 758656,
+    "non_trainable_parameters": 0,
+    "stored_buffers": 0,
+    "total_stored_scalars": 758656
+  }
+}

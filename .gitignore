@@ -19,5 +19,9 @@ outputs/*
 !outputs/qr_lambda_ablation/**
 !outputs/qr_lambda_training_q112/
 !outputs/qr_lambda_training_q112/**
+!outputs/qr_lambda_extended_q112/
+!outputs/qr_lambda_extended_q112/**
+!outputs/qr_lambda_upper_probe_q112/
+!outputs/qr_lambda_upper_probe_q112/**
 *.pt
 *.log

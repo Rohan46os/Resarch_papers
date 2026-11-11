@@ -1,0 +1,13 @@
+{
+  "experiment": "qr_lambda_extended_q112",
+  "q_config": "q112",
+  "seed": 42,
+  "qr_lambda": 2.5,
+  "lambda_learnable": false,
+  "max_steps": 10000,
+  "eval_interval": 250,
+  "init_state_sha256": "4ec2586f4b4f2bfa6f4f7b3b4b067bdd117e2ef58fc6fcfc5368b41255530cb6",
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "validation_seed": 918273,
+  "run_dir": "outputs/qr_lambda_extended_q112/lambda_2.5/seed_42"
+}

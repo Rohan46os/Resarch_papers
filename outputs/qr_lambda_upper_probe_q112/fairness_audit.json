@@ -1,0 +1,137 @@
+{
+  "experiment": "qr_lambda_upper_probe_q112",
+  "q_config": "q112",
+  "lambdas": [
+    8.0,
+    12.0,
+    20.0
+  ],
+  "seeds": [
+    1337,
+    2024,
+    42
+  ],
+  "reference_lambda": 6.0,
+  "reference_dir_readonly": "outputs/qr_lambda_extended_q112",
+  "max_steps": 10000,
+  "eval_interval": 250,
+  "seed_init_hashes": {
+    "1337": "cb70c0386062ab0bfd874d66fbc6cd53cefe9480de55f3c54e46cee4f13c9f37",
+    "2024": "bf4a238bd2ec3b0c1cd24c65a71d5f5b7274d18be844573421a01334b946ea36",
+    "42": "4ec2586f4b4f2bfa6f4f7b3b4b067bdd117e2ef58fc6fcfc5368b41255530cb6"
+  },
+  "seed_init_matches_reference_lam6": {
+    "1337": true,
+    "2024": true,
+    "42": true
+  },
+  "seed_reference_batch_hashes": {
+    "1337": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+    "2024": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+    "42": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5"
+  },
+  "seed_stream_matches_reference_lam6": {
+    "1337": true,
+    "2024": true,
+    "42": true
+  },
+  "seed_completed_batch_hashes": {
+    "1337": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+    "2024": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+    "42": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5"
+  },
+  "run_batch_stream_verifications": [
+    {
+      "seed": 1337,
+      "lambda": 8.0,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+      "matches_seed_prefix_stream": true
+    },
+    {
+      "seed": 1337,
+      "lambda": 12.0,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+      "matches_seed_prefix_stream": true
+    },
+    {
+      "seed": 1337,
+      "lambda": 20.0,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+      "matches_seed_prefix_stream": true
+    },
+    {
+      "seed": 2024,
+      "lambda": 12.0,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+      "matches_seed_prefix_stream": true
+    },
+    {
+      "seed": 2024,
+      "lambda": 20.0,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+      "matches_seed_prefix_stream": true
+    },
+    {
+      "seed": 2024,
+      "lambda": 8.0,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+      "matches_seed_prefix_stream": true
+    },
+    {
+      "seed": 42,
+      "lambda": 20.0,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+      "matches_seed_prefix_stream": true
+    },
+    {
+      "seed": 42,
+      "lambda": 8.0,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+      "matches_seed_prefix_stream": true
+    },
+    {
+      "seed": 42,
+      "lambda": 12.0,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+      "matches_seed_prefix_stream": true
+    }
+  ],
+  "independent_seed_initializations": true,
+  "all_batch_streams_verified": true
+}
