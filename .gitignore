@@ -23,5 +23,7 @@ outputs/*
 !outputs/qr_lambda_extended_q112/**
 !outputs/qr_lambda_upper_probe_q112/
 !outputs/qr_lambda_upper_probe_q112/**
+!outputs/standard_attention_q112_10k/
+!outputs/standard_attention_q112_10k/**
 *.pt
 *.log

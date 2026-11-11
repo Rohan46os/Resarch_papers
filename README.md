@@ -402,6 +402,36 @@ python analyze_qr_antisymmetric.py --dir outputs/qr_antisymmetric
 python visualize_qr_antisymmetric.py --dir outputs/qr_antisymmetric
 ```
 
+## Q112 $\lambda$-Scaling Ablations & 10,000-Step Upper-Boundary Probe
+
+Building on Q112 (`d_q=28`, `d_r=28`, `d_v=22`, `758,656` total / `204,800` attention parameters), four follow-up studies isolate the role of fixed scaling $\lambda$ in $S = (QQ^T + \lambda(QR^T - RQ^T))/\sqrt{28}$:
+
+1. **Inference-Time $\lambda$ Ablation ([report](outputs/qr_lambda_ablation/report.md)):** Evaluates `20` trained QR checkpoints ($\lambda_{\text{train}}=1.0$) across $\lambda \in \{0.0, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0\}$ (`140` evaluations). Setting $\lambda=0.0$ raises validation loss by `+0.8226` nats overall (PPL `6.58 -> 15.01`), with a unique minimum at $\lambda = 1.0$ across all `20 / 20` checkpoints.
+2. **Training-Time Pilot at 3,000 Steps ([report](outputs/qr_lambda_training_q112/RESULTS_Q112_TRAINING_LAMBDA_ABLATION.md)):** Training from scratch across $\lambda \in \{0.5, 0.75, 1.0, 1.25, 1.5, 2.0\}$ (`2` seeds) lowers step-`3,000` validation loss monotonically from `1.9058` ($\lambda=0.5$) and `1.8874` ($\lambda=1.0$) to `1.8756` ($\lambda=2.0$).
+3. **Extended 10,000-Step Scaling, $\lambda \in [1.0, 6.0]$ ([report](outputs/qr_lambda_extended_q112/RESULTS_EXTENDED_LAMBDA_Q112.md)):** Across `21` deterministic runs (`7` values $\times$ `3` seeds `[1337, 2024, 42]`, `0` NaN/Inf failures), `20-batch` final validation loss drops from `1.623548` ($\lambda=1.0$) to `1.617727` (`2.0`), `1.592069` (`4.0`), and `1.578118` ($\lambda=6.0$, PPL `4.8458`).
+4. **Upper-Boundary Probe at 10,000 Steps, $\lambda \in \{8.0, 12.0, 20.0\}$ ([report](outputs/qr_lambda_upper_probe_q112/RESULTS_UPPER_LAMBDA_Q112.md)):** Zero optimization failures across all `9` high-$\lambda$ runs. On `20-batch` (`81,920` targets), `1.567193` ($\lambda=8.0$), `1.568794` (`12.0`), and `1.566210` (`20.0`); on `full-corpus` (`111,539` targets), `1.560389` ($\lambda=8.0$), `1.560638` (`12.0`), and `1.558444` (`20.0`) vs. `1.570225` (`6.0`), showing sharp diminishing returns beyond $\lambda = 8.0$ without yet triggering divergence.
+
+## Standard Attention Q112 — 10,000-Step Controlled Benchmark
+
+To test whether QR Antisymmetric Shared-Q outperforms conventional Standard Attention ($S = QK^T / \sqrt{28}$) over a full `10,000`-step horizon under **strict parity**, we trained **3 independent Standard Attention Q112 runs** (`seeds = [1337, 2024, 42]`, `40,960,000` tokens/run) matching the exact **`758,656`** parameter budget (`204,800` attention / `553,856` non-attention / `0` buffers), bitwise-identical per-seed weight initializations (`W_R -> W_K`), and identical per-seed training batch streams as the preserved QR references ($\lambda \in \{6.0, 8.0, 20.0\}$).
+
+- **Universal Paired Wins (`12 / 12` across seeds, protocols, and `final`/`best` checkpoints):**
+  - **Protocol 1 (`20-batch`, `81,920` tokens, `final @ 10,000`):** Standard `1.615077 ± 0.005511` (`PPL 5.0283`) vs. QR $\lambda=6$ `1.578118 ± 0.001679` (`Δ = -0.036959`), $\lambda=8$ `1.567193 ± 0.005323` (`Δ = -0.047884`), $\lambda=20$ **`1.566210 ± 0.002074`** (`Δ = -0.048867`, `PPL 4.7885`).
+  - **Protocol 2 (`full-corpus`, `111,539` tokens, `final @ 10,000`):** Standard `1.607823 ± 0.003869` (`PPL 4.9920`) vs. QR $\lambda=6$ `1.570225 ± 0.002886` (`Δ = -0.037598`), $\lambda=8$ `1.560389 ± 0.005153` (`Δ = -0.047434`), $\lambda=20$ **`1.558444 ± 0.002496`** (`Δ = -0.049380`, `PPL 4.7514`).
+- **Convergence & Compute Tradeoff:** Standard continues improving past step `3,000` (`1.796828 -> 1.615077`, vs. `1.894846` under the earlier `3k` cosine schedule) without overfitting, yet never closes the `0.037–0.049`-nat gap. QR reaches Standard's `10,000`-step loss by interpolated steps `6,138` (`λ=6`), `5,652` (`λ=8`), and `5,621` (`λ=20`) — **`~27%–33%` less median wall-clock time-to-loss**, trading `+18.6%` median step time (`388.8 s vs. 327.8 s`), `+24.6 to +27.8 MB` peak VRAM (`319.5–322.7 MB vs. 294.85 MB`), and slower un-cached full-context forward passes (`~418k vs. 602k tok/s`).
+
+![Standard vs QR Validation Loss Curves](outputs/standard_attention_q112_10k/figures/fig3_standard_vs_qr_val_loss_curves.png)
+
+Read [RESULTS_STANDARD_ATTENTION_Q112_10K.md](outputs/standard_attention_q112_10k/RESULTS_STANDARD_ATTENTION_Q112_10K.md) for dual-protocol tables, descriptive `df=2` intervals, mechanistic score/layer/gradient diagnostics, and all 9 figures under `outputs/standard_attention_q112_10k/figures/`.
+
+```sh
+# Run benchmark unit/fairness/budget tests
+python -m unittest test_standard_attention_q112_10k.py -v
+
+# Reproduce comparative tables, JSON analysis, and all 9 figures (or pass --eval-only / --run-train)
+python outputs/standard_attention_q112_10k/reproduce_analysis.py
+```
+
 ## Troubleshooting and safety
 
 - **CUDA unavailable:** check the active interpreter and `torch.cuda.is_available()`, driver compatibility, and whether the installed torch wheel includes CUDA. Install the appropriate build from pytorch.org or run `--device cpu`. A local CUDA toolkit alone does not turn a CPU-only wheel into a CUDA build.

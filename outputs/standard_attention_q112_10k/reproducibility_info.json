@@ -1,0 +1,367 @@
+{
+  "experiment": "standard_attention_q112_10k",
+  "command": "train_standard_attention_q112_10k.py",
+  "cwd": "C:\\Users\\Rohan\\Documents\\Rsearch",
+  "dataset_path": "data/tinyshakespeare.txt",
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "vocab_size": 65,
+  "train_characters": 1003854,
+  "validation_characters": 111540,
+  "validation_seed": 918273,
+  "config_defaults": {
+    "n_layers": 4,
+    "d_model": 128,
+    "n_heads": 4,
+    "context_length": 128,
+    "d_ff": 512,
+    "dropout": 0.1,
+    "batch_size": 32,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.1,
+    "max_steps": 10000,
+    "warmup_steps": 100,
+    "min_lr_ratio": 0.1,
+    "gradient_clip": 1.0,
+    "eval_interval": 250,
+    "eval_batches": 20,
+    "seed": 1337,
+    "seeds": [
+      1337,
+      2024,
+      42
+    ],
+    "adam_betas": [
+      0.9,
+      0.999
+    ],
+    "adam_eps": 1e-08,
+    "data_path": "data/tinyshakespeare.txt",
+    "dataset_url": "https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt",
+    "output_dir": "outputs\\standard_attention_q112_10k",
+    "device": "auto",
+    "cpu_threads": 4,
+    "deterministic": true,
+    "benchmark_batches": 20,
+    "benchmark_warmup": 5,
+    "sample_tokens": 300,
+    "practical_loss_threshold": 0.02
+  },
+  "seeds": [
+    1337,
+    2024,
+    42
+  ],
+  "max_steps": 10000,
+  "eval_interval": 250,
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "torch_version": "2.6.0+cu124",
+  "cuda_version": "12.4",
+  "python_version": "3.13.14",
+  "fairness_audit": {
+    "experiment": "standard_attention_q112_10k",
+    "q_config": "q112",
+    "architecture": "standard_attention",
+    "model_type": "standard_q112",
+    "seeds": [
+      1337,
+      2024,
+      42
+    ],
+    "max_steps": 10000,
+    "eval_interval": 250,
+    "qr_reference_directories_readonly": [
+      "outputs/qr_lambda_extended_q112",
+      "outputs/qr_lambda_upper_probe_q112"
+    ],
+    "seed_init_verifications": {
+      "1337": {
+        "seed": 1337,
+        "std_init_state_sha256": "13ec8669d609b4916174b66f5f03acc80f11e132d94e2adc20f05cd20a9e9f0e",
+        "qr_reference_init_state_sha256": "cb70c0386062ab0bfd874d66fbc6cd53cefe9480de55f3c54e46cee4f13c9f37",
+        "canonical_qr_mapped_sha256": "cb70c0386062ab0bfd874d66fbc6cd53cefe9480de55f3c54e46cee4f13c9f37",
+        "matches_builder_qr_init": true,
+        "builder_tensor_comparison": {
+          "tensors_compared": 53,
+          "max_abs_diff_all_tensors": 0.0,
+          "max_abs_diff_w_q": 0.0,
+          "max_abs_diff_w_k_vs_w_r": 0.0,
+          "max_abs_diff_w_v": 0.0,
+          "max_abs_diff_w_o": 0.0,
+          "max_abs_diff_common_non_attention": 0.0,
+          "exact_bitwise_match": true
+        },
+        "saved_qr_artifact_verifications": [
+          {
+            "qr_lambda": 6.0,
+            "qr_init_checkpoint": "outputs/qr_lambda_extended_q112/lambda_6.0/seed_1337/init.pt",
+            "canonical_qr_mapped_sha256": "cb70c0386062ab0bfd874d66fbc6cd53cefe9480de55f3c54e46cee4f13c9f37",
+            "matches_qr_init_hash": true,
+            "tensors_compared": 53,
+            "max_abs_diff_all_tensors": 0.0,
+            "max_abs_diff_w_q": 0.0,
+            "max_abs_diff_w_k_vs_w_r": 0.0,
+            "max_abs_diff_w_v": 0.0,
+            "max_abs_diff_w_o": 0.0,
+            "max_abs_diff_common_non_attention": 0.0,
+            "exact_bitwise_match": true
+          },
+          {
+            "qr_lambda": 8.0,
+            "qr_init_checkpoint": "outputs/qr_lambda_upper_probe_q112/lambda_8.0/seed_1337/init.pt",
+            "canonical_qr_mapped_sha256": "cb70c0386062ab0bfd874d66fbc6cd53cefe9480de55f3c54e46cee4f13c9f37",
+            "matches_qr_init_hash": true,
+            "tensors_compared": 53,
+            "max_abs_diff_all_tensors": 0.0,
+            "max_abs_diff_w_q": 0.0,
+            "max_abs_diff_w_k_vs_w_r": 0.0,
+            "max_abs_diff_w_v": 0.0,
+            "max_abs_diff_w_o": 0.0,
+            "max_abs_diff_common_non_attention": 0.0,
+            "exact_bitwise_match": true
+          },
+          {
+            "qr_lambda": 20.0,
+            "qr_init_checkpoint": "outputs/qr_lambda_upper_probe_q112/lambda_20.0/seed_1337/init.pt",
+            "canonical_qr_mapped_sha256": "cb70c0386062ab0bfd874d66fbc6cd53cefe9480de55f3c54e46cee4f13c9f37",
+            "matches_qr_init_hash": true,
+            "tensors_compared": 53,
+            "max_abs_diff_all_tensors": 0.0,
+            "max_abs_diff_w_q": 0.0,
+            "max_abs_diff_w_k_vs_w_r": 0.0,
+            "max_abs_diff_w_v": 0.0,
+            "max_abs_diff_w_o": 0.0,
+            "max_abs_diff_common_non_attention": 0.0,
+            "exact_bitwise_match": true
+          }
+        ],
+        "mapping_note": "Shared initialization copied bitwise from QR Q112 initial weights: W_Q->W_Q, W_R->W_K, W_V->W_V, W_O->W_O, and all token/pos embeddings, LayerNorms, and FFN weights identical.",
+        "matches_qr_fairness_audit_init_hashes": {
+          "qr_lambda_extended_q112": true,
+          "qr_lambda_upper_probe_q112": true
+        }
+      },
+      "2024": {
+        "seed": 2024,
+        "std_init_state_sha256": "71a235d305d30543b886f3a79297b5ce132b2a8f0a0da7eab844fda84fa6cbce",
+        "qr_reference_init_state_sha256": "bf4a238bd2ec3b0c1cd24c65a71d5f5b7274d18be844573421a01334b946ea36",
+        "canonical_qr_mapped_sha256": "bf4a238bd2ec3b0c1cd24c65a71d5f5b7274d18be844573421a01334b946ea36",
+        "matches_builder_qr_init": true,
+        "builder_tensor_comparison": {
+          "tensors_compared": 53,
+          "max_abs_diff_all_tensors": 0.0,
+          "max_abs_diff_w_q": 0.0,
+          "max_abs_diff_w_k_vs_w_r": 0.0,
+          "max_abs_diff_w_v": 0.0,
+          "max_abs_diff_w_o": 0.0,
+          "max_abs_diff_common_non_attention": 0.0,
+          "exact_bitwise_match": true
+        },
+        "saved_qr_artifact_verifications": [
+          {
+            "qr_lambda": 6.0,
+            "qr_init_checkpoint": "outputs/qr_lambda_extended_q112/lambda_6.0/seed_2024/init.pt",
+            "canonical_qr_mapped_sha256": "bf4a238bd2ec3b0c1cd24c65a71d5f5b7274d18be844573421a01334b946ea36",
+            "matches_qr_init_hash": true,
+            "tensors_compared": 53,
+            "max_abs_diff_all_tensors": 0.0,
+            "max_abs_diff_w_q": 0.0,
+            "max_abs_diff_w_k_vs_w_r": 0.0,
+            "max_abs_diff_w_v": 0.0,
+            "max_abs_diff_w_o": 0.0,
+            "max_abs_diff_common_non_attention": 0.0,
+            "exact_bitwise_match": true
+          },
+          {
+            "qr_lambda": 8.0,
+            "qr_init_checkpoint": "outputs/qr_lambda_upper_probe_q112/lambda_8.0/seed_2024/init.pt",
+            "canonical_qr_mapped_sha256": "bf4a238bd2ec3b0c1cd24c65a71d5f5b7274d18be844573421a01334b946ea36",
+            "matches_qr_init_hash": true,
+            "tensors_compared": 53,
+            "max_abs_diff_all_tensors": 0.0,
+            "max_abs_diff_w_q": 0.0,
+            "max_abs_diff_w_k_vs_w_r": 0.0,
+            "max_abs_diff_w_v": 0.0,
+            "max_abs_diff_w_o": 0.0,
+            "max_abs_diff_common_non_attention": 0.0,
+            "exact_bitwise_match": true
+          },
+          {
+            "qr_lambda": 20.0,
+            "qr_init_checkpoint": "outputs/qr_lambda_upper_probe_q112/lambda_20.0/seed_2024/init.pt",
+            "canonical_qr_mapped_sha256": "bf4a238bd2ec3b0c1cd24c65a71d5f5b7274d18be844573421a01334b946ea36",
+            "matches_qr_init_hash": true,
+            "tensors_compared": 53,
+            "max_abs_diff_all_tensors": 0.0,
+            "max_abs_diff_w_q": 0.0,
+            "max_abs_diff_w_k_vs_w_r": 0.0,
+            "max_abs_diff_w_v": 0.0,
+            "max_abs_diff_w_o": 0.0,
+            "max_abs_diff_common_non_attention": 0.0,
+            "exact_bitwise_match": true
+          }
+        ],
+        "mapping_note": "Shared initialization copied bitwise from QR Q112 initial weights: W_Q->W_Q, W_R->W_K, W_V->W_V, W_O->W_O, and all token/pos embeddings, LayerNorms, and FFN weights identical.",
+        "matches_qr_fairness_audit_init_hashes": {
+          "qr_lambda_extended_q112": true,
+          "qr_lambda_upper_probe_q112": true
+        }
+      },
+      "42": {
+        "seed": 42,
+        "std_init_state_sha256": "ca8c8c4bb78677f292d9303253ccdee6a0ac8bf2e3294572c6ef139f7a2f5456",
+        "qr_reference_init_state_sha256": "4ec2586f4b4f2bfa6f4f7b3b4b067bdd117e2ef58fc6fcfc5368b41255530cb6",
+        "canonical_qr_mapped_sha256": "4ec2586f4b4f2bfa6f4f7b3b4b067bdd117e2ef58fc6fcfc5368b41255530cb6",
+        "matches_builder_qr_init": true,
+        "builder_tensor_comparison": {
+          "tensors_compared": 53,
+          "max_abs_diff_all_tensors": 0.0,
+          "max_abs_diff_w_q": 0.0,
+          "max_abs_diff_w_k_vs_w_r": 0.0,
+          "max_abs_diff_w_v": 0.0,
+          "max_abs_diff_w_o": 0.0,
+          "max_abs_diff_common_non_attention": 0.0,
+          "exact_bitwise_match": true
+        },
+        "saved_qr_artifact_verifications": [
+          {
+            "qr_lambda": 6.0,
+            "qr_init_checkpoint": "outputs/qr_lambda_extended_q112/lambda_6.0/seed_42/init.pt",
+            "canonical_qr_mapped_sha256": "4ec2586f4b4f2bfa6f4f7b3b4b067bdd117e2ef58fc6fcfc5368b41255530cb6",
+            "matches_qr_init_hash": true,
+            "tensors_compared": 53,
+            "max_abs_diff_all_tensors": 0.0,
+            "max_abs_diff_w_q": 0.0,
+            "max_abs_diff_w_k_vs_w_r": 0.0,
+            "max_abs_diff_w_v": 0.0,
+            "max_abs_diff_w_o": 0.0,
+            "max_abs_diff_common_non_attention": 0.0,
+            "exact_bitwise_match": true
+          },
+          {
+            "qr_lambda": 8.0,
+            "qr_init_checkpoint": "outputs/qr_lambda_upper_probe_q112/lambda_8.0/seed_42/init.pt",
+            "canonical_qr_mapped_sha256": "4ec2586f4b4f2bfa6f4f7b3b4b067bdd117e2ef58fc6fcfc5368b41255530cb6",
+            "matches_qr_init_hash": true,
+            "tensors_compared": 53,
+            "max_abs_diff_all_tensors": 0.0,
+            "max_abs_diff_w_q": 0.0,
+            "max_abs_diff_w_k_vs_w_r": 0.0,
+            "max_abs_diff_w_v": 0.0,
+            "max_abs_diff_w_o": 0.0,
+            "max_abs_diff_common_non_attention": 0.0,
+            "exact_bitwise_match": true
+          },
+          {
+            "qr_lambda": 20.0,
+            "qr_init_checkpoint": "outputs/qr_lambda_upper_probe_q112/lambda_20.0/seed_42/init.pt",
+            "canonical_qr_mapped_sha256": "4ec2586f4b4f2bfa6f4f7b3b4b067bdd117e2ef58fc6fcfc5368b41255530cb6",
+            "matches_qr_init_hash": true,
+            "tensors_compared": 53,
+            "max_abs_diff_all_tensors": 0.0,
+            "max_abs_diff_w_q": 0.0,
+            "max_abs_diff_w_k_vs_w_r": 0.0,
+            "max_abs_diff_w_v": 0.0,
+            "max_abs_diff_w_o": 0.0,
+            "max_abs_diff_common_non_attention": 0.0,
+            "exact_bitwise_match": true
+          }
+        ],
+        "mapping_note": "Shared initialization copied bitwise from QR Q112 initial weights: W_Q->W_Q, W_R->W_K, W_V->W_V, W_O->W_O, and all token/pos embeddings, LayerNorms, and FFN weights identical.",
+        "matches_qr_fairness_audit_init_hashes": {
+          "qr_lambda_extended_q112": true,
+          "qr_lambda_upper_probe_q112": true
+        }
+      }
+    },
+    "seed_reference_batch_hashes": {
+      "1337": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+      "2024": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+      "42": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5"
+    },
+    "seed_stream_matches_qr_references": {
+      "1337": {
+        "qr_lambda_extended_q112": true,
+        "qr_lambda_upper_probe_q112": true
+      },
+      "2024": {
+        "qr_lambda_extended_q112": true,
+        "qr_lambda_upper_probe_q112": true
+      },
+      "42": {
+        "qr_lambda_extended_q112": true,
+        "qr_lambda_upper_probe_q112": true
+      }
+    },
+    "run_batch_stream_verifications": [
+      {
+        "seed": 1337,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+        "matches_reference_stream": true
+      },
+      {
+        "seed": 2024,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+        "matches_reference_stream": true
+      },
+      {
+        "seed": 42,
+        "status": "completed",
+        "steps": 10000,
+        "batches_sampled": 10000,
+        "training_tokens": 40960000,
+        "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+        "matches_reference_stream": true
+      }
+    ],
+    "independent_seed_initializations": true,
+    "all_inits_bitwise_matched_to_qr": true,
+    "all_batch_streams_verified": true,
+    "all_runs_completed_full_horizon": true
+  },
+  "parameter_budget_audit": {
+    "q_config": "q112",
+    "architecture": "standard_attention",
+    "model_type": "standard_q112",
+    "aggregate_q_dim": 112,
+    "n_layers": 4,
+    "d_model": 128,
+    "n_heads": 4,
+    "d_ff": 512,
+    "context_length": 128,
+    "vocab_size": 65,
+    "q_head_dim": 28,
+    "k_head_dim": 28,
+    "r_head_dim": 0,
+    "v_head_dim": 22,
+    "bias_free_attention": true,
+    "tied_token_output_embeddings": true,
+    "dropout": 0.1,
+    "attention_parameters_per_layer": 51200,
+    "attention_parameters_total": 204800,
+    "non_attention_parameters": 553856,
+    "total_parameters": 758656,
+    "component_breakdown": {
+      "token_embedding_tied_with_lm_head": 8320,
+      "position_embedding": 16384,
+      "layer_norms_total": 2304,
+      "ffn_total": 526848,
+      "attention_w_q_total": 57344,
+      "attention_w_k_total": 57344,
+      "attention_w_v_total": 45056,
+      "attention_w_out_total": 45056
+    },
+    "trainable_parameters": 758656,
+    "non_trainable_parameters": 0,
+    "stored_buffers": 0,
+    "total_stored_scalars": 758656
+  }
+}
