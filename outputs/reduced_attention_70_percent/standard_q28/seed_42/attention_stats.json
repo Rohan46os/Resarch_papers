@@ -1,0 +1,44 @@
+{
+  "raw_score_symmetry_max_abs_error": 8.358803272247314,
+  "raw_score_symmetry_max_abs_error_per_head": [
+    4.2989349365234375,
+    6.856613516807556,
+    4.971263408660889,
+    8.358803272247314
+  ],
+  "symmetric_part_min_eigenvalue_per_head": [
+    -8.156772065882873,
+    -7.630214876933706,
+    -9.858013932704123,
+    -8.317107576318177
+  ],
+  "max_future_probability": 0.0,
+  "max_future_probability_per_head": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "mean_diagonal_mass": 0.17132958830916323,
+  "mean_diagonal_mass_per_head": [
+    0.17213820316828787,
+    0.18089591432362795,
+    0.15321771323215216,
+    0.17906652251258492
+  ],
+  "mean_entropy_nats": 2.3929144718900384,
+  "mean_entropy_nats_per_head": [
+    2.4477794570273232,
+    2.3245947953653605,
+    2.458326255972683,
+    2.340957379194788
+  ],
+  "layer": 0,
+  "example_index": 0,
+  "seed": 42,
+  "model_type": "standard_q28",
+  "prompt": "?\n\nGREMIO:\nGood morrow, neighbou",
+  "sequence_length": 32,
+  "n_heads": 4,
+  "context": "Fixed validation prefix, all heads, before attention dropout. Raw shared-Q scores are scaled Gram matrices; causal masking and row softmax need not preserve symmetry. Entropy uses natural logs. Diagonal mass and entropy average over query positions, including the forced single-key first position. Eigenvalues refer to the symmetric part and establish PSD only when raw scores are symmetric."
+}

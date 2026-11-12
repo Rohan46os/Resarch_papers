@@ -888,3 +888,111 @@ def build_reduced_attention(config, attention_type: str) -> CausalSelfAttention:
                 )
 
     raise ValueError(f"Unknown reduced attention_type: {attention_type}")
+
+
+REDUCED_80PCT_ATTENTION_CONFIGS = {
+    "q24": {
+        "q_head_dim": 6,
+        "r_head_dim": 6,
+        "k_head_dim": 6,
+        "v_head_dim": 4,
+        "aggregate_q_dim": 24,
+        "aggregate_v_dim": 16,
+    },
+}
+
+REDUCED_80PCT_VALID_ATTENTION_TYPES = (
+    *[f"standard_{k}" for k in REDUCED_80PCT_ATTENTION_CONFIGS],
+    *[f"qr_antisymmetric_{k}" for k in REDUCED_80PCT_ATTENTION_CONFIGS],
+)
+
+
+def is_reduced_80pct_attention_type(attention_type: str) -> bool:
+    return attention_type in REDUCED_80PCT_VALID_ATTENTION_TYPES
+
+
+def build_reduced_80pct_attention(config, attention_type: str) -> CausalSelfAttention:
+    """Instantiate an 80%-reduced attention layer (standard_q24 or qr_antisymmetric_q24)."""
+    for prefix, arch in (
+        ("standard_", "standard"),
+        ("qr_antisymmetric_", "qr_antisymmetric"),
+    ):
+        if attention_type.startswith(prefix):
+            cfg_key = attention_type[len(prefix):]
+            if cfg_key in REDUCED_80PCT_ATTENTION_CONFIGS:
+                if config.d_model != 128 or config.n_heads != 4:
+                    raise ValueError(
+                        f"Reduced 80% attention type {attention_type} requires d_model=128 and n_heads=4"
+                    )
+                dims = REDUCED_80PCT_ATTENTION_CONFIGS[cfg_key]
+                if arch == "standard":
+                    return WidthMatchedCausalAttention(
+                        config,
+                        mode="standard",
+                        q_head_dim=dims["q_head_dim"],
+                        v_head_dim=dims["v_head_dim"],
+                        attention_type=attention_type,
+                    )
+                return QRSharedQAntisymmetricAttention(
+                    config,
+                    q_head_dim=dims["q_head_dim"],
+                    v_head_dim=dims["v_head_dim"],
+                    lambda_param=float(getattr(config, "qr_lambda", 20.0)),
+                    attention_type=attention_type,
+                )
+
+    raise ValueError(f"Unknown reduced 80% attention_type: {attention_type}")
+
+
+REDUCED_70PCT_ATTENTION_CONFIGS = {
+    "q28": {
+        "q_head_dim": 7,
+        "r_head_dim": 7,
+        "k_head_dim": 7,
+        "v_head_dim": 8,
+        "aggregate_q_dim": 28,
+        "aggregate_v_dim": 32,
+    },
+}
+
+REDUCED_70PCT_VALID_ATTENTION_TYPES = (
+    *[f"standard_{k}" for k in REDUCED_70PCT_ATTENTION_CONFIGS],
+    *[f"qr_antisymmetric_{k}" for k in REDUCED_70PCT_ATTENTION_CONFIGS],
+)
+
+
+def is_reduced_70pct_attention_type(attention_type: str) -> bool:
+    return attention_type in REDUCED_70PCT_VALID_ATTENTION_TYPES
+
+
+def build_reduced_70pct_attention(config, attention_type: str) -> CausalSelfAttention:
+    """Instantiate an exact 70%-reduced attention layer (standard_q28 or qr_antisymmetric_q28)."""
+    for prefix, arch in (
+        ("standard_", "standard"),
+        ("qr_antisymmetric_", "qr_antisymmetric"),
+    ):
+        if attention_type.startswith(prefix):
+            cfg_key = attention_type[len(prefix):]
+            if cfg_key in REDUCED_70PCT_ATTENTION_CONFIGS:
+                if config.d_model != 128 or config.n_heads != 4:
+                    raise ValueError(
+                        f"Reduced 70% attention type {attention_type} requires d_model=128 and n_heads=4"
+                    )
+                dims = REDUCED_70PCT_ATTENTION_CONFIGS[cfg_key]
+                if arch == "standard":
+                    return WidthMatchedCausalAttention(
+                        config,
+                        mode="standard",
+                        q_head_dim=dims["q_head_dim"],
+                        v_head_dim=dims["v_head_dim"],
+                        attention_type=attention_type,
+                    )
+                return QRSharedQAntisymmetricAttention(
+                    config,
+                    q_head_dim=dims["q_head_dim"],
+                    v_head_dim=dims["v_head_dim"],
+                    lambda_param=float(getattr(config, "qr_lambda", 20.0)),
+                    attention_type=attention_type,
+                )
+
+    raise ValueError(f"Unknown reduced 70% attention_type: {attention_type}")

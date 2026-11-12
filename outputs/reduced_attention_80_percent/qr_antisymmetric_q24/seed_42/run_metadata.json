@@ -1,0 +1,16 @@
+{
+  "experiment": "reduced_attention_80_percent",
+  "config_key": "q24",
+  "arch_key": "qr_antisymmetric",
+  "model_label": "Reduced QR Q24/V16 (\u03bb=20)",
+  "model_type": "qr_antisymmetric_q24",
+  "seed": 42,
+  "qr_lambda": 20.0,
+  "lambda_learnable": false,
+  "max_steps": 10000,
+  "eval_interval": 250,
+  "init_state_sha256": "ab37bb57a3aad9f1e5b067ce8a3730b7ee1fbb2338b44bd6fb445f5e982e0aba",
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "validation_seed": 918273,
+  "run_dir": "outputs/reduced_attention_80_percent/qr_antisymmetric_q24/seed_42"
+}

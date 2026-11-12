@@ -27,5 +27,9 @@ outputs/*
 !outputs/standard_attention_q112_10k/**
 !outputs/reduced_attention_50_percent/
 !outputs/reduced_attention_50_percent/**
+!outputs/reduced_attention_80_percent/
+!outputs/reduced_attention_80_percent/**
+!outputs/reduced_attention_70_percent/
+!outputs/reduced_attention_70_percent/**
 *.pt
 *.log

@@ -453,6 +453,45 @@ python analyze_reduced_attention_50pct.py
 python visualize_reduced_attention_50pct.py
 ```
 
+## 80%-Reduced Attention (`Q24/V16`) — Extreme Compression Probe
+
+Probes cutting QR Antisymmetric Shared-Q ($\lambda = 20$) and Standard Attention parameters by **80%** (`204,800 -> 40,960` attention params; `758,656 -> 594,816` total params, `-21.60%`; `d_q = 6, d_v = 4` per head across 4 heads) over `10,000` steps across paired seeds `[1337, 2024, 42]`.
+
+- **Parameter-Matched Win Widens, Full-Standard Parity Crossed:**
+  - `Q24` QR outperforms parameter-matched `Q24` Standard on `3/3` seeds by **`-0.067276` nats (`-3.95%`)** on Protocol A (`1.635819` vs. `1.703095`) and **`-0.067306` nats (`-3.96%`)** on Protocol B (`1.631569` vs. `1.698875`), and slightly beats `50%` Standard `Q56` (`1.6421` A / `1.6349` B) with `60%` fewer attention params.
+  - However, `80%` compression crosses below Full Standard `Q112` (`1.615077` A / `1.607823` B) on `0/3` seeds (`+0.020742` A / `+0.023746` B), while lowering peak VRAM to `275.71 MB` (`-14.56%` vs. Full QR).
+
+Read [RESULTS_REDUCED_ATTENTION_80_PERCENT.md](outputs/reduced_attention_80_percent/RESULTS_REDUCED_ATTENTION_80_PERCENT.md) for full `80%` results, diagnostics, and figures under `outputs/reduced_attention_80_percent/analysis/figures/`.
+
+```sh
+python -m unittest test_reduced_attention_80pct.py -v
+python train_reduced_attention_80pct.py --device cuda
+python analyze_reduced_attention_80pct.py
+python visualize_reduced_attention_80pct.py
+```
+
+## 70%-Reduced Attention (`Q28/V32`) — Exact Compression Boundary Study
+
+Tests whether cutting attention parameters by **exactly 70%** (`204,800 -> 61,440` attention params; `758,656 -> 615,296` total params, `-18.90%`; `d_q = 7, d_v = 8` per head across 4 heads, $\lambda = 20$) keeps QR Antisymmetric Shared-Q Attention ahead of Full Standard `Q112` and pinpoints the scaling knee between `50%` and `80%`.
+
+- **70%-Reduced `Q28` QR Beats Full-Size Standard (`3/3` Paired Seeds Across Both Protocols):**
+  - **Protocol A (`20-batch`, `81,920` tokens, `final @ 10,000`):** `Q28` QR **`1.598727 ± 0.001922`** (`PPL 4.9467`) beats `Q28` Standard `1.662643 ± 0.004063` (`-0.063916`, `-3.84%`), **`Q56` Standard (50%)** `1.642125` (`-0.043397`, `-2.64%`), **Full Standard `Q112`** `1.615077 ± 0.005511` (`-0.016350`, `-1.01%`), and `Q24` QR `1.635819` (`-0.037092`, `-2.27%`), sitting within `+0.004598` nats (`+0.29%`) of `50%`-reduced `Q56` QR (`1.594130`).
+  - **Protocol B (`full-corpus`, `111,539` tokens, `final @ 10,000`):** `Q28` QR **`1.593015 ± 0.001962`** (`PPL 4.9186`) beats `Q28` Standard `1.657094` (`-0.064079`, `-3.87%`), **`Q56` Standard (50%)** `1.634914` (`-0.041899`, `-2.56%`), and **Full Standard `Q112`** `1.607823` (`-0.014808`, `-0.92%`), staying within `+0.006922` nats (`+0.44%`) of `Q56` QR (`1.586093`).
+- **Pareto Knee & Memory:** QR's validation loss stays nearly flat from `50% -> 70%` compression (`+0.005`–`+0.007` nats) before dropping sharply at `80%` (`Q24/V16`, `+0.037`–`+0.039` nats), placing the Full-Standard parity threshold strictly between **`70%` and `80%`** attention reduction while reducing peak VRAM to `279.52 MB` (`-15.33 MB` vs. Full Standard, `-43.16 MB` vs. Full QR).
+
+Read [RESULTS_REDUCED_ATTENTION_70_PERCENT.md](outputs/reduced_attention_70_percent/RESULTS_REDUCED_ATTENTION_70_PERCENT.md) and the full ladder summary [COMPARISON_LADDER_AND_FULL_STD.md](outputs/reduced_attention_70_percent/COMPARISON_LADDER_AND_FULL_STD.md) (including `fig7` & `fig8`).
+
+```sh
+# Run 70% tests & full repository test suite (200 tests OK)
+python -m unittest test_reduced_attention_70pct.py -v
+python -m unittest discover -p "test_*.py"
+
+# Run reduced Q28 training, dual evaluation, analysis, and figures
+python train_reduced_attention_70pct.py --device cuda
+python analyze_reduced_attention_70pct.py
+python visualize_reduced_attention_70pct.py
+```
+
 ## Troubleshooting and safety
 
 - **CUDA unavailable:** check the active interpreter and `torch.cuda.is_available()`, driver compatibility, and whether the installed torch wheel includes CUDA. Install the appropriate build from pytorch.org or run `--device cpu`. A local CUDA toolkit alone does not turn a CPU-only wheel into a CUDA build.

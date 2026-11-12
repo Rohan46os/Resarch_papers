@@ -1,0 +1,16 @@
+{
+  "experiment": "reduced_attention_70_percent",
+  "config_key": "q28",
+  "arch_key": "standard",
+  "model_label": "Reduced Standard Q28/V32",
+  "model_type": "standard_q28",
+  "seed": 1337,
+  "qr_lambda": null,
+  "lambda_learnable": false,
+  "max_steps": 10000,
+  "eval_interval": 250,
+  "init_state_sha256": "40539bd41b66d3165f0a7836c50e3515ea0b7cee47aa6cf215d0ce19ff47e639",
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "validation_seed": 918273,
+  "run_dir": "outputs/reduced_attention_70_percent/standard_q28/seed_1337"
+}
