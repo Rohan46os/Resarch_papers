@@ -834,3 +834,57 @@ def build_qr_attention(config, attention_type: str) -> CausalSelfAttention:
                 )
 
     raise ValueError(f"Unknown QR attention_type: {attention_type}")
+
+
+REDUCED_ATTENTION_CONFIGS = {
+    "q56": {
+        "q_head_dim": 14,
+        "r_head_dim": 14,
+        "k_head_dim": 14,
+        "v_head_dim": 11,
+        "aggregate_q_dim": 56,
+        "aggregate_v_dim": 44,
+    },
+}
+
+REDUCED_VALID_ATTENTION_TYPES = (
+    *[f"standard_{k}" for k in REDUCED_ATTENTION_CONFIGS],
+    *[f"qr_antisymmetric_{k}" for k in REDUCED_ATTENTION_CONFIGS],
+)
+
+
+def is_reduced_attention_type(attention_type: str) -> bool:
+    return attention_type in REDUCED_VALID_ATTENTION_TYPES
+
+
+def build_reduced_attention(config, attention_type: str) -> CausalSelfAttention:
+    """Instantiate a 50%-reduced attention layer (standard_q56 or qr_antisymmetric_q56)."""
+    for prefix, arch in (
+        ("standard_", "standard"),
+        ("qr_antisymmetric_", "qr_antisymmetric"),
+    ):
+        if attention_type.startswith(prefix):
+            cfg_key = attention_type[len(prefix):]
+            if cfg_key in REDUCED_ATTENTION_CONFIGS:
+                if config.d_model != 128 or config.n_heads != 4:
+                    raise ValueError(
+                        f"Reduced attention type {attention_type} requires d_model=128 and n_heads=4"
+                    )
+                dims = REDUCED_ATTENTION_CONFIGS[cfg_key]
+                if arch == "standard":
+                    return WidthMatchedCausalAttention(
+                        config,
+                        mode="standard",
+                        q_head_dim=dims["q_head_dim"],
+                        v_head_dim=dims["v_head_dim"],
+                        attention_type=attention_type,
+                    )
+                return QRSharedQAntisymmetricAttention(
+                    config,
+                    q_head_dim=dims["q_head_dim"],
+                    v_head_dim=dims["v_head_dim"],
+                    lambda_param=float(getattr(config, "qr_lambda", 20.0)),
+                    attention_type=attention_type,
+                )
+
+    raise ValueError(f"Unknown reduced attention_type: {attention_type}")

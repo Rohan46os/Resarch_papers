@@ -432,6 +432,27 @@ python -m unittest test_standard_attention_q112_10k.py -v
 python outputs/standard_attention_q112_10k/reproduce_analysis.py
 ```
 
+## 50%-Reduced Attention (`Q56`) — Half-Size QR vs. Full-Size Standard
+
+Tests whether cutting QR Antisymmetric Shared-Q attention parameters by **50%** (`204,800 -> 102,400`, `d_q=d_r=14`, `d_v=11`, $\lambda=20$; **`656,256`** total parameters vs. `Q112`'s `758,656`, `-13.50%`) while keeping the entire `d_ff=512` FFN and `10,000`-step optimization schedule unchanged still competes with Full Standard Attention (`204,800` attn / `758,656` total) across paired seeds `[1337, 2024, 42]`.
+
+- **Half-Size QR Outperforms Full-Size Standard (`3 / 3` paired seeds under both protocols):**
+  - **Protocol A (`20-batch`, `81,920` tokens, `final @ 10,000`):** Reduced QR `1.594130 ± 0.002435` (`PPL 4.9241`) vs. Reduced Standard `1.642125 ± 0.008475` (`Δ = -0.047995`, `-2.92%`) and Full Standard `1.615077 ± 0.005511` (`Δ = -0.020947`, `-1.30%`, `PPL 5.0283`), compared to Full QR `1.566210` (`+0.027920` cost of halving).
+  - **Protocol B (`full-corpus`, `111,539` tokens, `final @ 10,000`):** Reduced QR `1.586093 ± 0.002959` (`PPL 4.8846`) vs. Reduced Standard `1.634914 ± 0.009210` (`Δ = -0.048821`, `-2.99%`) and Full Standard `1.607823 ± 0.003869` (`Δ = -0.021730`, `-1.35%`, `PPL 4.9920`), compared to Full QR `1.558444` (`+0.027650` cost of halving).
+- **Compute & Memory:** Halving attention reduces peak training VRAM (`292.14 vs. 322.68 MB` for QR, `-9.46%`; `278.14 vs. 294.85 MB` for Standard, `-5.67%`), while wall-clock training time remains FFN/kernel-bound (`386.44 ± 14.41 s` vs. `388.63 ± 0.42 s` for QR).
+
+Read [RESULTS_REDUCED_ATTENTION_50_PERCENT.md](outputs/reduced_attention_50_percent/RESULTS_REDUCED_ATTENTION_50_PERCENT.md) for complete per-seed results, fairness audits, all 4 paired comparisons, and figures under `outputs/reduced_attention_50_percent/analysis/figures/`.
+
+```sh
+# Run unit & integration tests (all 188 repo tests)
+python -m unittest test_reduced_attention_50pct.py -v
+
+# Run reduced Q56 training, dual evaluation, analysis, and figures
+python train_reduced_attention_50pct.py --device cuda
+python analyze_reduced_attention_50pct.py
+python visualize_reduced_attention_50pct.py
+```
+
 ## Troubleshooting and safety
 
 - **CUDA unavailable:** check the active interpreter and `torch.cuda.is_available()`, driver compatibility, and whether the installed torch wheel includes CUDA. Install the appropriate build from pytorch.org or run `--device cpu`. A local CUDA toolkit alone does not turn a CPU-only wheel into a CUDA build.

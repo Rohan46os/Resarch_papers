@@ -1,0 +1,124 @@
+{
+  "experiment": "reduced_attention_50_percent",
+  "config_key": "q56",
+  "qr_lambda": 20.0,
+  "seeds": [
+    1337,
+    2024,
+    42
+  ],
+  "max_steps": 10000,
+  "eval_interval": 250,
+  "seed_init_verifications": {
+    "1337": {
+      "tensors_compared": 53,
+      "std_init_state_sha256": "ba05ce0d4b05270fb441d7e16b72c8cc8d75797d33fa8e6eb59adfbb9b6ce753",
+      "qr_init_state_sha256": "a3bec38e20663243bf73a1ddff5ef5d15c3a7e05cacf46f3476b985eb51a119c",
+      "canonical_qr_mapped_sha256": "a3bec38e20663243bf73a1ddff5ef5d15c3a7e05cacf46f3476b985eb51a119c",
+      "exact_bitwise_match": true,
+      "max_abs_diff_all_tensors": 0.0,
+      "max_abs_diff_w_q": 0.0,
+      "max_abs_diff_w_k_vs_w_r": 0.0,
+      "max_abs_diff_w_v": 0.0,
+      "max_abs_diff_w_o": 0.0,
+      "max_abs_diff_common_non_attention": 0.0
+    },
+    "2024": {
+      "tensors_compared": 53,
+      "std_init_state_sha256": "86db7e5b015fc043ae87c3ecfc77af7ddfe05f017a4e9aca203f535422152b56",
+      "qr_init_state_sha256": "a524cb1850a8a07a536da84328d8eb0639475f29a06f367546ba2925da5472fc",
+      "canonical_qr_mapped_sha256": "a524cb1850a8a07a536da84328d8eb0639475f29a06f367546ba2925da5472fc",
+      "exact_bitwise_match": true,
+      "max_abs_diff_all_tensors": 0.0,
+      "max_abs_diff_w_q": 0.0,
+      "max_abs_diff_w_k_vs_w_r": 0.0,
+      "max_abs_diff_w_v": 0.0,
+      "max_abs_diff_w_o": 0.0,
+      "max_abs_diff_common_non_attention": 0.0
+    },
+    "42": {
+      "tensors_compared": 53,
+      "std_init_state_sha256": "982b2b4020a8c4b439178fd4bad7c541b232680335c655ce0939f345f331bb9e",
+      "qr_init_state_sha256": "c956b21d64424b38b38a1cd0a3d466857be50ec95a3653237af993a89c6f26af",
+      "canonical_qr_mapped_sha256": "c956b21d64424b38b38a1cd0a3d466857be50ec95a3653237af993a89c6f26af",
+      "exact_bitwise_match": true,
+      "max_abs_diff_all_tensors": 0.0,
+      "max_abs_diff_w_q": 0.0,
+      "max_abs_diff_w_k_vs_w_r": 0.0,
+      "max_abs_diff_w_v": 0.0,
+      "max_abs_diff_w_o": 0.0,
+      "max_abs_diff_common_non_attention": 0.0
+    }
+  },
+  "seed_reference_batch_hashes": {
+    "1337": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+    "2024": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+    "42": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5"
+  },
+  "run_batch_stream_verifications": [
+    {
+      "arch_key": "standard",
+      "seed": 1337,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+      "matches_reference_stream": true
+    },
+    {
+      "arch_key": "qr_antisymmetric",
+      "seed": 1337,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+      "matches_reference_stream": true
+    },
+    {
+      "arch_key": "standard",
+      "seed": 2024,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+      "matches_reference_stream": true
+    },
+    {
+      "arch_key": "qr_antisymmetric",
+      "seed": 2024,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+      "matches_reference_stream": true
+    },
+    {
+      "arch_key": "standard",
+      "seed": 42,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+      "matches_reference_stream": true
+    },
+    {
+      "arch_key": "qr_antisymmetric",
+      "seed": 42,
+      "status": "completed",
+      "steps": 10000,
+      "batches_sampled": 10000,
+      "training_tokens": 40960000,
+      "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+      "matches_reference_stream": true
+    }
+  ],
+  "independent_seed_initializations": true,
+  "all_paired_inits_bitwise_matched": true,
+  "all_batch_streams_verified": true,
+  "all_runs_completed_full_horizon": true
+}

@@ -25,5 +25,7 @@ outputs/*
 !outputs/qr_lambda_upper_probe_q112/**
 !outputs/standard_attention_q112_10k/
 !outputs/standard_attention_q112_10k/**
+!outputs/reduced_attention_50_percent/
+!outputs/reduced_attention_50_percent/**
 *.pt
 *.log

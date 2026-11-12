@@ -19,9 +19,13 @@ from attention import (
     QR_EXPERIMENT_CONFIGS,
     QR_VALID_ATTENTION_TYPES,
     QRSharedQAntisymmetricAttention,
+    REDUCED_ATTENTION_CONFIGS,
+    REDUCED_VALID_ATTENTION_TYPES,
     SharedQAntisymmetricAttention,
     build_qr_attention,
+    build_reduced_attention,
     is_qr_attention_type,
+    is_reduced_attention_type,
 )
 
 
@@ -32,6 +36,8 @@ class DecoderBlock(nn.Module):
         self.attention = (
             build_qr_attention(config, attention_type)
             if is_qr_attention_type(attention_type)
+            else build_reduced_attention(config, attention_type)
+            if is_reduced_attention_type(attention_type)
             else HeterogeneousSharedQAttention(config, attention_type)
             if attention_type.startswith("hetero_")
             else SharedQAntisymmetricAttention(
@@ -89,6 +95,7 @@ class DecoderLM(nn.Module):
             "SharedQAntisymmetric",
             "shared_q_antisymmetric_fixed",
             *QR_VALID_ATTENTION_TYPES,
+            *REDUCED_VALID_ATTENTION_TYPES,
             *hetero_types,
             *AllocatedSharedQAttention.HEAD_DIMS,
         )
@@ -425,6 +432,48 @@ def build_qr_q112_lambda_models(
             model.set_qr_lambda(lam_f)
             models_by_lambda[lam_f] = model
     return models_by_lambda
+
+
+def build_reduced_q56_paired_models(
+    config,
+    vocab_size: int,
+    seed: int,
+    qr_lambda: float = 20.0,
+):
+    """Build paired 50%-reduced attention models (standard_q56 and qr_antisymmetric_q56).
+
+    Both models start with bitwise-identical weights across all shared tensors:
+    - Standard W_Q == QR W_Q
+    - Standard W_K == QR W_R
+    - Standard W_V == QR W_V
+    - Standard W_O == QR W_O
+    - All token/position embeddings, LayerNorms, and FFNs match bitwise.
+    Preserves caller RNG state.
+    """
+    with torch.random.fork_rng(devices=[]):
+        torch.set_rng_state(torch.Generator().manual_seed(seed).get_state())
+        qr_model = DecoderLM(config, vocab_size, "qr_antisymmetric_q56")
+        qr_model.set_qr_lambda(float(qr_lambda))
+        qr_state = {name: tensor.detach().clone() for name, tensor in qr_model.state_dict().items()}
+
+        torch.set_rng_state(torch.Generator().manual_seed(seed).get_state())
+        std_model = DecoderLM(config, vocab_size, "standard_q56")
+        std_target = {}
+        for name in std_model.state_dict().keys():
+            qr_key = name.replace(".attention.k_proj.", ".attention.r_proj.")
+            if qr_key not in qr_state:
+                raise KeyError(f"Cannot map QR tensor for reduced Standard key {name}")
+            std_target[name] = qr_state[qr_key].clone()
+        std_model.load_state_dict(std_target, strict=True)
+        if std_model.lm_head.weight is not std_model.token_embedding.weight:
+            std_model.lm_head.weight = std_model.token_embedding.weight
+        if qr_model.lm_head.weight is not qr_model.token_embedding.weight:
+            qr_model.lm_head.weight = qr_model.token_embedding.weight
+
+    return {
+        "standard": std_model,
+        "qr_antisymmetric": qr_model,
+    }
 
 
 def verify_qr_parameter_budgets(config, vocab_size: int = 65):

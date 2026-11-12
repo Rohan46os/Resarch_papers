@@ -1,0 +1,16 @@
+{
+  "experiment": "reduced_attention_50_percent",
+  "config_key": "q56",
+  "arch_key": "standard",
+  "model_label": "Reduced Standard Attention",
+  "model_type": "standard_q56",
+  "seed": 1337,
+  "qr_lambda": null,
+  "lambda_learnable": false,
+  "max_steps": 10000,
+  "eval_interval": 250,
+  "init_state_sha256": "ba05ce0d4b05270fb441d7e16b72c8cc8d75797d33fa8e6eb59adfbb9b6ce753",
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "validation_seed": 918273,
+  "run_dir": "outputs/reduced_attention_50_percent/standard/seed_1337"
+}
