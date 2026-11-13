@@ -1,0 +1,14 @@
+{
+  "experiment": "qr_parameter_matched_components",
+  "arch_key": "symmetric_only_q56",
+  "model_label": "Parameter-Matched Symmetric-Only Q56/V32",
+  "model_type": "symmetric_only_q56",
+  "seed": 1337,
+  "qr_lambda": null,
+  "max_steps": 10000,
+  "eval_interval": 250,
+  "init_state_sha256": "088ad821175ec67199a4682a020bf58400ba23f41a982f6a9955628e0d3fa469",
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "validation_seed": 918273,
+  "run_dir": "outputs/qr_parameter_matched_components/symmetric_only_q56/seed_1337"
+}

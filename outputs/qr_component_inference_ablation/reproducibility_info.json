@@ -1,0 +1,32 @@
+{
+  "timestamp_utc": "2026-11-13 07:53:31 UTC",
+  "torch_version": "2.6.0+cu124",
+  "cuda_version": "12.4",
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "seeds": [
+    1337,
+    2024,
+    42
+  ],
+  "checkpoint_kinds": [
+    "final",
+    "best"
+  ],
+  "lambda_fixed": 20.0,
+  "sqrt_scaling": "sqrt(7) = 2.6457513110645906",
+  "protocol_a": {
+    "name": "20-batch validation",
+    "seed": 918273,
+    "target_tokens": 81920,
+    "batches": 20
+  },
+  "protocol_b": {
+    "name": "full-corpus validation",
+    "target_tokens": 111539,
+    "batches": 29
+  },
+  "consistency_check_max_bd_diff": 0.0
+}

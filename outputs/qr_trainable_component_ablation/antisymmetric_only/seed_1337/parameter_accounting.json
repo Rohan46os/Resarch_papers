@@ -1,0 +1,23 @@
+{
+  "config_key": "q28",
+  "arch_key": "antisymmetric_only",
+  "model_type": "qr_antisymmetric_only_q28",
+  "n_layers": 4,
+  "d_model": 128,
+  "n_heads": 4,
+  "d_ff": 512,
+  "context_length": 128,
+  "vocab_size": 65,
+  "q_head_dim": 7,
+  "r_head_dim": 7,
+  "v_head_dim": 8,
+  "lambda_param": 20.0,
+  "attention_parameters_per_layer": 15360,
+  "attention_parameters_total": 61440,
+  "non_attention_parameters": 553856,
+  "total_parameters": 615296,
+  "trainable_parameters": 615296,
+  "non_trainable_parameters": 0,
+  "stored_buffers": 0,
+  "total_stored_scalars": 615296
+}

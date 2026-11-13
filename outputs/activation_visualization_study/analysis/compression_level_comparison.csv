@@ -1,0 +1,5 @@
+compression_level,standard_model,qr_model,std_entropy,qr_entropy,std_stable_rank,qr_stable_rank,std_max_prob,qr_max_prob,std_diag_mass,qr_diag_mass,qr_score_asymmetry
+Full (Q112),full_standard_q112,full_qr_q112,2.128 ± 0.062,1.298 ± 0.042,1.42 ± 0.06,2.20 ± 0.03,0.354 ± 0.016,0.617 ± 0.012,0.149 ± 0.005,0.081 ± 0.011,30.447 ± 0.540
+50% Reduced (Q56),reduced_standard_q56,reduced_qr_q56,2.152 ± 0.048,1.310 ± 0.022,1.36 ± 0.05,2.11 ± 0.02,0.345 ± 0.010,0.608 ± 0.008,0.151 ± 0.006,0.107 ± 0.008,30.952 ± 0.608
+70% Reduced (Q28),reduced_standard_q28,reduced_qr_q28,2.189 ± 0.013,1.494 ± 0.018,1.27 ± 0.03,2.04 ± 0.01,0.335 ± 0.007,0.553 ± 0.005,0.164 ± 0.003,0.128 ± 0.004,30.685 ± 0.649
+80% Reduced (Q24),reduced_standard_q24,reduced_qr_q24,2.134 ± 0.040,1.500 ± 0.055,1.20 ± 0.02,2.04 ± 0.01,0.355 ± 0.009,0.546 ± 0.015,0.166 ± 0.002,0.126 ± 0.007,30.478 ± 1.599

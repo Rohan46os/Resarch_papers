@@ -1,0 +1,55 @@
+{
+  "experiment": "qr_parameter_matched_components",
+  "seeds": [
+    1337,
+    2024,
+    42
+  ],
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "pytorch_version": "2.6.0+cu124",
+  "runs": {
+    "antisymmetric_only_q28_seed1337": {
+      "init_state_sha256": "0de4eb7ef53fbfeab9f0629897ecc69c116db2fb222fc20c1e7322b0f52ef4f3",
+      "final_state_sha256": "d685565b1f1c56906e9947cd12a95ce821baa28eff631d964abcef9f6257ccc4",
+      "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+      "batch_stream_sha_matched": true,
+      "exact_reload_reproducible": true
+    },
+    "antisymmetric_only_q28_seed2024": {
+      "init_state_sha256": "57d4ae8ec7e68959fea801ff05be5997befce11a6e11869ea8eb6402fedf6e2b",
+      "final_state_sha256": "2dc2976c5529c50458b2e3b4197c68415223ea58bdde4c42105a558948d7858a",
+      "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+      "batch_stream_sha_matched": true,
+      "exact_reload_reproducible": true
+    },
+    "antisymmetric_only_q28_seed42": {
+      "init_state_sha256": "3528558fd47280e69904736404dc809ff09c7cd1b578208b9d4d8e5d783f2354",
+      "final_state_sha256": "60f13afdf399239826fa4b3dae12ef424adcafb3c2a5dd056a0154f043f854ad",
+      "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+      "batch_stream_sha_matched": true,
+      "exact_reload_reproducible": true
+    },
+    "symmetric_only_q56_seed1337": {
+      "init_state_sha256": "088ad821175ec67199a4682a020bf58400ba23f41a982f6a9955628e0d3fa469",
+      "final_state_sha256": "49317dc417c7050f888df881ed2656d2c9fc7d836c5e0b45a648f34687ab02ec",
+      "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+      "batch_stream_sha_matched": true,
+      "exact_reload_reproducible": true
+    },
+    "symmetric_only_q56_seed2024": {
+      "init_state_sha256": "12a4f10458087c6c1cf3afbe45efed2f4dff53c28276a220a4028e670e70df8b",
+      "final_state_sha256": "b8940f7149bf2c4ce7efabea2b4dcd4f94ec895ff7398d2d3f69ffe04e44b834",
+      "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+      "batch_stream_sha_matched": true,
+      "exact_reload_reproducible": true
+    },
+    "symmetric_only_q56_seed42": {
+      "init_state_sha256": "1e64a2ab69bec0c6bba21a88eeeff192a36cef77604ef895619109714ee51871",
+      "final_state_sha256": "576552f7a0acad6df56ef73fbe52ff1662a8d5f67de3d2359d9d9e793f9824d8",
+      "training_batch_sha256": "7f94fc8f969cf05f697b90679122acab5efaa7ca0032ca5a5c842aab6df814e5",
+      "batch_stream_sha_matched": true,
+      "exact_reload_reproducible": true
+    }
+  }
+}

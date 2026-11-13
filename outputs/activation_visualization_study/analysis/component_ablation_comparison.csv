@@ -1,0 +1,5 @@
+model_key,display_name,family,compression,init_stable_rank,trained_stable_rank,init_entropy,trained_entropy,init_diag_mass,trained_diag_mass,trained_max_prob,score_asymmetry
+reduced_qr_q28,Reduced QR Q28/V32 (λ=20),Full QR,70% Reduced,4.47 ± 0.23,2.04 ± 0.01,3.160 ± 0.007,1.494 ± 0.018,0.033 ± 0.000,0.128 ± 0.004,0.553 ± 0.005,30.685 ± 0.649
+antisymmetric_only_q28,Antisymmetric-Only Q28/V32 (λ=20),Antisymmetric-Only,70% Reduced / Param-Matched,4.60 ± 0.23,2.10 ± 0.01,3.158 ± 0.006,1.501 ± 0.041,0.031 ± 0.000,0.121 ± 0.007,0.553 ± 0.009,239171092650.667 ± 6925196260.965
+symmetric_only_q28,Original Symmetric-Only Q28/V32,Symmetric-Only,70% Reduced (Original),2.23 ± 0.19,1.02 ± 0.01,3.877 ± 0.000,2.251 ± 0.060,0.046 ± 0.000,0.206 ± 0.005,0.316 ± 0.011,0.000 ± 0.000
+symmetric_only_q56,Parameter-Matched Symmetric-Only Q56/V32,Symmetric-Only,50% Q-Expanded / Param-Matched,2.65 ± 0.29,1.03 ± 0.02,3.876 ± 0.000,2.118 ± 0.014,0.048 ± 0.000,0.220 ± 0.006,0.350 ± 0.006,0.000 ± 0.000

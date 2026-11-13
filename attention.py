@@ -661,6 +661,9 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
         self.r_head_dim = q_head_dim
         self.v_head_dim = v_head_dim
         self.lambda_param = float(lambda_param)
+        self.antisymmetric_enabled: bool = True
+        self.symmetric_enabled: bool = True
+        self.component_mode: str = "full"
 
         self.q_proj = nn.Linear(config.d_model, self.n_heads * self.q_head_dim, bias=False)
         self.r_proj = nn.Linear(config.d_model, self.n_heads * self.r_head_dim, bias=False)
@@ -678,15 +681,39 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
     def _resolve_lambda(self, lambda_val: Optional[float] = None) -> float:
         return self.lambda_param if lambda_val is None else float(lambda_val)
 
-    def _scores(self, q, r=None, return_components=False, lambda_val: Optional[float] = None):
+    def _scores(
+        self,
+        q,
+        r=None,
+        return_components=False,
+        lambda_val: Optional[float] = None,
+        component_mode: Optional[str] = None,
+    ):
         if r is None:
             raise ValueError("r tensor is required for QRSharedQAntisymmetricAttention._scores")
         if q.shape != r.shape:
             raise ValueError(f"Q and R must have identical shapes, got {q.shape} vs {r.shape}")
         effective_lambda = self._resolve_lambda(lambda_val)
-        sym_scores = q @ q.transpose(-2, -1)
-        anti_scores = (q @ r.transpose(-2, -1)) - (r @ q.transpose(-2, -1))
-        raw_scores = (sym_scores + effective_lambda * anti_scores) / math.sqrt(self.q_head_dim)
+        scale = math.sqrt(self.q_head_dim)
+
+        mode = component_mode if component_mode is not None else getattr(self, "component_mode", "full")
+        anti_on = getattr(self, "antisymmetric_enabled", True)
+        sym_on = getattr(self, "symmetric_enabled", True)
+
+        if mode == "symmetric_only" or not anti_on or mode == "antisymmetric_disabled":
+            sym_scores = q @ q.transpose(-2, -1)
+            raw_scores = sym_scores / scale
+            if return_components:
+                anti_scores = torch.zeros_like(sym_scores)
+        elif mode == "antisymmetric_only" or not sym_on:
+            anti_scores = (q @ r.transpose(-2, -1)) - (r @ q.transpose(-2, -1))
+            raw_scores = (effective_lambda * anti_scores) / scale
+            if return_components:
+                sym_scores = torch.zeros_like(anti_scores)
+        else:  # "full"
+            sym_scores = q @ q.transpose(-2, -1)
+            anti_scores = (q @ r.transpose(-2, -1)) - (r @ q.transpose(-2, -1))
+            raw_scores = (sym_scores + effective_lambda * anti_scores) / scale
 
         length = q.size(-2)
         future = torch.ones(
@@ -705,15 +732,37 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
             result["anti_scores"] = anti_scores
         return result
 
-    def attention_maps(self, x, return_components=False, lambda_val: Optional[float] = None):
+    def attention_maps(
+        self,
+        x,
+        return_components=False,
+        lambda_val: Optional[float] = None,
+        component_mode: Optional[str] = None,
+    ):
         """Return scaled scores and probabilities before attention dropout."""
         q, r, _ = self._project_qrv(x)
-        return self._scores(q, r, return_components=return_components, lambda_val=lambda_val)
+        return self._scores(
+            q,
+            r,
+            return_components=return_components,
+            lambda_val=lambda_val,
+            component_mode=component_mode,
+        )
 
-    def forward(self, x, lambda_val: Optional[float] = None):
+    def forward(
+        self,
+        x,
+        lambda_val: Optional[float] = None,
+        component_mode: Optional[str] = None,
+    ):
         batch, length, _ = x.shape
         q, r, v = self._project_qrv(x)
-        probabilities = self._scores(q, r, lambda_val=lambda_val)["probabilities"]
+        probabilities = self._scores(
+            q,
+            r,
+            lambda_val=lambda_val,
+            component_mode=component_mode,
+        )["probabilities"]
         attended = self.attention_dropout(probabilities) @ v
         attended = attended.transpose(1, 2).contiguous().reshape(
             batch, length, self.n_heads * self.v_head_dim
@@ -961,14 +1010,145 @@ REDUCED_70PCT_VALID_ATTENTION_TYPES = (
 )
 
 
+class AntisymmetricOnlyAttention(QRSharedQAntisymmetricAttention):
+    """Antisymmetric-Only Attention:
+      Q = X W_Q, R = X W_R, V = X W_V
+      S = lambda * (Q R^T - R Q^T) / sqrt(d_q)
+    Strictly NO QQ^T contribution anywhere in attention score computation.
+    Has full Q, R, V and output projections (61,440 attention parameters).
+    """
+
+    def __init__(
+        self,
+        config,
+        q_head_dim: Optional[int] = None,
+        v_head_dim: Optional[int] = None,
+        lambda_param: float = 20.0,
+        attention_type: str = "qr_antisymmetric_only_q28",
+    ):
+        super().__init__(
+            config,
+            q_head_dim=q_head_dim,
+            v_head_dim=v_head_dim,
+            lambda_param=lambda_param,
+            attention_type=attention_type,
+        )
+        self.component_mode = "antisymmetric_only"
+        self.symmetric_enabled = False
+        self.antisymmetric_enabled = True
+
+
+class SymmetricOnlyAttention(WidthMatchedCausalAttention):
+    """Symmetric-Only Attention:
+      Q = X W_Q, V = X W_V
+      S = Q Q^T / sqrt(d_q)
+    Strictly NO W_R projection and NO antisymmetric score contribution.
+    Has Q, V and output projections only (47,104 attention parameters).
+    """
+
+    def __init__(
+        self,
+        config,
+        q_head_dim: int,
+        v_head_dim: int,
+        attention_type: str = "symmetric_only_q28",
+    ):
+        super().__init__(
+            config,
+            mode="shared_q",
+            q_head_dim=q_head_dim,
+            v_head_dim=v_head_dim,
+            attention_type=attention_type,
+        )
+        self.component_mode = "symmetric_only"
+        self.symmetric_enabled = True
+        self.antisymmetric_enabled = False
+
+
+PARAMETER_MATCHED_ATTENTION_CONFIGS = {
+    "symmetric_only_q56": {
+        "q_head_dim": 14,
+        "v_head_dim": 8,
+        "aggregate_q_dim": 56,
+        "aggregate_v_dim": 32,
+    },
+    "symmetric_only_q28": {
+        "q_head_dim": 7,
+        "v_head_dim": 8,
+        "aggregate_q_dim": 28,
+        "aggregate_v_dim": 32,
+    },
+    "qr_antisymmetric_only_q28": {
+        "q_head_dim": 7,
+        "r_head_dim": 7,
+        "v_head_dim": 8,
+        "aggregate_q_dim": 28,
+        "aggregate_v_dim": 32,
+    },
+    "antisymmetric_only_q28": {
+        "q_head_dim": 7,
+        "r_head_dim": 7,
+        "v_head_dim": 8,
+        "aggregate_q_dim": 28,
+        "aggregate_v_dim": 32,
+    },
+}
+
+PARAMETER_MATCHED_VALID_ATTENTION_TYPES = (
+    "symmetric_only_q56",
+    "symmetric_only_q28",
+    "qr_antisymmetric_only_q28",
+    "antisymmetric_only_q28",
+)
+
+
+def is_parameter_matched_attention_type(attention_type: str) -> bool:
+    return attention_type in PARAMETER_MATCHED_VALID_ATTENTION_TYPES
+
+
+def build_parameter_matched_attention(config, attention_type: str) -> CausalSelfAttention:
+    """Instantiate an exact parameter-matched or component-ablation attention layer."""
+    if config.d_model != 128 or config.n_heads != 4:
+        raise ValueError(
+            f"Parameter matched attention type {attention_type} requires d_model=128 and n_heads=4"
+        )
+    if attention_type == "symmetric_only_q56":
+        return SymmetricOnlyAttention(
+            config,
+            q_head_dim=14,
+            v_head_dim=8,
+            attention_type="symmetric_only_q56",
+        )
+    if attention_type == "symmetric_only_q28":
+        return SymmetricOnlyAttention(
+            config,
+            q_head_dim=7,
+            v_head_dim=8,
+            attention_type="symmetric_only_q28",
+        )
+    if attention_type in ("qr_antisymmetric_only_q28", "antisymmetric_only_q28"):
+        return AntisymmetricOnlyAttention(
+            config,
+            q_head_dim=7,
+            v_head_dim=8,
+            lambda_param=float(getattr(config, "qr_lambda", 20.0)),
+            attention_type=attention_type,
+        )
+    raise ValueError(f"Unknown parameter-matched attention_type: {attention_type}")
+
+
 def is_reduced_70pct_attention_type(attention_type: str) -> bool:
     return attention_type in REDUCED_70PCT_VALID_ATTENTION_TYPES
 
 
 def build_reduced_70pct_attention(config, attention_type: str) -> CausalSelfAttention:
-    """Instantiate an exact 70%-reduced attention layer (standard_q28 or qr_antisymmetric_q28)."""
+    """Instantiate an exact 70%-reduced attention layer."""
     for prefix, arch in (
         ("standard_", "standard"),
+        ("qr_antisymmetric_only_", "qr_antisymmetric_only"),
+        ("antisymmetric_only_", "qr_antisymmetric_only"),
+        ("symmetric_only_", "symmetric_only"),
+        ("shared_q_", "symmetric_only"),
         ("qr_antisymmetric_", "qr_antisymmetric"),
     ):
         if attention_type.startswith(prefix):
@@ -985,6 +1165,21 @@ def build_reduced_70pct_attention(config, attention_type: str) -> CausalSelfAtte
                         mode="standard",
                         q_head_dim=dims["q_head_dim"],
                         v_head_dim=dims["v_head_dim"],
+                        attention_type=attention_type,
+                    )
+                if arch == "symmetric_only":
+                    return SymmetricOnlyAttention(
+                        config,
+                        q_head_dim=dims["q_head_dim"],
+                        v_head_dim=dims["v_head_dim"],
+                        attention_type=attention_type,
+                    )
+                if arch == "qr_antisymmetric_only":
+                    return AntisymmetricOnlyAttention(
+                        config,
+                        q_head_dim=dims["q_head_dim"],
+                        v_head_dim=dims["v_head_dim"],
+                        lambda_param=float(getattr(config, "qr_lambda", 20.0)),
                         attention_type=attention_type,
                     )
                 return QRSharedQAntisymmetricAttention(

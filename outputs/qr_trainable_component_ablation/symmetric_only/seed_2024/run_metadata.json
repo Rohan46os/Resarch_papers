@@ -1,0 +1,15 @@
+{
+  "experiment": "qr_trainable_component_ablation",
+  "config_key": "q28",
+  "arch_key": "symmetric_only",
+  "model_label": "Symmetric-Only Q28/V32",
+  "model_type": "symmetric_only_q28",
+  "seed": 2024,
+  "qr_lambda": null,
+  "max_steps": 10000,
+  "eval_interval": 250,
+  "init_state_sha256": "3c45e9b6ac7bdb150431039dbc1b59dc7ff26ff71b87297b1006cee96289fc96",
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "validation_seed": 918273,
+  "run_dir": "outputs/qr_trainable_component_ablation/symmetric_only/seed_2024"
+}

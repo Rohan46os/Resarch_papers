@@ -1,0 +1,2211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activation Visualization Study: Initialization vs. Trained Across Attention Architectures</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #f8f9fa; color: #212529; }
+        .header-box { background: linear-gradient(135deg, #1f77b4 0%, #0d3d63 100%); color: white; padding: 2.5rem 2rem; margin-bottom: 2rem; border-radius: 0 0 12px 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .card { border: none; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 1.5rem; }
+        .card-header { background-color: #ffffff; font-weight: 600; border-bottom: 1px solid #edf2f7; border-radius: 10px 10px 0 0 !important; }
+        .figure-card img { border-radius: 6px; transition: transform 0.2s; max-height: 480px; object-fit: contain; width: 100%; }
+        .figure-card img:hover { transform: scale(1.015); cursor: pointer; }
+        .badge-arch { font-size: 0.85rem; padding: 0.4em 0.7em; }
+        .table-sm th, .table-sm td { font-size: 0.82rem; }
+        .nav-pills .nav-link.active { background-color: #1f77b4; }
+    </style>
+</head>
+<body>
+
+<div class="header-box">
+    <div class="container-fluid">
+        <h1 class="display-6 fw-bold">Activation Visualization Study: Initialization vs. Trained</h1>
+        <p class="lead mb-2">Comprehensive empirical analysis of internal representations, attention patterns, and dimensional evolution across 11 attention architectures.</p>
+        <div class="d-flex flex-wrap gap-2 mt-3">
+            <span class="badge bg-light text-dark">66 Models Evaluated</span>
+            <span class="badge bg-light text-dark">4 Fixed Probe Sequences</span>
+            <span class="badge bg-light text-dark">264 Activation Datasets (NPZ)</span>
+            <span class="badge bg-light text-dark">100% Deterministic Reproducibility</span>
+            <a href="ACTIVATION_VISUALIZATION_REPORT.md" class="badge bg-warning text-dark text-decoration-none">Read Full Report (.md)</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid px-4">
+
+    <!-- Overview Nav Tabs -->
+    <ul class="nav nav-pills mb-4" id="mainTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="gallery-tab" data-bs-toggle="pill" data-bs-target="#gallery" type="button">Figure Gallery</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="comparisons-tab" data-bs-toggle="pill" data-bs-target="#comparisons" type="button">Cross-Architecture Comparisons</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tables-tab" data-bs-toggle="pill" data-bs-target="#tables" type="button">Statistical Diagnostics Tables</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="inventory-tab" data-bs-toggle="pill" data-bs-target="#inventory" type="button">Architecture & Probe Inventory</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="mainTabContent">
+
+        <!-- TAB 1: FIGURE GALLERY -->
+        <div class="tab-pane fade show active" id="gallery" role="tabpanel">
+
+            <!-- Architecture Overview Diagram -->
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>Figure 1: Full Architecture Comparison & Score Construction</span>
+                    <a href="architecture_diagrams/fig1_architecture_overview.png" target="_blank" class="btn btn-sm btn-outline-primary">Open High-Res 300 DPI</a>
+                </div>
+                <div class="card-body text-center figure-card">
+                    <img src="architecture_diagrams/fig1_architecture_overview.png" alt="Figure 1: Architecture Diagrams" class="img-fluid">
+                </div>
+            </div>
+
+            <!-- Family Browsing Selector -->
+            <h4 class="mb-3">Architectural Family Drill-down</h4>
+            <div class="accordion mb-4" id="accordionFamilies">
+
+                <!-- 1. Standard Attention -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingStd">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStd">
+                            <strong>Standard Attention (Full Q112)</strong> &nbsp;&mdash;&nbsp; Independent Q and K Projections
+                        </button>
+                    </h2>
+                    <div id="collapseStd" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 2: Q, K, V Activations (Init vs Trained)</div>
+                                        <div class="card-body"><img src="figures/standard/fig2_q_k_r_v_heatmaps.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 3: Attention Score Evolution</div>
+                                        <div class="card-body"><img src="figures/standard/fig3_attention_scores.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 4: Layer-Wise Attention Probabilities [0, 1]</div>
+                                        <div class="card-body"><img src="figures/standard/fig4_attention_probabilities.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 5: Hidden Representations (Layers 0..3)</div>
+                                        <div class="card-body"><img src="figures/standard/fig5_hidden_state_maps.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 6: Activation Distributions</div>
+                                        <div class="card-body"><img src="figures/standard/fig6_activation_distributions.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Full QR Attention -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingQR">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQR">
+                            <strong>Full QR Antisymmetric Attention (Q112, λ=20)</strong> &nbsp;&mdash;&nbsp; Dual-Stream Symmetric + Skew
+                        </button>
+                    </h2>
+                    <div id="collapseQR" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 2: Q, R, V Activations (Init vs Trained)</div>
+                                        <div class="card-body"><img src="figures/qr/fig2_q_k_r_v_heatmaps.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 3: Dual Score Decomposition (Sym, Anti, Combined, Masked)</div>
+                                        <div class="card-body"><img src="figures/qr/fig3_attention_scores.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 4: Layer-Wise Attention Probabilities [0, 1]</div>
+                                        <div class="card-body"><img src="figures/qr/fig4_attention_probabilities.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 5: Hidden Representations (Layers 0..3)</div>
+                                        <div class="card-body"><img src="figures/qr/fig5_hidden_state_maps.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 6: Activation Distributions</div>
+                                        <div class="card-body"><img src="figures/qr/fig6_activation_distributions.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Antisymmetric-Only Attention -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingAnti">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAnti">
+                            <strong>Antisymmetric-Only Attention (Q28, λ=20)</strong> &nbsp;&mdash;&nbsp; Pure Skew Inductive Bias
+                        </button>
+                    </h2>
+                    <div id="collapseAnti" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 2: Q, R, V Activations (Init vs Trained)</div>
+                                        <div class="card-body"><img src="figures/antisymmetric_only/fig2_q_k_r_v_heatmaps.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 3: Pure Skew Score Evolution</div>
+                                        <div class="card-body"><img src="figures/antisymmetric_only/fig3_attention_scores.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 4: Layer-Wise Attention Probabilities [0, 1]</div>
+                                        <div class="card-body"><img src="figures/antisymmetric_only/fig4_attention_probabilities.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 5: Hidden Representations (Layers 0..3)</div>
+                                        <div class="card-body"><img src="figures/antisymmetric_only/fig5_hidden_state_maps.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Parameter-Matched Symmetric-Only -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSym">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSym">
+                            <strong>Parameter-Matched Symmetric-Only Attention (Q56)</strong> &nbsp;&mdash;&nbsp; Pure Gram Matrix
+                        </button>
+                    </h2>
+                    <div id="collapseSym" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 2: Q and V Activations (Init vs Trained)</div>
+                                        <div class="card-body"><img src="figures/symmetric_only/fig2_q_k_r_v_heatmaps.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 3: Pure Gram Score Evolution</div>
+                                        <div class="card-body"><img src="figures/symmetric_only/fig3_attention_scores.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 4: Layer-Wise Attention Probabilities [0, 1]</div>
+                                        <div class="card-body"><img src="figures/symmetric_only/fig4_attention_probabilities.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card figure-card">
+                                        <div class="card-header">Fig 5: Hidden Representations (Layers 0..3)</div>
+                                        <div class="card-body"><img src="figures/symmetric_only/fig5_hidden_state_maps.png" class="img-fluid"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TAB 2: COMPARISONS -->
+        <div class="tab-pane fade" id="comparisons" role="tabpanel">
+            <div class="row g-3">
+                <div class="col-md-12">
+                    <div class="card figure-card">
+                        <div class="card-header">Fig 7: Singular-Value Spectra & Rank Comparison Across All Models</div>
+                        <div class="card-body"><img src="figures/compression_comparisons/fig7_rank_spectra_comparison.png" class="img-fluid"></div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card figure-card">
+                        <div class="card-header">Fig 8: Layer-Wise Trajectories (Entropy, Stable Rank, Probability, Diagonal Mass)</div>
+                        <div class="card-body"><img src="figures/compression_comparisons/fig8_layerwise_trajectories.png" class="img-fluid"></div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card figure-card">
+                        <div class="card-header">Fig 9: Token-to-Token Attention Patterns on Validation Probe 1</div>
+                        <div class="card-body"><img src="figures/compression_comparisons/fig9_token_to_token_comparison.png" class="img-fluid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: TABLES -->
+        <div class="tab-pane fade" id="tables" role="tabpanel">
+            <div class="card mb-4">
+                <div class="card-header">Table 1: Compression-Level Comparison (Standard vs Full QR Across Q112, Q56, Q28, Q24)</div>
+                <div class="card-body table-responsive"><table border="1" class="dataframe table table-striped table-hover table-sm">
+  <thead>
+    <tr style="text-align: right;">
+      <th>compression_level</th>
+      <th>standard_model</th>
+      <th>qr_model</th>
+      <th>std_entropy</th>
+      <th>qr_entropy</th>
+      <th>std_stable_rank</th>
+      <th>qr_stable_rank</th>
+      <th>std_max_prob</th>
+      <th>qr_max_prob</th>
+      <th>std_diag_mass</th>
+      <th>qr_diag_mass</th>
+      <th>qr_score_asymmetry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Full (Q112)</td>
+      <td>full_standard_q112</td>
+      <td>full_qr_q112</td>
+      <td>2.128 ± 0.062</td>
+      <td>1.298 ± 0.042</td>
+      <td>1.42 ± 0.06</td>
+      <td>2.20 ± 0.03</td>
+      <td>0.354 ± 0.016</td>
+      <td>0.617 ± 0.012</td>
+      <td>0.149 ± 0.005</td>
+      <td>0.081 ± 0.011</td>
+      <td>30.447 ± 0.540</td>
+    </tr>
+    <tr>
+      <td>50% Reduced (Q56)</td>
+      <td>reduced_standard_q56</td>
+      <td>reduced_qr_q56</td>
+      <td>2.152 ± 0.048</td>
+      <td>1.310 ± 0.022</td>
+      <td>1.36 ± 0.05</td>
+      <td>2.11 ± 0.02</td>
+      <td>0.345 ± 0.010</td>
+      <td>0.608 ± 0.008</td>
+      <td>0.151 ± 0.006</td>
+      <td>0.107 ± 0.008</td>
+      <td>30.952 ± 0.608</td>
+    </tr>
+    <tr>
+      <td>70% Reduced (Q28)</td>
+      <td>reduced_standard_q28</td>
+      <td>reduced_qr_q28</td>
+      <td>2.189 ± 0.013</td>
+      <td>1.494 ± 0.018</td>
+      <td>1.27 ± 0.03</td>
+      <td>2.04 ± 0.01</td>
+      <td>0.335 ± 0.007</td>
+      <td>0.553 ± 0.005</td>
+      <td>0.164 ± 0.003</td>
+      <td>0.128 ± 0.004</td>
+      <td>30.685 ± 0.649</td>
+    </tr>
+    <tr>
+      <td>80% Reduced (Q24)</td>
+      <td>reduced_standard_q24</td>
+      <td>reduced_qr_q24</td>
+      <td>2.134 ± 0.040</td>
+      <td>1.500 ± 0.055</td>
+      <td>1.20 ± 0.02</td>
+      <td>2.04 ± 0.01</td>
+      <td>0.355 ± 0.009</td>
+      <td>0.546 ± 0.015</td>
+      <td>0.166 ± 0.002</td>
+      <td>0.126 ± 0.007</td>
+      <td>30.478 ± 1.599</td>
+    </tr>
+  </tbody>
+</table></div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">Table 2: Component-Level Comparison (Full QR vs Anti-Only vs Symmetric-Only)</div>
+                <div class="card-body table-responsive"><table border="1" class="dataframe table table-striped table-hover table-sm">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model_key</th>
+      <th>display_name</th>
+      <th>family</th>
+      <th>compression</th>
+      <th>init_stable_rank</th>
+      <th>trained_stable_rank</th>
+      <th>init_entropy</th>
+      <th>trained_entropy</th>
+      <th>init_diag_mass</th>
+      <th>trained_diag_mass</th>
+      <th>trained_max_prob</th>
+      <th>score_asymmetry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>reduced_qr_q28</td>
+      <td>Reduced QR Q28/V32 (λ=20)</td>
+      <td>Full QR</td>
+      <td>70% Reduced</td>
+      <td>4.47 ± 0.23</td>
+      <td>2.04 ± 0.01</td>
+      <td>3.160 ± 0.007</td>
+      <td>1.494 ± 0.018</td>
+      <td>0.033 ± 0.000</td>
+      <td>0.128 ± 0.004</td>
+      <td>0.553 ± 0.005</td>
+      <td>30.685 ± 0.649</td>
+    </tr>
+    <tr>
+      <td>antisymmetric_only_q28</td>
+      <td>Antisymmetric-Only Q28/V32 (λ=20)</td>
+      <td>Antisymmetric-Only</td>
+      <td>70% Reduced / Param-Matched</td>
+      <td>4.60 ± 0.23</td>
+      <td>2.10 ± 0.01</td>
+      <td>3.158 ± 0.006</td>
+      <td>1.501 ± 0.041</td>
+      <td>0.031 ± 0.000</td>
+      <td>0.121 ± 0.007</td>
+      <td>0.553 ± 0.009</td>
+      <td>239171092650.667 ± 6925196260.965</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q28</td>
+      <td>Original Symmetric-Only Q28/V32</td>
+      <td>Symmetric-Only</td>
+      <td>70% Reduced (Original)</td>
+      <td>2.23 ± 0.19</td>
+      <td>1.02 ± 0.01</td>
+      <td>3.877 ± 0.000</td>
+      <td>2.251 ± 0.060</td>
+      <td>0.046 ± 0.000</td>
+      <td>0.206 ± 0.005</td>
+      <td>0.316 ± 0.011</td>
+      <td>0.000 ± 0.000</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q56</td>
+      <td>Parameter-Matched Symmetric-Only Q56/V32</td>
+      <td>Symmetric-Only</td>
+      <td>50% Q-Expanded / Param-Matched</td>
+      <td>2.65 ± 0.29</td>
+      <td>1.03 ± 0.02</td>
+      <td>3.876 ± 0.000</td>
+      <td>2.118 ± 0.014</td>
+      <td>0.048 ± 0.000</td>
+      <td>0.220 ± 0.006</td>
+      <td>0.350 ± 0.006</td>
+      <td>0.000 ± 0.000</td>
+    </tr>
+  </tbody>
+</table></div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">Table 3: Initialization-to-Trained Transitions (Delta Metrics)</div>
+                <div class="card-body table-responsive"><table border="1" class="dataframe table table-striped table-hover table-sm">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model_key</th>
+      <th>display_name</th>
+      <th>family</th>
+      <th>compression</th>
+      <th>delta_entropy_mean</th>
+      <th>delta_entropy_std</th>
+      <th>delta_norm_entropy_mean</th>
+      <th>delta_norm_entropy_std</th>
+      <th>delta_stable_rank_mean</th>
+      <th>delta_stable_rank_std</th>
+      <th>delta_max_prob_mean</th>
+      <th>delta_max_prob_std</th>
+      <th>delta_diagonal_mass_mean</th>
+      <th>delta_diagonal_mass_std</th>
+      <th>delta_score_frob_mean</th>
+      <th>delta_score_frob_std</th>
+      <th>ratio_wq_norm_mean</th>
+      <th>ratio_wq_norm_std</th>
+      <th>ratio_wv_norm_mean</th>
+      <th>ratio_wv_norm_std</th>
+      <th>ratio_wr_norm_mean</th>
+      <th>ratio_wr_norm_std</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>antisymmetric_only_q28</td>
+      <td>Antisymmetric-Only Q28/V32 (λ=20)</td>
+      <td>Antisymmetric-Only</td>
+      <td>70% Reduced / Param-Matched</td>
+      <td>-1.657656</td>
+      <td>0.043344</td>
+      <td>-0.407530</td>
+      <td>0.010854</td>
+      <td>-2.505937</td>
+      <td>0.226125</td>
+      <td>0.352886</td>
+      <td>0.009841</td>
+      <td>0.089583</td>
+      <td>0.007257</td>
+      <td>1016.668161</td>
+      <td>35.491938</td>
+      <td>1.179016</td>
+      <td>0.016350</td>
+      <td>1.432078</td>
+      <td>0.001739</td>
+      <td>1.176645</td>
+      <td>0.009829</td>
+    </tr>
+    <tr>
+      <td>full_qr_q112</td>
+      <td>Full QR Q112/V88 (λ=20)</td>
+      <td>Full QR</td>
+      <td>None (Full)</td>
+      <td>-1.909639</td>
+      <td>0.034612</td>
+      <td>-0.475043</td>
+      <td>0.008559</td>
+      <td>-3.161212</td>
+      <td>0.180002</td>
+      <td>0.427257</td>
+      <td>0.008845</td>
+      <td>0.043465</td>
+      <td>0.011228</td>
+      <td>717.547794</td>
+      <td>46.888349</td>
+      <td>1.250409</td>
+      <td>0.007273</td>
+      <td>1.243377</td>
+      <td>0.004778</td>
+      <td>1.215458</td>
+      <td>0.005053</td>
+    </tr>
+    <tr>
+      <td>full_standard_q112</td>
+      <td>Full Standard Q112/V88</td>
+      <td>Standard</td>
+      <td>None (Full)</td>
+      <td>-1.748954</td>
+      <td>0.062156</td>
+      <td>-0.428244</td>
+      <td>0.015716</td>
+      <td>-2.299749</td>
+      <td>0.156192</td>
+      <td>0.309585</td>
+      <td>0.016222</td>
+      <td>0.107000</td>
+      <td>0.005108</td>
+      <td>748.639532</td>
+      <td>3.252774</td>
+      <td>2.581293</td>
+      <td>0.019936</td>
+      <td>1.221521</td>
+      <td>0.006740</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q24</td>
+      <td>Reduced QR Q24/V16 (λ=20)</td>
+      <td>Full QR</td>
+      <td>80% Reduced</td>
+      <td>-1.653300</td>
+      <td>0.055846</td>
+      <td>-0.404452</td>
+      <td>0.014979</td>
+      <td>-2.445381</td>
+      <td>0.111427</td>
+      <td>0.346040</td>
+      <td>0.015515</td>
+      <td>0.092865</td>
+      <td>0.007803</td>
+      <td>954.130410</td>
+      <td>43.167983</td>
+      <td>1.187524</td>
+      <td>0.024330</td>
+      <td>1.595455</td>
+      <td>0.018878</td>
+      <td>1.174658</td>
+      <td>0.016515</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q28</td>
+      <td>Reduced QR Q28/V32 (λ=20)</td>
+      <td>Full QR</td>
+      <td>70% Reduced</td>
+      <td>-1.666280</td>
+      <td>0.022284</td>
+      <td>-0.409038</td>
+      <td>0.005932</td>
+      <td>-2.432029</td>
+      <td>0.229781</td>
+      <td>0.353287</td>
+      <td>0.006424</td>
+      <td>0.094852</td>
+      <td>0.004204</td>
+      <td>983.690003</td>
+      <td>24.110677</td>
+      <td>1.189270</td>
+      <td>0.018696</td>
+      <td>1.430962</td>
+      <td>0.002322</td>
+      <td>1.166422</td>
+      <td>0.013293</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q56</td>
+      <td>Reduced QR Q56/V44 (λ=20)</td>
+      <td>Full QR</td>
+      <td>50% Reduced</td>
+      <td>-1.842576</td>
+      <td>0.030195</td>
+      <td>-0.456644</td>
+      <td>0.008508</td>
+      <td>-3.270718</td>
+      <td>0.103025</td>
+      <td>0.407337</td>
+      <td>0.009482</td>
+      <td>0.072291</td>
+      <td>0.008701</td>
+      <td>886.819872</td>
+      <td>37.637705</td>
+      <td>1.249570</td>
+      <td>0.011412</td>
+      <td>1.362534</td>
+      <td>0.010244</td>
+      <td>1.222688</td>
+      <td>0.008221</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q24</td>
+      <td>Reduced Standard Q24/V16</td>
+      <td>Standard</td>
+      <td>80% Reduced</td>
+      <td>-1.743497</td>
+      <td>0.040008</td>
+      <td>-0.425496</td>
+      <td>0.010056</td>
+      <td>-1.574894</td>
+      <td>0.067731</td>
+      <td>0.309739</td>
+      <td>0.008623</td>
+      <td>0.123520</td>
+      <td>0.001952</td>
+      <td>889.002722</td>
+      <td>17.304854</td>
+      <td>3.093159</td>
+      <td>0.055223</td>
+      <td>1.598079</td>
+      <td>0.016316</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q28</td>
+      <td>Reduced Standard Q28/V32</td>
+      <td>Standard</td>
+      <td>70% Reduced</td>
+      <td>-1.688328</td>
+      <td>0.013337</td>
+      <td>-0.411095</td>
+      <td>0.003714</td>
+      <td>-1.492272</td>
+      <td>0.272994</td>
+      <td>0.290211</td>
+      <td>0.007186</td>
+      <td>0.121348</td>
+      <td>0.002669</td>
+      <td>804.272894</td>
+      <td>12.844360</td>
+      <td>3.049679</td>
+      <td>0.027222</td>
+      <td>1.445607</td>
+      <td>0.014988</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q56</td>
+      <td>Reduced Standard Q56/V44</td>
+      <td>Standard</td>
+      <td>50% Reduced</td>
+      <td>-1.724817</td>
+      <td>0.047796</td>
+      <td>-0.420338</td>
+      <td>0.012061</td>
+      <td>-2.300183</td>
+      <td>0.076640</td>
+      <td>0.299910</td>
+      <td>0.010180</td>
+      <td>0.108546</td>
+      <td>0.005768</td>
+      <td>778.074530</td>
+      <td>12.431785</td>
+      <td>2.796887</td>
+      <td>0.063797</td>
+      <td>1.361228</td>
+      <td>0.006271</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q28</td>
+      <td>Original Symmetric-Only Q28/V32</td>
+      <td>Symmetric-Only</td>
+      <td>70% Reduced (Original)</td>
+      <td>-1.625943</td>
+      <td>0.059579</td>
+      <td>-0.391333</td>
+      <td>0.013955</td>
+      <td>-1.205177</td>
+      <td>0.206690</td>
+      <td>0.269864</td>
+      <td>0.010834</td>
+      <td>0.159920</td>
+      <td>0.004731</td>
+      <td>1508.789097</td>
+      <td>243.014260</td>
+      <td>2.603944</td>
+      <td>0.047631</td>
+      <td>1.554652</td>
+      <td>0.015697</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q56</td>
+      <td>Parameter-Matched Symmetric-Only Q56/V32</td>
+      <td>Symmetric-Only</td>
+      <td>50% Q-Expanded / Param-Matched</td>
+      <td>-1.758056</td>
+      <td>0.013550</td>
+      <td>-0.426612</td>
+      <td>0.003978</td>
+      <td>-1.616000</td>
+      <td>0.310167</td>
+      <td>0.302110</td>
+      <td>0.006208</td>
+      <td>0.172476</td>
+      <td>0.006053</td>
+      <td>1465.939389</td>
+      <td>247.168719</td>
+      <td>2.446046</td>
+      <td>0.037231</td>
+      <td>1.523642</td>
+      <td>0.012247</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table></div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">Table 4: Comprehensive Architecture and State Summary</div>
+                <div class="card-body table-responsive"><table border="1" class="dataframe table table-striped table-hover table-sm">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model_key</th>
+      <th>display_name</th>
+      <th>family</th>
+      <th>compression</th>
+      <th>state</th>
+      <th>n_seeds</th>
+      <th>attention_entropy_nats_mean</th>
+      <th>attention_entropy_nats_std</th>
+      <th>normalized_attention_entropy_mean</th>
+      <th>normalized_attention_entropy_std</th>
+      <th>max_attention_probability_mean</th>
+      <th>max_attention_probability_std</th>
+      <th>diagonal_attention_mass_mean</th>
+      <th>diagonal_attention_mass_std</th>
+      <th>score_asymmetry_mean</th>
+      <th>score_asymmetry_std</th>
+      <th>raw_score_frob_norm_mean</th>
+      <th>raw_score_frob_norm_std</th>
+      <th>raw_score_stable_rank_mean</th>
+      <th>raw_score_stable_rank_std</th>
+      <th>raw_score_numerical_rank_mean</th>
+      <th>raw_score_numerical_rank_std</th>
+      <th>prob_stable_rank_mean</th>
+      <th>prob_stable_rank_std</th>
+      <th>prob_numerical_rank_mean</th>
+      <th>prob_numerical_rank_std</th>
+      <th>q_rms_mean</th>
+      <th>q_rms_std</th>
+      <th>v_rms_mean</th>
+      <th>v_rms_std</th>
+      <th>raw_score_rms_mean</th>
+      <th>raw_score_rms_std</th>
+      <th>prob_rms_mean</th>
+      <th>prob_rms_std</th>
+      <th>wq_frob_norm_mean</th>
+      <th>wq_frob_norm_std</th>
+      <th>wk_frob_norm_mean</th>
+      <th>wk_frob_norm_std</th>
+      <th>wr_frob_norm_mean</th>
+      <th>wr_frob_norm_std</th>
+      <th>wv_frob_norm_mean</th>
+      <th>wv_frob_norm_std</th>
+      <th>wo_frob_norm_mean</th>
+      <th>wo_frob_norm_std</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>antisymmetric_only_q28</td>
+      <td>Antisymmetric-Only Q28/V32 (λ=20)</td>
+      <td>Antisymmetric-Only</td>
+      <td>70% Reduced / Param-Matched</td>
+      <td>init</td>
+      <td>3</td>
+      <td>3.158347</td>
+      <td>0.006424</td>
+      <td>0.810890</td>
+      <td>0.001927</td>
+      <td>0.200120</td>
+      <td>0.001777</td>
+      <td>0.031269</td>
+      <td>0.000256</td>
+      <td>3.583791e+10</td>
+      <td>3.205739e+08</td>
+      <td>179.189786</td>
+      <td>1.602908</td>
+      <td>4.601639</td>
+      <td>0.229093</td>
+      <td>14.000</td>
+      <td>0.000000</td>
+      <td>3.945835</td>
+      <td>0.064815</td>
+      <td>120.286458</td>
+      <td>0.197848</td>
+      <td>0.223692</td>
+      <td>0.000876</td>
+      <td>0.225096</td>
+      <td>0.002964</td>
+      <td>1.399918</td>
+      <td>0.012522</td>
+      <td>0.028524</td>
+      <td>1.415806e-04</td>
+      <td>1.193786</td>
+      <td>0.006402</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.198760</td>
+      <td>0.001561</td>
+      <td>1.288969</td>
+      <td>0.006607</td>
+      <td>1.280918</td>
+      <td>0.010585</td>
+    </tr>
+    <tr>
+      <td>antisymmetric_only_q28</td>
+      <td>Antisymmetric-Only Q28/V32 (λ=20)</td>
+      <td>Antisymmetric-Only</td>
+      <td>70% Reduced / Param-Matched</td>
+      <td>trained</td>
+      <td>3</td>
+      <td>1.500691</td>
+      <td>0.041004</td>
+      <td>0.403359</td>
+      <td>0.010340</td>
+      <td>0.553006</td>
+      <td>0.009381</td>
+      <td>0.120852</td>
+      <td>0.007175</td>
+      <td>2.391711e+11</td>
+      <td>6.925196e+09</td>
+      <td>1195.857948</td>
+      <td>34.626095</td>
+      <td>2.095702</td>
+      <td>0.010674</td>
+      <td>14.000</td>
+      <td>0.000000</td>
+      <td>19.939229</td>
+      <td>0.698253</td>
+      <td>126.046875</td>
+      <td>0.136216</td>
+      <td>0.408654</td>
+      <td>0.002382</td>
+      <td>0.391348</td>
+      <td>0.007210</td>
+      <td>9.342621</td>
+      <td>0.270515</td>
+      <td>0.056158</td>
+      <td>7.129248e-04</td>
+      <td>1.407426</td>
+      <td>0.012538</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.410516</td>
+      <td>0.011980</td>
+      <td>1.845900</td>
+      <td>0.008185</td>
+      <td>1.963630</td>
+      <td>0.009848</td>
+    </tr>
+    <tr>
+      <td>full_qr_q112</td>
+      <td>Full QR Q112/V88 (λ=20)</td>
+      <td>Full QR</td>
+      <td>None (Full)</td>
+      <td>init</td>
+      <td>3</td>
+      <td>3.208108</td>
+      <td>0.033446</td>
+      <td>0.824135</td>
+      <td>0.008638</td>
+      <td>0.189449</td>
+      <td>0.006761</td>
+      <td>0.037094</td>
+      <td>0.001853</td>
+      <td>1.739745e+01</td>
+      <td>6.267752e-01</td>
+      <td>175.680786</td>
+      <td>4.166967</td>
+      <td>5.366061</td>
+      <td>0.211639</td>
+      <td>56.000</td>
+      <td>0.000000</td>
+      <td>3.734628</td>
+      <td>0.083663</td>
+      <td>120.213542</td>
+      <td>0.157288</td>
+      <td>0.223821</td>
+      <td>0.001100</td>
+      <td>0.226391</td>
+      <td>0.002314</td>
+      <td>1.372493</td>
+      <td>0.032554</td>
+      <td>0.027496</td>
+      <td>5.524606e-04</td>
+      <td>2.395744</td>
+      <td>0.006924</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.391442</td>
+      <td>0.002569</td>
+      <td>2.120889</td>
+      <td>0.003038</td>
+      <td>2.121437</td>
+      <td>0.004008</td>
+    </tr>
+    <tr>
+      <td>full_qr_q112</td>
+      <td>Full QR Q112/V88 (λ=20)</td>
+      <td>Full QR</td>
+      <td>None (Full)</td>
+      <td>trained</td>
+      <td>3</td>
+      <td>1.298469</td>
+      <td>0.042081</td>
+      <td>0.349091</td>
+      <td>0.011292</td>
+      <td>0.616706</td>
+      <td>0.012427</td>
+      <td>0.080559</td>
+      <td>0.011412</td>
+      <td>3.044699e+01</td>
+      <td>5.399817e-01</td>
+      <td>893.228579</td>
+      <td>42.725421</td>
+      <td>2.204849</td>
+      <td>0.033679</td>
+      <td>56.000</td>
+      <td>0.000000</td>
+      <td>25.352120</td>
+      <td>0.854865</td>
+      <td>125.609375</td>
+      <td>0.127896</td>
+      <td>0.317360</td>
+      <td>0.003131</td>
+      <td>0.286470</td>
+      <td>0.003479</td>
+      <td>6.978284</td>
+      <td>0.333790</td>
+      <td>0.061032</td>
+      <td>8.179067e-04</td>
+      <td>2.995643</td>
+      <td>0.015201</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.906701</td>
+      <td>0.013510</td>
+      <td>2.637074</td>
+      <td>0.013920</td>
+      <td>2.760852</td>
+      <td>0.016113</td>
+    </tr>
+    <tr>
+      <td>full_standard_q112</td>
+      <td>Full Standard Q112/V88</td>
+      <td>Standard</td>
+      <td>None (Full)</td>
+      <td>init</td>
+      <td>3</td>
+      <td>3.877216</td>
+      <td>0.000045</td>
+      <td>0.999744</td>
+      <td>0.000013</td>
+      <td>0.044893</td>
+      <td>0.000085</td>
+      <td>0.042424</td>
+      <td>0.000071</td>
+      <td>9.351340e-01</td>
+      <td>3.767717e-03</td>
+      <td>6.436608</td>
+      <td>0.131353</td>
+      <td>3.724697</td>
+      <td>0.129546</td>
+      <td>28.000</td>
+      <td>0.000000</td>
+      <td>2.005936</td>
+      <td>0.000657</td>
+      <td>128.000000</td>
+      <td>0.000000</td>
+      <td>0.223482</td>
+      <td>0.001040</td>
+      <td>0.226717</td>
+      <td>0.002203</td>
+      <td>0.050286</td>
+      <td>0.001026</td>
+      <td>0.018222</td>
+      <td>7.460237e-07</td>
+      <td>2.395744</td>
+      <td>0.006924</td>
+      <td>2.391442</td>
+      <td>0.002569</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.120889</td>
+      <td>0.003038</td>
+      <td>2.121437</td>
+      <td>0.004008</td>
+    </tr>
+    <tr>
+      <td>full_standard_q112</td>
+      <td>Full Standard Q112/V88</td>
+      <td>Standard</td>
+      <td>None (Full)</td>
+      <td>trained</td>
+      <td>3</td>
+      <td>2.128263</td>
+      <td>0.062195</td>
+      <td>0.571500</td>
+      <td>0.015728</td>
+      <td>0.354478</td>
+      <td>0.016292</td>
+      <td>0.149424</td>
+      <td>0.005053</td>
+      <td>2.621214e+00</td>
+      <td>2.694420e-01</td>
+      <td>755.076139</td>
+      <td>3.150787</td>
+      <td>1.424948</td>
+      <td>0.058210</td>
+      <td>28.000</td>
+      <td>0.000000</td>
+      <td>10.392526</td>
+      <td>0.222932</td>
+      <td>127.156250</td>
+      <td>0.206699</td>
+      <td>1.402960</td>
+      <td>0.007992</td>
+      <td>0.341232</td>
+      <td>0.004700</td>
+      <td>5.899019</td>
+      <td>0.024611</td>
+      <td>0.041454</td>
+      <td>1.315328e-03</td>
+      <td>6.184128</td>
+      <td>0.052784</td>
+      <td>5.538610</td>
+      <td>0.071913</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.590716</td>
+      <td>0.016105</td>
+      <td>2.731925</td>
+      <td>0.022347</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q24</td>
+      <td>Reduced QR Q24/V16 (λ=20)</td>
+      <td>Full QR</td>
+      <td>80% Reduced</td>
+      <td>init</td>
+      <td>3</td>
+      <td>3.153702</td>
+      <td>0.023680</td>
+      <td>0.809295</td>
+      <td>0.005956</td>
+      <td>0.200432</td>
+      <td>0.003819</td>
+      <td>0.033148</td>
+      <td>0.000907</td>
+      <td>2.511800e+01</td>
+      <td>2.100954e-01</td>
+      <td>178.290413</td>
+      <td>3.880350</td>
+      <td>4.488317</td>
+      <td>0.117995</td>
+      <td>12.000</td>
+      <td>0.000000</td>
+      <td>4.078680</td>
+      <td>0.190068</td>
+      <td>120.473958</td>
+      <td>0.148506</td>
+      <td>0.223905</td>
+      <td>0.002380</td>
+      <td>0.226177</td>
+      <td>0.003509</td>
+      <td>1.392892</td>
+      <td>0.030315</td>
+      <td>0.028664</td>
+      <td>3.268327e-04</td>
+      <td>1.107017</td>
+      <td>0.005978</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.102352</td>
+      <td>0.000740</td>
+      <td>0.907797</td>
+      <td>0.005401</td>
+      <td>0.901243</td>
+      <td>0.005448</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q24</td>
+      <td>Reduced QR Q24/V16 (λ=20)</td>
+      <td>Full QR</td>
+      <td>80% Reduced</td>
+      <td>trained</td>
+      <td>3</td>
+      <td>1.500402</td>
+      <td>0.055026</td>
+      <td>0.404842</td>
+      <td>0.014485</td>
+      <td>0.546473</td>
+      <td>0.015250</td>
+      <td>0.126013</td>
+      <td>0.006988</td>
+      <td>3.047846e+01</td>
+      <td>1.598761e+00</td>
+      <td>1132.420823</td>
+      <td>42.969346</td>
+      <td>2.042937</td>
+      <td>0.006571</td>
+      <td>12.000</td>
+      <td>0.000000</td>
+      <td>20.012482</td>
+      <td>0.842064</td>
+      <td>126.187500</td>
+      <td>0.189443</td>
+      <td>0.425190</td>
+      <td>0.003751</td>
+      <td>0.478855</td>
+      <td>0.005772</td>
+      <td>8.847026</td>
+      <td>0.335691</td>
+      <td>0.055716</td>
+      <td>1.183311e-03</td>
+      <td>1.314541</td>
+      <td>0.022562</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.294894</td>
+      <td>0.018986</td>
+      <td>1.448287</td>
+      <td>0.009750</td>
+      <td>1.563232</td>
+      <td>0.022655</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q28</td>
+      <td>Reduced QR Q28/V32 (λ=20)</td>
+      <td>Full QR</td>
+      <td>70% Reduced</td>
+      <td>init</td>
+      <td>3</td>
+      <td>3.160128</td>
+      <td>0.007030</td>
+      <td>0.811433</td>
+      <td>0.002075</td>
+      <td>0.199621</td>
+      <td>0.001954</td>
+      <td>0.033337</td>
+      <td>0.000241</td>
+      <td>2.453185e+01</td>
+      <td>4.984736e-01</td>
+      <td>179.323281</td>
+      <td>1.658609</td>
+      <td>4.469631</td>
+      <td>0.227244</td>
+      <td>14.000</td>
+      <td>0.000000</td>
+      <td>3.951274</td>
+      <td>0.056648</td>
+      <td>120.453125</td>
+      <td>0.225347</td>
+      <td>0.223673</td>
+      <td>0.000857</td>
+      <td>0.225092</td>
+      <td>0.002969</td>
+      <td>1.400961</td>
+      <td>0.012958</td>
+      <td>0.028478</td>
+      <td>1.570843e-04</td>
+      <td>1.193786</td>
+      <td>0.006402</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.198760</td>
+      <td>0.001561</td>
+      <td>1.288969</td>
+      <td>0.006607</td>
+      <td>1.280918</td>
+      <td>0.010585</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q28</td>
+      <td>Reduced QR Q28/V32 (λ=20)</td>
+      <td>Full QR</td>
+      <td>70% Reduced</td>
+      <td>trained</td>
+      <td>3</td>
+      <td>1.493848</td>
+      <td>0.018443</td>
+      <td>0.402395</td>
+      <td>0.004815</td>
+      <td>0.552909</td>
+      <td>0.005160</td>
+      <td>0.128188</td>
+      <td>0.004079</td>
+      <td>3.068451e+01</td>
+      <td>6.494257e-01</td>
+      <td>1163.013284</td>
+      <td>24.129236</td>
+      <td>2.037602</td>
+      <td>0.007560</td>
+      <td>14.000</td>
+      <td>0.000000</td>
+      <td>20.470027</td>
+      <td>0.174779</td>
+      <td>126.046875</td>
+      <td>0.082680</td>
+      <td>0.414726</td>
+      <td>0.001916</td>
+      <td>0.392934</td>
+      <td>0.007186</td>
+      <td>9.086031</td>
+      <td>0.188503</td>
+      <td>0.056151</td>
+      <td>3.295213e-04</td>
+      <td>1.419658</td>
+      <td>0.015295</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.398260</td>
+      <td>0.016026</td>
+      <td>1.844456</td>
+      <td>0.006458</td>
+      <td>1.958865</td>
+      <td>0.006271</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q56</td>
+      <td>Reduced QR Q56/V44 (λ=20)</td>
+      <td>Full QR</td>
+      <td>50% Reduced</td>
+      <td>init</td>
+      <td>3</td>
+      <td>3.152781</td>
+      <td>0.013509</td>
+      <td>0.809518</td>
+      <td>0.004116</td>
+      <td>0.200828</td>
+      <td>0.002284</td>
+      <td>0.034861</td>
+      <td>0.000673</td>
+      <td>2.219110e+01</td>
+      <td>3.734019e-01</td>
+      <td>179.442076</td>
+      <td>2.559818</td>
+      <td>5.384284</td>
+      <td>0.105761</td>
+      <td>28.000</td>
+      <td>0.000000</td>
+      <td>4.065781</td>
+      <td>0.042325</td>
+      <td>119.942708</td>
+      <td>0.032526</td>
+      <td>0.224629</td>
+      <td>0.002394</td>
+      <td>0.223912</td>
+      <td>0.001134</td>
+      <td>1.401885</td>
+      <td>0.019998</td>
+      <td>0.028486</td>
+      <td>2.815778e-04</td>
+      <td>1.689946</td>
+      <td>0.007706</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.696207</td>
+      <td>0.002901</td>
+      <td>1.498833</td>
+      <td>0.007682</td>
+      <td>1.502460</td>
+      <td>0.000680</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q56</td>
+      <td>Reduced QR Q56/V44 (λ=20)</td>
+      <td>Full QR</td>
+      <td>50% Reduced</td>
+      <td>trained</td>
+      <td>3</td>
+      <td>1.310205</td>
+      <td>0.022062</td>
+      <td>0.352874</td>
+      <td>0.005815</td>
+      <td>0.608165</td>
+      <td>0.007877</td>
+      <td>0.107153</td>
+      <td>0.008091</td>
+      <td>3.095210e+01</td>
+      <td>6.084210e-01</td>
+      <td>1066.261948</td>
+      <td>38.588771</td>
+      <td>2.113566</td>
+      <td>0.020952</td>
+      <td>28.000</td>
+      <td>0.000000</td>
+      <td>23.937691</td>
+      <td>0.865567</td>
+      <td>126.046875</td>
+      <td>0.277756</td>
+      <td>0.368450</td>
+      <td>0.002519</td>
+      <td>0.350832</td>
+      <td>0.004108</td>
+      <td>8.330125</td>
+      <td>0.301472</td>
+      <td>0.060356</td>
+      <td>6.000635e-04</td>
+      <td>2.111653</td>
+      <td>0.011500</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.073941</td>
+      <td>0.016291</td>
+      <td>2.042159</td>
+      <td>0.005000</td>
+      <td>2.178993</td>
+      <td>0.014744</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q24</td>
+      <td>Reduced Standard Q24/V16</td>
+      <td>Standard</td>
+      <td>80% Reduced</td>
+      <td>init</td>
+      <td>3</td>
+      <td>3.877040</td>
+      <td>0.000056</td>
+      <td>0.999692</td>
+      <td>0.000014</td>
+      <td>0.045107</td>
+      <td>0.000067</td>
+      <td>0.042444</td>
+      <td>0.000089</td>
+      <td>9.569842e-01</td>
+      <td>1.612291e-02</td>
+      <td>6.443138</td>
+      <td>0.180392</td>
+      <td>2.779865</td>
+      <td>0.051494</td>
+      <td>6.000</td>
+      <td>0.000000</td>
+      <td>2.008546</td>
+      <td>0.002790</td>
+      <td>128.000000</td>
+      <td>0.000000</td>
+      <td>0.223990</td>
+      <td>0.002542</td>
+      <td>0.226908</td>
+      <td>0.003771</td>
+      <td>0.050337</td>
+      <td>0.001409</td>
+      <td>0.018225</td>
+      <td>6.132174e-07</td>
+      <td>1.107017</td>
+      <td>0.005978</td>
+      <td>1.102352</td>
+      <td>0.000740</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.907797</td>
+      <td>0.005401</td>
+      <td>0.901243</td>
+      <td>0.005448</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q24</td>
+      <td>Reduced Standard Q24/V16</td>
+      <td>Standard</td>
+      <td>80% Reduced</td>
+      <td>trained</td>
+      <td>3</td>
+      <td>2.133544</td>
+      <td>0.040055</td>
+      <td>0.574195</td>
+      <td>0.010068</td>
+      <td>0.354846</td>
+      <td>0.008674</td>
+      <td>0.165964</td>
+      <td>0.002033</td>
+      <td>2.069438e+00</td>
+      <td>1.310106e-01</td>
+      <td>895.445861</td>
+      <td>17.453296</td>
+      <td>1.204971</td>
+      <td>0.022824</td>
+      <td>6.000</td>
+      <td>0.000000</td>
+      <td>11.005332</td>
+      <td>0.247093</td>
+      <td>127.453125</td>
+      <td>0.041340</td>
+      <td>2.125292</td>
+      <td>0.028130</td>
+      <td>0.601685</td>
+      <td>0.002522</td>
+      <td>6.995674</td>
+      <td>0.136354</td>
+      <td>0.041422</td>
+      <td>6.767553e-04</td>
+      <td>3.424066</td>
+      <td>0.054117</td>
+      <td>2.934238</td>
+      <td>0.015790</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.450768</td>
+      <td>0.021292</td>
+      <td>1.626521</td>
+      <td>0.014994</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q28</td>
+      <td>Reduced Standard Q28/V32</td>
+      <td>Standard</td>
+      <td>70% Reduced</td>
+      <td>init</td>
+      <td>3</td>
+      <td>3.877080</td>
+      <td>0.000019</td>
+      <td>0.999703</td>
+      <td>0.000004</td>
+      <td>0.045056</td>
+      <td>0.000033</td>
+      <td>0.042414</td>
+      <td>0.000065</td>
+      <td>9.553021e-01</td>
+      <td>1.435823e-02</td>
+      <td>6.505034</td>
+      <td>0.056918</td>
+      <td>2.762534</td>
+      <td>0.241646</td>
+      <td>7.000</td>
+      <td>0.000000</td>
+      <td>2.007968</td>
+      <td>0.002177</td>
+      <td>128.000000</td>
+      <td>0.000000</td>
+      <td>0.223654</td>
+      <td>0.001021</td>
+      <td>0.224812</td>
+      <td>0.002698</td>
+      <td>0.050821</td>
+      <td>0.000445</td>
+      <td>0.018224</td>
+      <td>1.833443e-07</td>
+      <td>1.193786</td>
+      <td>0.006402</td>
+      <td>1.198760</td>
+      <td>0.001561</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.288969</td>
+      <td>0.006607</td>
+      <td>1.280918</td>
+      <td>0.010585</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q28</td>
+      <td>Reduced Standard Q28/V32</td>
+      <td>Standard</td>
+      <td>70% Reduced</td>
+      <td>trained</td>
+      <td>3</td>
+      <td>2.188752</td>
+      <td>0.013318</td>
+      <td>0.588609</td>
+      <td>0.003710</td>
+      <td>0.335267</td>
+      <td>0.007170</td>
+      <td>0.163762</td>
+      <td>0.002733</td>
+      <td>2.323857e+00</td>
+      <td>1.322667e-01</td>
+      <td>810.777928</td>
+      <td>12.794665</td>
+      <td>1.270262</td>
+      <td>0.031833</td>
+      <td>7.000</td>
+      <td>0.000000</td>
+      <td>10.109097</td>
+      <td>0.279114</td>
+      <td>127.536458</td>
+      <td>0.009021</td>
+      <td>2.004506</td>
+      <td>0.004778</td>
+      <td>0.474417</td>
+      <td>0.006691</td>
+      <td>6.334208</td>
+      <td>0.099956</td>
+      <td>0.040029</td>
+      <td>2.741988e-04</td>
+      <td>3.640640</td>
+      <td>0.034338</td>
+      <td>3.067557</td>
+      <td>0.049547</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.863284</td>
+      <td>0.011682</td>
+      <td>2.035288</td>
+      <td>0.029087</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q56</td>
+      <td>Reduced Standard Q56/V44</td>
+      <td>Standard</td>
+      <td>50% Reduced</td>
+      <td>init</td>
+      <td>3</td>
+      <td>3.877061</td>
+      <td>0.000040</td>
+      <td>0.999700</td>
+      <td>0.000012</td>
+      <td>0.045093</td>
+      <td>0.000070</td>
+      <td>0.042500</td>
+      <td>0.000069</td>
+      <td>9.479305e-01</td>
+      <td>1.341054e-02</td>
+      <td>6.536202</td>
+      <td>0.124524</td>
+      <td>3.655567</td>
+      <td>0.055066</td>
+      <td>14.000</td>
+      <td>0.000000</td>
+      <td>2.007575</td>
+      <td>0.001822</td>
+      <td>128.000000</td>
+      <td>0.000000</td>
+      <td>0.224994</td>
+      <td>0.002535</td>
+      <td>0.224262</td>
+      <td>0.001297</td>
+      <td>0.051064</td>
+      <td>0.000973</td>
+      <td>0.018224</td>
+      <td>7.784775e-07</td>
+      <td>1.689946</td>
+      <td>0.007706</td>
+      <td>1.696207</td>
+      <td>0.002901</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.498833</td>
+      <td>0.007682</td>
+      <td>1.502460</td>
+      <td>0.000680</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q56</td>
+      <td>Reduced Standard Q56/V44</td>
+      <td>Standard</td>
+      <td>50% Reduced</td>
+      <td>trained</td>
+      <td>3</td>
+      <td>2.152244</td>
+      <td>0.047836</td>
+      <td>0.579362</td>
+      <td>0.012073</td>
+      <td>0.345003</td>
+      <td>0.010248</td>
+      <td>0.151046</td>
+      <td>0.005815</td>
+      <td>2.538354e+00</td>
+      <td>1.429132e-01</td>
+      <td>784.610732</td>
+      <td>12.556256</td>
+      <td>1.355384</td>
+      <td>0.047506</td>
+      <td>14.000</td>
+      <td>0.000000</td>
+      <td>10.446930</td>
+      <td>0.211503</td>
+      <td>127.416667</td>
+      <td>0.009021</td>
+      <td>1.678578</td>
+      <td>0.053925</td>
+      <td>0.427226</td>
+      <td>0.005726</td>
+      <td>6.129775</td>
+      <td>0.098111</td>
+      <td>0.040846</td>
+      <td>7.977594e-04</td>
+      <td>4.726619</td>
+      <td>0.111822</td>
+      <td>4.177260</td>
+      <td>0.039536</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.040239</td>
+      <td>0.010674</td>
+      <td>2.213965</td>
+      <td>0.023871</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q28</td>
+      <td>Original Symmetric-Only Q28/V32</td>
+      <td>Symmetric-Only</td>
+      <td>70% Reduced (Original)</td>
+      <td>init</td>
+      <td>3</td>
+      <td>3.876620</td>
+      <td>0.000035</td>
+      <td>0.999536</td>
+      <td>0.000014</td>
+      <td>0.046263</td>
+      <td>0.000086</td>
+      <td>0.046038</td>
+      <td>0.000088</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>7.425345</td>
+      <td>0.159315</td>
+      <td>2.229176</td>
+      <td>0.193624</td>
+      <td>7.000</td>
+      <td>0.000000</td>
+      <td>2.031870</td>
+      <td>0.001431</td>
+      <td>128.000000</td>
+      <td>0.000000</td>
+      <td>0.223671</td>
+      <td>0.001005</td>
+      <td>0.224803</td>
+      <td>0.002690</td>
+      <td>0.058010</td>
+      <td>0.001245</td>
+      <td>0.018238</td>
+      <td>1.602729e-06</td>
+      <td>1.193786</td>
+      <td>0.006402</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.288969</td>
+      <td>0.006607</td>
+      <td>1.280918</td>
+      <td>0.010585</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q28</td>
+      <td>Original Symmetric-Only Q28/V32</td>
+      <td>Symmetric-Only</td>
+      <td>70% Reduced (Original)</td>
+      <td>trained</td>
+      <td>3</td>
+      <td>2.250677</td>
+      <td>0.059553</td>
+      <td>0.608203</td>
+      <td>0.013950</td>
+      <td>0.316128</td>
+      <td>0.010785</td>
+      <td>0.205958</td>
+      <td>0.004642</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>1516.214442</td>
+      <td>242.869103</td>
+      <td>1.024000</td>
+      <td>0.014575</td>
+      <td>7.000</td>
+      <td>0.000000</td>
+      <td>9.285130</td>
+      <td>0.121067</td>
+      <td>127.937500</td>
+      <td>0.082680</td>
+      <td>2.182143</td>
+      <td>0.138519</td>
+      <td>0.474409</td>
+      <td>0.013279</td>
+      <td>11.845451</td>
+      <td>1.897425</td>
+      <td>0.039008</td>
+      <td>7.713403e-04</td>
+      <td>3.108662</td>
+      <td>0.067158</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.003831</td>
+      <td>0.010301</td>
+      <td>2.228085</td>
+      <td>0.008480</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q56</td>
+      <td>Parameter-Matched Symmetric-Only Q56/V32</td>
+      <td>Symmetric-Only</td>
+      <td>50% Q-Expanded / Param-Matched</td>
+      <td>init</td>
+      <td>3</td>
+      <td>3.876176</td>
+      <td>0.000046</td>
+      <td>0.999383</td>
+      <td>0.000015</td>
+      <td>0.047701</td>
+      <td>0.000103</td>
+      <td>0.047659</td>
+      <td>0.000104</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>8.276767</td>
+      <td>0.205982</td>
+      <td>2.649640</td>
+      <td>0.291821</td>
+      <td>14.000</td>
+      <td>0.000000</td>
+      <td>2.044406</td>
+      <td>0.002517</td>
+      <td>128.000000</td>
+      <td>0.000000</td>
+      <td>0.224631</td>
+      <td>0.000478</td>
+      <td>0.224776</td>
+      <td>0.002685</td>
+      <td>0.064662</td>
+      <td>0.001609</td>
+      <td>0.018250</td>
+      <td>1.230752e-06</td>
+      <td>1.691821</td>
+      <td>0.004634</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.288969</td>
+      <td>0.006607</td>
+      <td>1.280918</td>
+      <td>0.010585</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q56</td>
+      <td>Parameter-Matched Symmetric-Only Q56/V32</td>
+      <td>Symmetric-Only</td>
+      <td>50% Q-Expanded / Param-Matched</td>
+      <td>trained</td>
+      <td>3</td>
+      <td>2.118120</td>
+      <td>0.013593</td>
+      <td>0.572770</td>
+      <td>0.003993</td>
+      <td>0.349811</td>
+      <td>0.006310</td>
+      <td>0.220135</td>
+      <td>0.006154</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>1474.216156</td>
+      <td>246.968324</td>
+      <td>1.033641</td>
+      <td>0.019579</td>
+      <td>13.875</td>
+      <td>0.165359</td>
+      <td>10.123738</td>
+      <td>0.232127</td>
+      <td>127.932292</td>
+      <td>0.080181</td>
+      <td>1.869345</td>
+      <td>0.089305</td>
+      <td>0.472690</td>
+      <td>0.007305</td>
+      <td>11.517336</td>
+      <td>1.929455</td>
+      <td>0.041608</td>
+      <td>4.629820e-04</td>
+      <td>4.138313</td>
+      <td>0.067771</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.963911</td>
+      <td>0.015774</td>
+      <td>2.186389</td>
+      <td>0.033067</td>
+    </tr>
+  </tbody>
+</table></div>
+            </div>
+        </div>
+
+        <!-- TAB 4: INVENTORY -->
+        <div class="tab-pane fade" id="inventory" role="tabpanel">
+            <div class="card mb-4">
+                <div class="card-header">Probe Sequences (Context Length 128)</div>
+                <div class="card-body table-responsive">
+                    <table border="1" class="dataframe table table-striped table-hover table-sm">
+  <thead>
+    <tr style="text-align: right;">
+      <th>probe_id</th>
+      <th>name</th>
+      <th>start_idx</th>
+      <th>end_idx</th>
+      <th>context_length</th>
+      <th>sha256</th>
+      <th>text_preview</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Probe 1 (Corpus Beginning)</td>
+      <td>0</td>
+      <td>128</td>
+      <td>128</td>
+      <td>1710146e1161093fef48add5ba9f60d88e67e4590bc41565e0bfce08726a474a</td>
+      <td>? \n&nbsp;&nbsp;\n GREMIO: \n Good morrow, neighbour Baptista. \n&nbsp;&nbsp;\n BAPTISTA: \n Good ...</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Probe 2 (Corpus Middle)</td>
+      <td>55706</td>
+      <td>55834</td>
+      <td>128</td>
+      <td>d61168d464d744f73dda6362d92ed2bf6a6c6f641a7b6e4337b0e88ac546ecb8</td>
+      <td>you, sir. Where then do you know best \n We be affied and such ...</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Probe 3 (Corpus Later)</td>
+      <td>94809</td>
+      <td>94937</td>
+      <td>128</td>
+      <td>32efae471ec8be5c28c8eca2043d054db0709fe9858944fcb6019268728706ac</td>
+      <td>be sure, to-night thou shalt have cramps, \n Side-stitches tha...</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Probe 4 (Random Seed 918273)</td>
+      <td>51581</td>
+      <td>51709</td>
+      <td>128</td>
+      <td>45f3b4aa4b7af3695687db8e13b5f62c0ab0a9a575de31d62a6e8dd0685b3844</td>
+      <td>out and \n sewed up again; and that I'll prove upon thee, \n thou...</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">Checkpoint and Model Inventory (33 Complete Runs / 66 Evaluated Checkpoints)</div>
+                <div class="card-body table-responsive">
+                    <table border="1" class="dataframe table table-striped table-hover table-sm">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model_key</th>
+      <th>display_name</th>
+      <th>family</th>
+      <th>compression</th>
+      <th>seed</th>
+      <th>attention_parameters</th>
+      <th>total_parameters</th>
+      <th>status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>full_standard_q112</td>
+      <td>Full Standard Q112/V88</td>
+      <td>Standard</td>
+      <td>None (Full)</td>
+      <td>1337</td>
+      <td>204800</td>
+      <td>758656</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>full_standard_q112</td>
+      <td>Full Standard Q112/V88</td>
+      <td>Standard</td>
+      <td>None (Full)</td>
+      <td>2024</td>
+      <td>204800</td>
+      <td>758656</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>full_standard_q112</td>
+      <td>Full Standard Q112/V88</td>
+      <td>Standard</td>
+      <td>None (Full)</td>
+      <td>42</td>
+      <td>204800</td>
+      <td>758656</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>full_qr_q112</td>
+      <td>Full QR Q112/V88 (λ=20)</td>
+      <td>Full QR</td>
+      <td>None (Full)</td>
+      <td>1337</td>
+      <td>204800</td>
+      <td>758656</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>full_qr_q112</td>
+      <td>Full QR Q112/V88 (λ=20)</td>
+      <td>Full QR</td>
+      <td>None (Full)</td>
+      <td>2024</td>
+      <td>204800</td>
+      <td>758656</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>full_qr_q112</td>
+      <td>Full QR Q112/V88 (λ=20)</td>
+      <td>Full QR</td>
+      <td>None (Full)</td>
+      <td>42</td>
+      <td>204800</td>
+      <td>758656</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q56</td>
+      <td>Reduced Standard Q56/V44</td>
+      <td>Standard</td>
+      <td>50% Reduced</td>
+      <td>1337</td>
+      <td>102400</td>
+      <td>656256</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q56</td>
+      <td>Reduced Standard Q56/V44</td>
+      <td>Standard</td>
+      <td>50% Reduced</td>
+      <td>2024</td>
+      <td>102400</td>
+      <td>656256</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q56</td>
+      <td>Reduced Standard Q56/V44</td>
+      <td>Standard</td>
+      <td>50% Reduced</td>
+      <td>42</td>
+      <td>102400</td>
+      <td>656256</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q56</td>
+      <td>Reduced QR Q56/V44 (λ=20)</td>
+      <td>Full QR</td>
+      <td>50% Reduced</td>
+      <td>1337</td>
+      <td>102400</td>
+      <td>656256</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q56</td>
+      <td>Reduced QR Q56/V44 (λ=20)</td>
+      <td>Full QR</td>
+      <td>50% Reduced</td>
+      <td>2024</td>
+      <td>102400</td>
+      <td>656256</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q56</td>
+      <td>Reduced QR Q56/V44 (λ=20)</td>
+      <td>Full QR</td>
+      <td>50% Reduced</td>
+      <td>42</td>
+      <td>102400</td>
+      <td>656256</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q28</td>
+      <td>Reduced Standard Q28/V32</td>
+      <td>Standard</td>
+      <td>70% Reduced</td>
+      <td>1337</td>
+      <td>61440</td>
+      <td>615296</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q28</td>
+      <td>Reduced Standard Q28/V32</td>
+      <td>Standard</td>
+      <td>70% Reduced</td>
+      <td>2024</td>
+      <td>61440</td>
+      <td>615296</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q28</td>
+      <td>Reduced Standard Q28/V32</td>
+      <td>Standard</td>
+      <td>70% Reduced</td>
+      <td>42</td>
+      <td>61440</td>
+      <td>615296</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q28</td>
+      <td>Reduced QR Q28/V32 (λ=20)</td>
+      <td>Full QR</td>
+      <td>70% Reduced</td>
+      <td>1337</td>
+      <td>61440</td>
+      <td>615296</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q28</td>
+      <td>Reduced QR Q28/V32 (λ=20)</td>
+      <td>Full QR</td>
+      <td>70% Reduced</td>
+      <td>2024</td>
+      <td>61440</td>
+      <td>615296</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q28</td>
+      <td>Reduced QR Q28/V32 (λ=20)</td>
+      <td>Full QR</td>
+      <td>70% Reduced</td>
+      <td>42</td>
+      <td>61440</td>
+      <td>615296</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q24</td>
+      <td>Reduced Standard Q24/V16</td>
+      <td>Standard</td>
+      <td>80% Reduced</td>
+      <td>1337</td>
+      <td>40960</td>
+      <td>594816</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q24</td>
+      <td>Reduced Standard Q24/V16</td>
+      <td>Standard</td>
+      <td>80% Reduced</td>
+      <td>2024</td>
+      <td>40960</td>
+      <td>594816</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_standard_q24</td>
+      <td>Reduced Standard Q24/V16</td>
+      <td>Standard</td>
+      <td>80% Reduced</td>
+      <td>42</td>
+      <td>40960</td>
+      <td>594816</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q24</td>
+      <td>Reduced QR Q24/V16 (λ=20)</td>
+      <td>Full QR</td>
+      <td>80% Reduced</td>
+      <td>1337</td>
+      <td>40960</td>
+      <td>594816</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q24</td>
+      <td>Reduced QR Q24/V16 (λ=20)</td>
+      <td>Full QR</td>
+      <td>80% Reduced</td>
+      <td>2024</td>
+      <td>40960</td>
+      <td>594816</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>reduced_qr_q24</td>
+      <td>Reduced QR Q24/V16 (λ=20)</td>
+      <td>Full QR</td>
+      <td>80% Reduced</td>
+      <td>42</td>
+      <td>40960</td>
+      <td>594816</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>antisymmetric_only_q28</td>
+      <td>Antisymmetric-Only Q28/V32 (λ=20)</td>
+      <td>Antisymmetric-Only</td>
+      <td>70% Reduced / Param-Matched</td>
+      <td>1337</td>
+      <td>61440</td>
+      <td>615296</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>antisymmetric_only_q28</td>
+      <td>Antisymmetric-Only Q28/V32 (λ=20)</td>
+      <td>Antisymmetric-Only</td>
+      <td>70% Reduced / Param-Matched</td>
+      <td>2024</td>
+      <td>61440</td>
+      <td>615296</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>antisymmetric_only_q28</td>
+      <td>Antisymmetric-Only Q28/V32 (λ=20)</td>
+      <td>Antisymmetric-Only</td>
+      <td>70% Reduced / Param-Matched</td>
+      <td>42</td>
+      <td>61440</td>
+      <td>615296</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q28</td>
+      <td>Original Symmetric-Only Q28/V32</td>
+      <td>Symmetric-Only</td>
+      <td>70% Reduced (Original)</td>
+      <td>1337</td>
+      <td>47104</td>
+      <td>600960</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q28</td>
+      <td>Original Symmetric-Only Q28/V32</td>
+      <td>Symmetric-Only</td>
+      <td>70% Reduced (Original)</td>
+      <td>2024</td>
+      <td>47104</td>
+      <td>600960</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q28</td>
+      <td>Original Symmetric-Only Q28/V32</td>
+      <td>Symmetric-Only</td>
+      <td>70% Reduced (Original)</td>
+      <td>42</td>
+      <td>47104</td>
+      <td>600960</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q56</td>
+      <td>Parameter-Matched Symmetric-Only Q56/V32</td>
+      <td>Symmetric-Only</td>
+      <td>50% Q-Expanded / Param-Matched</td>
+      <td>1337</td>
+      <td>61440</td>
+      <td>615296</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q56</td>
+      <td>Parameter-Matched Symmetric-Only Q56/V32</td>
+      <td>Symmetric-Only</td>
+      <td>50% Q-Expanded / Param-Matched</td>
+      <td>2024</td>
+      <td>61440</td>
+      <td>615296</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+    <tr>
+      <td>symmetric_only_q56</td>
+      <td>Parameter-Matched Symmetric-Only Q56/V32</td>
+      <td>Symmetric-Only</td>
+      <td>50% Q-Expanded / Param-Matched</td>
+      <td>42</td>
+      <td>61440</td>
+      <td>615296</td>
+      <td>Available (Exact Original Checkpoints)</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

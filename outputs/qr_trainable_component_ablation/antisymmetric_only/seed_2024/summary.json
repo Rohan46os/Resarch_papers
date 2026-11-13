@@ -1,0 +1,55 @@
+{
+  "experiment": "qr_trainable_component_ablation",
+  "config_key": "q28",
+  "arch_key": "antisymmetric_only",
+  "model_label": "Antisymmetric-Only Q28/V32 (\u03bb=20)",
+  "model_type": "qr_antisymmetric_only_q28",
+  "seed": 2024,
+  "qr_lambda": 20.0,
+  "status": "completed",
+  "steps": 10000,
+  "max_steps": 10000,
+  "best_step": 10000,
+  "best_loss": 1.6053849458694458,
+  "final_loss": 1.6053849458694458,
+  "last_train_loss": 1.5089184198379517,
+  "training_seconds": 627.6325774971629,
+  "training_tokens": 40960000,
+  "training_tokens_per_second": 65261.1121037374,
+  "cum_eval_seconds": 14.648876000544988,
+  "peak_gpu_memory_mb": 275.0341796875,
+  "init_state_sha256": "57d4ae8ec7e68959fea801ff05be5997befce11a6e11869ea8eb6402fedf6e2b",
+  "final_state_sha256": "2dc2976c5529c50458b2e3b4197c68415223ea58bdde4c42105a558948d7858a",
+  "training_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+  "expected_batch_sha256": "3be56dbc0aa173d19a388a716b15343f0a9b7a7b1edbde3a0118e9af01e824b7",
+  "batch_stream_sha_matched": true,
+  "cum_grad_clip_count": 9589,
+  "cum_grad_clip_freq": 0.9589,
+  "nan_inf_detected": false,
+  "failure_step": null,
+  "failure_stage": null,
+  "failure_reason": null,
+  "nonfinite_tensors": {
+    "nonfinite_parameters": [],
+    "nonfinite_gradients": []
+  },
+  "evaluations": {
+    "final_step_10000": {
+      "step": 10000,
+      "protocol_a_loss": 1.6053849458694458,
+      "protocol_a_perplexity": 4.979776178097658,
+      "protocol_b_loss": 1.597872050045619,
+      "protocol_b_perplexity": 4.942503825412379,
+      "reload_discrepancy_a": 0.0,
+      "reload_discrepancy_b": 0.0,
+      "exact_reload_reproducible": true
+    },
+    "best_checkpoint": {
+      "step": 10000,
+      "protocol_a_loss": 1.6053849458694458,
+      "protocol_a_perplexity": 4.979776178097658,
+      "protocol_b_loss": 1.597872050045619,
+      "protocol_b_perplexity": 4.942503825412379
+    }
+  }
+}

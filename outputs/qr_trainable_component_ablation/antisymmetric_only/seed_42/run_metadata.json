@@ -1,0 +1,15 @@
+{
+  "experiment": "qr_trainable_component_ablation",
+  "config_key": "q28",
+  "arch_key": "antisymmetric_only",
+  "model_label": "Antisymmetric-Only Q28/V32 (\u03bb=20)",
+  "model_type": "qr_antisymmetric_only_q28",
+  "seed": 42,
+  "qr_lambda": 20.0,
+  "max_steps": 10000,
+  "eval_interval": 250,
+  "init_state_sha256": "3528558fd47280e69904736404dc809ff09c7cd1b578208b9d4d8e5d783f2354",
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "validation_seed": 918273,
+  "run_dir": "outputs/qr_trainable_component_ablation/antisymmetric_only/seed_42"
+}

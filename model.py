@@ -4,6 +4,7 @@ Config attributes: n_layers, d_model, n_heads, context_length, d_ff, dropout.
 For example: 4, 128, 4, 128, 512, 0.1. Vocabulary size is passed separately.
 """
 
+from pathlib import Path
 from typing import List, Optional, Sequence, cast
 import math
 
@@ -25,11 +26,15 @@ from attention import (
     REDUCED_80PCT_VALID_ATTENTION_TYPES,
     REDUCED_70PCT_ATTENTION_CONFIGS,
     REDUCED_70PCT_VALID_ATTENTION_TYPES,
+    PARAMETER_MATCHED_ATTENTION_CONFIGS,
+    PARAMETER_MATCHED_VALID_ATTENTION_TYPES,
     SharedQAntisymmetricAttention,
+    build_parameter_matched_attention,
     build_qr_attention,
     build_reduced_attention,
     build_reduced_80pct_attention,
     build_reduced_70pct_attention,
+    is_parameter_matched_attention_type,
     is_qr_attention_type,
     is_reduced_attention_type,
     is_reduced_80pct_attention_type,
@@ -42,7 +47,9 @@ class DecoderBlock(nn.Module):
         super().__init__()
         self.attention_norm = nn.LayerNorm(config.d_model)
         self.attention = (
-            build_qr_attention(config, attention_type)
+            build_parameter_matched_attention(config, attention_type)
+            if is_parameter_matched_attention_type(attention_type)
+            else build_qr_attention(config, attention_type)
             if is_qr_attention_type(attention_type)
             else build_reduced_attention(config, attention_type)
             if is_reduced_attention_type(attention_type)
@@ -110,6 +117,7 @@ class DecoderLM(nn.Module):
             *REDUCED_VALID_ATTENTION_TYPES,
             *REDUCED_80PCT_VALID_ATTENTION_TYPES,
             *REDUCED_70PCT_VALID_ATTENTION_TYPES,
+            *PARAMETER_MATCHED_VALID_ATTENTION_TYPES,
             *hetero_types,
             *AllocatedSharedQAttention.HEAD_DIMS,
         )
@@ -175,6 +183,18 @@ class DecoderLM(nn.Module):
                     f"set_qr_lambda is only supported for QRSharedQAntisymmetricAttention, got {type(block.attention).__name__}"
                 )
             block.attention.lambda_param = val
+
+    def set_qr_component_mode(self, mode: str, layer: Optional[int] = None) -> None:
+        for idx, block in enumerate(self.blocks):
+            if layer is None or idx == layer:
+                if hasattr(block.attention, "component_mode"):
+                    block.attention.component_mode = mode
+
+    def set_qr_antisymmetric_enabled(self, enabled: bool, layer: Optional[int] = None) -> None:
+        for idx, block in enumerate(self.blocks):
+            if layer is None or idx == layer:
+                if hasattr(block.attention, "antisymmetric_enabled"):
+                    block.attention.antisymmetric_enabled = enabled
 
     def _embed(self, input_ids):
         if input_ids.ndim != 2:
@@ -571,6 +591,126 @@ def build_reduced_q28_paired_models(
     return {
         "standard": std_model,
         "qr_antisymmetric": qr_model,
+    }
+
+
+def build_reduced_q28_trainable_ablation_models(
+    config,
+    vocab_size: int,
+    seed: int,
+    qr_lambda: float = 20.0,
+    init_checkpoint_dir: Optional[Path] = None,
+):
+    """Build paired trainable component ablation models:
+    1. Antisymmetric-Only (qr_antisymmetric_only_q28): S = lambda(QR^T - RQ^T) / sqrt(7), lambda=20.
+    2. Symmetric-Only (symmetric_only_q28): S = QQ^T / sqrt(7), no W_R.
+
+    Both models share bitwise-identical initial weights for all compatible tensors
+    derived from the historical Q28 QR initialization (or deterministically reproduced).
+    """
+    init_path = None
+    if init_checkpoint_dir is not None:
+        p = Path(init_checkpoint_dir) / f"seed_{seed}" / "init.pt"
+        if p.exists():
+            init_path = p
+    else:
+        default_p = Path("outputs/reduced_attention_70_percent/qr_antisymmetric_q28") / f"seed_{seed}" / "init.pt"
+        if default_p.exists():
+            init_path = default_p
+
+    if init_path is not None and init_path.exists():
+        ckpt = torch.load(init_path, map_location="cpu")
+        init_state = ckpt["model"]
+    else:
+        with torch.random.fork_rng(devices=[]):
+            torch.set_rng_state(torch.Generator().manual_seed(seed).get_state())
+            ref = DecoderLM(config, vocab_size, "qr_antisymmetric_q28")
+            init_state = {k: v.detach().clone() for k, v in ref.state_dict().items()}
+
+    anti_model = DecoderLM(config, vocab_size, "qr_antisymmetric_only_q28")
+    anti_model.set_qr_lambda(float(qr_lambda))
+    anti_model.load_state_dict(init_state, strict=True)
+    if anti_model.lm_head.weight is not anti_model.token_embedding.weight:
+        anti_model.lm_head.weight = anti_model.token_embedding.weight
+
+    sym_model = DecoderLM(config, vocab_size, "symmetric_only_q28")
+    sym_state = {k: v for k, v in init_state.items() if "r_proj" not in k}
+    sym_model.load_state_dict(sym_state, strict=True)
+    if sym_model.lm_head.weight is not sym_model.token_embedding.weight:
+        sym_model.lm_head.weight = sym_model.token_embedding.weight
+
+    return {
+        "antisymmetric_only": anti_model,
+        "symmetric_only": sym_model,
+    }
+
+
+def build_parameter_matched_component_models(
+    config,
+    vocab_size: int,
+    seed: int,
+    qr_lambda: float = 20.0,
+    init_checkpoint_dir: Optional[Path] = None,
+):
+    """Build paired parameter-matched component ablation models:
+    1. Antisymmetric-Only (qr_antisymmetric_only_q28):
+       - S = lambda(QR^T - RQ^T) / sqrt(7), lambda=20.
+       - Projections: W_Q (128x28), W_R (128x28), W_V (128x32), W_O (32x128).
+       - Total attention parameters = 61,440. Total parameters = 615,296.
+    2. Symmetric-Only (symmetric_only_q56):
+       - S = QQ^T / sqrt(14).
+       - Projections: W_Q (128x56), W_V (128x32), W_O (32x128).
+       - Total attention parameters = 61,440. Total parameters = 615,296.
+
+    Both models share bitwise-identical initial weights for all compatible tensors
+    (W_V, W_O, embeddings, LayerNorms, FFNs) derived from historical Q28 QR initialization.
+    W_Q matrices have different dimensions and are independently initialized with standard
+    fan-in-aware N(0, 0.02^2) policy.
+    """
+    init_path = None
+    if init_checkpoint_dir is not None:
+        p = Path(init_checkpoint_dir) / f"seed_{seed}" / "init.pt"
+        if p.exists():
+            init_path = p
+    else:
+        default_p = Path("outputs/reduced_attention_70_percent/qr_antisymmetric_q28") / f"seed_{seed}" / "init.pt"
+        if default_p.exists():
+            init_path = default_p
+
+    if init_path is not None and init_path.exists():
+        ckpt = torch.load(init_path, map_location="cpu")
+        init_state = ckpt["model"]
+    else:
+        with torch.random.fork_rng(devices=[]):
+            torch.set_rng_state(torch.Generator().manual_seed(seed).get_state())
+            ref = DecoderLM(config, vocab_size, "qr_antisymmetric_q28")
+            init_state = {k: v.detach().clone() for k, v in ref.state_dict().items()}
+
+    # 1. Antisymmetric-Only model
+    anti_model = DecoderLM(config, vocab_size, "qr_antisymmetric_only_q28")
+    anti_model.set_qr_lambda(float(qr_lambda))
+    anti_model.load_state_dict(init_state, strict=True)
+    if anti_model.lm_head.weight is not anti_model.token_embedding.weight:
+        anti_model.lm_head.weight = anti_model.token_embedding.weight
+
+    # 2. Symmetric-Only model (q_dim=56, v_dim=32)
+    # Instantiate with seeded generator for fresh, standard N(0, 0.02^2) query initialization
+    with torch.random.fork_rng(devices=[]):
+        torch.set_rng_state(torch.Generator().manual_seed(seed).get_state())
+        sym_model = DecoderLM(config, vocab_size, "symmetric_only_q56")
+
+    # Copy all compatible shared tensors bitwise from init_state
+    sym_state = sym_model.state_dict()
+    for name, tensor in sym_state.items():
+        if name in init_state and tensor.shape == init_state[name].shape:
+            sym_state[name] = init_state[name].detach().clone()
+    sym_model.load_state_dict(sym_state, strict=True)
+    if sym_model.lm_head.weight is not sym_model.token_embedding.weight:
+        sym_model.lm_head.weight = sym_model.token_embedding.weight
+
+    return {
+        "antisymmetric_only": anti_model,
+        "symmetric_only": sym_model,
     }
 
 

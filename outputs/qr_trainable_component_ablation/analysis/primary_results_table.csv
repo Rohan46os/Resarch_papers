@@ -1,0 +1,8 @@
+Architecture,Category,Attention Params,Total Params,Protocol A Loss,Protocol B Loss,Protocol A PPL,Protocol B PPL
+Full QR Q28 (λ=20),Historical Reference,"61,440","615,296",1.5987 ± 0.0019,1.5930 ± 0.0020,4.95 ± 0.01,4.92 ± 0.01
+Antisymmetric-Only Q28 (λ=20),Trained from Scratch,"61,440","615,296",1.6026 ± 0.0024,1.5953 ± 0.0023,4.97 ± 0.01,4.93 ± 0.01
+Symmetric-Only Q28,Trained from Scratch,"47,104","600,960",1.7517 ± 0.0312,1.7502 ± 0.0345,5.77 ± 0.18,5.76 ± 0.20
+Standard Q28,Historical Reference,"61,440","615,296",1.6626 ± 0.0041,1.6571 ± 0.0031,5.27 ± 0.02,5.24 ± 0.02
+Full QR Q112 (λ=20),Historical Reference,"204,800","758,656",1.5662 ± 0.0021,1.5584 ± 0.0025,4.79 ± 0.01,4.75 ± 0.01
+Reduced QR Q56 (λ=20),Historical Reference,"102,400","656,256",1.5941 ± 0.0024,1.5861 ± 0.0030,4.92 ± 0.01,4.88 ± 0.01
+Reduced QR Q24 (λ=20),Historical Reference,"40,960","594,816",1.6358 ± 0.0064,1.6316 ± 0.0076,5.13 ± 0.03,5.11 ± 0.04

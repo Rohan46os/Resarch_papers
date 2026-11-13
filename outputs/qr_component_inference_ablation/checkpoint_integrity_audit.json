@@ -1,0 +1,43 @@
+{
+  "audit_timestamp": "2026-11-13 07:53:31 UTC",
+  "status": "passed",
+  "all_checkpoints_unchanged": true,
+  "checkpoints_evaluated": [
+    {
+      "checkpoint_path": "outputs\\reduced_attention_70_percent\\qr_antisymmetric_q28\\seed_1337\\final.pt",
+      "sha256_before": "bf240ef656e0f72e15ffe80d541330fb4fd4d4241f78eecb07c695621f82d165",
+      "sha256_after": "bf240ef656e0f72e15ffe80d541330fb4fd4d4241f78eecb07c695621f82d165",
+      "verified_unchanged": true
+    },
+    {
+      "checkpoint_path": "outputs\\reduced_attention_70_percent\\qr_antisymmetric_q28\\seed_1337\\best.pt",
+      "sha256_before": "917f2c9e7a0a793e247f467d109a99afdc42c91e9a24fd24aec105bb60f58b9b",
+      "sha256_after": "917f2c9e7a0a793e247f467d109a99afdc42c91e9a24fd24aec105bb60f58b9b",
+      "verified_unchanged": true
+    },
+    {
+      "checkpoint_path": "outputs\\reduced_attention_70_percent\\qr_antisymmetric_q28\\seed_2024\\final.pt",
+      "sha256_before": "cd0140adcbdc178968e6726329b2f1b7ab5a517aac90a29fafd35fa27bd36bc5",
+      "sha256_after": "cd0140adcbdc178968e6726329b2f1b7ab5a517aac90a29fafd35fa27bd36bc5",
+      "verified_unchanged": true
+    },
+    {
+      "checkpoint_path": "outputs\\reduced_attention_70_percent\\qr_antisymmetric_q28\\seed_2024\\best.pt",
+      "sha256_before": "7e239b73a6caa2e8bd9f6f5cb1493e604de60971619ad13eaf4e10ac83343f9d",
+      "sha256_after": "7e239b73a6caa2e8bd9f6f5cb1493e604de60971619ad13eaf4e10ac83343f9d",
+      "verified_unchanged": true
+    },
+    {
+      "checkpoint_path": "outputs\\reduced_attention_70_percent\\qr_antisymmetric_q28\\seed_42\\final.pt",
+      "sha256_before": "2b603b9765f0d4b5d888f27565fab1ca13f11e42a7a69f43080ed32d5cfa28e7",
+      "sha256_after": "2b603b9765f0d4b5d888f27565fab1ca13f11e42a7a69f43080ed32d5cfa28e7",
+      "verified_unchanged": true
+    },
+    {
+      "checkpoint_path": "outputs\\reduced_attention_70_percent\\qr_antisymmetric_q28\\seed_42\\best.pt",
+      "sha256_before": "63d0c163aaff23e63aa66f080535c42186510e09e8c706b44fa1145d8cfc2ca6",
+      "sha256_after": "63d0c163aaff23e63aa66f080535c42186510e09e8c706b44fa1145d8cfc2ca6",
+      "verified_unchanged": true
+    }
+  ]
+}

@@ -31,5 +31,15 @@ outputs/*
 !outputs/reduced_attention_80_percent/**
 !outputs/reduced_attention_70_percent/
 !outputs/reduced_attention_70_percent/**
+!outputs/qr_component_inference_ablation/
+!outputs/qr_component_inference_ablation/**
+!outputs/qr_trainable_component_ablation/
+!outputs/qr_trainable_component_ablation/**
+!outputs/qr_parameter_matched_components/
+!outputs/qr_parameter_matched_components/**
+!outputs/activation_visualization_study/
+!outputs/activation_visualization_study/**
+outputs/activation_visualization_study/activation_arrays/
+*.npz
 *.pt
 *.log

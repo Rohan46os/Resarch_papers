@@ -1,0 +1,2 @@
+Comparison,Anti Loss (Proto B),Competitor Loss (Proto B),Delta (Anti - Comp),Relative Advantage (%),Attention Parameters,Total Parameters,Consistent across 3 seeds
+Antisymmetric-Only Q28 vs Parameter-Matched Symmetric-Only Q56 (Primary),1.5953 ± 0.0023,1.7218 ± 0.0288,-0.1264 ± 0.0266,+7.33%,"61,440 vs 61,440 (Equal)","615,296 vs 615,296 (Equal)",True

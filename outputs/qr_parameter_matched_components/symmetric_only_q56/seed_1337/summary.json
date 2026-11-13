@@ -1,0 +1,53 @@
+{
+  "experiment": "qr_parameter_matched_components",
+  "arch_key": "symmetric_only_q56",
+  "model_label": "Parameter-Matched Symmetric-Only Q56/V32",
+  "model_type": "symmetric_only_q56",
+  "seed": 1337,
+  "qr_lambda": null,
+  "status": "completed",
+  "steps": 10000,
+  "max_steps": 10000,
+  "best_step": 10000,
+  "best_loss": 1.707398819923401,
+  "final_loss": 1.707398819923401,
+  "training_seconds": 512.8248081976781,
+  "training_tokens": 40960000,
+  "training_tokens_per_second": 79871.33099733443,
+  "cum_eval_seconds": 7.367735200212337,
+  "peak_gpu_memory_mb": 284.42236328125,
+  "init_state_sha256": "088ad821175ec67199a4682a020bf58400ba23f41a982f6a9955628e0d3fa469",
+  "final_state_sha256": "49317dc417c7050f888df881ed2656d2c9fc7d836c5e0b45a648f34687ab02ec",
+  "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+  "expected_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+  "batch_stream_sha_matched": true,
+  "cum_grad_clip_count": 8604,
+  "cum_grad_clip_freq": 0.8604,
+  "nan_inf_detected": false,
+  "failure_step": null,
+  "failure_stage": null,
+  "failure_reason": null,
+  "nonfinite_tensors": {
+    "nonfinite_parameters": [],
+    "nonfinite_gradients": []
+  },
+  "evaluations": {
+    "final_step_10000": {
+      "step": 10000,
+      "protocol_a_loss": 1.707398819923401,
+      "protocol_a_perplexity": 5.514598341834031,
+      "protocol_b_loss": 1.704360012791628,
+      "protocol_b_perplexity": 5.497865977154602,
+      "reload_discrepancy_a": 0.0,
+      "reload_discrepancy_b": 0.0,
+      "exact_reload_reproducible": true
+    },
+    "best_checkpoint": {
+      "step": 10000,
+      "protocol_a_loss": 1.707398819923401,
+      "protocol_a_perplexity": 5.514598341834031,
+      "protocol_b_loss": 1.704360012791628,
+      "protocol_b_perplexity": 5.497865977154602
+    }
+  }
+}

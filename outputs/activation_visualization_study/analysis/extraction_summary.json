@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-11-13 23:19:58",
+  "total_extracted_files": 264,
+  "total_diagnostic_rows": 4224,
+  "architectures": [
+    "full_standard_q112",
+    "full_qr_q112",
+    "reduced_standard_q56",
+    "reduced_qr_q56",
+    "reduced_standard_q28",
+    "reduced_qr_q28",
+    "reduced_standard_q24",
+    "reduced_qr_q24",
+    "antisymmetric_only_q28",
+    "symmetric_only_q28",
+    "symmetric_only_q56"
+  ],
+  "seeds": [
+    1337,
+    2024,
+    42
+  ],
+  "probes": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "states": [
+    "init",
+    "trained"
+  ],
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "duration_seconds": 317.7882318496704
+}
