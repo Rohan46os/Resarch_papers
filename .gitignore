@@ -48,6 +48,8 @@ outputs/antisymmetric_only_head_visualization/data/arrays/
 outputs/antisymmetric_only_head_visualization/report/comparisons/
 outputs/antisymmetric_only_head_visualization/report/initialization/
 outputs/antisymmetric_only_head_visualization/report/trained/
+!outputs/antisymmetric_only_exact_stable_rank/
+!outputs/antisymmetric_only_exact_stable_rank/**
 *.npz
 *.pt
 *.log

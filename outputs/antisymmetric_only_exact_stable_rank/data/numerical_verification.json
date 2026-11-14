@@ -1,0 +1,11 @@
+{
+  "max_skew_error": 0.0,
+  "max_diag_val": 0.0,
+  "max_svd_vs_frob_diff": 8.881784197001252e-15,
+  "max_scaling_invariance_diff": 1.540845051550832e-08,
+  "max_singular_pair_relative_error": 1.0965535469339018e-14,
+  "max_numerical_rank": 14,
+  "min_stable_rank_raw": 2.007535418407239,
+  "all_pairs_verified": true,
+  "total_matrices_processed": 384
+}
