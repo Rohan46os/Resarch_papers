@@ -1,0 +1,67 @@
+{
+  "architecture": "symmetric_only_q56",
+  "seeds": [
+    1337,
+    2024,
+    42
+  ],
+  "mean_orig_protocol_b_loss": 1.7217597091887002,
+  "std_orig_protocol_b_loss": 0.02880141272810072,
+  "mean_no_diag_protocol_b_loss": 2.1302731799809016,
+  "std_no_diag_protocol_b_loss": 0.04019354951727011,
+  "mean_delta_loss_b": 0.4085134707922015,
+  "std_delta_loss_b": 0.04874762782351001,
+  "mean_orig_protocol_a_loss": 1.7252221326033272,
+  "std_orig_protocol_a_loss": 0.028451896278263115,
+  "mean_no_diag_protocol_a_loss": 2.1307325681050617,
+  "std_no_diag_protocol_a_loss": 0.04068913567593032,
+  "mean_delta_loss_a": 0.40551043550173427,
+  "std_delta_loss_a": 0.05092528620140478,
+  "detailed_runs": [
+    {
+      "seed": 1337,
+      "architecture": "symmetric_only_q56",
+      "checkpoint": "final.pt",
+      "orig_protocol_a_loss": 1.707398819923401,
+      "orig_protocol_a_ppl": 5.514598341834031,
+      "orig_protocol_b_loss": 1.704360012791628,
+      "orig_protocol_b_ppl": 5.497865977154602,
+      "no_diag_protocol_a_loss": 2.1715527057647703,
+      "no_diag_protocol_a_ppl": 8.771893641979261,
+      "no_diag_protocol_b_loss": 2.1690877940177464,
+      "no_diag_protocol_b_ppl": 8.75029832450741,
+      "delta_loss_a": 0.4641538858413694,
+      "delta_loss_b": 0.46472778122611835
+    },
+    {
+      "seed": 2024,
+      "architecture": "symmetric_only_q56",
+      "checkpoint": "final.pt",
+      "orig_protocol_a_loss": 1.758034783601761,
+      "orig_protocol_a_ppl": 5.801025913808433,
+      "orig_protocol_b_loss": 1.7550046037123441,
+      "orig_protocol_b_ppl": 5.783474367347823,
+      "no_diag_protocol_a_loss": 2.130469286441803,
+      "no_diag_protocol_a_ppl": 8.418816721091348,
+      "no_diag_protocol_b_loss": 2.132901996162247,
+      "no_diag_protocol_b_ppl": 8.439322190177624,
+      "delta_loss_a": 0.372434502840042,
+      "delta_loss_b": 0.3778973924499027
+    },
+    {
+      "seed": 42,
+      "architecture": "symmetric_only_q56",
+      "checkpoint": "final.pt",
+      "orig_protocol_a_loss": 1.7102327942848206,
+      "orig_protocol_a_ppl": 5.530248738084613,
+      "orig_protocol_b_loss": 1.7059145110621285,
+      "orig_protocol_b_ppl": 5.506419046450897,
+      "no_diag_protocol_a_loss": 2.090175712108612,
+      "no_diag_protocol_a_ppl": 8.086335906613687,
+      "no_diag_protocol_b_loss": 2.088829749762712,
+      "no_diag_protocol_b_ppl": 8.075459324344195,
+      "delta_loss_a": 0.3799429178237914,
+      "delta_loss_b": 0.3829152387005834
+    }
+  ]
+}

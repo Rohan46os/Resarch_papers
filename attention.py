@@ -1043,7 +1043,7 @@ class SymmetricOnlyAttention(WidthMatchedCausalAttention):
       Q = X W_Q, V = X W_V
       S = Q Q^T / sqrt(d_q)
     Strictly NO W_R projection and NO antisymmetric score contribution.
-    Has Q, V and output projections only (47,104 attention parameters).
+    Has Q, V and output projections only (47,104 attention parameters for Q28, 61,440 for Q56).
     """
 
     def __init__(
@@ -1052,6 +1052,7 @@ class SymmetricOnlyAttention(WidthMatchedCausalAttention):
         q_head_dim: int,
         v_head_dim: int,
         attention_type: str = "symmetric_only_q28",
+        remove_diagonal: bool = False,
     ):
         super().__init__(
             config,
@@ -1063,10 +1064,81 @@ class SymmetricOnlyAttention(WidthMatchedCausalAttention):
         self.component_mode = "symmetric_only"
         self.symmetric_enabled = True
         self.antisymmetric_enabled = False
+        self.remove_diagonal = bool(remove_diagonal)
+
+    def set_remove_diagonal(self, remove_diagonal: bool = True):
+        self.remove_diagonal = bool(remove_diagonal)
+
+    def _scores(self, q, k=None):
+        if k is None:
+            k = q
+        G = q @ k.transpose(-2, -1)
+        scale = math.sqrt(self.head_dim)
+
+        if getattr(self, "remove_diagonal", False):
+            diag = torch.diagonal(G, dim1=-2, dim2=-1)
+            G_no_diag = G - torch.diag_embed(diag)
+            raw_scores = G_no_diag / scale
+        else:
+            raw_scores = G / scale
+
+        length = q.size(-2)
+        future = torch.ones(
+            length, length, dtype=torch.bool, device=q.device
+        ).triu(diagonal=1)
+        masked_scores = raw_scores.masked_fill(future, float("-inf"))
+        probabilities = F.softmax(masked_scores, dim=-1)
+        return {
+            "raw_scores": raw_scores,
+            "masked_scores": masked_scores,
+            "probabilities": probabilities,
+            "gram_scores": G,
+        }
+
+
+class DiagonalFreeSymmetricAttention(SymmetricOnlyAttention):
+    """Diagonal-Free Symmetric-Only Attention:
+      Q = X W_Q, V = X W_V
+      G = Q Q^T
+      G_no_diag = G - diag_embed(diagonal(G))
+      S = G_no_diag / sqrt(d_q)
+    Strictly NO W_R projection, NO K projection, and NO antisymmetric score contribution.
+    Pre-mask diagonal is exactly 0.
+    Has Q, V and output projections only (61,440 attention parameters for Q56/V32).
+    """
+
+    def __init__(
+        self,
+        config,
+        q_head_dim: int = 14,
+        v_head_dim: int = 8,
+        attention_type: str = "diagonal_free_symmetric_q56",
+        remove_diagonal: bool = True,
+    ):
+        super().__init__(
+            config,
+            q_head_dim=q_head_dim,
+            v_head_dim=v_head_dim,
+            attention_type=attention_type,
+            remove_diagonal=remove_diagonal,
+        )
+        self.component_mode = "diagonal_free_symmetric"
 
 
 PARAMETER_MATCHED_ATTENTION_CONFIGS = {
     "symmetric_only_q56": {
+        "q_head_dim": 14,
+        "v_head_dim": 8,
+        "aggregate_q_dim": 56,
+        "aggregate_v_dim": 32,
+    },
+    "diagonal_free_symmetric_q56": {
+        "q_head_dim": 14,
+        "v_head_dim": 8,
+        "aggregate_q_dim": 56,
+        "aggregate_v_dim": 32,
+    },
+    "diagonal_free_symmetric_only_q56": {
         "q_head_dim": 14,
         "v_head_dim": 8,
         "aggregate_q_dim": 56,
@@ -1096,6 +1168,8 @@ PARAMETER_MATCHED_ATTENTION_CONFIGS = {
 
 PARAMETER_MATCHED_VALID_ATTENTION_TYPES = (
     "symmetric_only_q56",
+    "diagonal_free_symmetric_q56",
+    "diagonal_free_symmetric_only_q56",
     "symmetric_only_q28",
     "qr_antisymmetric_only_q28",
     "antisymmetric_only_q28",
@@ -1111,6 +1185,14 @@ def build_parameter_matched_attention(config, attention_type: str) -> CausalSelf
     if config.d_model != 128 or config.n_heads != 4:
         raise ValueError(
             f"Parameter matched attention type {attention_type} requires d_model=128 and n_heads=4"
+        )
+    if attention_type in ("diagonal_free_symmetric_q56", "diagonal_free_symmetric_only_q56"):
+        return DiagonalFreeSymmetricAttention(
+            config,
+            q_head_dim=14,
+            v_head_dim=8,
+            attention_type=attention_type,
+            remove_diagonal=True,
         )
     if attention_type == "symmetric_only_q56":
         return SymmetricOnlyAttention(

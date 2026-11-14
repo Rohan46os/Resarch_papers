@@ -1,0 +1,13 @@
+{
+  "experiment": "qr_diagonal_free_symmetric",
+  "arch_key": "diagonal_free_symmetric_q56",
+  "model_label": "Diagonal-Free Symmetric-Only Q56/V32",
+  "model_type": "diagonal_free_symmetric_q56",
+  "seed": 42,
+  "max_steps": 10000,
+  "eval_interval": 250,
+  "init_state_sha256": "1e64a2ab69bec0c6bba21a88eeeff192a36cef77604ef895619109714ee51871",
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "validation_seed": 918273,
+  "run_dir": "outputs/qr_diagonal_free_symmetric/diagonal_free_symmetric_q56/seed_42"
+}

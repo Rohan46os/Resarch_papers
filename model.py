@@ -196,6 +196,14 @@ class DecoderLM(nn.Module):
                 if hasattr(block.attention, "antisymmetric_enabled"):
                     block.attention.antisymmetric_enabled = enabled
 
+    def set_remove_diagonal(self, remove_diagonal: bool = True, layer: Optional[int] = None) -> None:
+        for idx, block in enumerate(self.blocks):
+            if layer is None or idx == layer:
+                if hasattr(block.attention, "set_remove_diagonal"):
+                    block.attention.set_remove_diagonal(remove_diagonal)
+                elif hasattr(block.attention, "remove_diagonal"):
+                    block.attention.remove_diagonal = bool(remove_diagonal)
+
     def _embed(self, input_ids):
         if input_ids.ndim != 2:
             raise ValueError("input_ids must have shape (batch, sequence)")
@@ -712,6 +720,44 @@ def build_parameter_matched_component_models(
         "antisymmetric_only": anti_model,
         "symmetric_only": sym_model,
     }
+
+
+def build_diagonal_free_symmetric_model(
+    config,
+    vocab_size: int,
+    seed: int,
+    init_checkpoint_dir: Optional[Path] = None,
+):
+    """Build Diagonal-Free Symmetric-Only Q56/V32 model:
+    - S = [QQ^T - diag(QQ^T)] / sqrt(14)
+    - Projections: W_Q (128x56), W_V (128x32), W_O (32x128).
+    - Total attention parameters = 61,440. Total parameters = 615,296.
+    Reuses the original Symmetric-Only Q56 initialization checkpoint bitwise.
+    """
+    model = DecoderLM(config, vocab_size, "diagonal_free_symmetric_q56")
+
+    init_path = None
+    if init_checkpoint_dir is not None:
+        p = Path(init_checkpoint_dir) / f"seed_{seed}" / "init.pt"
+        if p.exists():
+            init_path = p
+    else:
+        default_p = Path("outputs/qr_parameter_matched_components/symmetric_only_q56") / f"seed_{seed}" / "init.pt"
+        if default_p.exists():
+            init_path = default_p
+
+    if init_path is not None and init_path.exists():
+        ckpt = torch.load(init_path, map_location="cpu")
+        init_state = ckpt["model"]
+    else:
+        paired = build_parameter_matched_component_models(config, vocab_size, seed)
+        init_state = paired["symmetric_only"].state_dict()
+
+    model.load_state_dict(init_state, strict=True)
+    if model.lm_head.weight is not model.token_embedding.weight:
+        model.lm_head.weight = model.token_embedding.weight
+
+    return model
 
 
 def verify_qr_parameter_budgets(config, vocab_size: int = 65):

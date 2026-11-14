@@ -40,6 +40,11 @@ outputs/*
 !outputs/activation_visualization_study/
 !outputs/activation_visualization_study/**
 outputs/activation_visualization_study/activation_arrays/
+!outputs/qr_diagonal_free_symmetric/
+!outputs/qr_diagonal_free_symmetric/**
+!outputs/antisymmetric_only_head_visualization/
+!outputs/antisymmetric_only_head_visualization/**
+outputs/antisymmetric_only_head_visualization/data/arrays/
 *.npz
 *.pt
 *.log
