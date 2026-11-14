@@ -36,6 +36,10 @@ def export_activations_data():
     if probe_meta_p.exists():
         with open(probe_meta_p, "r", encoding="utf-8") as f:
             probe_meta = json.load(f)
+        for k in list(probe_meta.keys()):
+            if k.startswith("probe_"):
+                num = k.split("_")[1]
+                probe_meta[num] = probe_meta[k]
     else:
         probe_meta = {}
 
@@ -245,6 +249,7 @@ def export_activations_data():
         f.write(";\n")
 
     print(f"Exported activation dataset to: {out_file} ({out_file.stat().st_size / 1024:.1f} KB)")
+    return web_payload
 
 
 if __name__ == "__main__":

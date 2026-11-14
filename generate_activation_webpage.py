@@ -2,8 +2,11 @@
 
 Outputs:
 outputs/antisymmetric_only_head_visualization/report/activations.html
+and
+<appDataDir>/brain/<conversation-id>/activations_studio.html
 
 Features:
+- Self-contained: embeds entire dataset inline so it works 100% offline without CORS/local file restrictions
 - Live Interactive Canvas Matrix Inspector with real-time hover on tokens and channels
 - Decoded token text inspection from Tiny Shakespeare validation probe
 - Synchronized Channel Waveform and Token Vector profiles
@@ -17,14 +20,25 @@ Features:
 from __future__ import annotations
 
 from pathlib import Path
+import json
 
 OUTPUT_BASE = Path("outputs/antisymmetric_only_head_visualization")
 REPORT_DIR = OUTPUT_BASE / "report"
 REPORT_DIR.mkdir(parents=True, exist_ok=True)
+ARTIFACT_DIR = Path(r"C:\Users\Rohan\.gemini\antigravity\brain\1b0ec5fb-6e4e-4363-97f8-acc1f50ee170")
 
 
 def build_activations_page_html():
-    html_content = r"""<!DOCTYPE html>
+    # 1. Load data
+    data_file = REPORT_DIR / "activations_data.js"
+    if not data_file.exists():
+        from export_activations_for_web import export_activations_data
+        export_activations_data()
+
+    with open(data_file, "r", encoding="utf-8") as f:
+        data_script = f.read()
+
+    template = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -999,9 +1013,12 @@ def build_activations_page_html():
     Antisymmetric-Only Q28 Attention Head & Activation Analysis | Trained on Tiny Shakespeare | Google DeepMind Research Exploration
   </footer>
 
-  <!-- Load Activations Data -->
-  <script src="activations_data.js"></script>
+  <!-- EMBEDDED DATASET PAYLOAD (100% Standalone Offline) -->
+  <script>
+  /* ACTIVATIONS_DATA_INLINE */
+  </script>
 
+  <!-- Application Logic -->
   <script>
     // --- Application State ---
     const STATE = {
@@ -1062,8 +1079,8 @@ def build_activations_page_html():
       return [128, 128, 128];
     }
 
-    // --- Initialization ---
-    document.addEventListener("DOMContentLoaded", () => {
+    // --- Initialization with Robust ReadyState Check ---
+    function startApp() {
       if (!window.ACTIVATIONS_DATA) {
         console.error("ACTIVATIONS_DATA not loaded!");
         return;
@@ -1079,7 +1096,13 @@ def build_activations_page_html():
       initDataTable();
 
       updateAllViews();
-    });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", startApp);
+    } else {
+      startApp();
+    }
 
     function initNavigation() {
       document.querySelectorAll(".tab-btn").forEach(btn => {
@@ -1216,18 +1239,16 @@ def build_activations_page_html():
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        const tokenIdx = Math.floor((x / rect.width) * 128);
+        const tokenIdx = Math.max(0, Math.min(127, Math.floor((x / rect.width) * 128)));
         const matrix = getCurrentMatrix();
         if (!matrix) return;
         const numChannels = matrix.length;
-        const channelIdx = Math.floor((y / rect.height) * numChannels);
+        const channelIdx = Math.max(0, Math.min(numChannels - 1, Math.floor((y / rect.height) * numChannels)));
 
-        if (tokenIdx >= 0 && tokenIdx < 128 && channelIdx >= 0 && channelIdx < numChannels) {
-          STATE.hoverToken = tokenIdx;
-          STATE.hoverChannel = channelIdx;
-          updateLiveProbeCard(matrix);
-          renderMatrixView(); // Re-render crosshairs
-        }
+        STATE.hoverToken = tokenIdx;
+        STATE.hoverChannel = channelIdx;
+        updateLiveProbeCard(matrix);
+        renderMatrixView(); // Re-render crosshairs
       });
     }
 
@@ -1327,8 +1348,8 @@ def build_activations_page_html():
       ctx.clearRect(0, 0, W, H);
 
       const probeMeta = window.ACTIVATIONS_DATA.probe_info;
-      const probe1 = probeMeta ? probeMeta["1"] : null;
-      const textPreview = probe1 ? probe1.text_preview : "";
+      const probe1 = probeMeta ? (probeMeta.probe_1 || probeMeta["1"]) : null;
+      const textPreview = probe1 ? (probe1.text || probe1.text_preview || "") : "";
 
       const cellW = W / 128;
       ctx.fillStyle = "#1e293b";
@@ -1362,8 +1383,8 @@ def build_activations_page_html():
 
     function updateLiveProbeCard(matrix) {
       const probeMeta = window.ACTIVATIONS_DATA.probe_info;
-      const probe1 = probeMeta ? probeMeta["1"] : null;
-      const textPreview = probe1 ? probe1.text_preview : "";
+      const probe1 = probeMeta ? (probeMeta.probe_1 || probeMeta["1"]) : null;
+      const textPreview = probe1 ? (probe1.text || probe1.text_preview || "") : "";
 
       const t = STATE.hoverToken || 0;
       const c = STATE.hoverChannel || 0;
@@ -1481,9 +1502,7 @@ def build_activations_page_html():
     // ==========================================
     // VIEW 2: GALLERY
     // ==========================================
-    function initGallery() {
-      // Gallery card clicks handled in renderGalleryView
-    }
+    function initGallery() {}
 
     function renderGalleryView() {
       const data = window.ACTIVATIONS_DATA;
@@ -1619,7 +1638,8 @@ def build_activations_page_html():
       ctx.setLineDash([]);
 
       const probeMeta = data.probe_info;
-      const textPreview = probeMeta && probeMeta["1"] ? probeMeta["1"].text_preview : "";
+      const probe1 = probeMeta ? (probeMeta.probe_1 || probeMeta["1"]) : null;
+      const textPreview = probe1 ? (probe1.text || probe1.text_preview || "") : "";
       const char = textPreview[hoverT] || " ";
       const displayChar = char === "\n" ? "\\n" : char === " " ? "[Space]" : `'${char}'`;
 
@@ -1815,10 +1835,20 @@ def build_activations_page_html():
 </body>
 </html>
 """
+    # Embed data directly
+    html_content = template.replace("/* ACTIVATIONS_DATA_INLINE */", data_script)
+
     out_p = REPORT_DIR / "activations.html"
     with open(out_p, "w", encoding="utf-8") as f:
         f.write(html_content)
     print(f"Generated standalone Interactive Activations Studio: {out_p} ({out_p.stat().st_size / 1024:.1f} KB)")
+
+    # Also generate artifact for direct IDE embedding
+    if ARTIFACT_DIR.exists():
+        art_p = ARTIFACT_DIR / "activations_studio.html"
+        with open(art_p, "w", encoding="utf-8") as f:
+            f.write(html_content)
+        print(f"Generated standalone Artifact in brain directory: {art_p}")
 
 
 if __name__ == "__main__":
