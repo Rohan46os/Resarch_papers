@@ -160,6 +160,44 @@ def build_gallery_html():
                 })
 
     # 4. Q, R, V Activations
+    # 4A. Master 4x4 Activation Grids
+    for seed in [1337, 2024, 42]:
+        for state in ["trained", "init"]:
+            state_label = "Trained" if state == "trained" else "Initialization"
+            for act, act_dir in [("q", "q_activations"), ("r", "r_activations"), ("v", "v_activations")]:
+                images.append({
+                    "type": "activations",
+                    "subtype": f"{act}_grid_4x4",
+                    "seed": seed,
+                    "layer": "all",
+                    "head": "all",
+                    "probe": 1,
+                    "state": "trained" if state == "trained" else "initialization",
+                    "title": f"4x4 {act.upper()} Activation Grid ({state_label}) - Seed {seed}",
+                    "path": f"../comparisons/{act_dir}/{act}_activations_all_16_heads_{state}_seed_{seed}.png",
+                    "caption": f"Composite 4x4 panel of all 16 heads for {act.upper()} activations (Vertical: channels, Horizontal: 128 tokens)."
+                })
+
+    # 4B. Layer Q-R-V Tri-Panels
+    for seed in [1337, 2024, 42]:
+        for state in ["trained", "init"]:
+            suffix = "" if state == "trained" else "_init"
+            state_label = "Trained" if state == "trained" else "Initialization"
+            for l in range(4):
+                images.append({
+                    "type": "activations",
+                    "subtype": "qrv_tripanel",
+                    "seed": seed,
+                    "layer": str(l),
+                    "head": "all",
+                    "probe": 1,
+                    "state": "trained" if state == "trained" else "initialization",
+                    "title": f"Layer {l} Q-R-V Tri-Panel ({state_label}) - Seed {seed}",
+                    "path": f"../comparisons/qrv_activations_layer_{l}_heads{suffix}_seed_{seed}.png",
+                    "caption": f"Aligned comparison of Query (7ch), Reference (7ch), and Value (8ch) across Heads 0..3 in Layer {l}."
+                })
+
+    # 4C. Individual Head Detail Maps
     for seed in [1337, 2024, 42]:
         for l in range(4):
             for h in range(4):
@@ -449,6 +487,16 @@ tr:hover {{ background: rgba(255,255,255,0.02); }}
     <span class="badge">Scaling: S = 20(QR^T - RQ^T)/√7</span>
   </div>
 </header>
+
+<div style="background: linear-gradient(90deg, #1e3a8a 0%, #581c87 100%); border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 20px; margin: 16px auto; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 16px rgba(0,0,0,0.3); flex-wrap: wrap; gap: 12px;">
+  <div>
+    <strong style="color: #60a5fa; font-size: 15px;">🔬 Interactive Activation Studio Available</strong>
+    <div style="color: #cbd5e1; font-size: 12px; margin-top: 2px;">
+      Explore live interactive Q/R/V feature heatmaps with hover point probes, token text decoding, channel waveforms, and interactive trajectory charts.
+    </div>
+  </div>
+  <a href="activations.html" style="background: #38bdf8; color: #090d16; padding: 8px 18px; border-radius: 6px; font-weight: 700; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; box-shadow: 0 2px 8px rgba(56,189,248,0.4);">⚡ Open Activation Studio →</a>
+</div>
 
 <div class="controls">
   <!-- View Category -->

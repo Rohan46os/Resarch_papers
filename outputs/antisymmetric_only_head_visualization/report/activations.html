@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antisymmetric-Only Q28 | Interactive Activation Studio</title>
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: #121826;
+      --bg-card-hover: #1b2337;
+      --bg-input: #1a233a;
+      --border-color: #263352;
+      --border-focus: #3b82f6;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-blue: #38bdf8;
+      --accent-purple: #a855f7;
+      --accent-orange: #f97316;
+      --accent-emerald: #10b981;
+      --accent-rose: #f43f5e;
+      --accent-amber: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+    }
+
+    /* Top Navbar */
+    header {
+      background: linear-gradient(180deg, #111827 0%, rgba(17, 24, 39, 0.95) 100%);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 28px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+    .header-content {
+      max-width: 1680px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #38bdf8 0%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-btn:hover {
+      background: var(--bg-card-hover);
+      color: #fff;
+      border-color: var(--accent-blue);
+    }
+    .nav-btn.primary {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: var(--accent-blue);
+    }
+    .nav-btn.primary:hover {
+      background: rgba(56, 189, 248, 0.25);
+    }
+
+    /* Sub-nav Mode Switcher */
+    .mode-tabs-bar {
+      background: #0d1322;
+      border-bottom: 1px solid var(--border-color);
+      padding: 10px 28px;
+    }
+    .mode-tabs-content {
+      max-width: 1680px;
+      margin: 0 auto;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tab-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .tab-btn.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: var(--accent-blue);
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1680px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 28px;
+      flex: 1;
+    }
+
+    /* Filters Bar */
+    .filter-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .filter-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+    }
+    .filter-pills {
+      display: flex;
+      gap: 4px;
+      background: var(--bg-dark);
+      padding: 3px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+    .pill {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .pill:hover {
+      color: #fff;
+    }
+    .pill.active {
+      background: var(--accent-blue);
+      color: #090d16;
+      font-weight: 700;
+    }
+    .pill.active.purple {
+      background: var(--accent-purple);
+      color: #fff;
+    }
+    .pill.active.orange {
+      background: var(--accent-orange);
+      color: #fff;
+    }
+
+    /* Views */
+    .view-section {
+      display: none;
+    }
+    .view-section.active {
+      display: block;
+    }
+
+    /* View 1: Live Matrix Inspector */
+    .matrix-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 24px;
+    }
+    @media (max-width: 1200px) {
+      .matrix-layout { grid-template-columns: 1fr; }
+    }
+    .canvas-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .canvas-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .canvas-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .badge.shift { background: rgba(168, 85, 247, 0.2); color: var(--accent-purple); border: 1px solid rgba(168, 85, 247, 0.4); }
+    .badge.local { background: rgba(56, 189, 248, 0.2); color: var(--accent-blue); border: 1px solid rgba(56, 189, 248, 0.4); }
+    .badge.long { background: rgba(249, 115, 22, 0.2); color: var(--accent-orange); border: 1px solid rgba(249, 115, 22, 0.4); }
+    .badge.mixed { background: rgba(148, 163, 184, 0.2); color: var(--text-muted); border: 1px solid rgba(148, 163, 184, 0.4); }
+
+    .canvas-wrapper {
+      position: relative;
+      background: #080c14;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 8px;
+      overflow-x: auto;
+    }
+    canvas#heatmapCanvas {
+      width: 100%;
+      height: 220px;
+      display: block;
+      cursor: crosshair;
+    }
+    .token-ruler-canvas {
+      width: 100%;
+      height: 48px;
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* Head Jump Grid */
+    .head-jump-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .head-btn {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 8px 4px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s;
+    }
+    .head-btn:hover {
+      background: var(--bg-card-hover);
+      color: #fff;
+    }
+    .head-btn.active {
+      background: var(--accent-blue);
+      color: #090d16;
+      border-color: var(--accent-blue);
+    }
+
+    /* Side Inspector Cards */
+    .inspector-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .info-card h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .metric-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .metric-box {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .metric-box .label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .metric-box .val {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      font-family: monospace;
+      margin-top: 2px;
+    }
+    .token-preview-box {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 12px;
+      font-family: monospace;
+      font-size: 0.82rem;
+      margin-top: 8px;
+      white-space: pre-wrap;
+      word-break: break-all;
+      max-height: 120px;
+      overflow-y: auto;
+      color: var(--accent-emerald);
+    }
+
+    /* Waveform Sub-Canvases */
+    canvas#channelWaveCanvas, canvas#tokenVectorCanvas {
+      width: 100%;
+      height: 90px;
+      display: block;
+      background: #080c14;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      margin-top: 8px;
+    }
+
+    /* View 2: Publication Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 20px;
+    }
+    .gallery-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .gallery-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .gallery-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background: #080c14;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .gallery-card-body {
+      padding: 14px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .gallery-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .gallery-card-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      flex: 1;
+    }
+    .gallery-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      color: var(--text-dim);
+    }
+
+    /* Modal / Lightbox */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 24px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      max-width: 1300px;
+      width: 100%;
+      max-height: 92vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-title { font-size: 1.05rem; font-weight: 700; }
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+    .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      text-align: center;
+    }
+    .modal-body img {
+      max-width: 100%;
+      max-height: 70vh;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    /* View 3: Trajectory Canvas */
+    .traj-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    canvas#trajectoryCanvas {
+      width: 100%;
+      height: 380px;
+      display: block;
+      background: #080c14;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      cursor: crosshair;
+    }
+
+    /* View 4: Metrics Dashboard */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 24px;
+    }
+    .chart-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    canvas#rmsBarCanvas, canvas#maxAbsBarCanvas {
+      width: 100%;
+      height: 260px;
+      display: block;
+      background: #080c14;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+
+    /* View 5: Data Table */
+    .table-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .search-input {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      min-width: 280px;
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--accent-blue);
+    }
+    .data-table-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      text-align: left;
+    }
+    th {
+      background: #0e1424;
+      padding: 12px 14px;
+      color: var(--text-dim);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
+      user-select: none;
+    }
+    th:hover { color: #fff; }
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-family: monospace;
+    }
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* View 6: Insights Panel */
+    .insights-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .insights-card h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: var(--accent-blue);
+    }
+    .insights-card p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+    .math-block {
+      background: #080c14;
+      border-left: 3px solid var(--accent-purple);
+      padding: 12px 16px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      border-radius: 0 6px 6px 0;
+      margin: 14px 0;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 20px 28px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      background: #090d16;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header>
+    <div class="header-content">
+      <div class="brand-title">
+        <span>⚡</span> Antisymmetric-Only Q28 | Interactive Activation Studio
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-btn">← Head Gallery (Main)</a>
+        <a href="../ANTISYMMETRIC_ONLY_HEAD_ANALYSIS.md" class="nav-btn">📄 Full Report</a>
+        <button id="exportCsvBtn" class="nav-btn primary">📥 Export CSV</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- View Switcher Tabs -->
+  <div class="mode-tabs-bar">
+    <div class="mode-tabs-content">
+      <button class="tab-btn active" data-view="matrix">🔬 Live Matrix Inspector</button>
+      <button class="tab-btn" data-view="gallery">🎨 Publication Gallery</button>
+      <button class="tab-btn" data-view="trajectories">📈 Token Trajectories</button>
+      <button class="tab-btn" data-view="metrics">📊 Quantitative Dashboard</button>
+      <button class="tab-btn" data-view="data">📋 Activation Statistics Table</button>
+      <button class="tab-btn" data-view="insights">💡 Mechanistic Insights</button>
+    </div>
+  </div>
+
+  <main>
+    <!-- Interactive Filter Panel -->
+    <div class="filter-panel">
+      <!-- Tensor Selector -->
+      <div class="filter-group">
+        <span class="filter-label">Tensor Target</span>
+        <div class="filter-pills" id="tensorFilter">
+          <button class="pill active" data-tensor="Q">Query (Q)</button>
+          <button class="pill purple" data-tensor="R">Reference (R)</button>
+          <button class="pill orange" data-tensor="V">Value (V)</button>
+          <button class="pill" data-tensor="QRV">Triple (Q-R-V)</button>
+        </div>
+      </div>
+
+      <!-- Seed Selector -->
+      <div class="filter-group">
+        <span class="filter-label">Random Seed</span>
+        <div class="filter-pills" id="seedFilter">
+          <button class="pill active" data-seed="1337">Seed 1337</button>
+          <button class="pill" data-seed="2024">Seed 2024</button>
+          <button class="pill" data-seed="42">Seed 42</button>
+        </div>
+      </div>
+
+      <!-- State Selector -->
+      <div class="filter-group">
+        <span class="filter-label">Training State</span>
+        <div class="filter-pills" id="stateFilter">
+          <button class="pill active" data-state="trained">Trained (Step 10,000)</button>
+          <button class="pill" data-state="initialization">Initialization</button>
+        </div>
+      </div>
+
+      <!-- Colormap Selector -->
+      <div class="filter-group">
+        <span class="filter-label">Colormap</span>
+        <div class="filter-pills" id="cmapFilter">
+          <button class="pill active" data-cmap="PuOr">PuOr (Zero-Symmetric)</button>
+          <button class="pill" data-cmap="Coolwarm">Coolwarm</button>
+          <button class="pill" data-cmap="Viridis">Viridis</button>
+        </div>
+      </div>
+
+      <!-- Scaling Selector -->
+      <div class="filter-group">
+        <span class="filter-label">Normalization</span>
+        <div class="filter-pills" id="normFilter">
+          <button class="pill active" data-norm="sym">±Max Absolute</button>
+          <button class="pill" data-norm="zscore">Standardized Z-Score</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 1: LIVE MATRIX INSPECTOR -->
+    <section id="view-matrix" class="view-section active">
+      <div class="matrix-layout">
+        <!-- Left: Interactive Canvas Card -->
+        <div class="canvas-card">
+          <div class="canvas-header">
+            <div class="canvas-title">
+              <span id="matrixHeadTitle">Layer 0 Head 0 | Query (Q)</span>
+              <span id="matrixHeadBadge" class="badge shift">Shift Head</span>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">
+              Horizontal: 128 Tokens | Vertical: <span id="matrixDimLabel">7 Channels</span>
+            </div>
+          </div>
+
+          <div class="canvas-wrapper">
+            <canvas id="heatmapCanvas" width="900" height="220"></canvas>
+            <canvas id="tokenRulerCanvas" class="token-ruler-canvas" width="900" height="48"></canvas>
+          </div>
+
+          <!-- Quick Head Jump 4x4 Grid -->
+          <div style="margin-top: 6px;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px;">
+              Jump to Head (Click to Select)
+            </div>
+            <div class="head-jump-grid" id="headJumpGrid">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Inspector Details & Sub-Canvases -->
+        <div class="inspector-panel">
+          <!-- Live Cursor Hover Card -->
+          <div class="info-card">
+            <h4>Live Point Probe <span style="font-size: 0.7rem; color: var(--accent-blue);" id="hoverPosText">Hover over matrix</span></h4>
+            <div class="metric-grid-2">
+              <div class="metric-box">
+                <div class="label">Token Pos</div>
+                <div class="val" id="hoverTokenIdx">--</div>
+              </div>
+              <div class="metric-box">
+                <div class="label">Token Char</div>
+                <div class="val" id="hoverTokenChar" style="color: var(--accent-emerald);">--</div>
+              </div>
+              <div class="metric-box">
+                <div class="label">Channel</div>
+                <div class="val" id="hoverChannelIdx">--</div>
+              </div>
+              <div class="metric-box">
+                <div class="label">Activation</div>
+                <div class="val" id="hoverActVal">--</div>
+              </div>
+            </div>
+
+            <!-- Waveform of hovered channel -->
+            <div style="margin-top: 14px;">
+              <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase;">
+                Channel Waveform (Across 128 Tokens)
+              </div>
+              <canvas id="channelWaveCanvas" width="340" height="90"></canvas>
+            </div>
+
+            <!-- Token vector profile -->
+            <div style="margin-top: 12px;">
+              <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase;">
+                Token Feature Vector (Across Channels)
+              </div>
+              <canvas id="tokenVectorCanvas" width="340" height="90"></canvas>
+            </div>
+          </div>
+
+          <!-- Head Aggregate Diagnostics Card -->
+          <div class="info-card">
+            <h4>Head Statistical Summary</h4>
+            <div class="metric-grid-2">
+              <div class="metric-box">
+                <div class="label">RMS Activation</div>
+                <div class="val" id="headRmsVal">0.412</div>
+              </div>
+              <div class="metric-box">
+                <div class="label">Max Absolute</div>
+                <div class="val" id="headMaxVal">1.240</div>
+              </div>
+              <div class="metric-box">
+                <div class="label">Std Deviation</div>
+                <div class="val" id="headStdVal">0.410</div>
+              </div>
+              <div class="metric-box">
+                <div class="label">Mean Attention Dist</div>
+                <div class="val" id="headDistVal">1.001</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 12px; font-size: 0.75rem; color: var(--text-muted);">
+              <strong>Decoded Token Preview:</strong>
+              <div class="token-preview-box" id="tokenSequencePreview">Loading probe tokens...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: PUBLICATION GALLERY -->
+    <section id="view-gallery" class="view-section">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-muted);">
+          Showing <span id="galleryCount" style="color: #fff;">0</span> publication-quality figures at 300 DPI
+        </div>
+        <div class="filter-pills" id="galleryCategoryFilter">
+          <button class="pill active" data-cat="all">All Figures</button>
+          <button class="pill" data-cat="master_grid">4x4 Master Grids</button>
+          <button class="pill" data-cat="layer_tripanel">Layer Tri-Panels</button>
+          <button class="pill" data-cat="head_detail">Per-Head Details</button>
+          <button class="pill" data-cat="diagnostic">Diagnostics</button>
+        </div>
+      </div>
+      <div class="gallery-grid" id="galleryContainer">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- VIEW 3: TOKEN TRAJECTORIES -->
+    <section id="view-trajectories" class="view-section">
+      <div class="traj-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: #fff;">
+              Token-Wise Activation Norm Profile: <span id="trajHeadTitle" style="color: var(--accent-blue);">Layer 0 Head 0</span>
+            </h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
+              Norm trajectory ||A_t|| across all 128 positions. Hover over any position to inspect token character and exact activation magnitude.
+            </p>
+          </div>
+          <div class="filter-pills" id="trajCompareFilter">
+            <button class="pill active" data-compare="qrv">Compare Q vs R vs V</button>
+            <button class="pill" data-compare="state">Compare Init vs Trained</button>
+          </div>
+        </div>
+
+        <canvas id="trajectoryCanvas" width="1200" height="380"></canvas>
+
+        <div style="margin-top: 14px; display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-dim);">
+          <div>Hovered Token: <strong id="trajHoverToken" style="color: var(--accent-emerald);">--</strong></div>
+          <div id="trajLegend" style="display: flex; gap: 16px;">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: METRICS DASHBOARD -->
+    <section id="view-metrics" class="view-section">
+      <div class="dashboard-grid">
+        <div class="chart-card">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 4px;">RMS Activation Across All 16 Heads</h4>
+          <p style="font-size: 0.78rem; color: var(--text-muted);">Blue: Query (Q) | Purple: Reference (R) | Orange: Value (V)</p>
+          <canvas id="rmsBarCanvas" width="600" height="260"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 4px;">Peak Absolute Activation by Head</h4>
+          <p style="font-size: 0.78rem; color: var(--text-muted);">Maximum absolute activation max |a_{t,c}| recorded across the 128-token probe</p>
+          <canvas id="maxAbsBarCanvas" width="600" height="260"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: DATA TABLE -->
+    <section id="view-data" class="view-section">
+      <div class="table-controls">
+        <input type="text" id="tableSearchInput" class="search-input" placeholder="Search by Seed, Layer, Head, Classification, Probe...">
+        <div style="font-size: 0.82rem; color: var(--text-dim);" id="tableCountLabel">Showing 384 rows</div>
+      </div>
+
+      <div class="data-table-container">
+        <table id="statsDataTable">
+          <thead>
+            <tr>
+              <th data-col="seed">Seed</th>
+              <th data-col="state">State</th>
+              <th data-col="layer">Layer</th>
+              <th data-col="head">Head</th>
+              <th data-col="classification">Class</th>
+              <th data-col="q_rms">Q RMS</th>
+              <th data-col="r_rms">R RMS</th>
+              <th data-col="v_rms">V RMS</th>
+              <th data-col="q_max_abs">Q Max</th>
+              <th data-col="r_max_abs">R Max</th>
+              <th data-col="v_max_abs">V Max</th>
+              <th data-col="mean_distance">Mean Dist</th>
+              <th data-col="entropy_norm">Entropy</th>
+            </tr>
+          </thead>
+          <tbody id="statsTableBody">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- VIEW 6: MECHANISTIC INSIGHTS -->
+    <section id="view-insights" class="view-section">
+      <div class="insights-card">
+        <h3>1. Skew-Symmetric Architecture & Invariant Dynamics</h3>
+        <p>
+          In the Antisymmetric-Only Transformer, the pre-softmax attention score matrix is strictly defined as:
+        </p>
+        <div class="math-block">
+          S = 20 &times; (Q R^T - R Q^T) / &radic;7
+        </div>
+        <p>
+          Because of the antisymmetric commutator structure [Q, R] = QR^T - RQ^T, the matrix is guaranteed by construction to satisfy <strong>S^T = -S</strong> and <strong>S_ii = 0</strong> for all tokens.
+          Consequently, Query (Q) and Key/Reference (R) enter the objective with identical mathematical symmetry up to a transpose-negation sign. This explains why the activation statistics (mean, std, RMS, sparsity) between Q and R remain virtually identical throughout training across all layers and heads!
+        </p>
+      </div>
+
+      <div class="insights-card">
+        <h3>2. Emergence of Layer 0 Shift Operators</h3>
+        <p>
+          In every random seed (1337, 2024, 42), training consistently causes <strong>exactly two heads in Layer 0</strong> to specialize as pure previous-token shift operators:
+        </p>
+        <div class="math-block">
+          Mean Attention Distance &asymp; 1.001 tokens | Peak Attention Probability &ge; 0.9998 | Normalized Entropy &le; 0.0007
+        </div>
+        <p>
+          As revealed by the interactive token trajectory and waveform tools above, these shift heads exhibit sharp localized activation pulses aligned with specific token transitions (e.g. colons, punctuation, spaces), while the remaining two heads in Layer 0 maintain diffuse, long-range receptive fields.
+        </p>
+      </div>
+
+      <div class="insights-card">
+        <h3>3. Activation Magnitude Doubling During Training</h3>
+        <p>
+          Across all 16 heads, the average RMS activation roughly doubles during training:
+        </p>
+        <div class="math-block">
+          Initialization RMS: &sim; 0.224 &rarr; Trained RMS (Step 10,000): &sim; 0.408 (1.82&times; Expansion)
+        </div>
+        <p>
+          This expansion enables the scaled score 20 &times; (QR^T - RQ^T) / &radic;7 to reach large positive values (&gt; 12.0) for target tokens, driving the softmax probabilities into sharp categorical focus.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="modal-overlay" id="imageModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Image Preview</div>
+        <button class="modal-close" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImg" src="" alt="Preview">
+        <p id="modalDesc" style="margin-top: 14px; font-size: 0.85rem; color: var(--text-muted);"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Antisymmetric-Only Q28 Attention Head & Activation Analysis | Trained on Tiny Shakespeare | Google DeepMind Research Exploration
+  </footer>
+
+  <!-- Load Activations Data -->
+  <script src="activations_data.js"></script>
+
+  <script>
+    // --- Application State ---
+    const STATE = {
+      view: "matrix",
+      tensor: "Q",
+      seed: "1337",
+      trainingState: "trained",
+      layer: 0,
+      head: 0,
+      cmap: "PuOr",
+      norm: "sym",
+      galleryCategory: "all",
+      hoverToken: 0,
+      hoverChannel: 0,
+      tableSearch: "",
+      sortCol: "layer",
+      sortAsc: true
+    };
+
+    // --- Colormap Definitions ---
+    const COLORMAPS = {
+      PuOr: [
+        {t: 0.0, c: [45, 0, 75]},
+        {t: 0.25, c: [118, 42, 131]},
+        {t: 0.5, c: [247, 247, 247]},
+        {t: 0.75, c: [230, 97, 1]},
+        {t: 1.0, c: [127, 59, 8]}
+      ],
+      Coolwarm: [
+        {t: 0.0, c: [59, 76, 192]},
+        {t: 0.5, c: [221, 221, 221]},
+        {t: 1.0, c: [180, 4, 38]}
+      ],
+      Viridis: [
+        {t: 0.0, c: [68, 1, 84]},
+        {t: 0.25, c: [59, 82, 139]},
+        {t: 0.5, c: [33, 145, 140]},
+        {t: 0.75, c: [94, 201, 98]},
+        {t: 1.0, c: [253, 231, 37]}
+      ]
+    };
+
+    function interpolateColor(t, stops) {
+      t = Math.max(0, Math.min(1, t));
+      if (t <= stops[0].t) return stops[0].c;
+      if (t >= stops[stops.length - 1].t) return stops[stops.length - 1].c;
+      for (let i = 0; i < stops.length - 1; i++) {
+        if (t >= stops[i].t && t <= stops[i+1].t) {
+          const frac = (t - stops[i].t) / (stops[i+1].t - stops[i].t);
+          const c1 = stops[i].c, c2 = stops[i+1].c;
+          return [
+            Math.round(c1[0] + frac * (c2[0] - c1[0])),
+            Math.round(c1[1] + frac * (c2[1] - c1[1])),
+            Math.round(c1[2] + frac * (c2[2] - c1[2]))
+          ];
+        }
+      }
+      return [128, 128, 128];
+    }
+
+    // --- Initialization ---
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!window.ACTIVATIONS_DATA) {
+        console.error("ACTIVATIONS_DATA not loaded!");
+        return;
+      }
+
+      initNavigation();
+      initFilters();
+      initHeadJumpGrid();
+      initMatrixCanvas();
+      initGallery();
+      initTrajectoryChart();
+      initMetricsDashboard();
+      initDataTable();
+
+      updateAllViews();
+    });
+
+    function initNavigation() {
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+          document.querySelectorAll(".view-section").forEach(s => s.classList.remove("active"));
+
+          btn.classList.add("active");
+          const viewId = "view-" + btn.dataset.view;
+          const section = document.getElementById(viewId);
+          if (section) section.classList.add("active");
+          STATE.view = btn.dataset.view;
+
+          if (STATE.view === "matrix") renderMatrixView();
+          else if (STATE.view === "gallery") renderGalleryView();
+          else if (STATE.view === "trajectories") renderTrajectoryView();
+          else if (STATE.view === "metrics") renderMetricsView();
+          else if (STATE.view === "data") renderDataTable();
+        });
+      });
+    }
+
+    function initFilters() {
+      // Tensor
+      document.querySelectorAll("#tensorFilter .pill").forEach(p => {
+        p.addEventListener("click", () => {
+          document.querySelectorAll("#tensorFilter .pill").forEach(b => b.classList.remove("active"));
+          p.classList.add("active");
+          STATE.tensor = p.dataset.tensor;
+          updateAllViews();
+        });
+      });
+
+      // Seed
+      document.querySelectorAll("#seedFilter .pill").forEach(p => {
+        p.addEventListener("click", () => {
+          document.querySelectorAll("#seedFilter .pill").forEach(b => b.classList.remove("active"));
+          p.classList.add("active");
+          STATE.seed = p.dataset.seed;
+          updateAllViews();
+        });
+      });
+
+      // State
+      document.querySelectorAll("#stateFilter .pill").forEach(p => {
+        p.addEventListener("click", () => {
+          document.querySelectorAll("#stateFilter .pill").forEach(b => b.classList.remove("active"));
+          p.classList.add("active");
+          STATE.trainingState = p.dataset.state;
+          updateAllViews();
+        });
+      });
+
+      // Colormap
+      document.querySelectorAll("#cmapFilter .pill").forEach(p => {
+        p.addEventListener("click", () => {
+          document.querySelectorAll("#cmapFilter .pill").forEach(b => b.classList.remove("active"));
+          p.classList.add("active");
+          STATE.cmap = p.dataset.cmap;
+          renderMatrixView();
+        });
+      });
+
+      // Normalization
+      document.querySelectorAll("#normFilter .pill").forEach(p => {
+        p.addEventListener("click", () => {
+          document.querySelectorAll("#normFilter .pill").forEach(b => b.classList.remove("active"));
+          p.classList.add("active");
+          STATE.norm = p.dataset.norm;
+          renderMatrixView();
+        });
+      });
+
+      // Gallery Category
+      document.querySelectorAll("#galleryCategoryFilter .pill").forEach(p => {
+        p.addEventListener("click", () => {
+          document.querySelectorAll("#galleryCategoryFilter .pill").forEach(b => b.classList.remove("active"));
+          p.classList.add("active");
+          STATE.galleryCategory = p.dataset.cat;
+          renderGalleryView();
+        });
+      });
+
+      // Modal close
+      document.getElementById("modalCloseBtn").addEventListener("click", () => {
+        document.getElementById("imageModal").classList.remove("active");
+      });
+      document.getElementById("imageModal").addEventListener("click", (e) => {
+        if (e.target.id === "imageModal") document.getElementById("imageModal").classList.remove("active");
+      });
+
+      // CSV Export
+      document.getElementById("exportCsvBtn").addEventListener("click", exportCurrentTableCsv);
+    }
+
+    function initHeadJumpGrid() {
+      const container = document.getElementById("headJumpGrid");
+      container.innerHTML = "";
+      for (let l = 0; l < 4; l++) {
+        for (let h = 0; h < 4; h++) {
+          const btn = document.createElement("button");
+          btn.className = "head-btn" + (l === 0 && h === 0 ? " active" : "");
+          btn.dataset.layer = l;
+          btn.dataset.head = h;
+          btn.innerText = `L${l}H${h}`;
+          btn.addEventListener("click", () => {
+            document.querySelectorAll(".head-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            STATE.layer = l;
+            STATE.head = h;
+            renderMatrixView();
+            renderTrajectoryView();
+          });
+          container.appendChild(btn);
+        }
+      }
+    }
+
+    function updateAllViews() {
+      renderMatrixView();
+      renderGalleryView();
+      renderTrajectoryView();
+      renderMetricsView();
+      renderDataTable();
+    }
+
+    // ==========================================
+    // VIEW 1: MATRIX INSPECTOR
+    // ==========================================
+    function initMatrixCanvas() {
+      const canvas = document.getElementById("heatmapCanvas");
+      canvas.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const tokenIdx = Math.floor((x / rect.width) * 128);
+        const matrix = getCurrentMatrix();
+        if (!matrix) return;
+        const numChannels = matrix.length;
+        const channelIdx = Math.floor((y / rect.height) * numChannels);
+
+        if (tokenIdx >= 0 && tokenIdx < 128 && channelIdx >= 0 && channelIdx < numChannels) {
+          STATE.hoverToken = tokenIdx;
+          STATE.hoverChannel = channelIdx;
+          updateLiveProbeCard(matrix);
+          renderMatrixView(); // Re-render crosshairs
+        }
+      });
+    }
+
+    function getCurrentMatrix() {
+      const data = window.ACTIVATIONS_DATA;
+      if (!data || !data.raw_matrices) return null;
+      const seedObj = data.raw_matrices[STATE.seed];
+      if (!seedObj) return null;
+      const stateObj = seedObj[STATE.trainingState];
+      if (!stateObj) return null;
+      const headKey = `L${STATE.layer}H${STATE.head}`;
+      const headObj = stateObj[headKey];
+      if (!headObj) return null;
+
+      let tensorKey = STATE.tensor.toLowerCase();
+      if (tensorKey === "qrv") tensorKey = "q";
+      return headObj[tensorKey] || null;
+    }
+
+    function renderMatrixView() {
+      const matrix = getCurrentMatrix();
+      if (!matrix) return;
+
+      const headKey = `L${STATE.layer}H${STATE.head}`;
+      let tLabel = STATE.tensor;
+      if (tLabel === "QRV") tLabel = "Query (Q)";
+      document.getElementById("matrixHeadTitle").innerText = `Layer ${STATE.layer} Head ${STATE.head} | ${tLabel} Activations`;
+
+      // Update badge
+      const diagRow = findStatsRow(STATE.seed, STATE.trainingState, STATE.layer, STATE.head);
+      const badge = document.getElementById("matrixHeadBadge");
+      const cName = diagRow ? (diagRow.classification || "General") : "General";
+      badge.innerText = cName;
+      badge.className = "badge " + (cName.includes("Shift") ? "shift" : cName.includes("Local") ? "local" : cName.includes("Long") ? "long" : "mixed");
+
+      const numChannels = matrix.length;
+      document.getElementById("matrixDimLabel").innerText = `${numChannels} Channels`;
+
+      // Draw Heatmap Canvas
+      const canvas = document.getElementById("heatmapCanvas");
+      const ctx = canvas.getContext("2d");
+      const W = canvas.width;
+      const H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      // Determine bounds
+      let vmin = Infinity, vmax = -Infinity;
+      for (let c = 0; c < numChannels; c++) {
+        for (let t = 0; t < 128; t++) {
+          const val = matrix[c][t];
+          if (val < vmin) vmin = val;
+          if (val > vmax) vmax = val;
+        }
+      }
+      const absMax = Math.max(Math.abs(vmin), Math.abs(vmax));
+
+      const cellW = W / 128;
+      const cellH = H / numChannels;
+
+      const stops = COLORMAPS[STATE.cmap] || COLORMAPS.PuOr;
+
+      for (let c = 0; c < numChannels; c++) {
+        for (let t = 0; t < 128; t++) {
+          const val = matrix[c][t];
+          let normVal;
+          if (STATE.norm === "sym") {
+            normVal = absMax > 0 ? (val / absMax) * 0.5 + 0.5 : 0.5;
+          } else {
+            normVal = (vmax - vmin) > 0 ? (val - vmin) / (vmax - vmin) : 0.5;
+          }
+          const rgb = interpolateColor(normVal, stops);
+          ctx.fillStyle = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+          ctx.fillRect(t * cellW, c * cellH, cellW + 0.5, cellH + 0.5);
+        }
+      }
+
+      // Draw Crosshair on Hovered Point
+      if (STATE.hoverToken !== undefined && STATE.hoverChannel !== undefined) {
+        ctx.strokeStyle = "#38bdf8";
+        ctx.lineWidth = 1.5;
+        // Vertical line
+        ctx.strokeRect(STATE.hoverToken * cellW, 0, cellW, H);
+        // Horizontal line
+        ctx.strokeRect(0, STATE.hoverChannel * cellH, W, cellH);
+      }
+
+      // Draw Token Ruler
+      renderTokenRuler();
+      updateLiveProbeCard(matrix);
+    }
+
+    function renderTokenRuler() {
+      const canvas = document.getElementById("tokenRulerCanvas");
+      const ctx = canvas.getContext("2d");
+      const W = canvas.width;
+      const H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      const probeMeta = window.ACTIVATIONS_DATA.probe_info;
+      const probe1 = probeMeta ? probeMeta["1"] : null;
+      const textPreview = probe1 ? probe1.text_preview : "";
+
+      const cellW = W / 128;
+      ctx.fillStyle = "#1e293b";
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.fillStyle = "#94a3b8";
+      ctx.font = "8px monospace";
+      ctx.textAlign = "center";
+
+      for (let t = 0; t < 128; t++) {
+        const char = textPreview[t] || ".";
+        const displayChar = char === "\n" ? "↵" : char === " " ? "·" : char;
+
+        if (t === STATE.hoverToken) {
+          ctx.fillStyle = "#38bdf8";
+          ctx.fillRect(t * cellW, 0, cellW, H);
+          ctx.fillStyle = "#090d16";
+          ctx.fillText(displayChar, t * cellW + cellW/2, 16);
+          ctx.fillText(String(t), t * cellW + cellW/2, 34);
+          ctx.fillStyle = "#94a3b8";
+        } else if (t % 16 === 0 || t === 127) {
+          ctx.fillStyle = "#cbd5e1";
+          ctx.fillText(displayChar, t * cellW + cellW/2, 16);
+          ctx.fillText(String(t), t * cellW + cellW/2, 34);
+          ctx.fillStyle = "#94a3b8";
+        } else if (cellW > 6) {
+          ctx.fillText(displayChar, t * cellW + cellW/2, 20);
+        }
+      }
+    }
+
+    function updateLiveProbeCard(matrix) {
+      const probeMeta = window.ACTIVATIONS_DATA.probe_info;
+      const probe1 = probeMeta ? probeMeta["1"] : null;
+      const textPreview = probe1 ? probe1.text_preview : "";
+
+      const t = STATE.hoverToken || 0;
+      const c = STATE.hoverChannel || 0;
+
+      const char = textPreview[t] || " ";
+      const displayChar = char === "\n" ? "\\n (Newline)" : char === " " ? "[Space]" : `'${char}'`;
+
+      document.getElementById("hoverPosText").innerText = `Pos: ${t} | Ch: ${c}`;
+      document.getElementById("hoverTokenIdx").innerText = t;
+      document.getElementById("hoverTokenChar").innerText = displayChar;
+      document.getElementById("hoverChannelIdx").innerText = c;
+
+      const val = matrix && matrix[c] && matrix[c][t] !== undefined ? matrix[c][t] : 0;
+      document.getElementById("hoverActVal").innerText = (val >= 0 ? "+" : "") + val.toFixed(3);
+
+      // Render Sub-Canvases
+      renderChannelWaveform(matrix, c, t);
+      renderTokenVector(matrix, t, c);
+
+      // Update Head Stats
+      const row = findStatsRow(STATE.seed, STATE.trainingState, STATE.layer, STATE.head);
+      if (row) {
+        let tKey = STATE.tensor.toLowerCase();
+        if (tKey === "qrv") tKey = "q";
+        document.getElementById("headRmsVal").innerText = (row[tKey + "_rms"] || 0).toFixed(3);
+        document.getElementById("headMaxVal").innerText = (row[tKey + "_max_abs"] || 0).toFixed(3);
+        document.getElementById("headStdVal").innerText = (row[tKey + "_std"] || 0).toFixed(3);
+        document.getElementById("headDistVal").innerText = (row.mean_distance || 0).toFixed(3);
+      }
+
+      // Token Sequence Snippet
+      const start = Math.max(0, t - 20);
+      const end = Math.min(128, t + 20);
+      let snippet = textPreview.substring(start, end).replace(/\n/g, "↵");
+      document.getElementById("tokenSequencePreview").innerText = `...${snippet}...`;
+    }
+
+    function renderChannelWaveform(matrix, activeCh, activeT) {
+      const canvas = document.getElementById("channelWaveCanvas");
+      const ctx = canvas.getContext("2d");
+      const W = canvas.width;
+      const H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      if (!matrix || !matrix[activeCh]) return;
+      const wave = matrix[activeCh];
+
+      let vmin = Math.min(...wave), vmax = Math.max(...wave);
+      const absMax = Math.max(Math.abs(vmin), Math.abs(vmax), 0.01);
+
+      // Zero baseline
+      const zeroY = H / 2;
+      ctx.strokeStyle = "#334155";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, zeroY);
+      ctx.lineTo(W, zeroY);
+      ctx.stroke();
+
+      // Waveform line
+      ctx.strokeStyle = "#a855f7";
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      for (let t = 0; t < 128; t++) {
+        const x = (t / 127) * W;
+        const y = zeroY - (wave[t] / absMax) * (H * 0.44);
+        if (t === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Active point highlight
+      const activeX = (activeT / 127) * W;
+      const activeY = zeroY - (wave[activeT] / absMax) * (H * 0.44);
+      ctx.fillStyle = "#38bdf8";
+      ctx.beginPath();
+      ctx.arc(activeX, activeY, 4, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+
+    function renderTokenVector(matrix, activeT, activeCh) {
+      const canvas = document.getElementById("tokenVectorCanvas");
+      const ctx = canvas.getContext("2d");
+      const W = canvas.width;
+      const H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      if (!matrix) return;
+      const numCh = matrix.length;
+      const vals = [];
+      for (let c = 0; c < numCh; c++) vals.push(matrix[c][activeT] || 0);
+
+      const maxVal = Math.max(...vals.map(Math.abs), 0.01);
+      const barW = W / numCh;
+      const zeroY = H / 2;
+
+      ctx.strokeStyle = "#334155";
+      ctx.beginPath();
+      ctx.moveTo(0, zeroY);
+      ctx.lineTo(W, zeroY);
+      ctx.stroke();
+
+      for (let c = 0; c < numCh; c++) {
+        const val = vals[c];
+        const barH = (val / maxVal) * (H * 0.44);
+        const x = c * barW + 4;
+        const w = barW - 8;
+        const y = val >= 0 ? zeroY - barH : zeroY;
+
+        ctx.fillStyle = c === activeCh ? "#38bdf8" : val >= 0 ? "#f97316" : "#a855f7";
+        ctx.fillRect(x, y, w, Math.abs(barH));
+      }
+    }
+
+    // ==========================================
+    // VIEW 2: GALLERY
+    // ==========================================
+    function initGallery() {
+      // Gallery card clicks handled in renderGalleryView
+    }
+
+    function renderGalleryView() {
+      const data = window.ACTIVATIONS_DATA;
+      if (!data || !data.images_catalogue) return;
+
+      const container = document.getElementById("galleryContainer");
+      container.innerHTML = "";
+
+      const filtered = data.images_catalogue.filter(img => {
+        // Seed
+        if (img.seed !== "all" && String(img.seed) !== STATE.seed) return false;
+        // Category
+        if (STATE.galleryCategory !== "all" && img.category !== STATE.galleryCategory) return false;
+        // Tensor
+        if (STATE.tensor !== "QRV" && img.tensor !== "ALL" && img.tensor !== STATE.tensor && img.tensor !== "QRV") return false;
+        return true;
+      });
+
+      document.getElementById("galleryCount").innerText = filtered.length;
+
+      filtered.forEach(img => {
+        const card = document.createElement("div");
+        card.className = "gallery-card";
+        card.innerHTML = `
+          <img src="${img.path}" alt="${img.title}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'200\\'><rect width=\\'300\\' height=\\'200\\' fill=\\'%231e293b\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2394a3b8\\' text-anchor=\\'middle\\'>Figure Loading / Preview</text></svg>'">
+          <div class="gallery-card-body">
+            <div class="gallery-card-title">${img.title}</div>
+            <div class="gallery-card-desc">${img.description}</div>
+            <div class="gallery-tags">
+              <span class="tag">${img.tensor}</span>
+              <span class="tag">${img.state}</span>
+              <span class="tag">Seed ${img.seed}</span>
+            </div>
+          </div>
+        `;
+        card.addEventListener("click", () => {
+          document.getElementById("modalImg").src = img.path;
+          document.getElementById("modalTitle").innerText = img.title;
+          document.getElementById("modalDesc").innerText = img.description;
+          document.getElementById("imageModal").classList.add("active");
+        });
+        container.appendChild(card);
+      });
+    }
+
+    // ==========================================
+    // VIEW 3: TRAJECTORIES
+    // ==========================================
+    function initTrajectoryChart() {
+      const canvas = document.getElementById("trajectoryCanvas");
+      canvas.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const tokenIdx = Math.max(0, Math.min(127, Math.floor((x / rect.width) * 128)));
+        renderTrajectoryView(tokenIdx);
+      });
+    }
+
+    function renderTrajectoryView(hoverT = 0) {
+      const data = window.ACTIVATIONS_DATA;
+      if (!data || !data.trajectories) return;
+
+      const headKey = `L${STATE.layer}H${STATE.head}`;
+      document.getElementById("trajHeadTitle").innerText = `Layer ${STATE.layer} Head ${STATE.head}`;
+
+      const canvas = document.getElementById("trajectoryCanvas");
+      const ctx = canvas.getContext("2d");
+      const W = canvas.width;
+      const H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      const trajData = data.trajectories[STATE.seed];
+      if (!trajData) return;
+
+      const trainedHead = trajData.trained ? trajData.trained[headKey] : null;
+      const initHead = trajData.initialization ? trajData.initialization[headKey] : null;
+      if (!trainedHead) return;
+
+      // Find max norm
+      let maxVal = 0.8;
+      [trainedHead.q_rms, trainedHead.r_rms, trainedHead.v_rms].forEach(arr => {
+        if (arr) maxVal = Math.max(maxVal, ...arr);
+      });
+
+      // Grid lines
+      ctx.strokeStyle = "#1e293b";
+      ctx.lineWidth = 1;
+      for (let y = 0; y <= 4; y++) {
+        const py = H - (y / 4) * (H - 40) - 20;
+        ctx.beginPath();
+        ctx.moveTo(40, py);
+        ctx.lineTo(W - 20, py);
+        ctx.stroke();
+
+        ctx.fillStyle = "#64748b";
+        ctx.font = "9px monospace";
+        ctx.textAlign = "right";
+        ctx.fillText(((y / 4) * maxVal).toFixed(2), 34, py + 3);
+      }
+
+      function drawCurve(arr, color, lineWidth = 2) {
+        if (!arr) return;
+        ctx.strokeStyle = color;
+        ctx.lineWidth = lineWidth;
+        ctx.beginPath();
+        for (let t = 0; t < 128; t++) {
+          const px = 40 + (t / 127) * (W - 60);
+          const py = H - (arr[t] / maxVal) * (H - 40) - 20;
+          if (t === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+      }
+
+      // Draw Q, R, V
+      drawCurve(trainedHead.q_rms, "#38bdf8", 2.2);
+      drawCurve(trainedHead.r_rms, "#a855f7", 2.2);
+      drawCurve(trainedHead.v_rms, "#f97316", 2.2);
+
+      if (initHead) {
+        drawCurve(initHead.q_rms, "rgba(56, 189, 248, 0.4)", 1.2);
+      }
+
+      // Hover Crosshair
+      const hx = 40 + (hoverT / 127) * (W - 60);
+      ctx.strokeStyle = "#e2e8f0";
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(hx, 10);
+      ctx.lineTo(hx, H - 20);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      const probeMeta = data.probe_info;
+      const textPreview = probeMeta && probeMeta["1"] ? probeMeta["1"].text_preview : "";
+      const char = textPreview[hoverT] || " ";
+      const displayChar = char === "\n" ? "\\n" : char === " " ? "[Space]" : `'${char}'`;
+
+      document.getElementById("trajHoverToken").innerText = `Pos ${hoverT} (${displayChar}) | Q: ${trainedHead.q_rms[hoverT]} | R: ${trainedHead.r_rms[hoverT]} | V: ${trainedHead.v_rms[hoverT]}`;
+
+      document.getElementById("trajLegend").innerHTML = `
+        <span style="color: #38bdf8;">● Q RMS (Trained)</span>
+        <span style="color: #a855f7;">● R RMS (Trained)</span>
+        <span style="color: #f97316;">● V RMS (Trained)</span>
+        <span style="color: rgba(56, 189, 248, 0.5);">-- Q RMS (Init)</span>
+      `;
+    }
+
+    // ==========================================
+    // VIEW 4: METRICS DASHBOARD
+    // ==========================================
+    function initMetricsDashboard() {}
+
+    function renderMetricsView() {
+      const data = window.ACTIVATIONS_DATA;
+      if (!data || !data.stats_table) return;
+
+      const filtered = data.stats_table.filter(r => String(r.seed) === STATE.seed && r.state === STATE.trainingState);
+      if (!filtered.length) return;
+
+      const heads = [];
+      const qRms = [], rRms = [], vRms = [];
+      const qMax = [], rMax = [], vMax = [];
+
+      for (let l = 0; l < 4; l++) {
+        for (let h = 0; h < 4; h++) {
+          const row = filtered.find(r => r.layer === l && r.head === h);
+          heads.push(`L${l}H${h}`);
+          qRms.push(row ? row.q_rms : 0);
+          rRms.push(row ? row.r_rms : 0);
+          vRms.push(row ? row.v_rms : 0);
+
+          qMax.push(row ? row.q_max_abs : 0);
+          rMax.push(row ? row.r_max_abs : 0);
+          vMax.push(row ? row.v_max_abs : 0);
+        }
+      }
+
+      drawBarChart("rmsBarCanvas", heads, [
+        {data: qRms, color: "#38bdf8"},
+        {data: rRms, color: "#a855f7"},
+        {data: vRms, color: "#f97316"}
+      ]);
+
+      drawBarChart("maxAbsBarCanvas", heads, [
+        {data: qMax, color: "#38bdf8"},
+        {data: rMax, color: "#a855f7"},
+        {data: vMax, color: "#f97316"}
+      ]);
+    }
+
+    function drawBarChart(canvasId, labels, series) {
+      const canvas = document.getElementById(canvasId);
+      const ctx = canvas.getContext("2d");
+      const W = canvas.width;
+      const H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      let maxVal = 0.5;
+      series.forEach(s => maxVal = Math.max(maxVal, ...s.data));
+      maxVal *= 1.15;
+
+      const barGroupW = (W - 60) / labels.length;
+      const subBarW = (barGroupW - 8) / series.length;
+
+      // Axis
+      ctx.strokeStyle = "#334155";
+      ctx.beginPath();
+      ctx.moveTo(40, H - 30);
+      ctx.lineTo(W - 10, H - 30);
+      ctx.stroke();
+
+      for (let i = 0; i < labels.length; i++) {
+        const gx = 40 + i * barGroupW;
+        series.forEach((s, sIdx) => {
+          const val = s.data[i] || 0;
+          const bh = (val / maxVal) * (H - 50);
+          const bx = gx + sIdx * subBarW + 4;
+          const by = H - 30 - bh;
+
+          ctx.fillStyle = s.color;
+          ctx.fillRect(bx, by, subBarW - 2, bh);
+        });
+
+        // X Label
+        ctx.fillStyle = "#64748b";
+        ctx.font = "8px monospace";
+        ctx.textAlign = "center";
+        ctx.fillText(labels[i], gx + barGroupW / 2, H - 14);
+      }
+    }
+
+    // ==========================================
+    // VIEW 5: DATA TABLE
+    // ==========================================
+    function initDataTable() {
+      document.getElementById("tableSearchInput").addEventListener("input", (e) => {
+        STATE.tableSearch = e.target.value.toLowerCase();
+        renderDataTable();
+      });
+
+      document.querySelectorAll("#statsDataTable th").forEach(th => {
+        th.addEventListener("click", () => {
+          const col = th.dataset.col;
+          if (STATE.sortCol === col) STATE.sortAsc = !STATE.sortAsc;
+          else { STATE.sortCol = col; STATE.sortAsc = true; }
+          renderDataTable();
+        });
+      });
+    }
+
+    function renderDataTable() {
+      const data = window.ACTIVATIONS_DATA;
+      if (!data || !data.stats_table) return;
+
+      const tbody = document.getElementById("statsTableBody");
+      tbody.innerHTML = "";
+
+      let filtered = data.stats_table.filter(r => {
+        if (!STATE.tableSearch) return true;
+        const q = STATE.tableSearch;
+        return (
+          String(r.seed).includes(q) ||
+          String(r.state).toLowerCase().includes(q) ||
+          String(r.layer).includes(q) ||
+          String(r.head).includes(q) ||
+          (r.classification && r.classification.toLowerCase().includes(q))
+        );
+      });
+
+      // Sort
+      filtered.sort((a, b) => {
+        let va = a[STATE.sortCol], vb = b[STATE.sortCol];
+        if (typeof va === "string") {
+          return STATE.sortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+        }
+        return STATE.sortAsc ? va - vb : vb - va;
+      });
+
+      document.getElementById("tableCountLabel").innerText = `Showing ${filtered.length} of ${data.stats_table.length} rows`;
+
+      filtered.slice(0, 100).forEach(r => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${r.seed}</td>
+          <td><span class="tag">${r.state}</span></td>
+          <td>L${r.layer}</td>
+          <td>H${r.head}</td>
+          <td><span class="badge ${r.classification && r.classification.includes("Shift") ? "shift" : "local"}">${r.classification || "--"}</span></td>
+          <td style="color: #38bdf8;">${r.q_rms ? r.q_rms.toFixed(3) : "--"}</td>
+          <td style="color: #a855f7;">${r.r_rms ? r.r_rms.toFixed(3) : "--"}</td>
+          <td style="color: #f97316;">${r.v_rms ? r.v_rms.toFixed(3) : "--"}</td>
+          <td>${r.q_max_abs ? r.q_max_abs.toFixed(3) : "--"}</td>
+          <td>${r.r_max_abs ? r.r_max_abs.toFixed(3) : "--"}</td>
+          <td>${r.v_max_abs ? r.v_max_abs.toFixed(3) : "--"}</td>
+          <td>${r.mean_distance !== undefined ? r.mean_distance.toFixed(2) : "--"}</td>
+          <td>${r.entropy_norm !== undefined ? r.entropy_norm.toFixed(3) : "--"}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function exportCurrentTableCsv() {
+      const data = window.ACTIVATIONS_DATA;
+      if (!data || !data.stats_table) return;
+
+      const keys = Object.keys(data.stats_table[0]);
+      let csv = keys.join(",") + "\n";
+      data.stats_table.forEach(r => {
+        csv += keys.map(k => `"${r[k] !== undefined ? r[k] : ''}"`).join(",") + "\n";
+      });
+
+      const blob = new Blob([csv], {type: "text/csv"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "antisymmetric_q28_activation_statistics.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function findStatsRow(seed, state, layer, head) {
+      const data = window.ACTIVATIONS_DATA;
+      if (!data || !data.stats_table) return null;
+      return data.stats_table.find(r => String(r.seed) === String(seed) && r.state === state && r.layer === layer && r.head === head) || null;
+    }
+  </script>
+</body>
+</html>
