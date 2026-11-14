@@ -45,6 +45,9 @@ outputs/activation_visualization_study/activation_arrays/
 !outputs/antisymmetric_only_head_visualization/
 !outputs/antisymmetric_only_head_visualization/**
 outputs/antisymmetric_only_head_visualization/data/arrays/
+outputs/antisymmetric_only_head_visualization/report/comparisons/
+outputs/antisymmetric_only_head_visualization/report/initialization/
+outputs/antisymmetric_only_head_visualization/report/trained/
 *.npz
 *.pt
 *.log
