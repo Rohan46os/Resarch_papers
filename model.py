@@ -760,6 +760,45 @@ def build_diagonal_free_symmetric_model(
     return model
 
 
+def build_diagonal_free_standard_model(
+    config,
+    vocab_size: int,
+    seed: int,
+    init_checkpoint_dir: Optional[Path] = None,
+):
+    """Build Diagonal-Free Standard Attention Q112/V88 model:
+    - S = [QK^T - diag(QK^T)] / sqrt(28)
+    - Projections: W_Q (128x112), W_K (128x112), W_V (128x88), W_O (88x128).
+    - Total attention parameters = 204,800. Total parameters = 758,656.
+    Reuses the original Standard Attention Q112 initialization checkpoint bitwise.
+    """
+    model = DecoderLM(config, vocab_size, "diagonal_free_standard_q112")
+
+    init_path = None
+    if init_checkpoint_dir is not None:
+        p = Path(init_checkpoint_dir) / f"seed_{seed}" / "init.pt"
+        if p.exists():
+            init_path = p
+    else:
+        default_p = Path("outputs/standard_attention_q112_10k") / f"seed_{seed}" / "init.pt"
+        if default_p.exists():
+            init_path = default_p
+
+    if init_path is not None and init_path.exists():
+        ckpt = torch.load(init_path, map_location="cpu")
+        init_state = ckpt["model"]
+    else:
+        from train_standard_attention_q112_10k import build_standard_q112_from_qr_init
+        std_ref, _ = build_standard_q112_from_qr_init(config, vocab_size, seed)
+        init_state = std_ref.state_dict()
+
+    model.load_state_dict(init_state, strict=True)
+    if model.lm_head.weight is not model.token_embedding.weight:
+        model.lm_head.weight = model.token_embedding.weight
+
+    return model
+
+
 def verify_qr_parameter_budgets(config, vocab_size: int = 65):
     """Programmatically verify exact parameter counts for all 12 QR-experiment models."""
     rows = []

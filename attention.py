@@ -575,6 +575,7 @@ class WidthMatchedCausalAttention(CausalSelfAttention):
         q_head_dim: int,
         v_head_dim: int,
         attention_type: Optional[str] = None,
+        remove_diagonal: bool = False,
     ):
         nn.Module.__init__(self)
         if mode not in ("standard", "shared_q"):
@@ -591,6 +592,7 @@ class WidthMatchedCausalAttention(CausalSelfAttention):
         self.head_dim = q_head_dim
         self.q_head_dim = q_head_dim
         self.v_head_dim = v_head_dim
+        self.remove_diagonal = bool(remove_diagonal)
 
         self.q_proj = nn.Linear(config.d_model, self.n_heads * self.q_head_dim, bias=False)
         if mode == "standard":
@@ -602,6 +604,32 @@ class WidthMatchedCausalAttention(CausalSelfAttention):
         self.last_x = None
         self.last_q_query = None
         self.last_q_key = None
+
+    def set_remove_diagonal(self, remove_diagonal: bool = True):
+        self.remove_diagonal = bool(remove_diagonal)
+
+    def _scores(self, q, k):
+        G = q @ k.transpose(-2, -1)
+        scale = math.sqrt(self.head_dim)
+        if getattr(self, "remove_diagonal", False):
+            diag = torch.diagonal(G, dim1=-2, dim2=-1)
+            G_no_diag = G - torch.diag_embed(diag)
+            raw_scores = G_no_diag / scale
+        else:
+            raw_scores = G / scale
+
+        length = q.size(-2)
+        future = torch.ones(
+            length, length, dtype=torch.bool, device=q.device
+        ).triu(diagonal=1)
+        masked_scores = raw_scores.masked_fill(future, float("-inf"))
+        probabilities = F.softmax(masked_scores, dim=-1)
+        return {
+            "raw_scores": raw_scores,
+            "masked_scores": masked_scores,
+            "probabilities": probabilities,
+            "gram_scores": G,
+        }
 
     def _project_qkv(self, x):
         batch, length, _ = x.shape
@@ -1125,6 +1153,37 @@ class DiagonalFreeSymmetricAttention(SymmetricOnlyAttention):
         self.component_mode = "diagonal_free_symmetric"
 
 
+class DiagonalFreeStandardAttention(WidthMatchedCausalAttention):
+    """Diagonal-Free Standard Attention Q112/V88:
+      Q = X W_Q, K = X W_K, V = X W_V
+      G = Q K^T
+      G_no_diag = G - diag_embed(diagonal(G))
+      S = G_no_diag / sqrt(28)
+    Pre-mask raw score diagonal is exactly 0.
+    Diagonal remains available to softmax (exp(0) = 1).
+    Zero additional trainable parameters (exact 204,800 attention parameters).
+    Exact identical parameter budget to Standard Attention Q112.
+    """
+
+    def __init__(
+        self,
+        config,
+        q_head_dim: int = 28,
+        v_head_dim: int = 22,
+        attention_type: str = "diagonal_free_standard_q112",
+        remove_diagonal: bool = True,
+    ):
+        super().__init__(
+            config,
+            mode="standard",
+            q_head_dim=q_head_dim,
+            v_head_dim=v_head_dim,
+            attention_type=attention_type,
+            remove_diagonal=remove_diagonal,
+        )
+        self.component_mode = "diagonal_free_standard"
+
+
 PARAMETER_MATCHED_ATTENTION_CONFIGS = {
     "symmetric_only_q56": {
         "q_head_dim": 14,
@@ -1164,6 +1223,20 @@ PARAMETER_MATCHED_ATTENTION_CONFIGS = {
         "aggregate_q_dim": 28,
         "aggregate_v_dim": 32,
     },
+    "diagonal_free_standard_q112": {
+        "q_head_dim": 28,
+        "k_head_dim": 28,
+        "v_head_dim": 22,
+        "aggregate_q_dim": 112,
+        "aggregate_v_dim": 88,
+    },
+    "standard_q112_diagonal_free": {
+        "q_head_dim": 28,
+        "k_head_dim": 28,
+        "v_head_dim": 22,
+        "aggregate_q_dim": 112,
+        "aggregate_v_dim": 88,
+    },
 }
 
 PARAMETER_MATCHED_VALID_ATTENTION_TYPES = (
@@ -1173,6 +1246,8 @@ PARAMETER_MATCHED_VALID_ATTENTION_TYPES = (
     "symmetric_only_q28",
     "qr_antisymmetric_only_q28",
     "antisymmetric_only_q28",
+    "diagonal_free_standard_q112",
+    "standard_q112_diagonal_free",
 )
 
 
@@ -1185,6 +1260,14 @@ def build_parameter_matched_attention(config, attention_type: str) -> CausalSelf
     if config.d_model != 128 or config.n_heads != 4:
         raise ValueError(
             f"Parameter matched attention type {attention_type} requires d_model=128 and n_heads=4"
+        )
+    if attention_type in ("diagonal_free_standard_q112", "standard_q112_diagonal_free"):
+        return DiagonalFreeStandardAttention(
+            config,
+            q_head_dim=28,
+            v_head_dim=22,
+            attention_type=attention_type,
+            remove_diagonal=True,
         )
     if attention_type in ("diagonal_free_symmetric_q56", "diagonal_free_symmetric_only_q56"):
         return DiagonalFreeSymmetricAttention(
