@@ -668,6 +668,7 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
         v_head_dim: Optional[int] = None,
         lambda_param: float = 1.0,
         attention_type: str = "qr_antisymmetric",
+        cross_term_sign: float = -1.0,
     ):
         nn.Module.__init__(self)
         if config.d_model <= 0 or config.n_heads <= 0:
@@ -680,6 +681,8 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
             v_head_dim = q_head_dim
         if q_head_dim <= 0 or v_head_dim <= 0:
             raise ValueError("q_head_dim and v_head_dim must be positive")
+        if float(cross_term_sign) not in (-1.0, 1.0):
+            raise ValueError(f"cross_term_sign must be -1.0 or +1.0, got {cross_term_sign}")
 
         self.attention_type = attention_type
         self.d_model = config.d_model
@@ -692,12 +695,19 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
         self.antisymmetric_enabled: bool = True
         self.symmetric_enabled: bool = True
         self.component_mode: str = "full"
+        self.cross_term_sign: float = float(cross_term_sign)
 
         self.q_proj = nn.Linear(config.d_model, self.n_heads * self.q_head_dim, bias=False)
         self.r_proj = nn.Linear(config.d_model, self.n_heads * self.r_head_dim, bias=False)
         self.v_proj = nn.Linear(config.d_model, self.n_heads * self.v_head_dim, bias=False)
         self.out_proj = nn.Linear(self.n_heads * self.v_head_dim, config.d_model, bias=False)
         self.attention_dropout = nn.Dropout(config.dropout)
+
+    def set_cross_term_sign(self, sign: float) -> None:
+        val = float(sign)
+        if val not in (-1.0, 1.0):
+            raise ValueError(f"cross_term_sign must be -1.0 or +1.0, got {sign}")
+        self.cross_term_sign = val
 
     def _project_qrv(self, x):
         batch, length, _ = x.shape
@@ -709,6 +719,14 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
     def _resolve_lambda(self, lambda_val: Optional[float] = None) -> float:
         return self.lambda_param if lambda_val is None else float(lambda_val)
 
+    def _compute_cross_term(self, q, r, cross_term_sign: Optional[float] = None):
+        sign = float(getattr(self, "cross_term_sign", -1.0)) if cross_term_sign is None else float(cross_term_sign)
+        if sign not in (-1.0, 1.0):
+            raise ValueError(f"cross_term_sign must be -1.0 or +1.0, got {sign}")
+        if sign < 0.0:
+            return (q @ r.transpose(-2, -1)) - (r @ q.transpose(-2, -1))
+        return (q @ r.transpose(-2, -1)) + (r @ q.transpose(-2, -1))
+
     def _scores(
         self,
         q,
@@ -716,6 +734,7 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
         return_components=False,
         lambda_val: Optional[float] = None,
         component_mode: Optional[str] = None,
+        cross_term_sign: Optional[float] = None,
     ):
         if r is None:
             raise ValueError("r tensor is required for QRSharedQAntisymmetricAttention._scores")
@@ -733,14 +752,25 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
             raw_scores = sym_scores / scale
             if return_components:
                 anti_scores = torch.zeros_like(sym_scores)
-        elif mode == "antisymmetric_only" or not sym_on:
-            anti_scores = (q @ r.transpose(-2, -1)) - (r @ q.transpose(-2, -1))
+        elif mode == "plus_only":
+            eff_sign = 1.0 if cross_term_sign is None else float(cross_term_sign)
+            anti_scores = self._compute_cross_term(q, r, cross_term_sign=eff_sign)
             raw_scores = (effective_lambda * anti_scores) / scale
             if return_components:
                 sym_scores = torch.zeros_like(anti_scores)
+        elif mode == "antisymmetric_only" or not sym_on:
+            anti_scores = self._compute_cross_term(q, r, cross_term_sign=cross_term_sign)
+            raw_scores = (effective_lambda * anti_scores) / scale
+            if return_components:
+                sym_scores = torch.zeros_like(anti_scores)
+        elif mode == "full_plus":
+            eff_sign = 1.0 if cross_term_sign is None else float(cross_term_sign)
+            sym_scores = q @ q.transpose(-2, -1)
+            anti_scores = self._compute_cross_term(q, r, cross_term_sign=eff_sign)
+            raw_scores = (sym_scores + effective_lambda * anti_scores) / scale
         else:  # "full"
             sym_scores = q @ q.transpose(-2, -1)
-            anti_scores = (q @ r.transpose(-2, -1)) - (r @ q.transpose(-2, -1))
+            anti_scores = self._compute_cross_term(q, r, cross_term_sign=cross_term_sign)
             raw_scores = (sym_scores + effective_lambda * anti_scores) / scale
 
         length = q.size(-2)
@@ -758,6 +788,7 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
         if return_components:
             result["sym_scores"] = sym_scores
             result["anti_scores"] = anti_scores
+            result["cross_scores"] = anti_scores
         return result
 
     def attention_maps(
@@ -766,6 +797,7 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
         return_components=False,
         lambda_val: Optional[float] = None,
         component_mode: Optional[str] = None,
+        cross_term_sign: Optional[float] = None,
     ):
         """Return scaled scores and probabilities before attention dropout."""
         q, r, _ = self._project_qrv(x)
@@ -775,6 +807,7 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
             return_components=return_components,
             lambda_val=lambda_val,
             component_mode=component_mode,
+            cross_term_sign=cross_term_sign,
         )
 
     def forward(
@@ -782,6 +815,7 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
         x,
         lambda_val: Optional[float] = None,
         component_mode: Optional[str] = None,
+        cross_term_sign: Optional[float] = None,
     ):
         batch, length, _ = x.shape
         q, r, v = self._project_qrv(x)
@@ -790,6 +824,7 @@ class QRSharedQAntisymmetricAttention(CausalSelfAttention):
             r,
             lambda_val=lambda_val,
             component_mode=component_mode,
+            cross_term_sign=cross_term_sign,
         )["probabilities"]
         attended = self.attention_dropout(probabilities) @ v
         attended = attended.transpose(1, 2).contiguous().reshape(
@@ -1060,9 +1095,70 @@ class AntisymmetricOnlyAttention(QRSharedQAntisymmetricAttention):
             v_head_dim=v_head_dim,
             lambda_param=lambda_param,
             attention_type=attention_type,
+            cross_term_sign=-1.0,
         )
         self.component_mode = "antisymmetric_only"
         self.symmetric_enabled = False
+        self.antisymmetric_enabled = True
+
+
+class QRPlusOnlyAttention(QRSharedQAntisymmetricAttention):
+    """Symmetric QR Cross-Term Plus-Only Attention:
+      Q = X W_Q, R = X W_R, V = X W_V
+      S_+ = lambda * (Q R^T + R Q^T) / sqrt(d_q)
+    Direct symmetric counterpart of Antisymmetric-Only Attention.
+    Strictly NO QQ^T contribution anywhere in attention score computation.
+    Has identical Q, R, V and output projections (61,440 attention parameters for Q28/V32).
+    """
+
+    def __init__(
+        self,
+        config,
+        q_head_dim: Optional[int] = 7,
+        v_head_dim: Optional[int] = 8,
+        lambda_param: float = 20.0,
+        attention_type: str = "qr_plus_only_q28",
+    ):
+        super().__init__(
+            config,
+            q_head_dim=q_head_dim,
+            v_head_dim=v_head_dim,
+            lambda_param=lambda_param,
+            attention_type=attention_type,
+            cross_term_sign=1.0,
+        )
+        self.component_mode = "plus_only"
+        self.symmetric_enabled = False
+        self.antisymmetric_enabled = True
+
+
+class FullQRPlusAttention(QRSharedQAntisymmetricAttention):
+    """Full QR Plus Attention:
+      Q = X W_Q, R = X W_R, V = X W_V
+      S_{QR+} = (Q Q^T + lambda * (Q R^T + R Q^T)) / sqrt(d_q)
+    Direct symmetric cross-term counterpart of Full QR Minus Attention.
+    Preserves the original QQ^T contribution and has identical parameters
+    (204,800 attention parameters for Q112/V88).
+    """
+
+    def __init__(
+        self,
+        config,
+        q_head_dim: Optional[int] = 28,
+        v_head_dim: Optional[int] = 22,
+        lambda_param: float = 20.0,
+        attention_type: str = "qr_full_plus_q112",
+    ):
+        super().__init__(
+            config,
+            q_head_dim=q_head_dim,
+            v_head_dim=v_head_dim,
+            lambda_param=lambda_param,
+            attention_type=attention_type,
+            cross_term_sign=1.0,
+        )
+        self.component_mode = "full_plus"
+        self.symmetric_enabled = True
         self.antisymmetric_enabled = True
 
 
@@ -1237,6 +1333,34 @@ PARAMETER_MATCHED_ATTENTION_CONFIGS = {
         "aggregate_q_dim": 112,
         "aggregate_v_dim": 88,
     },
+    "qr_plus_only_q28": {
+        "q_head_dim": 7,
+        "r_head_dim": 7,
+        "v_head_dim": 8,
+        "aggregate_q_dim": 28,
+        "aggregate_v_dim": 32,
+    },
+    "plus_only_q28": {
+        "q_head_dim": 7,
+        "r_head_dim": 7,
+        "v_head_dim": 8,
+        "aggregate_q_dim": 28,
+        "aggregate_v_dim": 32,
+    },
+    "qr_full_plus_q112": {
+        "q_head_dim": 28,
+        "r_head_dim": 28,
+        "v_head_dim": 22,
+        "aggregate_q_dim": 112,
+        "aggregate_v_dim": 88,
+    },
+    "full_qr_plus_q112": {
+        "q_head_dim": 28,
+        "r_head_dim": 28,
+        "v_head_dim": 22,
+        "aggregate_q_dim": 112,
+        "aggregate_v_dim": 88,
+    },
 }
 
 PARAMETER_MATCHED_VALID_ATTENTION_TYPES = (
@@ -1248,6 +1372,10 @@ PARAMETER_MATCHED_VALID_ATTENTION_TYPES = (
     "antisymmetric_only_q28",
     "diagonal_free_standard_q112",
     "standard_q112_diagonal_free",
+    "qr_plus_only_q28",
+    "plus_only_q28",
+    "qr_full_plus_q112",
+    "full_qr_plus_q112",
 )
 
 
@@ -1296,6 +1424,22 @@ def build_parameter_matched_attention(config, attention_type: str) -> CausalSelf
             config,
             q_head_dim=7,
             v_head_dim=8,
+            lambda_param=float(getattr(config, "qr_lambda", 20.0)),
+            attention_type=attention_type,
+        )
+    if attention_type in ("qr_plus_only_q28", "plus_only_q28"):
+        return QRPlusOnlyAttention(
+            config,
+            q_head_dim=7,
+            v_head_dim=8,
+            lambda_param=float(getattr(config, "qr_lambda", 20.0)),
+            attention_type=attention_type,
+        )
+    if attention_type in ("qr_full_plus_q112", "full_qr_plus_q112"):
+        return FullQRPlusAttention(
+            config,
+            q_head_dim=28,
+            v_head_dim=22,
             lambda_param=float(getattr(config, "qr_lambda", 20.0)),
             attention_type=attention_type,
         )

@@ -1,0 +1,222 @@
+{
+  "stage": "stage_a_inference_time_sign_intervention",
+  "arch_key": "antisymmetric_only",
+  "label": "Antisymmetric-Only Q28/V32 (lambda=20)",
+  "model_type": "qr_antisymmetric_only_q28",
+  "seeds": [
+    1337,
+    2024,
+    42
+  ],
+  "validation_seed": 918273,
+  "proto_a_tokens": 81920,
+  "proto_b_tokens": 111539,
+  "by_checkpoint": {
+    "final": {
+      "proto_a_minus_loss": {
+        "mean": 1.6026126265525817,
+        "std": 0.0024050465998890188
+      },
+      "proto_a_minus_ppl": {
+        "mean": 4.965999346610125,
+        "std": 0.011951612063921447
+      },
+      "proto_a_plus_loss": {
+        "mean": 3.3504588723182684,
+        "std": 0.06370921176442561
+      },
+      "proto_a_plus_ppl": {
+        "mean": 28.554030390086737,
+        "std": 1.7912833083973423
+      },
+      "proto_a_delta_plus_minus": {
+        "mean": 1.747846245765686,
+        "std": 0.0620129943159831
+      },
+      "proto_b_minus_loss": {
+        "mean": 1.5953438614912727,
+        "std": 0.002250062817989137
+      },
+      "proto_b_minus_ppl": {
+        "mean": 4.930032348745639,
+        "std": 0.01109839530545199
+      },
+      "proto_b_plus_loss": {
+        "mean": 3.355167908537373,
+        "std": 0.061850079552860385
+      },
+      "proto_b_plus_ppl": {
+        "mean": 28.686524496119556,
+        "std": 1.7415049754800571
+      },
+      "proto_b_delta_plus_minus": {
+        "mean": 1.7598240470461004,
+        "std": 0.06032656478499067
+      }
+    },
+    "best": {
+      "proto_a_minus_loss": {
+        "mean": 1.6026126265525817,
+        "std": 0.0024050465998890188
+      },
+      "proto_a_minus_ppl": {
+        "mean": 4.965999346610125,
+        "std": 0.011951612063921447
+      },
+      "proto_a_plus_loss": {
+        "mean": 3.3504588723182684,
+        "std": 0.06370921176442561
+      },
+      "proto_a_plus_ppl": {
+        "mean": 28.554030390086737,
+        "std": 1.7912833083973423
+      },
+      "proto_a_delta_plus_minus": {
+        "mean": 1.747846245765686,
+        "std": 0.0620129943159831
+      },
+      "proto_b_minus_loss": {
+        "mean": 1.5953438614912727,
+        "std": 0.002250062817989137
+      },
+      "proto_b_minus_ppl": {
+        "mean": 4.930032348745639,
+        "std": 0.01109839530545199
+      },
+      "proto_b_plus_loss": {
+        "mean": 3.355167908537373,
+        "std": 0.061850079552860385
+      },
+      "proto_b_plus_ppl": {
+        "mean": 28.686524496119556,
+        "std": 1.7415049754800571
+      },
+      "proto_b_delta_plus_minus": {
+        "mean": 1.7598240470461004,
+        "std": 0.06032656478499067
+      }
+    }
+  },
+  "per_seed": [
+    {
+      "arch_key": "antisymmetric_only",
+      "model_type": "qr_antisymmetric_only_q28",
+      "seed": 1337,
+      "checkpoint": "final",
+      "checkpoint_step": 10000,
+      "checkpoint_path": "outputs/qr_parameter_matched_components/antisymmetric_only_q28/seed_1337/final.pt",
+      "state_sha256": "d685565b1f1c56906e9947cd12a95ce821baa28eff631d964abcef9f6257ccc4",
+      "proto_a_minus_loss": 1.6010852813720704,
+      "proto_a_minus_ppl": 4.958410776205186,
+      "proto_a_plus_loss": 3.278571033477783,
+      "proto_a_plus_ppl": 26.53782393060166,
+      "proto_a_delta_plus_minus": 1.6774857521057127,
+      "proto_b_minus_loss": 1.5935611347236482,
+      "proto_b_minus_ppl": 4.9212429697426945,
+      "proto_b_plus_loss": 3.283749631226722,
+      "proto_b_plus_ppl": 26.67560910494192,
+      "proto_b_delta_plus_minus": 1.6901884965030736,
+      "weights_unchanged": true
+    },
+    {
+      "arch_key": "antisymmetric_only",
+      "model_type": "qr_antisymmetric_only_q28",
+      "seed": 1337,
+      "checkpoint": "best",
+      "checkpoint_step": 10000,
+      "checkpoint_path": "outputs/qr_parameter_matched_components/antisymmetric_only_q28/seed_1337/best.pt",
+      "state_sha256": "d685565b1f1c56906e9947cd12a95ce821baa28eff631d964abcef9f6257ccc4",
+      "proto_a_minus_loss": 1.6010852813720704,
+      "proto_a_minus_ppl": 4.958410776205186,
+      "proto_a_plus_loss": 3.278571033477783,
+      "proto_a_plus_ppl": 26.53782393060166,
+      "proto_a_delta_plus_minus": 1.6774857521057127,
+      "proto_b_minus_loss": 1.5935611347236482,
+      "proto_b_minus_ppl": 4.9212429697426945,
+      "proto_b_plus_loss": 3.283749631226722,
+      "proto_b_plus_ppl": 26.67560910494192,
+      "proto_b_delta_plus_minus": 1.6901884965030736,
+      "weights_unchanged": true
+    },
+    {
+      "arch_key": "antisymmetric_only",
+      "model_type": "qr_antisymmetric_only_q28",
+      "seed": 2024,
+      "checkpoint": "final",
+      "checkpoint_step": 10000,
+      "checkpoint_path": "outputs/qr_parameter_matched_components/antisymmetric_only_q28/seed_2024/final.pt",
+      "state_sha256": "2dc2976c5529c50458b2e3b4197c68415223ea58bdde4c42105a558948d7858a",
+      "proto_a_minus_loss": 1.6053849458694458,
+      "proto_a_minus_ppl": 4.979776178097658,
+      "proto_a_plus_loss": 3.3999293446540833,
+      "proto_a_plus_ppl": 29.961982998334378,
+      "proto_a_delta_plus_minus": 1.7945443987846375,
+      "proto_b_minus_loss": 1.597872050045619,
+      "proto_b_minus_ppl": 4.942503825412379,
+      "proto_b_plus_loss": 3.3909447980549725,
+      "proto_b_plus_ppl": 29.6939938491014,
+      "proto_b_delta_plus_minus": 1.7930727480093536,
+      "weights_unchanged": true
+    },
+    {
+      "arch_key": "antisymmetric_only",
+      "model_type": "qr_antisymmetric_only_q28",
+      "seed": 2024,
+      "checkpoint": "best",
+      "checkpoint_step": 10000,
+      "checkpoint_path": "outputs/qr_parameter_matched_components/antisymmetric_only_q28/seed_2024/best.pt",
+      "state_sha256": "2dc2976c5529c50458b2e3b4197c68415223ea58bdde4c42105a558948d7858a",
+      "proto_a_minus_loss": 1.6053849458694458,
+      "proto_a_minus_ppl": 4.979776178097658,
+      "proto_a_plus_loss": 3.3999293446540833,
+      "proto_a_plus_ppl": 29.961982998334378,
+      "proto_a_delta_plus_minus": 1.7945443987846375,
+      "proto_b_minus_loss": 1.597872050045619,
+      "proto_b_minus_ppl": 4.942503825412379,
+      "proto_b_plus_loss": 3.3909447980549725,
+      "proto_b_plus_ppl": 29.6939938491014,
+      "proto_b_delta_plus_minus": 1.7930727480093536,
+      "weights_unchanged": true
+    },
+    {
+      "arch_key": "antisymmetric_only",
+      "model_type": "qr_antisymmetric_only_q28",
+      "seed": 42,
+      "checkpoint": "final",
+      "checkpoint_step": 10000,
+      "checkpoint_path": "outputs/qr_parameter_matched_components/antisymmetric_only_q28/seed_42/final.pt",
+      "state_sha256": "60f13afdf399239826fa4b3dae12ef424adcafb3c2a5dd056a0154f043f854ad",
+      "proto_a_minus_loss": 1.6013676524162292,
+      "proto_a_minus_ppl": 4.95981108552753,
+      "proto_a_plus_loss": 3.372876238822937,
+      "proto_a_plus_ppl": 29.162284241324176,
+      "proto_a_delta_plus_minus": 1.771508586406708,
+      "proto_b_minus_loss": 1.594598399704551,
+      "proto_b_minus_ppl": 4.926350251081844,
+      "proto_b_plus_loss": 3.390809296330425,
+      "proto_b_plus_ppl": 29.689970534315346,
+      "proto_b_delta_plus_minus": 1.796210896625874,
+      "weights_unchanged": true
+    },
+    {
+      "arch_key": "antisymmetric_only",
+      "model_type": "qr_antisymmetric_only_q28",
+      "seed": 42,
+      "checkpoint": "best",
+      "checkpoint_step": 10000,
+      "checkpoint_path": "outputs/qr_parameter_matched_components/antisymmetric_only_q28/seed_42/best.pt",
+      "state_sha256": "60f13afdf399239826fa4b3dae12ef424adcafb3c2a5dd056a0154f043f854ad",
+      "proto_a_minus_loss": 1.6013676524162292,
+      "proto_a_minus_ppl": 4.95981108552753,
+      "proto_a_plus_loss": 3.372876238822937,
+      "proto_a_plus_ppl": 29.162284241324176,
+      "proto_a_delta_plus_minus": 1.771508586406708,
+      "proto_b_minus_loss": 1.594598399704551,
+      "proto_b_minus_ppl": 4.926350251081844,
+      "proto_b_plus_loss": 3.390809296330425,
+      "proto_b_plus_ppl": 29.689970534315346,
+      "proto_b_delta_plus_minus": 1.796210896625874,
+      "weights_unchanged": true
+    }
+  ]
+}

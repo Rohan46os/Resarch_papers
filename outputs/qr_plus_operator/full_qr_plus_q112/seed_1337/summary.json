@@ -1,0 +1,63 @@
+{
+  "experiment": "qr_plus_operator",
+  "arch_key": "full_qr_plus_q112",
+  "model_type": "qr_full_plus_q112",
+  "seed": 1337,
+  "qr_lambda": 20.0,
+  "status": "completed",
+  "steps": 10000,
+  "max_steps": 10000,
+  "best_step": 10000,
+  "best_validation_loss": 1.5615473926067351,
+  "best_validation_perplexity": 4.766190710206768,
+  "final_train_loss": 1.447773811340332,
+  "final_validation_loss": 1.5615473926067351,
+  "final_validation_perplexity": 4.766190710206768,
+  "full_corpus_final_loss": 1.5531977435305926,
+  "full_corpus_final_perplexity": 4.726560370302963,
+  "full_corpus_best_loss": 1.5531977435305926,
+  "full_corpus_best_perplexity": 4.726560370302963,
+  "parameters": 758656,
+  "attention_parameters": 204800,
+  "non_attention_parameters": 553856,
+  "training_seconds": 851.146934599441,
+  "training_tokens": 40960000,
+  "training_tokens_per_second": 48123.30084792585,
+  "cum_eval_seconds": 15.207042999973055,
+  "peak_gpu_memory_mb": 324.4697265625,
+  "init_state_sha256": "cb70c0386062ab0bfd874d66fbc6cd53cefe9480de55f3c54e46cee4f13c9f37",
+  "final_state_sha256": "187fa585d378b07a5e85e3e0f2295ed22f33170ee4f1f865038256c927ba9a24",
+  "init_max_abs_diff_vs_historical": 0.0,
+  "training_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+  "expected_batch_sha256": "66142907e2b581ee5e7f288789daedfe753aff3996b81f899edb6d481e8fc315",
+  "batch_stream_sha_matched": true,
+  "cum_grad_clip_count": 9059,
+  "cum_grad_clip_freq": 0.9059,
+  "nan_inf_detected": false,
+  "failure_step": null,
+  "failure_stage": null,
+  "failure_reason": null,
+  "nonfinite_tensors": {
+    "nonfinite_parameters": [],
+    "nonfinite_gradients": []
+  },
+  "evaluations": {
+    "final": {
+      "step": 10000,
+      "protocol_a_loss": 1.5615473926067351,
+      "protocol_a_perplexity": 4.766190710206768,
+      "protocol_b_loss": 1.5531977435305926,
+      "protocol_b_perplexity": 4.726560370302963,
+      "reload_discrepancy_a": 0.0,
+      "reload_discrepancy_b": 0.0,
+      "exact_reload_reproducible": true
+    },
+    "best": {
+      "step": 10000,
+      "protocol_a_loss": 1.5615473926067351,
+      "protocol_a_perplexity": 4.766190710206768,
+      "protocol_b_loss": 1.5531977435305926,
+      "protocol_b_perplexity": 4.726560370302963
+    }
+  }
+}

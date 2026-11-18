@@ -1,0 +1,20 @@
+{
+  "experiment": "qr_plus_operator",
+  "arch_key": "full_qr_plus_q112",
+  "model_type": "qr_full_plus_q112",
+  "seed": 2024,
+  "qr_lambda": 20.0,
+  "max_steps": 10000,
+  "eval_interval": 250,
+  "init_state_sha256": "bf4a238bd2ec3b0c1cd24c65a71d5f5b7274d18be844573421a01334b946ea36",
+  "historical_init_path": "outputs/qr_lambda_upper_probe_q112/lambda_20.0/seed_2024/init.pt",
+  "init_max_abs_diff_vs_historical": 0.0,
+  "dataset_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "validation_seed": 918273,
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "torch_version": "2.6.0+cu124",
+  "cuda_version": "12.4",
+  "python_version": "3.13.14",
+  "run_dir": "outputs/qr_plus_operator/full_qr_plus_q112/seed_2024"
+}

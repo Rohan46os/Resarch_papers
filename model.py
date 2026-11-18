@@ -196,6 +196,17 @@ class DecoderLM(nn.Module):
                 if hasattr(block.attention, "antisymmetric_enabled"):
                     block.attention.antisymmetric_enabled = enabled
 
+    def set_qr_cross_term_sign(self, sign: float, layer: Optional[int] = None) -> None:
+        val = float(sign)
+        if val not in (-1.0, 1.0):
+            raise ValueError(f"cross_term_sign must be -1.0 or +1.0, got {sign}")
+        for idx, block in enumerate(self.blocks):
+            if layer is None or idx == layer:
+                if hasattr(block.attention, "set_cross_term_sign"):
+                    block.attention.set_cross_term_sign(val)
+                elif hasattr(block.attention, "cross_term_sign"):
+                    block.attention.cross_term_sign = val
+
     def set_remove_diagonal(self, remove_diagonal: bool = True, layer: Optional[int] = None) -> None:
         for idx, block in enumerate(self.blocks):
             if layer is None or idx == layer:
@@ -791,6 +802,94 @@ def build_diagonal_free_standard_model(
         from train_standard_attention_q112_10k import build_standard_q112_from_qr_init
         std_ref, _ = build_standard_q112_from_qr_init(config, vocab_size, seed)
         init_state = std_ref.state_dict()
+
+    model.load_state_dict(init_state, strict=True)
+    if model.lm_head.weight is not model.token_embedding.weight:
+        model.lm_head.weight = model.token_embedding.weight
+
+    return model
+
+
+def build_qr_plus_only_q28_model(
+    config,
+    vocab_size: int,
+    seed: int,
+    qr_lambda: float = 20.0,
+    init_checkpoint_dir: Optional[Path] = None,
+):
+    """Build Symmetric QR Cross-Term Plus-Only Q28/V32 model:
+    - S_+ = lambda * (Q R^T + R Q^T) / sqrt(7), lambda = 20.0
+    - Projections: W_Q (128x28), W_R (128x28), W_V (128x32), W_O (32x128).
+    - Total attention parameters = 61,440. Total parameters = 615,296.
+    Reuses the exact per-seed historical Antisymmetric-Only Q28 initialization tensors bitwise.
+    """
+    model = DecoderLM(config, vocab_size, "qr_plus_only_q28")
+    model.set_qr_lambda(float(qr_lambda))
+
+    init_path = None
+    if init_checkpoint_dir is not None:
+        p = Path(init_checkpoint_dir) / f"seed_{seed}" / "init.pt"
+        if p.exists():
+            init_path = p
+    else:
+        for candidate in (
+            Path("outputs/qr_parameter_matched_components/antisymmetric_only_q28") / f"seed_{seed}" / "init.pt",
+            Path("outputs/reduced_attention_70_percent/qr_antisymmetric_q28") / f"seed_{seed}" / "init.pt",
+        ):
+            if candidate.exists():
+                init_path = candidate
+                break
+
+    if init_path is not None and init_path.exists():
+        ckpt = torch.load(init_path, map_location="cpu", weights_only=False)
+        init_state = ckpt["model"]
+    else:
+        with torch.random.fork_rng(devices=[]):
+            torch.set_rng_state(torch.Generator().manual_seed(seed).get_state())
+            ref = DecoderLM(config, vocab_size, "qr_antisymmetric_only_q28")
+            init_state = {k: v.detach().clone() for k, v in ref.state_dict().items()}
+
+    model.load_state_dict(init_state, strict=True)
+    if model.lm_head.weight is not model.token_embedding.weight:
+        model.lm_head.weight = model.token_embedding.weight
+
+    return model
+
+
+def build_full_qr_plus_q112_model(
+    config,
+    vocab_size: int,
+    seed: int,
+    qr_lambda: float = 20.0,
+    init_checkpoint_dir: Optional[Path] = None,
+):
+    """Build Full QR Plus Q112/V88 model:
+    - S_{QR+} = (Q Q^T + lambda * (Q R^T + R Q^T)) / sqrt(28), lambda = 20.0
+    - Projections: W_Q (128x112), W_R (128x112), W_V (128x88), W_O (88x128).
+    - Total attention parameters = 204,800. Total parameters = 758,656.
+    Reuses the exact per-seed historical Full QR Minus Q112 (lambda=20) initialization tensors bitwise.
+    """
+    model = DecoderLM(config, vocab_size, "qr_full_plus_q112")
+    model.set_qr_lambda(float(qr_lambda))
+
+    init_path = None
+    if init_checkpoint_dir is not None:
+        p = Path(init_checkpoint_dir) / f"seed_{seed}" / "init.pt"
+        if p.exists():
+            init_path = p
+    else:
+        default_p = Path("outputs/qr_lambda_upper_probe_q112/lambda_20.0") / f"seed_{seed}" / "init.pt"
+        if default_p.exists():
+            init_path = default_p
+
+    if init_path is not None and init_path.exists():
+        ckpt = torch.load(init_path, map_location="cpu", weights_only=False)
+        init_state = ckpt["model"]
+    else:
+        with torch.random.fork_rng(devices=[]):
+            torch.set_rng_state(torch.Generator().manual_seed(seed).get_state())
+            ref = DecoderLM(config, vocab_size, "qr_antisymmetric_q112")
+            init_state = {k: v.detach().clone() for k, v in ref.state_dict().items()}
 
     model.load_state_dict(init_state, strict=True)
     if model.lm_head.weight is not model.token_embedding.weight:
