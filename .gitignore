@@ -52,6 +52,9 @@ outputs/antisymmetric_only_head_visualization/report/trained/
 !outputs/antisymmetric_only_exact_stable_rank/**
 !outputs/qr_plus_operator/
 !outputs/qr_plus_operator/**
+!outputs/jacobian_effective_rank/
+!outputs/jacobian_effective_rank/**
+outputs/jacobian_effective_rank/__pycache__/
 *.npz
 *.pt
 *.log
